@@ -9,8 +9,8 @@ interface LogoProps {
 }
 
 const LogoImage = styled(Img)`
-  max-height: 30px;
-  width: 30px;
+  max-height: 70px;
+  width: 70px;
   margin-right: 45px;
 
   @media (max-width: ${Theme.breakpoints.sm}) {
@@ -20,7 +20,7 @@ const LogoImage = styled(Img)`
 
 const HomeLink = styled(Link)`
   align-self: center;
-  height: 30px;
+  height: 70px;
 `;
 
 const Logo: FunctionComponent<LogoProps> = ({title}) => {
@@ -28,7 +28,7 @@ const Logo: FunctionComponent<LogoProps> = ({title}) => {
     query {
       file(name: {eq: "logo_transparent"}) {
         childImageSharp {
-          fixed(width: 30, height: 30) {
+          fixed(width: 70, height: 70) {
             ...GatsbyImageSharpFixed
           }
         }

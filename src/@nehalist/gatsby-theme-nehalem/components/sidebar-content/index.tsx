@@ -37,7 +37,7 @@ const SidebarContent: FunctionComponent = () => {
       {/* <AdStyle />
       <Carbon name={`carbon-home`} placement={`nehalemnetlifycom`} serve={`CE7D453J`} /> */}
 
-      <Bio textAlign={`justify`} avatarStyle={{float: `left`, marginRight: `10px`}}/>
+      <Bio textAlign={`justify`} avatarStyle={{float: `right`, marginLeft: `10px`}}/>
 
     </StickySidebarContent>
   );
