@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /post-schedule
+
+sitemap: https://www.code4it.dev/sitemap.xml

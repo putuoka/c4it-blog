@@ -6,6 +6,6 @@ import Utterances from '../../../../components/utterances';
  * quickly integrate comments (like commento, Disqus, ...).
  */
 // @ts-ignore
-const Comments: FunctionComponent<{ id: string }> = ({id}) =><Utterances repo={`code4it-dev/blog-comments`} />;
+const Comments: FunctionComponent<{ id: string }> = ({id}) =><><div class="s9-widget-wrapper"></div><Utterances repo={`code4it-dev/blog-comments`} /></>;
 
 export default Comments;

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Code4IT`,
-    siteUrl: `https://nehalem.netlify.com`,
+    siteUrl: `https://www.code4it.dev`,
     description: `A blog for %TOPICS%`,
     topics: [
       `C# devs`,
@@ -61,6 +61,26 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'nofollow noopener noreferrer',
+            },
+          },
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              isIconAfterHeader: true
+            }
+          }
+        ],
+      },
+    },
+    {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: { // optional theme options
         // location to our content
@@ -88,6 +108,16 @@ module.exports = {
         // Include GTM in development.
         // Defaults to false meaning GTM will only be loaded in production.
         includeInDevelopment: false,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-load-script",
+      options: {
+        id: "s9-sdk",
+        async: true,
+        defer: true,
+        content: "1930161e42694a06b8e7ca268e4c8653",
+        src: "socialshare.min.js"
       },
     },
     {
