@@ -19,7 +19,7 @@ const StyledAvatar = styled(Img)<AvatarProps>`
 const Avatar: FunctionComponent<AvatarProps> = ({alt, style}) => {
   const logo = useStaticQuery(graphql`
     query {
-      file(name: {eq: "code4it-logo"}) {
+      file(name: {eq: "logo"}) {
         childImageSharp {
           fixed(width: 55, height: 55) {
             ...GatsbyImageSharpFixed

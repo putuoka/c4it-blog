@@ -26,7 +26,7 @@ const HomeLink = styled(Link)`
 const Logo: FunctionComponent<LogoProps> = ({title}) => {
   const logo = useStaticQuery(graphql`
     query {
-      file(name: {eq: "code4it-logo"}) {
+      file(name: {eq: "logo_transparent"}) {
         childImageSharp {
           fixed(width: 30, height: 30) {
             ...GatsbyImageSharpFixed

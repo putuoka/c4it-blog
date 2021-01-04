@@ -93,7 +93,7 @@ module.exports = {
           background_color: `#a4cbb8`,
           theme_color: `#a4cbb8`,
           display: `minimal-ui`,
-          icon: `src/images/gatsby-icon.png`
+          icon: `src/images/favicon.png`
         },
         // if archive pages should be generated automatically
         loadDefaultPages: true,
