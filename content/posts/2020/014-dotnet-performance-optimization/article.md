@@ -1,5 +1,5 @@
 ---
-title: "Few tips for performance optimization"
+title: "A few tips for performance optimization"
 path: "/blog/few-tips-for-performance-optimization"
 tags: ['.NET', 'C#', 'Performance']
 featuredImage: "./cover.jpg"
@@ -30,7 +30,7 @@ First of all: there's a huge difference between minification and compression:
 
 __Compression__ is the act of reducing the size of the file downloaded via web using a compression algorithm: the file is compressed before being downloaded and decompressed when received by the client. So the HTTP call is lighter not because you removed contents from the file, but because the file is not transmitted as-is but compressed.
 
-The compression algorithm can be seen in the response header of a HTTP call. You can create an HTTP request specifying the compression type you need, adding the __Accept-Encoding__ header. 
+The compression algorithm can be seen in the response header of a HTTP call. You can create an HTTP request specifying the compression type you need, adding the __Accept-Encoding__ header.
 
 For example
 
@@ -38,7 +38,8 @@ For example
 Accept-Encoding: gzip
 ```
 
-In the response header you will see: 
+In the response header you will see:
+
 ```
 Content-Encoding: gzip
 ```
@@ -58,6 +59,7 @@ To require a resource compressed with the Brotli algorithm you can add
 ```
 Accept-Encoding: br
 ```
+
 to the request.
 
 ### In-process vs Out-of-process
