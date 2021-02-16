@@ -6,7 +6,7 @@
   color: #f0db4f
   icon: ./assets/images/javascript.svg
   featured: false
-- name: .NET
+- name: dotNET
   color: #00ffee
   icon: ./assets/images/dotNet.svg
   featured: true
@@ -37,7 +37,7 @@
 - name: Career
   color: #00ffee
   icon: ./assets/images/career.png
-  featured: false
+  featured: true
 - name: Clean Code
   color: #00ffee
   icon: ./assets/images/clean-code.png
@@ -73,7 +73,7 @@
 - name: OpenAPI
   color: #00ffee
   icon: ./assets/images/open-api.png
-  featured: true
+  featured: false
 - name: Performance
   color: #00ffee
   icon: ./assets/images/performance.png

@@ -1,7 +1,7 @@
 ---
 title: "How to use HttpRepl to navigate API endpoints"
 path: "/blog/httprepl"
-tags: ["MISC", ".NET"]
+tags: ["MISC", "dotNET"]
 featuredImage: "./cover.jpg"
 excerpt: "With HttpRepl you can perform HTTP operations as they were local folders, using the CLI. Let's see how to configure it and run GET and POST operations."
 created: 2020-09-22
