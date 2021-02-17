@@ -1,9 +1,9 @@
 ---
-title: "An overview on API Gateways"
+title: "API Gateways - an overview"
 path: "/blog/overview-api-gateways"
-tags: ['Azure', 'API Gateway', 'Ocelot'] 
+tags: ['API Gateway', 'Ocelot', ] 
 featuredImage: "./cover.jpg"
-excerpt: "When building complex systems, you might want to keep things simple on your company but expose rich APIs to your customers. API Gateways can help you while creating microservices and microfrontends."
+excerpt: "API Gateways can help you create microservices and micro frontends, and expose rich APIs to your customers while keeping things simple on your company."
 created: 2019-05-17
 updated: 2019-05-17
 ---
@@ -18,7 +18,7 @@ There are different services that provide different complexity at different pric
 
 ## UI Composition
 
-An interesting thing to do with API Gateways is UI Composition. 
+An interesting thing to do with API Gateways is UI Composition.
 
 Imagine that you must show info that comes from different services, for example, the list of available products with few details about the product itself and info about the seller. You can handle this problem in 3 ways:
 
