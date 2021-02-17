@@ -1,7 +1,7 @@
 ---
 title: "How to get video details from YouTube with .NET Core 3"
 path: "/blog/get-youtube-video-details-dotnet"
-tags: ['C#', '.NET', 'YouTube']
+tags: ['C#', 'dotNET', 'YouTube']
 featuredImage: "./cover.jpg"
 excerpt: "We have already seen how to search for videos in a YouTube channel. Now it's time to get details for a single video."
 created: 2020-03-17
