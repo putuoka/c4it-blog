@@ -6,7 +6,8 @@ on:
       - edited
   schedule:
     # https://crontab.guru/every-hour
-    - cron: 0 11 * * Tue
+    #- cron: 0 11 * * Tue
+    - cron: 0,5,10,15,20,25 * * * Mon
 
 jobs:
   merge_schedule:
