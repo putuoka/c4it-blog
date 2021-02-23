@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    API->>+CMS: Get all matches with a filter
+    CMS-->>+API: Some matches ids
+    API->>+ExtAPI: Get all matches by ids[]
+    ExtAPI-->>+API: All matches
+
+    loop for each matchid
+        API->>+CMS: Get match details by ID
+        CMS-->>-API: matches
+        API->>+CMS: Get home club details
+        CMS-->>-API: home club
+        Note over API, CMS: Same as before
+    end

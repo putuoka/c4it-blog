@@ -53,7 +53,7 @@ Sometimes the external library you're using is not well documented, or you are w
 Another example is when you are using _regular expressions_: the meaning can be really hard to grasp, so using a comment to explain what you are doing is the best thing to do:
 
 ```csharp
-public bool CheckIsStringIsValid(string password)
+public bool CheckIfStringIsValid(string password)
 {
     // 2 to 7 lowercase chars followed by 3 or 4 numbers
     // Valid:   kejix173

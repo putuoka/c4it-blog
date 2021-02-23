@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    participant Assets
+    API->>+ExtAPI: Get all matches
+    ExtAPI-->>-API: list of matches
+    loop for each match
+        API->>+CMS: Get match details
+        CMS-->>-API: matches
+        API->>+CMS: Get home club details
+        CMS-->>-API: home club
+        API->>+CMS: Get away club details
+        CMS-->>-API: away club
+        API->>+CMS: Get venue details
+        CMS-->>-API: venue
+        API->>+Assets: home club assets
+        Assets-->>-API: assetsInfo
+        API->>+Assets: away club assets
+        Assets-->>-API: assetsInfo
+        API->>+Assets: venue assets
+        Assets-->>-API: assetsInfo
+    end
+    API->>API: merge info from ExtAPI and CMS

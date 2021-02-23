@@ -40,7 +40,9 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "serve-prod": "gatsby build & gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "cb":"gatsby clean & gatsby develop",
+    "create-article": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./article-creator.ps1 ./blog/NomeCartella"
   },
   "repository": {
     "type": "git",

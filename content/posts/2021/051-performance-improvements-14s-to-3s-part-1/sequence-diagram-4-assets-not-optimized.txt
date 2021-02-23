@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    participant Assets
+    Note over API, CMS: Get matches
+
+    loop for each matchid
+    Note over API, CMS: Get match, clubs and venue info
+
+        API->>+Assets: home club assets
+        Assets-->>-API: assetsInfo
+        API->>+Assets: away club assets
+        Assets-->>-API: assetsInfo
+        API->>+Assets: venue assets
+        Assets-->>-API: assetsInfo
+    end

@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    participant Assets
+           Note over API, CMS: Same as before
+
+
+    loop for each matchid
+        Note over API, CMS: Get match, clubs and venue info
+    API->>+API: store all the assets IDs needed from Clubs, Venue and Match
+    API->>+Assets: GetAllAssetsInfo: ids[]
+    Assets-->>-API: info for all the passed IDs
+     API->>+API: for each image needed, get the right info
+    end
