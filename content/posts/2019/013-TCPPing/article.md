@@ -69,7 +69,7 @@ First of all, you should try to ping the service within the Azure Portal, so tha
 
 You will find both a Console and an external tool called _Advanced Tools_: you can use both, but here I'm using the _Console_ tool:
 
-![Azure portal available tools: Console](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/tcpping/azure_tools.png "Azure portal Console link")
+![Azure portal available tools: Console](./azure_tools.png "Azure portal Console link")
 
 If you try to ping _myapi_ from Azure, you won't receive a __Request time out__, but a different error: 
 
@@ -77,7 +77,7 @@ If you try to ping _myapi_ from Azure, you won't receive a __Request time out__,
 Unable to contact IP driver. General failure
 ```
 
-![Unable to contact IP driver](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/tcpping/ping_console.png "PING error message")
+![Unable to contact IP driver](./ping_console.png "PING error message")
 
 That's because the ping command has directly been disabled.
 
@@ -101,7 +101,7 @@ Complete: 4/4 successful attempts (100%). Average success time: 124.5ms
 
 That, in the console, looks like this:
 
-![tcpping example](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/tcpping/tcpping_console.png "TCPPing working example")
+![tcpping example](./tcpping_console.png "TCPPing working example")
 
 If you wanna have more info about this command, you can simply type `tcpping`.
 

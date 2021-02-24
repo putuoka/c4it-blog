@@ -10,7 +10,7 @@ updated: 2020-04-14
 
 Azure Functions are event-driven applications that run serverless. Usually, they are triggered by an HTTP request, an update on Blob storage, a message on Service Bus or simply a timer.
 
-![Azure Functions available triggers](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Azure%20Functions%20startup%20class/Azure-function-triggers.png "List of triggers available for Azure Functions")
+![Azure Functions available triggers](./Azure-function-triggers.png "List of triggers available for Azure Functions")
 
 You can build Azure Functions with different languages, such as C#, Java, JavaScript and so on. One of the features that made the success of Azure Functions is the pricing: __you pay only for the time spent running your code__.
 
@@ -118,7 +118,7 @@ If we try it at http://localhost:7071/api/SayHello?name=davide, we get this erro
 
 > Microsoft.Extensions.DependencyInjection.Abstractions: Unable to resolve service for type 'AzureFunctionV2Example.IGreetingsService' while attempting to activate 'AzureFunctionV2Example.AzureFunctionV2'.
 
-![Missing dependency error](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Azure%20Functions%20startup%20class/DI-missing-dependency.png "Missing dependency error")
+![Missing dependency error](./DI-missing-dependency.png "Missing dependency error")
 
 Obviously, this happens because we haven't defined that when we are injecting an `IGreetingsService` we want to use the `GreetingsService` concrete class. If you have already worked with .NET Core, you surely know that the dependencies are defined in the Startup class; but now that class is missing.
 
@@ -154,7 +154,7 @@ public void Configure(IWebJobsBuilder builder)
 
 As you might imagine, we can have _Scoped_, _Transient_ and _Singleton_ dependencies.
 
-Now we have created also the Startup class; unluckily, it's not enough: we must declare that the whole assembly must look at this Startup class to find the Startup class to use. For typical .NET Core application, this is done automatically for us; here we must declare it explicitly.
+Now we have created also the `Startup` class; unluckily, it's not enough: we must declare that the whole assembly must look at this `Startup` class to find the `Startup` class to use. For typical .NET Core application, this is done automatically for us; here we must declare it explicitly.
 
 We can do that by adding the attribute `[assembly: WebJobsStartup(typeof(Startup))]` to the namespace.
 
@@ -168,8 +168,8 @@ namespace AzureFunctionV2Example
 
 We have seen how to define Dependency Injection in Azure Functions. We've done it by following a few steps:
 
-1. Create the Startup class and implement the `IWebJobsStartup` interface
-2. Add an attribute that specifies which class must be used as the Startup class for this assembly
+1. Create the `Startup` class and implement the `IWebJobsStartup` interface
+2. Add an attribute that specifies which class must be used as the `Startup` class for this assembly
 3. Transform the Azure function to make it non-static
 4. Inject the dependency in the constructor.
 
@@ -184,4 +184,4 @@ Finally, you can see a working example on [my GitHub repository](https://github.
 
 Happy coding!
 
-_PS: in the next article I'll explain how to migrate from v2 to v3: this also implies a small change to the Startup class. Stay tuned!_
+_PS: in the next article I'll explain how to migrate from v2 to v3: this also implies a small change to the `Startup` class. Stay tuned!_

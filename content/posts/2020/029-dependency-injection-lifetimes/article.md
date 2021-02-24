@@ -155,7 +155,7 @@ services.AddSingleton<IGuidGenerator, GuidGenerator>();
 
 If we start the application and we call multiple times the Get endpoint, we'll notice that __every time we are getting the same Guid__.
 
-![Singleton lifetime - the same Guid is used every time](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Dependency-injection-lifetimes/Singleton.png "Singleton lifetime")
+![Singleton lifetime - the same Guid is used every time](./Singleton.png "Singleton lifetime")
 
 In the above screenshot notice that not only the Guid is always the same, but also the constructor is called only at the beginning: every time the application needs an IGuidGenerator instance, even when I call multiple times the Get method, it reuses always the same object. 
 This implies that __if you change the internal state of the injected class, all the classes will be affected!__ 
@@ -166,7 +166,7 @@ Let's say that the IGuidGenerator also exposes a SetGuid method: if you call it 
 
 Services with a __scoped lifetime__ are created once per client request, so if you call an API multiple times __while the same instance of the application is running__, you'll see that Italian and English messages will always have the same Guid, but the value changes every time you call the endpoint.
 
-![Scoped lifetime - the same Guid within the same client call](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Dependency-injection-lifetimes/Scoped.png "Scoped lifetime")
+![Scoped lifetime - the same Guid within the same client call](./Scoped.png "Scoped lifetime")
 
 As you can see, Italian and English messages have the same value, _6bcb8..._, and every time I call the endpoint a new GuidGenerator instance is created and shared across all the application. Every change to the internal state lives until the next client call.
 
@@ -180,7 +180,7 @@ services.AddScoped<IGuidGenerator, GuidGenerator>();
 
 This lifetime specification injects a different object every time it is requested. You'll never end up with references to the same object.
 
-![Transient lifetime - a new service every time it is needed](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Dependency-injection-lifetimes/Transient.png "Transient lifetime")
+![Transient lifetime - a new service every time it is needed](./Transient.png "Transient lifetime")
 
 As you can see on the screenshot above, the constructor for the GuidGenerator class is called for each request two times, one for the Italian and one for the English message.
 
@@ -210,9 +210,9 @@ public void ConfigureServices(IServiceCollection services)
 
 How these dependencies will be handled?
 
-The IGuidGenerator is indeed Transient, but it is injected into Singleton classes: the constructor for ItalianGuidMessage and EnglishGuidMessage will be called only when the application starts up, so both will have a different Guid, but that value will be the same for the whole application life.
+The `IGuidGenerator` is indeed Transient, but it is injected into Singleton classes: the constructor for `ItalianGuidMessage` and `EnglishGuidMessage` will be called only when the application starts up, so both will have a different `Guid`, but that value will be the same for the whole application life.
 
-![Transient inside Singleton](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Dependency-injection-lifetimes/Transient-inside-singleton.png "Transient and Singleton")
+![Transient inside Singleton](./Transient-inside-singleton.png "Transient and Singleton")
 
 ## Wrapping up
 

@@ -62,7 +62,7 @@ which will obviously print _Final result: 42_.
 
 As you can see from the screenshot here below, the Intellisense does not show the _numbers_ field, since it is internal.
 
-![Intellisense shows only public members](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/InternalsVisibleTo/intellisense.png "Intellisense shows only public members")
+![Intellisense shows only public members](./intellisense.png "Intellisense shows only public members")
 
 So how can you access the internal state, for example for testing that you are storing the new numbers in the _numbers_ field?
 
@@ -83,7 +83,7 @@ namespace FluentSumService
 
 That's it! This attribute allows the whole assembly to share its internals with a friend assembly. The Intellisense is smart enough to suggest you which are the available assemblies.
 
-![InternalsVisibleTo attribute](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/InternalsVisibleTo/assembly-attribute.png "InternalsVisibleTo attribute")
+![InternalsVisibleTo attribute](./assembly-attribute.png "InternalsVisibleTo attribute")
 
 Of course, you'd better build the target project to have it discoverable.
 

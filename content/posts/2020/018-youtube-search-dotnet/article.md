@@ -20,7 +20,7 @@ In order to use YouTube APIs, you need a developer key.
 
 You can get it by simply visiting [the Google developers page](https://console.developers.google.com/getting-started "Google developer console page"), where you can set up a new project (it's just a grouping of functionalities) and then navigate to the _Credentials_ page where you can create the key.
 
-![Credentials page for getting API keys](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Youtube-search-dotnet/Credential-page.png "How to get API keys")
+![Credentials page for getting API keys](./Credential-page.png "How to get API keys")
 
 Here you can set additional properties, like the key name and some restrictions.
 
@@ -28,7 +28,7 @@ Here you can set additional properties, like the key name and some restrictions.
 
 This information is really simple to get. Just access your account, then navigate to [your advanced settings](https://www.youtube.com/account_advanced "YouTube advanced settings page").
 
-![YouTube channel settings](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Youtube-search-dotnet/Credential-page.png "How to get YouTube channel ID")
+![YouTube channel settings](./Credential-page.png "How to get YouTube channel ID")
 
 Here you have info about your user id and your channel ID.
 

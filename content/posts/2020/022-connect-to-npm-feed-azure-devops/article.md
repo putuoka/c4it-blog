@@ -38,17 +38,17 @@ User credentials must be stored __under your user account, inside of a .npmrc fi
 
 In the old version of Azure DevOps, to get the user credentials you can simply click on the _Generate npm credentials_ button.
 
-![Connect to feed in old Azure DevOps layout](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Npm-feed-azure-devops/az-devops-npm.png "Connect to feed inside Azure DevOps - old layout")
+![Connect to feed in old Azure DevOps layout](./az-devops-npm.png "Connect to feed inside Azure DevOps - old layout")
 
 From the newer versions, you can follow two processes, depending on your OS. 
 
 If you are working __on Windows__, you can run `vsts-npm-auth -config .npmrc` to have the .npmrc file correctly created under your user account.
 
-![How to connect to feed on Windows](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Npm-feed-azure-devops/new-az-devops-windows.png "How to connect to feed on Windows")
+![How to connect to feed on Windows](./new-az-devops-windows.png "How to connect to feed on Windows")
 
 If you are working on a different OS you must generate a _PAT_ - _Personal Access Token_ - that must be encoded and replaced in a template provided by Azure DevOps. All the steps are described in the relative page.
 
-![How to connect to feed on other OS](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Npm-feed-azure-devops/new-az-devops-other-os.png "How to connect to feed on other OS")
+![How to connect to feed on other OS](./new-az-devops-other-os.png "How to connect to feed on other OS")
 
 So now you can install packages from this feed by running `npm install package-name`.
 

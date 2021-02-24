@@ -32,7 +32,7 @@ You can create a shortcut, as explained in his article. Otherwise, if running Wi
 
 This command opens a new Google Chrome window and allows you to continue with your development.
 
-![Google Chrome without CORS](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Google-Chrome-no-CORS/google-chrome-no-cors.png "Google Chrome without CORS screenshot")
+![Google Chrome without CORS](./google-chrome-no-cors.png "Google Chrome without CORS screenshot")
 
 As you can see, there is a warning stating that the flag `--disable-web-security` can bring security issues. You can just ignore it for local development.
 

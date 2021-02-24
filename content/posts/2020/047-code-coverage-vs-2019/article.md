@@ -99,12 +99,12 @@ And now, it's time to install the actual Visual Studio extension.
 The first step is to head to the _Extensions_ menu and select _Manage Extensions_.
 Then, search _Run Coverlet Report_ and install it - you have to close all Visual Studio instances to install it.
 
-![Coverlet Report extension on VS2019](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Code-Coverage-Coverlet-VS2019/install-setup-extension.png "Coverlet Report extension on VS2019")
+![Coverlet Report extension on VS2019](./install-setup-extension.png "Coverlet Report extension on VS2019")
 
 
 Since we are integrating Coverlet with MSBuild, you have to head to _Tools > Options_ and change the _Integration Type_ from _Collector_ to _MSBuild_.
 
-![Coverlet Integration type](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Code-Coverage-Coverlet-VS2019/coverlet-options.png "Coverlet Integration type")
+![Coverlet Integration type](./coverlet-options.png "Coverlet Integration type")
 
 Once everything is installed (remember to install Coverlet in all and only test projects) there's only one thing to do: try them!
 
@@ -114,20 +114,20 @@ First of all, __run all of you tests for the first time__: this helps to initial
 
 Now, under the _Tools_ menu, click on _Run Code Coverage_: this command runs the tests, generates a report files and uses it to generate a full report like this:
 
-![Code coverage report](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Code-Coverage-Coverlet-VS2019/code-coverage-report.png "Code coverage report")
+![Code coverage report](./code-coverage-report.png "Code coverage report")
 
 Here we go! We have our code coverage report!
 
 You can even drill down into details for each class to find out other the values for Branch Coverage, Line Coverage and Cyclomatic complexity.
 
-![Code coverage details](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Code-Coverage-Coverlet-VS2019/code-coverage-report-details.png "Code coverage details")
+![Code coverage details](./code-coverage-report-details.png "Code coverage details")
 
 
 For each class, you can see the details of the lines covered by tests. But if you are like me, you don't want to open each file to see what to do, but you'd like a way to see it directly in your IDE.
 
 Well, just click on _Toggle Code Coverage Highlighting_ under the _Tools_ menu: you will see all the lines covered by tests in green, and all the ones that aren't covered by any tests in red.
 
-![Code coverage highlighting in source files](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Code-Coverage-Coverlet-VS2019/code-coverage-highlighting.png "Code coverage details")
+![Code coverage highlighting in source files](./code-coverage-highlighting.png "Code coverage details")
 
 This will help you speed up your development and find out possible bugs and flaws earlier.
 

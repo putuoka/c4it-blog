@@ -3,7 +3,7 @@ title: "A few things I learned at .NET Conference Italia 2018"
 path: "/blog/dotnet-conference-italia-2018"
 tags: ['dotNET', 'C#', 'MISC']
 featuredImage: "./cover.jpg"
-excerpt: "Some of the things I learnt at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
+excerpt: "Some of the things I learned at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
 created: 2018-10-29
 updated: 2018-10-29
 ---
@@ -18,7 +18,7 @@ I'm not going to talk about everything we discussed - of course, I cannot write 
 
 I always thought that interfaces and abstract classes were totally different things. Using the [Sharplab](https://sharplab.io "Sharplab website") online tool, that shows the IL result of a C# snippet, they highlighted that __internally an interface is also an abstract class__.
 
-![Interface as Abstract class](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2018/dotnet-conf-2018/interface-as-abstract-class.png "IL of interface definition")
+![Interface as Abstract class](./interface-as-abstract-class.png "IL of interface definition")
 
 Actually, __this doesn't mean that you can declare abstract methods in interfaces__. But that brought the Microsoft team to a brand new functionality in C# 8: default method implementations for interfaces.
 
@@ -66,7 +66,7 @@ This framework runs on [WebAssembly](https://webassembly.org/ "WebAssembly websi
 
 As you can see in the image below taken [from caniuse.com](https://caniuse.com/#search=webassembly "CanIUse link"), WebAssembly is supported by the most used browsers, even on mobile.
 
-![WebAssembly reference on CanIUse](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2018/dotnet-conf-2018/webassembly-caniuse.png "WebAssembly reference on CanIUse")
+![WebAssembly reference on CanIUse](./webassembly-caniuse.png "WebAssembly reference on CanIUse")
 
 This is still an experiment. In my opinion, in a few years this project will be dropped, due to the constant improvement of client-side technologies based on JavaScript. This framework is not meant to replace pure JavaScript or other frameworks (like Angular, Vue.js), but it is oriented to server-side developers that want to approach client side development.
 

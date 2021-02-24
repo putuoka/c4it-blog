@@ -70,7 +70,7 @@ The first parameter of the `SwaggerDoc` method, _v1-foo_, is used to define the 
 
 This URL doesn't match with any of the paths searched by HttpRepl, thus the _Unable to find a swagger definition_ message. By the way, notice that you're still connected to the endpoint, even though you can't perform any operations, because without knowing the structure provided by the OpenAPI file, HttpRepl can't evaluate the different routes.
 
-!["Unable to find a swagger definition" message](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/no-valid-swagger-url.png "Unable to find a swagger definition")
+!["Unable to find a swagger definition" message](./no-valid-swagger-url.png "Unable to find a swagger definition")
 
 We can solve the issue in two simple ways:
 
@@ -103,19 +103,19 @@ There are only 2 available commands: _cd_ and _ls_ (or _dir_, it's the same).
 
 With `cd` you change the current directory (and with `cd ..` you navigate to the parent node), while with `ls` or `dir` you can see the available routes and the operations you can perform on these endpoints.
 
-![Navigation with "dir" and "cd"](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/marvel-folder-navigation.png "Navigation with 'dir' and 'cd'")
+![Navigation with "dir" and "cd"](./marvel-folder-navigation.png "Navigation with 'dir' and 'cd'")
 
 Finally, when you've reached the target folder, you can type the HTTP verb you need (and the parameters, if any) and call the endpoint.
 
-![Using HTTP verbs to perform operations](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/get-operation.png "Using HTTP verbs to perform operations")
+![Using HTTP verbs to perform operations](./get-operation.png "Using HTTP verbs to perform operations")
 
 You'll also get info about the status code, the content type and other metadata.
 
-![Simple flow to get a resource](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/get-marvel-movies-cropped.gif "Simple flow to get a resource")
+![Simple flow to get a resource](./get-marvel-movies-cropped.gif "Simple flow to get a resource")
 
 A nice thing of this tool is that even routes with route parameters (for instance, _/MarvelMovies/1_) can be navigated as if they were real folders:
 
-![Navigation on route parameters](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/get-operation-on-route.png "Navigation on route parameters")
+![Navigation on route parameters](./get-operation-on-route.png "Navigation on route parameters")
 
 ## Performing POST operations
 
@@ -153,7 +153,7 @@ Wouldn't it be nice to have HttpRepl easily selectable as a running context in V
 
 It's quite simple: in the Debug target menu, select __Browse With__
 
-![Debug menu for adding HttpRepl as a context](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/HttpRepl/debug-menu.png "Debugging menu on Visual Studio 2019")
+![Debug menu for adding HttpRepl as a context](./debug-menu.png "Debugging menu on Visual Studio 2019")
 
 and add a profile with the following path:
 

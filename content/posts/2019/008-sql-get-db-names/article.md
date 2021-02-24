@@ -16,7 +16,7 @@ The solution is simple: open the terminal and run `SQLLocalDb.exe i`, where _i_ 
 
 Now you can see the list of configured DBs.
 
-![SQLLocalDb.exe i result](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/ssms-find-instance-name/ssms_result.png "SQLLocalDb result")
+![SQLLocalDb.exe i result](./ssms_result.png "SQLLocalDb result")
 
 __To use it in SSMS remember to use Windows Authentication.__
 
@@ -24,10 +24,10 @@ If you need more info about a specific instance, just run `SQLLocalDB.exe i "Ins
 
 This command displays some info about the specified SQL instance: this info includes the version, the owner and the current state.
 
-![SQL instance details](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/ssms-find-instance-name/ssms_instance_details.png "SQL instance details")
+![SQL instance details](./ssms_instance_details.png "SQL instance details")
 
 If you want to have a list of all available commands, run `SQLLocalDB.exe -?`. These commands allow you to create and delete SQL instances, stop and start existing instances and so on.
 
-![SQLLocalDB command options](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2019/ssms-find-instance-name/ssms_command_help.png "SQLLocalDb command options")
+![SQLLocalDB command options](./ssms_command_help.png "SQLLocalDb command options")
 
 It's important to remember that here the spaces are treated as delimiters, so if your DB includes spaces inside its name, you must surround the name with quotes.
