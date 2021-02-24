@@ -44,7 +44,7 @@ Don't stick too much to your plans! Listen to your gut feelings, but also reason
 
 Also, remember that you should adapt to the outside world: as I had to shorten my route when it started to bucket down, you must abandon a technology if it's necessary. Think of all the Adobe Flash developers that had to learn a new framework from scratch when that technology became obsolete.
 
-![Pay attention to the directions, and choose the right path](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/hiking/directions.jpg)
+![Pay attention to the directions, and choose the right path](./directions.jpg)
 
 ## 4. Everyone goes his own pace
 
@@ -118,4 +118,4 @@ Look around you: how's the panorama? Don't you like where you are?
 
 Now take a big breath and move on, to your next adventure!
 
-![Your effort can bring to something wonderful](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/hiking/lake.jpg)
+![Your effort can bring to something wonderful](./lake.jpg)

@@ -125,7 +125,7 @@ To create them using Visual Studio 2019, follow these steps:
 3. in the _Build Action_ field, set "Embedded resource"
 4. in the _Copy to Output Directory_ field, set "Copy always" or "Copy if newer".
 
-![File properties tab in Visual Studio](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Manifest%20resources/file-properties.png "File properties in Visual Studio")
+![File properties tab in Visual Studio](./file-properties.png "File properties in Visual Studio")
 
 If you prefer editing manually the project, add this item to your project csproj file
 
@@ -139,7 +139,7 @@ If you prefer editing manually the project, add this item to your project csproj
 
 Now, when you build your project, the embedded files will be automatically added in the _bin_ folder, maintaining the folder structure.
 
-![The bin folder includes the JSON file](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Manifest%20resources/file-available-in-bin.png "The resource is embedded in the bin folder")
+![The bin folder includes the JSON file](./file-available-in-bin.png "The resource is embedded in the bin folder")
 
 ## Using manifest resources
 

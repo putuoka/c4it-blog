@@ -27,7 +27,7 @@ public enum PetTypes : ulong
 
 and, if we look at the generated IL, we'll see the result:
 
-![IL result for uint enum](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/5-more-things-enums/IL-int-with-uint-value.png "IL result for uint enum")
+![IL result for uint enum](./IL-int-with-uint-value.png "IL result for uint enum")
 
 The fact that you can define them as int and as uint is a hint (pun intended) that you can also use negative numbers as inner value:
 

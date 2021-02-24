@@ -69,7 +69,7 @@ Now we can use it with `person.GetFullNameWithBirthDate()`. Easy-peasy.
 
 If you use Visual Studio and you have the Intellisense enabled, you will see those hints, both on the icon and on the description of the method.
 
-![Intellisense with extension method](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Extension-methods/Intellisense-person.png)
+![Intellisense with extension method](./Intellisense-person.png)
 
 Behind the scenes, we are calling the method on the MyExtensions class, not on the person object. Extension methods act just as shortcuts.
 

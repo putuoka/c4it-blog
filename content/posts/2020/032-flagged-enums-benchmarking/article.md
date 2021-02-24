@@ -125,7 +125,7 @@ public void RunWithBitOperator()
 
 That's it: __switch the build configuration to Release__ and run the program!
 
-![Performance comparison for 50 elements](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Enum-HasFlag-with-BenchmarkDotNet/benchmarking-base.png "With 50 elements the performances are almost the same")
+![Performance comparison for 50 elements](./benchmarking-base.png "With 50 elements the performances are almost the same")
 
 The result is provided in the console as a table:
 
@@ -149,7 +149,7 @@ public int Size { get; set; }
 
 and, in the Setup method, just replace the end value in the for loop.
 
-![Performance comparison for 50, 100 and 200 elements](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Enum-HasFlag-with-BenchmarkDotNet/benchmarking-parm-size.png "Even for 100 and 200 elements the performance difference can be ignored")
+![Performance comparison for 50, 100 and 200 elements](./benchmarking-parm-size.png "Even for 100 and 200 elements the performance difference can be ignored")
 
 |             Method | Size |     Mean |    Error |   StdDev |
 |------------------- |----- |---------:|---------:|---------:|
@@ -173,7 +173,7 @@ So the best way to try it is to try with different runtimes.
 To set up the benchmarking on multiple runtimes we need to do few additional steps:
 first of all, you need to __install the C++ Desktop libraries__ using the Visual Studio installer.
 
-![Installing C++ on Visual Studio 2019](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Enum-HasFlag-with-BenchmarkDotNet/vsinstaller-cpp.png "Installing C++ on Visual Studio 2019")
+![Installing C++ on Visual Studio 2019](./vsinstaller-cpp.png "Installing C++ on Visual Studio 2019")
 
 This provides the underlying libraries used by BenchmarkDotNet to run the different frameworks.
 
@@ -197,7 +197,7 @@ public class EnumsBenchmark
 
 That's it! Now run the project and see how the performances dramatically changed.
 
-![Full comparison: there's a lot of difference between .NET 4.6.1 and .NET Core 3.1](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Enum-HasFlag-with-BenchmarkDotNet/benchmarking-framework.png "Full comparison: there's a lot of difference between .NET 4.6.1 and .NET Core 3.1")
+![Full comparison: there's a lot of difference between .NET 4.6.1 and .NET Core 3.1](./benchmarking-framework.png "Full comparison: there's a lot of difference between .NET 4.6.1 and .NET Core 3.1")
 
 This execution took about 7 minutes, because it run 12 benchmarks and, for each one, there was a warming up phase (which can be skipped, if you prefer).
 

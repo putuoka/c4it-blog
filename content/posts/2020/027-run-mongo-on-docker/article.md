@@ -50,7 +50,7 @@ Once the container is up and running, it exposes one or more ports (for example,
 
 If the container exposes the port 80, we can run `docker run -p 8089:80 image-name`. The `-p` flag maps the external and the internal ports, allowing us to access the container navigating to _localhost:8089_.
 
-![How port mapping works](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/MongoDB-on-Docker/Docker-ports.png "Docker port mapping")
+![How port mapping works](./Docker-ports.png "Docker port mapping")
 
 ## MongoDB
 
@@ -83,11 +83,11 @@ The first step is to download the [official MongoDB image](https://hub.docker.co
 docker pull mongo
 ```
 
-![docker pull mongo result](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/MongoDB-on-Docker/docker-pull-mongo.png "docker pull mongo result")
+![docker pull mongo result](./docker-pull-mongo.png "docker pull mongo result")
 
 We can check the details of this image by running `docker image inspect mongo`: this command will list all the properties of this image; we can see, looking at the _ContainerConfig.ExposedPorts_ field, that we can reach Mongo through port 27017.
 
-![exposed port](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/MongoDB-on-Docker/mongo-exposed-port.png "exposed port")
+![exposed port](./mongo-exposed-port.png "exposed port")
 
 So now we are ready to run this container with this command:
 
@@ -111,7 +111,7 @@ It's time to try it: create your connection string with this format: `mongodb://
 
 Now, if you have a tool for exploring MongoDB, open it and connect to the newly created Mongo instance. If you use _NoSQLBooster for MongoDB_ you will see something like this:
 
-![MongoDB instance](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/MongoDB-on-Docker/mongo-connection-tree.png "MongoDB instance")
+![MongoDB instance](./mongo-connection-tree.png "MongoDB instance")
 
 Finally, you can create a new DB (I've called it _tests_) and try MongoDB.
 

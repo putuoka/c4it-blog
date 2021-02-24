@@ -75,7 +75,7 @@ Console.WriteLine(genre);// Action
 Internally, __an enum is a numeric type__: it can be made of _byte_, _sbyte_, _short_, _ushort_, _int_, _uint_, _long_, or _ulong_ values.
 By default, an enum is a __static, Int32 value__, whose first element has value 0 and all the following elements have their value increased by 1 compared to the previous one.
 
-![Enums as Intermediate Language](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/5-things-enums/IL-int.png "Enums as Intermediate Language")
+![Enums as Intermediate Language](./IL-int.png "Enums as Intermediate Language")
 
 We can customize this default behavior by __using a different starting value__ and then have all the other values will follow the numeric order.
 
@@ -91,7 +91,7 @@ public enum MovieGenre
 }
 ```
 
-![Enums as IL starting with a different value](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/5-things-enums/IL-int-with-starting-value.png "Enums as IL starting with a different value")
+![Enums as IL starting with a different value](./IL-int-with-starting-value.png "Enums as IL starting with a different value")
 
 This means that if you reorder the elements (for example, because you want the values to be in alphabetic order, so moving Horror between Drama and Musical), you might mess up all the following values and bring subtle bugs in.
 

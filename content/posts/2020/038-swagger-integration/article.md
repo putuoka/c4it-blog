@@ -22,7 +22,7 @@ I think you already know what is Swagger, but let's have a recap.
 
 I'm quite sure you've already seen a page like this:
 
-![Typical Swagger UI](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/swagger-generic-screen.png "Typical Swagger UI")
+![Typical Swagger UI](./swagger-generic-screen.png "Typical Swagger UI")
 
 That's a typical UI generated with Swagger that allows you to interact with the APIs and view the endpoint definitions defined using the __OpenAPI format__, a format ideated by the Swagger team which became the _de facto_ standard for API definition.
 
@@ -130,7 +130,7 @@ app.UseSwagger();
 
 This single line creates the OpenAPI file under _/swagger/v1-foo/swagger.json_, as you can see in the image below.
 
-![OpenAPI definition for our API](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/openapi-file.png "OpenAPI definition for our API")
+![OpenAPI definition for our API](./openapi-file.png "OpenAPI definition for our API")
 
 One last step: again in the `Configure` method, add the Swagger UI:
 
@@ -149,13 +149,13 @@ The basic setup is done!
 
 Now you can run the project, navigate to your _<localhost>/swagger/index.html_ and see your wonderful page!
 
-![Swagger UI for Marvel movies API](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/swagger-ui-base.png "Swagger UI for Marvel movies API")
+![Swagger UI for Marvel movies API](./swagger-ui-base.png "Swagger UI for Marvel movies API")
 
 The UI is pretty clear: on the very top of the page we have the API metadata, like title, version and licensing; in the middle, we have the endpoints exposed, that can also be called to try the API; in the bottom of the page we have the _schemas_, so the definition of the objects that interact with the endpoints.
 
 Finally, have a look at how the different parameters we've set in the configurations appear in the UI:
 
-![Cross reference between Swagger configuration and the UI result](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/swagger-version-fields.png "Cross reference between Swagger configuration and the UI result")
+![Cross reference between Swagger configuration and the UI result](./swagger-version-fields.png "Cross reference between Swagger configuration and the UI result")
 
 ## Set Swagger as startup page
 
@@ -165,7 +165,7 @@ To do so, you must update the _launchSettings.json_ file, which is available und
 
 Here, for your profiles, you must set _swagger/index.html_ as a value for the _launchUrl_ field.
 
-![LaunchSettings.json configuration](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/launchsettings.png "LaunchSettings.json configuration for the startup page")
+![LaunchSettings.json configuration](./launchsettings.png "LaunchSettings.json configuration for the startup page")
 
 ## Adding documentation to your endpoints
 
@@ -195,7 +195,7 @@ In Visual Studio, open the _Properties_ view of your API project, head to the _B
 
 By clicking on that checkbox, Visual Studio will populate the textbox with the absolute path for the generated file. __Remember to replace it with a relative path, or simply the file name__, because when you'll share the repository with other colleagues they will reference the path on your pc, not on theirs.
 
-![Project-level flag that enables XML documentation](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/project-xml-doc-file-path.png "Project-level flag that enables XML documentation")
+![Project-level flag that enables XML documentation](./project-xml-doc-file-path.png "Project-level flag that enables XML documentation")
 
 So, every time you build your project, you'll create or update that XML, which contains other metadata related to your endpoints.
 
@@ -233,7 +233,7 @@ services.AddSwaggerGen(c =>
 
 The new lines use reflection to create the path to the XML file we've just generated; finally, we can the comments in our UI.
 
-![XML comments visible on the UI](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/endpoint-with-comments.png "XML comments visible on the UI")
+![XML comments visible on the UI](./endpoint-with-comments.png "XML comments visible on the UI")
 
 ## How to display returned status codes
 
@@ -259,7 +259,7 @@ public Movie Get(int id)
 
 Then will be able to see the status codes in the UI.
 
-![Status codes displayed on the UI](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Swagger-integration/status-codes.png "Status codes displayed on the UI")
+![Status codes displayed on the UI](./status-codes.png "Status codes displayed on the UI")
 
 ## Wrapping up
 

@@ -68,11 +68,11 @@ Just a reminder: __Kestrel__ is the cross-platform web server for ASP.NET Core. 
 
 For ASP.NET Core apps you can choose the hosting model: with __in-process hosting model__, .NET Core apps run in the same process of the IIS worker: it means that when a request comes in, the app pipeline is executed directly; on the contrary, with __out-of-process hosting model__ the app runs on a separate process, so there must be a proxy between IIS and the app. 
 
-![In-process hosting model](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Performance-optimization/in-process-hosting.jpg "In-process hosting model schema")
+![In-process hosting model](./in-process-hosting.jpg "In-process hosting model schema")
 
 The _out-of-process_ hosting model is slower than the other one, because when the ASP.NET Core Module receives an HTTP call (I'm simplifying a lot the process), it calls localhost via HTTP to a port where the Kestrel web server is running.
 
-![Out-of-process hosting model](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Performance-optimization/out-of-process_hosting.jpg "Out-of-process hosting model schema")
+![Out-of-process hosting model](./out-of-process_hosting.jpg "Out-of-process hosting model schema")
 
 
 This is the default option for .NET Core apps, since .NET Core was built with cross-platform compatibility in mind. To change this behaviour you can modify the web.config and add

@@ -151,7 +151,7 @@ When CalculatePageSize starts downloading the page content, it returns the contr
 What if you are running synchronous methods but you have to call an async method? You cannot use the _await_ method, because you will get this error: 
 > The 'await' operator can only be used within an async method. Consider marking this method with the 'async' modifier and changing its return type to 'Task'.
 
-![Error calling async method inside of a sync method](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Async-programming-introduction/async-method-in-sync-main.png "Error calling async method inside of a sync method")
+![Error calling async method inside of a sync method](./async-method-in-sync-main.png "Error calling async method inside of a sync method")
 
 So... what can you do? You can use the `GetAwaiter()` method, that returns a `TaskAwaiter<T>` object, on which you can call `GetResult()` to get the result.
 
@@ -248,7 +248,7 @@ Stack trace
 
 The "real" exception is stored inside the `InnerException` field of the AggregateException object.
 
-![Inner exception field](https://res.cloudinary.com/bellons/image/upload/t_content-image/Code4IT/Articles/2020/Async-programming-introduction/inner-exception.png "Inner exception field")
+![Inner exception field](./inner-exception.png "Inner exception field")
 
 That's why you should always prefer, if you cannot await the result, to use `.GetAwaiter().GetResult()` instead of `.Result`.
 
