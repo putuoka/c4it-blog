@@ -136,9 +136,81 @@ module.exports = {
           respectDNT: true
         },
       },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              
+              return allMarkdownRemark.edges.map(edge => {
+                var index = nthIndex(edge.node.html, "<p>", 5);
+                var content = edge.node.html.slice(0, index);
+var postUrl = site.siteMetadata.siteUrl + edge.node.frontmatter.path;
+
+                content +="<p>Continue reading on <a href=\""+postUrl+"\">Code4IT</a></p>";
+              
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.excerpt,
+                  date: edge.node.frontmatter.created,
+                  url: postUrl,
+                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                  custom_elements: [{ "content:encoded": content }],
+                })
+              })
+            },
+            query: `
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___created] },
+                filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+              ) {
+                edges {
+                  node {
+                    html
+                    frontmatter {
+                      title
+                      excerpt
+                      path
+                      created
+                    }
+                  }
+                }
+              }
+            }
+            `,
+            output: `/rss.xml`,
+            title: `Code4IT Articles feed`,
+            match: "^/blog/",
+          }
+        ]
+      }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+}
+
+
+function nthIndex(str, pat, n){
+  var L= str.length, i= -1;
+  while(n-- && i++<L){
+      i= str.indexOf(pat, i);
+      if (i < 0) break;
+  }
+  return i;
 }

@@ -8,6 +8,7 @@
     "@nehalist/gatsby-theme-nehalem": "^1.0.9",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
+    "gatsby-plugin-feed": "^2.13.0",
     "gatsby-plugin-google-gtag": "^2.5.0",
     "gatsby-plugin-google-tagmanager": "^2.8.0",
     "gatsby-plugin-load-script": "^1.1.0",
@@ -41,7 +42,7 @@
     "clean": "gatsby clean",
     "serve-prod": "gatsby build & gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "cb":"gatsby clean & gatsby develop",
+    "cb": "gatsby clean & gatsby develop",
     "create-article": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./article-creator.ps1 ./blog/NomeCartella"
   },
   "repository": {
