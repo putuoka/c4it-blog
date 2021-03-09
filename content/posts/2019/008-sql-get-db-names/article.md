@@ -1,5 +1,5 @@
 ---
-title: "Have you ever forgotten your SQL server instance name?"
+title: "Retrieving your SQL LocalDB Instance Name: A How-To Guide"
 path: "/blog/ssms-how-to-get-instance-name"
 tags: ['SQL', 'SSMS', 'DB']
 featuredImage: "./cover.jpg"

@@ -1,0 +1,26 @@
+
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    participant Assets
+            
+    API->>+CMS: Get all matches with a filter
+    CMS-->>+API: Some matches ids
+    API->>+ExtAPI: Get all matches by ids[]
+    ExtAPI-->>+API: All matches
+
+    loop for each matchid
+        API->>+CMS: Get match details by ID
+        CMS-->>-API: matches
+        API->>+CMS: Get home club details
+        CMS-->>-API: home club
+        API->>+CMS: Get away club details
+        CMS-->>-API: away club
+        API->>+CMS: Get venue details
+        CMS-->>-API: venue
+        API->>+API: store all the assets IDs needed from Clubs, Venue and Match
+        API->>+Assets: GetAllAssetsInfo: ids[]
+        Assets-->>-API: info for all the passed IDs
+        API->>+API: for each image needed, get the right info
+    end

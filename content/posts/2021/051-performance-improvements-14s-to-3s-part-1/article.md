@@ -1,5 +1,5 @@
 ---
-title: "How I improved the performance of an endpoint by 82% - part 1"
+title: "14 to 2 seconds: how I improved the performance of an endpoint by 82% - part 1"
 path: "/blog/improving-application-performance-part1"
 tags: ["Performance","dotNET", "C#"]
 featuredImage: "./cover.jpg"

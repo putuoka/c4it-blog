@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant API
+    participant ExtAPI
+    participant CMS
+    participant Assets
+            
+    API->>+CMS: Get all matches with a filter
+    CMS-->>+API: Some matches ids
+    API->>+ExtAPI: Get all matches by ids[]
+    ExtAPI-->>+API: All matches
+
+    par for each matchid
+      note over API, Assets: same as before
+    end
