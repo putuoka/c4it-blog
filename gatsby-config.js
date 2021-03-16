@@ -18,7 +18,7 @@ module.exports = {
         name: 'About me',
         path: '/about-me'
       },        {
-        name: 'Talks',
+        name: 'Public speaking',
         path: '/talks'
       },
     ],

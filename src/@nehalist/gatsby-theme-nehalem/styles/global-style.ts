@@ -93,6 +93,15 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+div[class*="NavContainer"]{
+  background-color: ${Theme.layout.textColor}
+  padding: 0.5em 0;
+}
+
+header[class*="StyledHeader"]>div[class*="NavContainer"]{
+  background-color: initial;
+}
   
 article.post>section[class*="StyledPost"]>p img{
   border: 1px solid #ddd;
