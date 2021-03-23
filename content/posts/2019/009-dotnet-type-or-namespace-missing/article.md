@@ -1,5 +1,5 @@
 ---
-title: "Fixing Error CS0246: "Type or namespace not found" in .NET Core"
+title: "Fixing Error CS0246: \"Type or namespace not found\" in .NET Core"
 path: "/blog/dotnet-type-or-namespace-not-found"
 tags: ["dotNET"]
 featuredImage: "./cover.jpg"
