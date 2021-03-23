@@ -1,5 +1,5 @@
 ---
-title: "Solving type or namespace not found in .NET Core"
+title: "Fixing Error CS0246: "Type or namespace not found" in .NET Core"
 path: "/blog/dotnet-type-or-namespace-not-found"
 tags: ["dotNET"]
 featuredImage: "./cover.jpg"
@@ -39,4 +39,4 @@ You can find the version in the Properties screen of the project (right-click on
 
 ![.NET version selection on Visual Studio 2019](./dotnet-version-selector.png "How to select .NET version on Visual Studio 2019")
 
-So, the lesson is: _know your enemy_, and check for the slight details.
+So, the lesson is: _know your enemy_ and check for the slight details.

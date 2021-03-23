@@ -17,6 +17,7 @@ Here's the list (in progress)
 2. comments and formatting
 3. [abstraction and objects](./clean-code-abstraction-and-objects "Clean code tips - Abstraction and objects")
 4. [error handling](./clean-code-error-handling "Clean code tips - Error handling")
+5. [tests](./clean-code-tests "Clean code tips - tests")
 
 ## Comments are generally bad, but sometimes necessary
 

@@ -12,10 +12,12 @@ This is the third part of my series of tips about clean code.
 
 Here's the list (in progress)
 
-1. [names and function arguments](./clean-code-names-and-functions)
-2. [comments and formatting](./clean-code-comments-and-formatting)
+1. [names and function arguments](./clean-code-names-and-functions "Clean code tips - names and functions")
+2. [comments and formatting](./clean-code-comments-and-formatting "Clean code tips - comments and formatting")
 3. abstraction and objects
-4. [error handling](./clean-code-error-handling)
+4. [error handling](./clean-code-error-handling "Clean code tips - error handling")
+5. [tests](./clean-code-tests "Clean code tips - tests")
+
 
 In this article, I'm going to explain how to define classes in order to make your code extensible, more readable and easier to understand. In particular, I'm going to explain how to use effectively Abstraction, what's the difference between pure OOP and Procedural programming, and how the Law of Demeter can help you structure your code.
 

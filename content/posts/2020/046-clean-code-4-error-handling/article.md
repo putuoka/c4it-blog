@@ -16,6 +16,7 @@ This is the fourth part of this series about clean code, which is a recap of the
 2. [comments and formatting](./clean-code-comments-and-formatting "Clean code tips - comments and formatting")
 3. [abstraction and objects](./clean-code-abstraction-and-objects "Clean code tips - Abstraction and objects")
 4. error handling
+5. [tests](./clean-code-tests "Clean code tips - tests")
 
 ## Status codes or exceptions?
 
