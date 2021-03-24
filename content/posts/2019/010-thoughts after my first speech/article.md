@@ -26,13 +26,13 @@ Well, in the end, I didn't explain so much about the pipelines. I spent so much 
 
 So my suggestion is: __decide exactly the topic of your speech__ (a generic introduction? a specific functionality?) and focus on it.
 
-## Try, try and then try again
+## Try, try, and then try again
 
 It's strange that even if you have everything in your mind, you have repeated mentally the whole presentation more and more times, when you say it aloud everything changes. I was at home, repeating the presentation to my girlfriend (and sometimes, even alone), and I couldn't explain everything as clearly as I wanted. 
 
 I had to repeat the same slide about 10 times before being sure about what to say and how. It's a very long process.
 
-## Keep you schedule handy
+## Keep your schedule handy
 
 Print out the schedule, and __keep it next to you__. It helps you understand where you are and if you must cut topics out.
 If you need to show a demo, listing all the steps you must do helps you gain confidence and it's a parachute if you go blank.
@@ -54,9 +54,9 @@ As I said, I had to cut out part of the presentation. I can find 3 reasons for t
 
 ## Be ready to change your schedule on the fly
 
-As time goes, you may need to change the schedule. I skipped lots of slides just to be able to show a bit more the demo.
+As time goes, you may need to change the schedule. I skipped lots of slides just to be able to show a bit more of the demo.
 
-I suggest structuring your presentation in a way that even if you remove a part of it (of course, not a vital one) everything is still clear to the audience. So, if you have time, you can show everything, otherwise you can cut it short without affecting the final result.
+I suggest structuring your presentation in a way that even if you remove a part of it (of course, not a vital one) everything is still clear to the audience. So, if you have time, you can show everything, otherwise, you can cut it short without affecting the final result.
 
 ## Don't put too much humor
 
