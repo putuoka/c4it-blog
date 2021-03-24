@@ -50,8 +50,12 @@ const GlobalStyle = createGlobalStyle`
       margin: 30px auto !important;
   }
 
-  button[class*="ToggleTocButton"] svg {
-    margin-top: 45%;
+  button[class*="ToggleTocButton"] {
+    background-color: ${Theme.layout.secondaryColor};
+
+    svg {
+      margin-top: 45%;
+    }
   }
  
 
@@ -95,8 +99,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 div[class*="NavContainer"]{
-  background-color: ${Theme.layout.textColor}
-  padding: 0.5em 0;
+  background-color: ${Theme.layout.textColor};
 }
 
 header[class*="StyledHeader"]>div[class*="NavContainer"]{
