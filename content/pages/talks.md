@@ -3,10 +3,10 @@ title: My talks
 path: "/talks" 
 ---
 
-I love to share knowledge with my peers. May it be in person, with this blog or with online discussions.
+I love sharing knowledge with my peers. May it be in person, with this blog, or with online discussions.
 That's why I also decided to give a try to conferences.
 
-Here's what I've done so far.
+Here's what I've done so far:
 
 ------
 

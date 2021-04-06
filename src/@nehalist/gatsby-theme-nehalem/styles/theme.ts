@@ -1,8 +1,10 @@
 const Theme: DefaultTheme = {
     layout: {
      backgroundColor: `#fafafa`,
-     primaryColor: `#16316f`,
-     linkColor: `#16316f`,
+     primaryColor: `#dbae58`,
+     secondaryColor: `#488a99`,
+     linkColor: `#488a99`,
+     textColor:`#4d585b`
     },
     breakpoints: {
      xs: `425px`,
@@ -21,7 +23,8 @@ const Theme: DefaultTheme = {
      },
      header: {
        height: `320px`,
-       background: `linear-gradient(-45deg, #C0C2CE, #16316f) repeat scroll 0 0 transparent`,
+      background:`rgb(72,138,153)`,
+      background: `linear-gradient(111deg, rgba(72,138,153,1) 32%, rgba(180,180,180,1) 72%, rgba(77,88,91,1) 90%)  scroll `,
      },
     },
   };
