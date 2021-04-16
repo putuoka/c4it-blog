@@ -112,6 +112,10 @@ article.post>section[class*="StyledPost"]>p img{
   padding: 5px;
 }
 
+div[class*="StyledSubheader"]{
+  background-color: ${Theme.layout.primaryColor};
+}
+
 `;
 
 export default GlobalStyle;

@@ -42,14 +42,14 @@ If you need to show a demo, listing all the steps you must do helps you gain con
 My greatest error was to __underestimate the time__. 
 I measured only the time needed for the presentation, and not for the demo. 
 
-I thought *Ok, I can do all the slides in 20 minutes. I still have 40 minutes, so I definitely have time for the demos!*
+I thought «*Ok, I can do all the slides in 20 minutes. I still have 40 minutes, so I definitely have time for the demos!*»
 
 I was wrong.
 
 As I said, I had to cut out part of the presentation. I can find 3 reasons for this:
 
 1. I haven't calculated the time for the demos. They took more time than I thought;
-2. While explaining the slides, I was stressed and I didn't realize if I was in time or not (and, of course, the answer was NO);
+2. While explaining the slides, I was stressed and I didn't realize if I was on time or not (and, of course, the answer was NO);
 3. The audience interrupted me with some questions. I should have considered also that time.  
 
 ## Be ready to change your schedule on the fly
