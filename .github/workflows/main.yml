@@ -5,7 +5,8 @@ on:
       - opened
       - edited
   schedule:
-    - cron: 0 8 * * *
+    # https://crontab.guru/every-hour
+    - cron: 0 8 * * Tue
 
 jobs:
   merge_schedule:
