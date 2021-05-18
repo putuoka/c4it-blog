@@ -38,7 +38,7 @@ Finally, you can open a console and run your first command: `httprepl https://lo
 
 __But hey, it doesn't work! 😕__
 
-```cmd
+```bash
 (Disconnected)> connect https://localhost:44376/
 Using a base address of https://localhost:44376/
 Unable to find a swagger definition

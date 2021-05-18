@@ -85,7 +85,7 @@ The tool we're gonna use is [ReportGenerator](https://github.com/danielpalme/Rep
 
 To install it, open the __PowerShell with admin privileges__ and run the following commands:
 
-```cmd
+```bash
 dotnet tool install -g dotnet-reportgenerator-globaltool
 dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
 dotnet new tool-manifest

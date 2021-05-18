@@ -16,13 +16,13 @@ It works by sending some packets to the host and waiting for a response, and it 
 
 An example can be
 
-```cmd
+```bash
 ping code4it.dev
 ```
 
 that can return something like
 
-```cmd
+```bash
 Pinging code4it.dev [165.22.65.139] with 32 bytes of data:
 
 Reply from 165.22.65.139: bytes=32 time=17ms TTL=51
@@ -73,7 +73,7 @@ You will find both a Console and an external tool called _Advanced Tools_: you c
 
 If you try to ping _myapi_ from Azure, you won't receive a __Request time out__, but a different error: 
 
-```cmd
+```bash
 Unable to contact IP driver. General failure
 ```
 
@@ -87,7 +87,7 @@ Well, the solution is pretty easy! There is a command called __tcpping__ that al
 
 By running `tcpping myapi.azurewebsites.net`, you can get something similar:
 
-```cmd
+```bash
 Connected to myapi.azurewebsites.net:80, time taken: 171ms
 
 Connected to myapi.azurewebsites.net:80, time taken: 109ms

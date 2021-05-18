@@ -152,7 +152,7 @@ Where are the lies? First of all, the numbers are not _in the list_, but in an _
 
 Maybe you've written the perfect comment that explains what your API does.
 
-But suddenly, someone adds a cache layer in your code, and he doesn't update the documentation.
+But suddenly, someone adds a cache layer in your code, and he or she doesn't update the documentation.
 
 So you'll end up with wrong comments that are simply outdated.
 

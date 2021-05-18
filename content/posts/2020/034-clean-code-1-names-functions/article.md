@@ -177,7 +177,7 @@ string storeOddNumbersInAReversedString_WithStringBuilder(int[] numbers)
 
 Here in the same function I have two high-level functions (_getOnlyOddNumbers_ and _reverseNumbers_) and some low-level concepts (the for loop and the _.Append_ usage on a _StringBuilder_).
 
-It can cause confusion on the reader because he won't know what are important details and what are abstract operations. You've already seen how to solve this issue.
+It can cause confusion on the readers because they won't know what are important details and what are abstract operations. You've already seen how to solve this issue.
 
 ## 4: Prefer polymorphism over switch statements
 
