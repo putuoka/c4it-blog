@@ -30,7 +30,7 @@
   color: #00ffee
   icon: ./assets/images/azure-functions.png
   featured: false
-- name: C#
+- name: CSharp
   color: #00ffee
   icon: ./assets/images/csharp.png
   featured: true

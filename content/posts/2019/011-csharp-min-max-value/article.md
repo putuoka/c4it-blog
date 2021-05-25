@@ -1,7 +1,7 @@
 ---
 title: "C# sorting - a subtle mistake"
 path: "/blog/csharp-sorting-mistake"
-tags: ["C#", "dotNET"]
+tags: ["CSharp", "dotNET"]
 featuredImage: "./cover.jpg"
 excerpt: "Is it true that the inverse of a negative number is always a positive number? If you think it's true, you might get a subtle error while implementing comparison."
 created: 2019-11-15

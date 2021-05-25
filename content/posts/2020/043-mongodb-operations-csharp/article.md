@@ -1,7 +1,7 @@
 ---
 title: "How to integrate MongoDB with C#"
 path: "/blog/mongodb-introduction-with-csharp"
-tags: ["C#", "MongoDB"]
+tags: ["CSharp", "MongoDB"]
 featuredImage: "./cover.jpg"
 excerpt:  "MongoDB is a database based on JSON-like documents, but it can be queried using C#. We'll see how to perform CRUD operations and we'll create some advanced queries."
 created: 2020-11-03

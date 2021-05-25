@@ -1,7 +1,7 @@
 ---
 title: "Dependency Injection lifetimes in .NET - my epiphany"
 path: "/blog/dependency-injection-lifetimes"
-tags: ["C#", "dotNET"]
+tags: ["CSharp", "dotNET"]
 featuredImage: "./cover.jpg"
 excerpt: "Singleton, Scoped and Transient: these are the possible lifetimes for DI with .NET Core. How do they change the way objects are constructed?"
 created: 2020-05-26

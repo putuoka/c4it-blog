@@ -1,7 +1,7 @@
 ---
 title: "First steps with asynchronous programming in C#"
 path: "/blog/asynchronous-programming-in-csharp"
-tags: ["C#", "dotNET", "Performance"]
+tags: ["CSharp", "dotNET", "Performance"]
 featuredImage: "./cover.jpg"
 excerpt: "Asynchronous programming is often seen as something cumbersome, so many developers avoid it. What, why and how to use it? Here are the first steps you can take to approach async programming."
 created: 2020-03-31

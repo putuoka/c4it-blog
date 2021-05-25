@@ -1,7 +1,7 @@
 ---
 title: "5 things you should know about enums in C#"
 path: "/blog/5-things-enums-csharp"
-tags: ["C#"]
+tags: ["CSharp"]
 featuredImage: "./cover.jpg"
 excerpt: "Enums are often used with C#. Boring, right? Maybe there is something you didn't know: casting, parsing and flagged enums."
 created: 2020-05-05

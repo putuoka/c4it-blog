@@ -17,9 +17,18 @@ module.exports = {
       {
         name: 'About me',
         path: '/about-me'
-      },        {
+      },
+      {
         name: 'Public speaking',
         path: '/talks'
+      },
+      {
+        name: 'Clean Code tips',
+        path: '/tag/clean-code-tip'
+      },
+      {
+        name: '.',
+        path: '/tag/csharpa-tip'
       },
     ],
     footerMenu: [

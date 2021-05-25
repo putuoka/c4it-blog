@@ -1,7 +1,7 @@
 ---
 title: "5 things about DateTime time zones and formatting"
 path: "/blog/5-things-datetime-timezones-and-formatting"
-tags: ["C#"]
+tags: ["CSharp"]
 featuredImage: "./cover.jpg"
 excerpt:  "You're using DateTime.Now, aren't you? Be careful, because it may bring some troubles to your application. Here I'll explain why and I'll talk about time zones and formatting in C# DateTime."
 created: 2020-07-28

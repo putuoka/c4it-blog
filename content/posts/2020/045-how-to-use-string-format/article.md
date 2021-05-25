@@ -1,7 +1,7 @@
 ---
 title: "How to use String.Format - and why you should care about it"
 path: "/blog/how-to-use-string-format"
-tags: ["C#"]
+tags: ["CSharp"]
 featuredImage: "./cover.jpg"
 excerpt:  "Is string.Format obsolete? Not at all, it still has cards to play! Let's see how we can customize format and create custom formatters."
 created: 2020-12-01
