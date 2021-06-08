@@ -23,12 +23,12 @@ module.exports = {
         path: '/talks'
       },
       {
-        name: 'Clean Code tips',
+        name: 'Clean Code Tips',
         path: '/tag/clean-code-tip'
       },
       {
-        name: '.',
-        path: '/tag/csharpa-tip'
+        name: 'C# Tips',
+        path: '/tag/csharp-tip'
       },
     ],
     footerMenu: [
