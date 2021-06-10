@@ -246,9 +246,9 @@ ServiceBusClient serviceBusClient = new ServiceBusClient(ConnectionString);
 This time, instead of using a `ServiceBusSender`, we need to create a `ServiceBusProcessor` object which, of course, will process all the messages coming from the Queue. Since receiving a message on the queue is an asynchronous operation, we need to register an Event Handler both for when we receive the message and when we receive an error:
 
 ```cs
-ServiceBusProcessor   _editorialMessagesProcessor = serviceBusClient.CreateProcessor(QueueName); 
-_editorialMessagesProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
-_editorialMessagesProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
+ServiceBusProcessor   _ordersProcessor = serviceBusClient.CreateProcessor(QueueName); 
+_ordersProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
+_ordersProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
 ```
 
 For now, let's add an empty implementation of both handlers.
@@ -331,15 +331,15 @@ Here's the full example of the Main method: pay attention to the calls to Start 
 ```cs
 private static async Task Main(string[] args)
 {
-    ServiceBusProcessor _editorialMessagesProcessor = null;
+    ServiceBusProcessor _ordersProcessor = null;
     try
     {
         ServiceBusClient serviceBusClient = new ServiceBusClient(ConnectionString);
 
-        _editorialMessagesProcessor = serviceBusClient.CreateProcessor(QueueName); //SPIEGA
-        _editorialMessagesProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
-        _editorialMessagesProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
-        await _editorialMessagesProcessor.StartProcessingAsync();
+        _ordersProcessor = serviceBusClient.CreateProcessor(QueueName); //SPIEGA
+        _ordersProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
+        _ordersProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
+        await _ordersProcessor.StartProcessingAsync();
 
         Console.WriteLine("Waiting for pizza orders");
         Console.ReadKey();
@@ -350,8 +350,8 @@ private static async Task Main(string[] args)
     }
     finally
     {
-        if (_editorialMessagesProcessor != null)
-            await _editorialMessagesProcessor.StopProcessingAsync();
+        if (_ordersProcessor != null)
+            await _ordersProcessor.StopProcessingAsync();
     }
 }
 ```
