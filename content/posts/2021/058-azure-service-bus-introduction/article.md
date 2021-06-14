@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Bus and C# - an introduction"
-path: '/blog/058-azure-service-bus-introduction'
+path: '/blog/azure-service-bus-introduction'
 tags: ["Azure", "dotNET", "CSharp"]
 featuredImage: "cover.jpg"
 excerpt : "Azure Service bus is a message broker generally used for sharing messages between applications. In this article, we're gonna see an introduction to Azure Service Bus, and how to work with it with .NET and C#"
@@ -16,7 +16,7 @@ In this introduction, we're going to learn the basics of Azure Service Bus: what
 This is the first part of a series about Azure Service Bus. We will see:
 
 1. An introduction to Azure Service Bus with C#
-2. Queues vs Topics
+2. [Queues vs Topics](./azure-service-bus-queue-vs-topic "Azure Service Bus: Queues vs Topics")
 3. Error handling
 
 But, for now, let's start from the basics.
@@ -336,7 +336,7 @@ private static async Task Main(string[] args)
     {
         ServiceBusClient serviceBusClient = new ServiceBusClient(ConnectionString);
 
-        _ordersProcessor = serviceBusClient.CreateProcessor(QueueName); //SPIEGA
+        _ordersProcessor = serviceBusClient.CreateProcessor(QueueName);
         _ordersProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
         _ordersProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
         await _ordersProcessor.StartProcessingAsync();
