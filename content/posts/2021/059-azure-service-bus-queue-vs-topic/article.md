@@ -32,7 +32,7 @@ To use Topics, we need to upgrade our subscription tier to _Standard_ or _Premiu
 
 Open Portal Azure, head to the resource details of the Queue and click on the Pricing Tier section.
 
-![](./upgrade-tier.jpg)
+![Available tiers on Azure Service Bus](./upgrade-tier.jpg)
 
 Here, select the _Standard_ tier and save.
 
@@ -42,11 +42,13 @@ __Queues and Topics are similar__: when an application sends a message _somewher
 
 But there is a key difference between Queues and Topics. With Queues, the first receiver that _completes_ the reading of the message also removes it from the Queue so that the message cannot be processed by other readers.
 
+![How items are processed in a Queue](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/059-azure-service-bus-topic-vs-queue/queue-execution.gif)
 
-With Topics, the message is removed only __after every receiver has processed the message__. Every Topic has one or more Subscribers, a _connection_ between the Topic itself and the applications. All the applications _subscribe_ to a specific _Subscriber_, and receive messages only from it.
+With Topics, the message is removed only __after every receiver has processed the message__. Every Topic has one or more Subscribers, a _connection_ between the Topic itself and the applications. All the applications _subscribe_ to a specific _Subscription_, and receive messages only from it.
 
 When the message is read from all the Subscribers, the message is removed from the Topic too.
 
+![How items are processed in a Topic](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/059-azure-service-bus-topic-vs-queue/topic-execution.gif)
 
 ## Subscriptions
 
