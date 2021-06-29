@@ -17,7 +17,7 @@ This is the first part of a series about Azure Service Bus. We will see:
 
 1. An introduction to Azure Service Bus with C#
 2. [Queues vs Topics](./azure-service-bus-queue-vs-topic "Azure Service Bus: Queues vs Topics")
-3. Error handling
+3. [Handling Azure Service Bus errors with .NET](./azure-service-bus-errors "Handling Azure Service Bus errors with .NET")
 
 But, for now, let's start from the basics.
 
