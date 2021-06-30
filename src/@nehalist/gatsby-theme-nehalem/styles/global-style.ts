@@ -116,6 +116,9 @@ div[class*="StyledSubheader"]{
   background-color: ${Theme.layout.primaryColor};
 }
 
+code[class*="language-text"]{
+  line-break: anywhere;
+}
 `;
 
 export default GlobalStyle;

@@ -76,7 +76,13 @@ Now it's time to introduce some errors and see what happens.
 
 When the connection string is invalid because the host name is wrong, you get an `Azure.Messaging.ServiceBus.ServiceBusException` exception with this message: _No such host is known. ErrorCode: HostNotFound_.
 
-__What is the host? It's the first part of the connection string__. For example, in a connection string like _"Endpoint=sb://myHost.servicebus.windows.net/;SharedAccessKeyName=myPolicy;SharedAccessKey=myKey"_, the host is _myHost.servicebus.net_.
+__What is the host? It's the first part of the connection string__. For example, in a connection string like 
+
+```txt
+Endpoint=sb://myHost.servicebus.windows.net/;SharedAccessKeyName=myPolicy;SharedAccessKey=myKey
+```
+
+the host is _myHost.servicebus.net_.
 
 So we can easily understand why this error happens: that host name does not exist (or, more probably, there's a typo).
 
