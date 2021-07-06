@@ -1,7 +1,7 @@
 ---
 title: "MSTest StringAssert class - an overview"
 path: "/blog/mstests-stringassert-overview"
-tags: ['C#', 'Tests'] 
+tags: ['CSharp', 'Tests'] 
 featuredImage: "./cover.jpg"
 excerpt: "The StringAssert class is a hidden feature of the MSStest framework. Not so many methods, but they can help you with basic tests with strings."
 created: 2019-03-20

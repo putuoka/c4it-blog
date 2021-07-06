@@ -1,7 +1,7 @@
 ---
 title: "A few things I learned at .NET Conference Italia 2018"
 path: "/blog/dotnet-conference-italia-2018"
-tags: ['dotNET', 'C#', 'MISC']
+tags: ['dotNET', 'CSharp', 'MISC']
 featuredImage: "./cover.jpg"
 excerpt: "Some of the things I learned at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
 created: 2018-10-29
