@@ -1,0 +1,28 @@
+name: Auto Assign to Project(s)
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, labeled]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to One Project
+    steps:
+    - name: Assign issues with `Article` label to project Articles (id:4)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Article')
+      with:
+        project: 'https://github.com/code4it-dev/c4it-blog/projects/4'
+
+    - name: Assign issues with `Tip` label to project Tips (id:2)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Tip')
+      with:
+        project: 'https://github.com/code4it-dev/c4it-blog/projects/2'
