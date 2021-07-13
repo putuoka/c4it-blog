@@ -15,6 +15,8 @@ git checkout -b article/$tmpSlug
 
 New-Item -Path "." -Name $newFolderName -ItemType "directory"
 
+Get-Location
+
 Set-Location $newFolderName
 $currentLocation = Get-Location
 
