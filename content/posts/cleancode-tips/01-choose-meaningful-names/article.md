@@ -75,4 +75,6 @@ A good name should express:
 
 
 
-👉 Let's discuss about it [on Twitter](https://twitter.com/BelloneDavide/status/1334909329573433345) or on the comment section below!
+👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1334909329573433345) or on the comment section below!
+
+🐧

@@ -88,4 +88,6 @@ Again, __being clear and obvious__ is one of the keys to successful clean code.
 
 The solution? __Use better names__! It may not be simple, but luckily [there are some simple](./01-choose-meaningful-names "Clean code tip: How to choose meaningful names?") guidelines that you can follow.
 
-👉 Let's discuss about it [on Twitter](https://twitter.com/BelloneDavide/status/1337454097616822274) or on the comment section below!
+👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1337454097616822274) or on the comment section below!
+
+🐧

@@ -146,4 +146,6 @@ We've discovered that there are many ways to use indexes tightly bound with item
 
 Anything else to add?
 
-👉 Let's discuss about it [on Twitter](https://twitter.com/BelloneDavide/status/1333463303490658304) or on the comment section below!
+👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1333463303490658304) or on the comment section below!
+
+🐧

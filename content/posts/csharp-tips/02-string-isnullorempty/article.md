@@ -81,4 +81,6 @@ __Do you have to replace all `String.IsNullOrEmpty` with `String.IsNullOrWhiteSp
 
 More on this topic can be found [here](https://www.code4it.dev/blog/csharp-check-if-string-is-empty "How to check if a string is really empty with C#")
 
-👉 Let's discuss about it [on Twitter](https://twitter.com/BelloneDavide/status/1335941631724429312 "Original tweet on Twitter") or on the comment section below.
+👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1335941631724429312 "Original tweet on Twitter") or on the comment section below.
+
+🐧
