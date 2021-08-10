@@ -1,0 +1,26 @@
+```mermaid
+classDiagram
+    class IService{
+    <<interface>> 
+    doSomething()
+    }
+
+    class BaseService{
+        doSomething()
+    }
+
+    class DecoratedService{  
+        +IService innerService 
+        doSomething()
+    }
+
+    class Client{
+        do()
+    }
+
+    IService <|-- BaseService : implements
+    IService <|-- DecoratedService : implements
+DecoratedService *-- IService
+
+    Client --> IService
+```

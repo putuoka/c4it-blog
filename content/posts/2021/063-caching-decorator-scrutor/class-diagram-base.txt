@@ -1,0 +1,19 @@
+
+```mermaid
+classDiagram
+    class IRssFeedReader{
+    <<interface>> 
+    GetItem()
+    }
+
+    class RssFeedReader{
+    GetItem()
+    }
+
+    class RssInfoController{
+    GetBySlug()
+    }
+
+    IRssFeedReader <|-- RssFeedReader : implements
+    RssInfoController --> IRssFeedReader
+```

@@ -1,0 +1,3 @@
+sequenceDiagram
+    RssInfoController->>+RssFeedReader: GetItem()
+    RssFeedReader-->>-RssInfoController: RssItem

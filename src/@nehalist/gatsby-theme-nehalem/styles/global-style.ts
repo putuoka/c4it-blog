@@ -117,8 +117,21 @@ div[class*="StyledSubheader"]{
 }
 
 code[class*="language-text"]{
-  line-break: anywhere;
+  line-break: normal;
 }
+@media screen and (max-width: ${Theme.breakpoints.sm}){
+  code[class*="language-text"]{
+    line-break: anywhere;
+  }
+
+}
+
+iframe{
+  margin: auto;
+  display: block;
+  max-width: 100%
+}
+
 `;
 
 export default GlobalStyle;
