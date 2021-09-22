@@ -3,7 +3,7 @@ title: About Davide Bellone
 path: "/about-me" 
 ---
 
-Hi, I'm Davide Bellone! I'm software developer with 7+ years of professional experience.
+Hi, I'm Davide Bellone! I'm a software developer with 7+ years of professional experience.
 
 I'm currently employed as a senior backend developer in a private company in Turin, Italy.
 

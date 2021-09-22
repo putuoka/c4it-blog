@@ -52,9 +52,9 @@ module.exports = {
         twitter: `https://twitter.com/BelloneDavide`,
         linkedin: `https://www.linkedin.com/in/davide-bellone/`,
         instagram: ``,
-        youtube: ``,
-        github: ``,
-        twitch: ``
+        youtube: `https://www.youtube.com/channel/UCALEI7DFRHRRAjFyDUXf2Pg`,
+        github: `https://github.com/code4it-dev`,
+        twitch: `https://www.twitch.tv/code4it`
       }
     }
   },
@@ -102,7 +102,7 @@ module.exports = {
           background_color: `#a4cbb8`,
           theme_color: `#a4cbb8`,
           display: `minimal-ui`,
-          icon: `src/images/favicon.png`
+          icon: `src/images/new/favicon.png`
         },
         // if archive pages should be generated automatically
         loadDefaultPages: true,
