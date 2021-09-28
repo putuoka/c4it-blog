@@ -92,7 +92,7 @@ For this article, we're gonna rework the code we've seen in the previous article
 
 Now we are gonna handle the pizza orders not only for the pizza chef but also for keeping track of the invoices. 
 
-### How to send a message in a Topic with C#
+### How to send a message in a Topic with CSharp
 
 From the developer's perspective, sending messages on a Queue or a Topic is actually the same, so we can reuse the same code I showed in the previous article.
 
@@ -118,7 +118,7 @@ Now, if we run the application and order a new pizza, we will see that a new mes
 
 ![Subscriptions with the same message ready to be read](./subscriptions-with-messages.jpg)
 
-### How to receive a message from a Topic  with C#
+### How to receive a message from a Topic  with CSharp
 
 Now that the same message is available for both _PizzaChefSubscription_ and _PizzaInvoicesSubscription_, we need to write the code to connect to the subscriptions.
 
