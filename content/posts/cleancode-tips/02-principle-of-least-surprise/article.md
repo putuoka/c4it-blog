@@ -1,6 +1,6 @@
 ---
 title: "Clean code tip: Principle of Least Surprise"
-path: '/cleancodetips/02-principle-of-least-surprise'
+path: '/cleancodetips/principle-of-least-surprise'
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.jpg"
 excerpt : "The Principle of Least Surprise is a simple principle that helps you writing clear, obvious code: this helps other developers foresee what a component does without worrying of unexpected behaviors."

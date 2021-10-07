@@ -1,6 +1,6 @@
 ---
 title: "Clean code tip: How to choose meaningful names?"
-path: '/cleancodetips/01-choose-meaningful-names'
+path: '/cleancodetips/choose-meaningful-names'
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.jpg"
 excerpt : "Choosing meaningful names takes time! Time spent finding good names is time saved trying to figure out what you meant."
