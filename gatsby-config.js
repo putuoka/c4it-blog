@@ -1,4 +1,5 @@
 module.exports = {
+   flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `Code4IT`,
     siteUrl: `https://www.code4it.dev`,
