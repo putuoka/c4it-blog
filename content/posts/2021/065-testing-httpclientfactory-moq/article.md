@@ -316,11 +316,11 @@ public async Task Method_Should_ReturnSomething_When_Condition()
 
 🔗 [HttpMessageHandler class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpmessagehandler?view=net-5.0 "HttpMessageHandler class documentation")
 
-🔗 [Mock objects with static, complex data by using Manifest resources | Code4IT](./mock-dependency-with-manifest-resources "How to use Manifest resources to mock objects")
+🔗 [Mock objects with static, complex data by using Manifest resources | Code4IT](https://www.code4it.dev/blog/mock-dependency-with-manifest-resources "How to use Manifest resources to mock objects")
 
 🔗 [Moq documentation | GitHub](https://github.com/moq/moq "Moq documentation on GitHub")
 
-🔗 [How you can create extension methods in C# | Code4IT](../csharp-extension-methods "How to create extension methods with C#")
+🔗 [How you can create extension methods in C# | Code4IT](https://www.code4it.dev/blog/csharp-extension-methods "How to create extension methods with C#")
 
 ## Wrapping up
 
