@@ -188,7 +188,7 @@ This NuGet Package works for almost every version of .NET, from the dear old .NE
 
 Ever used it? Any alternative tools?
 
-And, most of all, what the f**k is that *x-miniprofiler-ids* array??😶
+And, most of all, what the f**k is that _x-miniprofiler-ids_ array??😶
 
 Happy coding!
 
