@@ -177,6 +177,8 @@ Yes, `yield` is a quite difficult keyword to understand.
 
 To read more, head to [the official docs](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/yield "Yield documentation on Microsoft docs").
 
+Another good resource is ["C# – Use yield return to minimize memory usage"](https://makolyte.com/csharp-use-yield-return-to-minimize-memory-usage/ "Another article about yield return by Makolyte") by [Makolyte](https://twitter.com/makolyte). You should definitely check it out!
+
 And, if you want, check out the conversation I had about this keyword [on Twitter](https://twitter.com/BelloneDavide/status/1455973842762010630 "Twitter conversation about yield return").
 
 Happy coding!
