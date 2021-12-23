@@ -1,7 +1,7 @@
 ---
 title: "Clean code tips - Error handling"
 path: "/blog/clean-code-error-handling"
-tags: ["Clean Code"]
+tags: ["Clean Code" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt:  "The way you handle errors on your code can have a huge impact on the maintainability of your projects. Don't underestimate the power of clean error handling."
 created: 2020-12-15

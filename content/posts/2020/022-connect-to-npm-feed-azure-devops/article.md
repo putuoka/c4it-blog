@@ -1,7 +1,7 @@
 ---
 title: "How to connect and authenticate to NPM feeds on Azure DevOps"
 path: "/blog/connect-npm-feeds-from-azure-devops"
-tags: ["Azure DevOps", "NPM"]
+tags: ["Azure DevOps", "NPM" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Azure DevOps, among its capabilities, allows you to store NPM packages in their system. Here we'll see how to connect to an NPM feed and how to solve the 401-unauthorized error."
 created: 2020-04-07

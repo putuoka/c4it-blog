@@ -1,7 +1,7 @@
 ---
 title: "How to run integration tests for .NET API"
 path: "/blog/integration-tests-for-dotnet-api"
-tags: ["Tests", "dotNET", "CSharp"]
+tags: ["Tests", "dotNET", "CSharp" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt:  "Integration tests are useful to check if multiple components fit together well. How can you test your APIs? And how can you mock dependencies?"
 created: 2020-08-11

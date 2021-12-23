@@ -1,7 +1,7 @@
 ---
 title: "Moq vs NSubstitute: syntax cheat sheet"
 path: '/blog/moq-vs-nsubstitute-syntax'
-tags: ["Tests", "dotNET"]
+tags: ["Tests", "dotNET" , "MainArticle"]
 featuredImage: "./cover.png"
 excerpt : "Moq and NSubstitute are two of the most used library to mock dependencies on your Unit Tests. How do they differ? How can we move from one library to the other?"
 created: 2021-10-26

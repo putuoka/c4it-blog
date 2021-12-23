@@ -1,7 +1,7 @@
 ---
 title: "How to run Google Chrome without CORS"
 path: "/blog/run-google-chrome-without-cors"
-tags: ["MISC"]
+tags: ["MISC" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "You may need to run Google Chrome with CORS checks disabled. Here's how you can do it on Windows 10."
 created: 2020-03-24

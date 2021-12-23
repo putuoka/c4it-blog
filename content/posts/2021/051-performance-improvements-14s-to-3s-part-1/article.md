@@ -1,7 +1,7 @@
 ---
 title: "14 to 2 seconds: how I improved the performance of an endpoint by 82% - part 1"
 path: "/blog/improving-application-performance-part1"
-tags: ["Performance","dotNET", "CSharp"]
+tags: ["Performance","dotNET", "CSharp" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Having fast API response is crucial for your applications. In this article you'll see how I managed to improve an API application that took 14 secs each call."
 created: 2021-02-23

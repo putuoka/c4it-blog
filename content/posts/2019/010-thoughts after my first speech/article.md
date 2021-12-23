@@ -1,7 +1,7 @@
 ---
 title: "Thoughts after my very first public speech"
 path: "/blog/thoughts-after-my-first-public-speech"
-tags: ['Talks', 'Career']
+tags: ['Talks', 'Career' , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Having a public speech seems easy. In some ways, it really is. But the first time can be hard. Here's my thought after my first experience in public speaking."
 created: 2019-10-20

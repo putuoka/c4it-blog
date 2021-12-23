@@ -1,7 +1,7 @@
 ---
 title: "How to add logs on Console with .NET Core and Serilog"
 path: '/blog/serilog-log-on-console'
-tags: ["dotNET"]
+tags: ["dotNET" , "MainArticle"]
 featuredImage: "./cover.png"
 excerpt : "Serilog is a famous logger for .NET projects. In this article, we will learn how to integrate it in a .NET API project and output the logs on a Console."
 created: 2021-10-12

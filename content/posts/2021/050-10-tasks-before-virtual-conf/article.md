@@ -1,7 +1,7 @@
 ---
 title: "10 underestimated tasks to do before your next virtual presentation"
 path: "/blog/10-tasks-before-virtual-talk"
-tags: ["Talks","Career"]
+tags: ["Talks","Career" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "When performing a talk, the audience experience is as important as the content. They must be focused on what you say, and not get distracted by external outputs. So, here's 10 tips to rock your next virtual talk."
 created: 2021-02-09

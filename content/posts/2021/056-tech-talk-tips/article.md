@@ -1,7 +1,7 @@
 ---
 title: "13 tips for delivering better tech talks"
 path: '/blog/tech-talk-13-tips'
-tags: ["Talks", "Career"]
+tags: ["Talks", "Career" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt : "Doing a tech talk is easy. Doing a *good* talk is harder. We're going to see some tips to improve the delivery of your conferences."
 created: 2021-05-04

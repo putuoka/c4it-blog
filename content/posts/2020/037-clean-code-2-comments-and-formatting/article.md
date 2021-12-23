@@ -1,7 +1,7 @@
 ---
 title: "Clean code tips - comments and formatting"
 path: "/blog/clean-code-comments-and-formatting"
-tags: [ "Clean Code"]
+tags: [ "Clean Code" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Are all comments bad? When they are necessary? Why formatting is so important? Writing clean code does not only refer to the executed code, but also to everything around."
 created: 2020-08-18

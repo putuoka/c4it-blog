@@ -1,7 +1,7 @@
 ---
 title: "Clean code tips - Tests"
 path: '/blog/clean-code-tests'
-tags: ["Clean Code"]
+tags: ["Clean Code" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt : "Tests are as important as production code. Well, they are even more important! So writing them well brings lots of benefits to your projects."
 created: 2021-03-23

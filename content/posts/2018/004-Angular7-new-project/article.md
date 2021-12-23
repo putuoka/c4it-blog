@@ -1,7 +1,7 @@
 ---
 title: "How to create a new Angular 7 project"
 path: "/blog/angular7-create-new-project"
-tags: ['Angular']
+tags: ['Angular', "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Are you ready to create a brand new Angular project? The CLI can help you with common settings.
 created: 2018-12-01

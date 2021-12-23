@@ -1,7 +1,7 @@
 ---
 title: "Angular vs NPM vs Node.js: spot the difference!"
 path: "/blog/angular-vs-npm-vs-nodejs"
-tags: ['Angular', 'Node.js', 'NPM']
+tags: ['Angular', 'Node.js', 'NPM', "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "There's a lot of confusion around the terms Angular, NPM, and NodeJS. What are they? And how do they interact with each other?"
 created: 2018-10-25

@@ -1,7 +1,7 @@
 ---
 title: "3 ways to inject DateTime and test it"
 path: "/blog/inject-and-test-datetime-dependency"
-tags: ['CSharp', 'Tests']
+tags: ['CSharp', 'Tests', "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "DateTime, Guid, and Random values are not under your direct control. You should abstract them to write better code and testing. We'll see 3 ways to inject and test them in .NET Core projects."
 created: 2021-01-12

@@ -1,7 +1,7 @@
 ---
 title: "Handling Azure Service Bus errors with .NET"
 path: '/blog/azure-service-bus-errors'
-tags: ["Azure", "dotNET", "CSharp"]
+tags: ["Azure", "dotNET", "CSharp" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt : "Senders and Receivers handle errors on Azure Service Bus differently. We'll see how to catch them, what they mean and how to fix them. We'll also introduce Dead Letters."
 created: 2021-06-29

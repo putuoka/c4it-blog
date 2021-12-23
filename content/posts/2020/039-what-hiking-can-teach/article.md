@@ -1,7 +1,7 @@
 ---
 title: "10 things hiking can teach you as a junior developer"
 path: "/blog/what-hiking-can-teach"
-tags: ["Career", "MISC", "Programming"]
+tags: ["Career", "MISC", "Programming" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt:   "During this holiday I hiked for the first time. I found some lessons that hiking can teach junior devs"
 created: 2020-09-08

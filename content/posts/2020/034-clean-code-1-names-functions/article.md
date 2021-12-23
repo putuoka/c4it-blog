@@ -1,7 +1,7 @@
 ---
 title: "Clean code tips - names and functions"
 path: "/blog/clean-code-names-and-functions"
-tags: ["Clean Code"]
+tags: ["Clean Code" , "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt:  "I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions"
 created: 2020-07-21

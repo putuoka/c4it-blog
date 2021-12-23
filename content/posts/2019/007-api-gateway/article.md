@@ -1,7 +1,7 @@
 ---
 title: "API Gateways - an overview"
 path: "/blog/overview-api-gateways"
-tags: ['API Gateway', 'Ocelot', ] 
+tags: ['API Gateway', 'Ocelot', "MainArticle"] 
 featuredImage: "./cover.jpg"
 excerpt: "API Gateways can help you create microservices and micro frontends, and expose rich APIs to your customers while keeping things simple on your company."
 created: 2019-05-17

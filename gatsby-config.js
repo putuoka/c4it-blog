@@ -24,6 +24,10 @@ module.exports = {
         path: '/talks'
       },
       {
+        name: 'Main Articles',
+        path: '/tag/mainarticle'
+      },
+      {
         name: 'Clean Code Tips',
         path: '/tag/clean-code-tip'
       },
@@ -51,7 +55,7 @@ module.exports = {
       social: {
         facebook: ``,
         twitter: `https://twitter.com/BelloneDavide`,
-        linkedin: `https://www.linkedin.com/in/davide-bellone/`,
+        linkedin: `https://www.linkedin.com/in/bellonedavide/`,
         instagram: ``,
         youtube: `https://www.youtube.com/channel/UCALEI7DFRHRRAjFyDUXf2Pg`,
         github: `https://github.com/code4it-dev`,

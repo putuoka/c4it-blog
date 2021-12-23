@@ -23,7 +23,7 @@ $currentLocation = Get-Location
 Add-Content article.md "---"
 Add-Content article.md "title: `"Placeholder title`""
 Add-Content article.md "path: `'/blog/$tmpSlug`'"
-Add-Content article.md "tags: []"
+Add-Content article.md "tags: [`"MainArticle`"]"
 Add-Content article.md "featuredImage: `"./cover.png`""
 Add-Content article.md "excerpt: `"a description for $tmpSlug`""
 Add-Content article.md "created: 4219-11-20"

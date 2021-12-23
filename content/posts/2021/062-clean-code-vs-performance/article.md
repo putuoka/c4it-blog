@@ -1,7 +1,7 @@
 ---
 title: "Code opinion: performance or clean code?"
 path: '/blog/clean-code-vs-performance'
-tags: ["Clean Code", "Performance"]
+tags: ["Clean Code", "Performance" , "MainArticle"]
 featuredImage: "./cover.png"
 excerpt : "In any application, writing code that is clean and performant is crucial. But we often can't have both. What to choose?"
 created: 2021-07-27
