@@ -1,14 +1,14 @@
 - name: TypeScript
   color: "#007acc"
-  icon: ./assets/images/typescript.svg
+  icon: ./assets/images/typescript.png
   featured: false
 - name: JavaScript
   color: #f0db4f
-  icon: ./assets/images/javascript.svg
+  icon: ./assets/images/javascript.png
   featured: false
 - name: dotNET
   color: #00ffee
-  icon: ./assets/images/dotNet.svg
+  icon: ./assets/images/dotNet.png
   featured: true
 - name: API Gateway
   color: #00ffee
@@ -24,7 +24,7 @@
   featured: true
 - name: Azure DevOps
   color: #00ffee
-  icon: ./assets/images/azure-devops.svg
+  icon: ./assets/images/azure-devops.png
   featured: false
 - name: Azure Functions
   color: #00ffee
