@@ -118,6 +118,11 @@ div[class*="StyledSubheader"]{
 
 code[class*="language-text"]{
   line-break: normal;
+  overflow: auto;
+  font-size: 95%;
+  line-height: 1.45;
+  background-color: ${Theme.layout.primaryColor};
+  border-radius: 4px;
 }
 @media screen and (max-width: ${Theme.breakpoints.sm}){
   code[class*="language-text"]{
