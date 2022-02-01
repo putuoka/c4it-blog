@@ -10,7 +10,7 @@ updated: 2019-05-17
 
 When creating complex systems, it is important to have the possibility to develop the functionalities in a simple way but expose those functionalities in a coherent way.
 
-Also, for big organizations, it can happen that a team is used to work on the .NET stack, while another works on Java or Node.js. But, if you are exposing APIs to clients, it's important to hide implementation details.
+Also, for big organizations, it can happen that a team is used to working on the .NET stack, while another works on Java or Node.js. But, if you are exposing APIs to clients, it's important to hide implementation details.
 
 __API Gateways__ allow you to create services with completely different technologies: since one of the best practices is to have all the APIs detached from the others, having __different stacks__ is definitely not a problem. Considering that those services can live on their own, you can make them very small and provide __common functionalities at API Gateway level__: examples are documentation, error handling, authentication, and general logging. 
 
@@ -65,4 +65,4 @@ Of course, when the internal servers are on the same LAN there are more advantag
 
 ## Final words
 
-API Gateways are useful when you have to share APIs with external clients, but for a simple application, I think they add more difficulties than benefits. However, looking at the microservices world, a basic knowledge of this kind of technology is fundamental to create a scalable architecture.
+API Gateways are useful when you have to share APIs with external clients, but for a simple application, I think they add more difficulties than benefits. However, looking at the microservices world, a basic knowledge of this kind of technology is fundamental to creating a scalable architecture.

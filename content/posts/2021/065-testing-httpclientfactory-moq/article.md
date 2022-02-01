@@ -104,7 +104,7 @@ What does it mean?
 
 Since we are interested in what happens to the `HttpMessageHandler`, we need to mock it and store the result in a variable.
 
-Noticed that `MockBehavior.Strict`? This is an *optional* parameter that makes the mock throw an exception when it doesn't have a corresponding setup. To try it, remove that argument to the constructor and comment out the `handlerMock.Setup()` part: when you'll run the tests, you'll receive an error of type `Moq.MockException`.
+Have you noticed that `MockBehavior.Strict`? This is an *optional* parameter that makes the mock throw an exception when it doesn't have a corresponding setup. To try it, remove that argument to the constructor and comment out the `handlerMock.Setup()` part: when you'll run the tests, you'll receive an error of type `Moq.MockException`.
 
 Next step: defining the behavior of the mocked `HttpMessageHandler`
 
@@ -177,7 +177,7 @@ var httpClient = new HttpClient(handlerMock.Object) {
     };
 ```
 
-Here I've set up the value of the `BaseAddress` property to a valid URI to avoid null references when performing the HTTP call. You can use even non existing URL: the important thing is that the URL must be well-formed.
+Here I've set up the value of the `BaseAddress` property to a valid URI to avoid null references when performing the HTTP call. You can use even non-existing URLs: the important thing is that the URL must be well-formed.
 
 ### Configuring the IHttpClientFactory instance
 
@@ -328,7 +328,7 @@ In this article, we've seen how tricky it can be to test services that rely on `
 
 Mocking `IHttpClientFactory` is hard, I know. But here we've found a way to overcome those difficulties and make our tests easy to write and to understand.
 
-There are lots of NuGet packages out there that help us mocking that dependency: do you use any of them? What is your favourite, and why?
+There are lots of NuGet packages out there that help us mock that dependency: do you use any of them? What is your favourite, and why?
 
 Happy coding!
 

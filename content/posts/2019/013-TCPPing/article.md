@@ -3,7 +3,7 @@ title: "How to ping from an Azure App service with TCPPING"
 path: "/blog/tcpping-azure-portal"
 tags: ['Azure' , "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt: "Maybe you are used to ping a service to check whether it responds or not. It works well using a local console, but within the Azure portal you must use another command: tcpping."
+excerpt: "Maybe you are used to ping services to check whether they respond or not. It works well using a local console, but within the Azure portal you must use another command: tcpping."
 created: 2019-12-13
 updated: 2019-12-13
 ---
@@ -42,7 +42,7 @@ __PSSS! Remember not to include the protocol!__
 
 More in detail, __ping sends an ICMP echo request__ to a specified interface and waits for a reply.
 
-Just as a reminder, [ICMP (_Internet Control Message Protocol_)](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol "ICMP explaination on Wikipedia") is a network protocol that is at the same level as TCP and UDP on the networking stack, but it is typically not used for exchanging data between endpoints but only for sharing errors or information.
+Just as a reminder, [ICMP (_Internet Control Message Protocol_)](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol "ICMP explanation on Wikipedia") is a network protocol that is at the same level as TCP and UDP on the networking stack, but it is typically not used for exchanging data between endpoints but only for sharing errors or information.
 
 ## Azure and ICMP
 
