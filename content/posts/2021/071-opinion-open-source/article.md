@@ -1,7 +1,7 @@
 ---
 title: "Code opinion: should we trust Open Source after Log4J's issues?"
 path: '/blog/opinion-open-source'
-tags: ["MISC", "Performance", "MainArticle"]
+tags: ["MISC", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "With Log4J's vulnerability, we've all been reminded that systems are vulnerable, and OSS are not immune too. What should we do now?"
 created: 2021-12-21

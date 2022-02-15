@@ -74,6 +74,8 @@ If you forgot which environment variables you've defined for that container, you
 
 ![List all environment variables associated to a Container](./list-environment-variables.png)
 
+**Note: environment variables may change with newer image versions**. Always refer to the official docs, specifically to the documentation related to the image version you are consuming.
+
 ## Navigate the DB with PgAdmin
 
 Now that we have Postgres up and running, we can work with it.

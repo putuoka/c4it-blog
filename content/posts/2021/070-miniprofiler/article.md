@@ -32,7 +32,7 @@ As usual, we need to install a Nuget package: since we are working on a .NET 5 A
 
 MiniProfiler provides *tons* of packages you can use to profile your code: for example, you can profile *Entity Framework*, *Redis*, *PostgreSql*, and more.
 
-![](./miniprofiler-nuget-packages.png)
+![MiniProfiler packages on NuGet](./miniprofiler-nuget-packages.png)
 
 Once you've installed it, we can add it to our project by updating the `Startup` class.
 
