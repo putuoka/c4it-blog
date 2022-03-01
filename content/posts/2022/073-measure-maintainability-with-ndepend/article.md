@@ -229,7 +229,7 @@ Where can I find the Component Dependencies Diagram? Nowhere - it is accessible 
 
 So, the tool is incredibly useful, but it's difficult to use (at first, obviously).
 
-If the NDepend team starts focusing on the usability and the UI, I'm sure it can quickly become a must-have tool for every team working on .NET. Of course, if they create a free (or cheaper) tier for their product with reduced capabilities: now it's quite expensive. 
+If the NDepend team starts focusing on the usability and the UI, I'm sure it can quickly become a must-have tool for every team working on .NET. Of course, if they create a free (or cheaper) tier for their product with reduced capabilities: now it's quite expensive. Well, actually it is quite cheap for companies, but for solo devs it is not affordable. 
 
 ## Additional resources
 
