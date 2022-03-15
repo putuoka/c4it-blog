@@ -312,6 +312,8 @@ public async Task Method_Should_ReturnSomething_When_Condition()
 
 ## Further readings
 
+🔗 [Example repository | GitHub](https://github.com/code4it-dev/MockHttpClientFactory "Repository to run the code")
+
 🔗 [Why we need HttpClientFactory | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests "Use IHttpClientFactory to implement resilient HTTP requests | Microsoft Docs")
 
 🔗 [HttpMessageHandler class | Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpmessagehandler?view=net-5.0 "HttpMessageHandler class documentation")
@@ -321,6 +323,7 @@ public async Task Method_Should_ReturnSomething_When_Condition()
 🔗 [Moq documentation | GitHub](https://github.com/moq/moq "Moq documentation on GitHub")
 
 🔗 [How you can create extension methods in C# | Code4IT](https://www.code4it.dev/blog/csharp-extension-methods "How to create extension methods with C#")
+
 
 ## Wrapping up
 
