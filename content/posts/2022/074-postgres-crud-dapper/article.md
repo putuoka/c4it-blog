@@ -3,7 +3,7 @@ title: "PostgreSQL CRUD operations with C# and Dapper"
 path: '/blog/postgres-crud-dapper'
 tags: ["CSharp", "Database","SQL","MainArticle"]
 featuredImage: "./cover.png"
-excerpt: "Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data"
+excerpt: "Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data."
 created: 2022-03-01
 updated: 2022-03-01
 ---

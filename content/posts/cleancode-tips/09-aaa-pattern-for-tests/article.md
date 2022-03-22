@@ -3,7 +3,7 @@ title: "Clean Code Tip: AAA pattern for tests: why is it important?"
 path: '/cleancodetips/aaa-pattern-for-tests'
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
-excerpt: "The most important trait of Tests? They must be correct. The second one? They must be readable. The AAA pattern helps you write better tests"
+excerpt: "The most important trait of Tests? They must be correct. The second one? They must be readable. The AAA pattern helps you write better tests."
 created: 2022-02-22
 updated: 2022-02-22
 ---
@@ -22,8 +22,8 @@ Take this example:
 
 ```cs
 [Test]
-    public void TestDateRange_WithFutureDate()
-    {
+public void TestDateRange_WithFutureDate()
+{
     var diff = (new DateTime(2021, 2, 8) - new DateTime(2021, 2, 3)).Days;
     Assert.AreEqual(5, diff);
 }
@@ -47,15 +47,15 @@ Finally, the *Assert* part, where you check that everything worked as expected.
 [Test]
 public void TestDateRange_WithFutureDate()
 {
-// Arrange
-var today = new DateTime(2021, 2, 3);
-var otherDate = new DateTime(2021, 2, 8);
+    // Arrange
+    var today = new DateTime(2021, 2, 3);
+    var otherDate = new DateTime(2021, 2, 8);
 
-// Act
-var diff = (otherDate.Date - today.Date).Days; 
+    // Act
+    var diff = (otherDate.Date - today.Date).Days; 
 
-// Assert
-Assert.AreEqual(5, diff);
+    // Assert
+    Assert.AreEqual(5, diff);
 }
 ```
 
