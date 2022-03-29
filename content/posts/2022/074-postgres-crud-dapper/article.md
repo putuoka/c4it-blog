@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL CRUD operations with C# and Dapper"
 path: '/blog/postgres-crud-dapper'
-tags: ["CSharp", "Database","SQL","MainArticle"]
+tags: ["CSharp", "Database","SQL","PostgreSQL","MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data."
 created: 2022-03-01
@@ -51,7 +51,7 @@ Dapper is one of the most popular ORMs, created by the Stack Overflow team. Well
 
 To add Dapper to your .NET project, simply run this command:
 
-```
+```cmd
 dotnet add package Dapper
 ```
 
@@ -236,7 +236,7 @@ to perform the query and open a reader on the result set. Then we would have def
 
 
 ```cs
- private static BoardGame ReadBoardGame(NpgsqlDataReader reader)
+private static BoardGame ReadBoardGame(NpgsqlDataReader reader)
 {
     int? id = reader["id"] as int?;
     string name = reader["name"] as string;
@@ -293,11 +293,11 @@ and
 ```cs
 public async Task Delete(int id)
 {
-string commandText = $"DELETE FROM {TABLE_NAME} WHERE ID=(@p)";
+    string commandText = $"DELETE FROM {TABLE_NAME} WHERE ID=(@p)";
 
-var queryArguments = new {  p = id  };
+    var queryArguments = new {  p = id  };
 
-await connection.ExecuteAsync(commandText, queryArguments);
+    await connection.ExecuteAsync(commandText, queryArguments);
 }
 ```
 

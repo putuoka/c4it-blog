@@ -1,7 +1,7 @@
 ---
 title: "CRUD operations on PostgreSQL using C# and Npgsql"
 path: '/blog/postgres-crud-operations-npgsql'
-tags: ["CSharp", "Database","SQL","MainArticle"]
+tags: ["CSharp", "Database","SQL","PostgreSQL","MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Once we have a Postgres instance running, we can perform operations on it. We will use Npgsql to query a Postgres instance with C#"
 created: 2022-02-01
