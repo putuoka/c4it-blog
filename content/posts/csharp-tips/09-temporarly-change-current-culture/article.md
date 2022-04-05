@@ -53,7 +53,7 @@ using (new TemporaryThreadCulture(new CultureInfo("it-it")))
 Console.WriteLine(Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencySymbol); //￥
 ```
 
-We start by setting the Culture of the current thread to Japanese, so that the Currency symbol is ￥. Then, we temporarily move to the Italian culture, and we print the Euro symbol. Finally, when we move outside the `using` block, we get back to ￥.
+We start by setting the Culture of the current thread to Japanese so that the Currency symbol is ￥. Then, we temporarily move to the Italian culture, and we print the Euro symbol. Finally, when we move outside the `using` block, we get back to ￥.
 
 Here's a test that demonstrates the usage:
 
@@ -83,7 +83,7 @@ Using a class that implements `IDisposable` is a good way to create a temporary 
 
 I use this approach a lot when I want to experiment with different cultures to understand how the code behaves when I'm not using English (or, more generically, Western) culture.
 
-Do you have any other approaches to reach the same goal? If so, feel free to share them in the comments section!
+Do you have any other approaches for reaching the same goal? If so, feel free to share them in the comments section!
 
 Happy coding!
 
