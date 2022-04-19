@@ -1,3 +1,6 @@
+git checkout master
+git pull
+
 $tmpSlug =  Read-Host -Prompt 'Article slug?'
 $currentYear = Get-Date -Format "yyyy"
 $newFolderName = $currentYear +"/" + $tmpSlug
@@ -8,8 +11,7 @@ $placeholderImgLocation = "\assets\img_placeholder.png"
 Set-Location ".\content\posts"
 
 
-git checkout master
-git pull
+
 git checkout -b article/$tmpSlug
 
 

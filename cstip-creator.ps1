@@ -1,3 +1,6 @@
+git checkout master
+git pull
+
 $tmpSlug =  Read-Host -Prompt 'C# tip slug?'
 $newFolderName = $tmpSlug
 
@@ -6,11 +9,7 @@ $placeholderImgLocation = "\assets\img_placeholder.png"
 
 Set-Location ".\content\posts\csharp-tips"
 
-
-git checkout master
-git pull
 git checkout -b cstip/$tmpSlug
-
 
 New-Item -Path "." -Name $newFolderName -ItemType "directory"
 

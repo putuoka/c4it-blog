@@ -1,3 +1,6 @@
+git checkout master
+git pull
+
 $tmpSlug =  Read-Host -Prompt 'Cc tip slug?'
 $newFolderName = $tmpSlug
 
@@ -6,9 +9,6 @@ $placeholderImgLocation = "\assets\img_placeholder.png"
 
 Set-Location ".\content\posts\cleancode-tips"
 
-
-git checkout master
-git pull
 git checkout -b cctip/$tmpSlug
 
 
