@@ -43,9 +43,9 @@
     "serve-prod": "gatsby build & gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "cb": "gatsby clean & gatsby develop",
-    "create-article": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./article-creator.ps1 ./blog/NomeCartella",
-    "create-cctip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cctip-creator.ps1 ./blog/NomeCartella",
-    "create-cstip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cstip-creator.ps1 ./blog/NomeCartella"
+    "create-article": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./article-creator.ps1",
+    "create-cctip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cctip-creator.ps1",
+    "create-cstip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cstip-creator.ps1"
   },
   "repository": {
     "type": "git",
