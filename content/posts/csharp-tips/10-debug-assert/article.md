@@ -8,9 +8,9 @@ created: 2022-04-05
 updated: 2022-04-05
 ---
 
-Some times, while debugging, you want to check if the state of your code is still valid, or, at least, it corresponds to some expectations.
+Sometimes, while debugging, you want to check if the state of your code is still valid, or, at least, it corresponds to some expectations.
 
-A simple approach to this problem is to add an `if` statement with the condition you need to check, and placing a dummy instruction just to be marked with a breakpoint.
+A simple approach to this problem is to add an `if` statement with the condition you need to check and place a dummy instruction just to be marked with a breakpoint.
 
 ```cs
 [HttpGet]
@@ -88,9 +88,9 @@ where you can see the message you've defined before.
 ![Debug.Assert message as seen in the Output Window](./debug-assert-with-message.png)
 
 
-**Note: the messages are sent to the System.Diagnostics.Trace.Listeners collection**. If you have another listener, you can use it to intercept those message.
+**Note: the messages are sent to the System.Diagnostics.Trace.Listeners collection**. If you have another listener, you can use it to intercept those messages.
 
-Then you can add more details to that message, and you can also more info to the detailed message by adding additional parameters to it, as if you were using `String.Format`.
+Then you can add more details to that message, and you can also more info to the detailed message by adding additional parameters to it as if you were using `String.Format`.
 
 ```cs
 foreach (var c in Couples)
