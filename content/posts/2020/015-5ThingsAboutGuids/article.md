@@ -13,7 +13,7 @@ I'm pretty sure that you've already used Guids in C#, but have you ever stopped 
 
 ## #1: Guids have a fixed size
 
-A GUID is a 128-bit integer (16 bytes) value. That means that there are __more than 300,000,000,000,000,000,000,000,000,000,000,000,000 different values__. A big number, isn't it?
+A GUID is a 128-bit integer (16 bytes) value. That means that there are __more than 300, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000 different values__. A big number, isn't it?
 
 It is virtually impossible to have duplicates, so it is safe to use.
 

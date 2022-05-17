@@ -14,6 +14,17 @@ Here's what I've done so far:
 
 ------
 
+* __Title__ : Getting started with Azure Service Bus
+* __Event__: Global Azure Torino 2022
+* __Topic__: Azure Service Bus
+* __Date__: 2022-05-07
+* __Duration__: 45mins
+* __Level__: Beginners
+* __Language__: Italian
+* __Links__: [Global Azure Torino](https://globalazuretorino.welol.it/)
+
+------
+
 * __Title__ : Azure DevOps: plan, build, and release projects
 * __Event__: Global Azure Verona
 * __Topic__: Azure DevOps
