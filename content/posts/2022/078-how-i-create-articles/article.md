@@ -1,5 +1,5 @@
 ---
-title: "From idea to publishing, and beyond: how I automated my blogging workflow with GitHub, PowerShell and Azure"
+title: "From idea to publishing, and beyond: how I automated my blogging workflow with GitHub, PowerShell, and Azure"
 path: '/blog/automate-blogging-workflow-github-powershell-azure'
 tags: ["Career", "MainArticle"]
 featuredImage: "./cover.png"
@@ -238,7 +238,7 @@ Similarly, I use an Azure Logic App to send to myself an email to remind me to c
 
 I've added a delay so that my content lives longer, and I can repost it even after weeks or months.
 
-Unluckily, when I cross-post my articles I have to do it manually, This is quite a time consuming especially when there are lots of images: in my MD files I use relative paths, so when porting my content to different platforms I have to find the absolute URL for my images. 
+Unluckily, when I cross-post my articles I have to do it manually, This is quite a time-consuming especially when there are lots of images: in my MD files I use relative paths, so when porting my content to different platforms I have to find the absolute URL for my images. 
 
 And, my friends, this is everything that happens in the background of my blog!
 
