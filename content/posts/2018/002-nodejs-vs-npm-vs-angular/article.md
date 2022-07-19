@@ -12,7 +12,7 @@ There's a lot of confusion about Node.js, NPM, and Angular. These 3 "entities" a
 
 Let's make it clear!
 
-![Typical structure of an Angular Application](https://dius.imgix.net/2015/01/Screen-Shot-2015-02-17-at-12.04.46-pm.png "Angular application structure")
+![Typical structure of an Angular Application](./angular-application-structure.png "Angular application structure")
 
 ## Node.js
 

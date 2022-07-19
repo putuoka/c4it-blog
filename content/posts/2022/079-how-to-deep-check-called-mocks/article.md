@@ -196,7 +196,7 @@ public void CompareWithCallback()
     userUpdater.UpdateUser(user, preferences);
 
     //Assert
-    userRepo.Verify(_ => _.Update(expected));
+    Assert.IsTrue(AreEqual(expected, actual));
 }
 ```
 
