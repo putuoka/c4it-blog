@@ -34,6 +34,10 @@ module.exports = {
       {
         name: 'C# Tips',
         path: '/tag/csharp-tip'
+      }, 
+      {
+        name: 'Architecture notes',
+        path: '/tag/software-architecture'
       },
     ],
     footerMenu: [

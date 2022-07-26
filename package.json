@@ -45,7 +45,8 @@
     "cb": "gatsby clean & gatsby develop",
     "create-article": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./article-creator.ps1",
     "create-cctip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cctip-creator.ps1",
-    "create-cstip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cstip-creator.ps1"
+    "create-cstip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./cstip-creator.ps1",
+    "create-archtip": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./archi-creator.ps1"
   },
   "repository": {
     "type": "git",
