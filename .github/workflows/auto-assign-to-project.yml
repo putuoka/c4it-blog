@@ -19,10 +19,15 @@ jobs:
         contains(github.event.issue.labels.*.name, 'Article')
       with:
         project: 'https://github.com/code4it-dev/c4it-blog/projects/4'
-
     - name: Assign issues with `Tip` label to project Tips (id:2)
       uses: srggrs/assign-one-project-github-action@1.2.1
       if: |
         contains(github.event.issue.labels.*.name, 'Tip')
       with:
         project: 'https://github.com/code4it-dev/c4it-blog/projects/2'
+    - name: Assign issues with `Architecture` label to project Architecture (id:5)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Architecture')
+      with:
+        project: 'https://github.com/code4it-dev/c4it-blog/projects/5'
