@@ -7,7 +7,7 @@ $newFolderName = $tmpSlug
 $rootLocation = Get-Location
 $placeholderImgLocation = "\assets\img_placeholder.png"
 
-Set-Location ".\content\posts\architecture-tips"
+Set-Location ".\content\posts\architecture-notes"
 
 git checkout -b archi-tip/$tmpSlug
 
