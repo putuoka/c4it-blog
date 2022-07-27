@@ -8,63 +8,25 @@ That's why I also decided to give a try to tech conferences.
 
 👉 Check out my [Sessionize profile](https://sessionize.com/davide-bellone/)! 👈
 
-Here's what I've done so far:
+
+## 2022
+
+| Title   | Event        | Date       | Duration | Level        |  |
+|---------|--------------|------------|----------|--------------|---|
+| Getting started with **Azure Service Bus** | Global Azure Torino 2022 | 2022-05-07 | 45m      | Intermediate    | [🔗](https://globalazuretorino.welol.it/) |
 
 
+## 2021
 
-------
+| Title   | Event        | Date       | Duration | Level        |  |
+|---------|--------------|------------|----------|--------------|---|
+| **Azure DevOps**: plan, build, and release projects     | Global Azure Verona | 2021-04-17 | 60m      | Intermediate | [🎥](https://www.youtube.com/watch?v=HX1OVbPNR_I) [🔗](https://global-azure-2021.azurewebsites.net/agenda) |
+| **Azure DevOps**: build and release pipelines to deploy with confidence     | Global Azure Torino | 2021-04-15 | 45m      | Intermediate | [🎥](https://youtu.be/QSm3zTCeOFo?t=5125) [🔗](https://globalazuretorino.welol.it/speakers-2021/)|
+| **Azure DevOps**: build and release projects     | .NET User Group Meetup Torino | 2021-01-25 | 45m      | Intermediate |  [🎥](https://www.youtube.com/watch?v=cszxbDQ7hfs) [🔗](https://community.codemotion.com/torino-.net) |
 
-* __Title__ : Getting started with Azure Service Bus
-* __Event__: Global Azure Torino 2022
-* __Topic__: Azure Service Bus
-* __Date__: 2022-05-07
-* __Duration__: 45mins
-* __Level__: Beginners
-* __Language__: Italian
-* __Links__: [Global Azure Torino](https://globalazuretorino.welol.it/)
+ 
+## 2019
 
-------
-
-* __Title__ : Azure DevOps: plan, build, and release projects
-* __Event__: Global Azure Verona
-* __Topic__: Azure DevOps
-* __Date__: 2021-04-17
-* __Duration__: 60mins
-* __Level__: Intermediate
-* __Language__: Italian
-* __Links__: [Full recording](https://www.youtube.com/watch?v=HX1OVbPNR_I)
-
-------
-
-* __Title__ : Azure DevOps: build and release pipelines to deploy with confidence
-* __Event__: Global Azure Torino
-* __Topic__: Azure DevOps
-* __Date__: 2021-04-15
-* __Duration__: 45mins
-* __Level__: Intermediate
-* __Language__: Italian
-* __Links__: [Full recording](https://youtu.be/QSm3zTCeOFo?t=5125)
-
-------
-
-* __Title__ : Azure DevOps: build and release projects
-* __Event__: .NET User Group Meetup Torino
-* __Topic__: Azure DevOps
-* __Date__: 2021-01-25
-* __Duration__: 60mins
-* __Level__: Intermediate
-* __Language__: Italian
-* __Links__: [Full recording](https://www.youtube.com/watch?v=cszxbDQ7hfs)
-
----
-
-* __Title__ : Azure DevOps: release faster, release better
-* __Event__: Azure Meetup Torino
-* __Topic__: Azure DevOps
-* __Date__: 2019-10-15
-* __Duration__: 90mins
-* __Level__: Beginners
-* __Language__: Italian
-* __Links__: [Full recording](https://www.youtube.com/watch?v=hSCwzEm4M1A)
-
----
+| Title   | Event        | Date       | Duration | Level        |  |
+|---------|--------------|------------|----------|--------------|---|
+| **Azure DevOps**: release faster, release better     | Azure Meetup Torino | 2019-10-15 | 90m      | Beginners |  [🎥](https://www.youtube.com/watch?v=hSCwzEm4M1A) [🔗](https://www.meetup.com/it-IT/Meetup-Microsoft-Azure-Torino)|
