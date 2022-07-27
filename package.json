@@ -9,6 +9,7 @@
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-feed": "^2.13.0",
+    "gatsby-plugin-gdpr-cookies": "^2.0.9",
     "gatsby-plugin-google-gtag": "^2.5.0",
     "gatsby-plugin-google-tagmanager": "^2.8.0",
     "gatsby-plugin-load-script": "^1.1.0",

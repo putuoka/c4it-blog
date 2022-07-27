@@ -120,12 +120,24 @@ module.exports = {
       }
     },
     {
+    resolve: `gatsby-plugin-gdpr-cookies`,
+    options: {
+      googleAnalytics: {
+        trackingId: 'UA-153104468-1', // leave empty if you want to disable the tracker
+        cookieName: 'gatsby-gdpr-google-analytics', // default
+        anonymize: true, // default
+        allowAdFeatures: true // default
+      },
+      environments: ['production']
+    }
+  },
+    {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: "GTM-W6KBN79",
         // Include GTM in development.
         // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
+        includeInDevelopment: true,
       },
     },
     {
