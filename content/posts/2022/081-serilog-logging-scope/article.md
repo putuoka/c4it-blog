@@ -268,13 +268,13 @@ The first one is by Thiago Nascimento Figueiredo:
 
 and the second one is by Llron Tal:
 
-[9 Logging Best Practices Based on Hands-on Experience | Loom Systems](https://www.loomsystems.com/blog/single-post/2017/01/26/9-logging-best-practices-based-on-hands-on-experience "More logging best practices")
+🔗 [9 Logging Best Practices Based on Hands-on Experience | Loom Systems](https://www.loomsystems.com/blog/single-post/2017/01/26/9-logging-best-practices-based-on-hands-on-experience "More logging best practices")
 
 ## Wrapping up
 
 In this article, we've added Scopes to our logs to enrich them with some common fields that can be useful to investigate in case of errors.
 
-Remember to read the links I've shared above, they're pure gold - you'll thank me later 😎
+Remember to read the last 3 links I've shared above, they're pure gold - you'll thank me later 😎
 
 Happy coding!
 
