@@ -5,7 +5,7 @@ tags: ["CSharp", "DotNet","MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Propagating HTTP Headers can be useful, especially when dealing with Correlation IDs. It's time to customize our HttpClients!"
 created: 2022-08-02
-updated: 2022-08-02
+updated: 2022-08-03
 ---
 
 Imagine this: you have a system made up of different applications that communicate via HTTP. There's some sort of entry point, exposed to the clients, that orchestrates the calls to the other applications. How do you correlate those requests?
@@ -13,6 +13,8 @@ Imagine this: you have a system made up of different applications that communica
 A good idea is to use a **Correlation ID**: one common approach for HTTP-based systems is passing a value to the "public" endpoint using HTTP headers; that value will be passed to all the other systems involved in that operation to say that "hey, these incoming requests in the internal systems happened because of THAT SPECIFIC request in the public endpoint". Of course, it's more complex than this, but you got the idea.
 
 Now. How can we propagate an HTTP Header in .NET? I found [this solution on GitHub](https://gist.github.com/davidfowl/c34633f1ddc519f030a1c0c5abe8e867), provided by no less than David Fowler. In this article, I'm gonna dissect his code to see how he built this solution.
+
+**Important update**: there's a NuGet package that implements these functionalities: `Microsoft.AspNetCore.HeaderPropagation`. Consider this article as an excuse to understand what happens behind the scenes of an HTTP call, and use it to learn how to customize and extend those functionalities. [Here's](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-6.0#header-propagation-middleware) how to integrate that package.
 
 ## Just interested in the C# methods?
 
@@ -231,7 +233,7 @@ internal class HeaderPropagationMessageHandlerBuilderFilter : IHttpMessageHandle
 
 The `Configure` method allows you to customize how the `HttpMessageHandler` will be built: we are adding a new instance of the `HeaderPropagationMessageHandler` class we've seen before to the current `HttpMessageHandlerBuilder`'s `AdditionalHandlers` collection. All the handlers registered in the list will then be used to build the `HttpMessageHandler` object we'll use to send and receive requests.
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/Yj6d4OMmDV3bnYtOow" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/CBeebiesHQ-painting-diy-Yj6d4OMmDV3bnYtOow">via GIPHY</a></p>
+<div style="width:10    0%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/Yj6d4OMmDV3bnYtOow" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/CBeebiesHQ-painting-diy-Yj6d4OMmDV3bnYtOow">via GIPHY</a></p>
 
 By having a look at the definition of `HttpMessageHandlerBuilder` you can grasp a bit of what happens when we're creating HttpClients in .NET.
 
