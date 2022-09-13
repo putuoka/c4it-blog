@@ -1,0 +1,43 @@
+name: Auto Assign to Project(s)
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, labeled]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to One Project
+    steps:
+    - name: Assign issues with `Article` label to project Articles (id:4)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Article')
+      with:
+        project: 'https://github.com/orgs/code4it-dev/projects/5'
+    - name: Assign issues with `Clean Code Tip` label to project Tips (id:2)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Tip') &&
+        contains(github.event.issue.labels.*.name, 'Clean Code')
+      with:
+        project: 'https://github.com/orgs/code4it-dev/projects/6'
+        column_name: 'CleanCode Tip'
+    - name: Assign issues with `C# Tip` label to project Tips (id:2)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Tip') &&
+        contains(github.event.issue.labels.*.name, 'C#')
+      with:
+        project: 'https://github.com/orgs/code4it-dev/projects/6'
+        column_name: 'C# Tip'
+    - name: Assign issues with `Architecture` label to project Architecture (id:5)
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'Architecture')
+      with:
+        project: 'https://github.com/orgs/code4it-dev/projects/2'
