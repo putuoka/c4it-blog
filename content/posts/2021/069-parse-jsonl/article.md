@@ -36,13 +36,13 @@ you have a list of items without an array grouping them.
 { "name" : "Emma" }
 ```
 
-I must admit that I've never heard of that format until a few months ago. Or, even better, I've already used JSONL files without knowing: **JSONL is a common format for logs**, where every entry is added to the file in a continuous stream.
+I must admit that I'd never heard of that format until a few months ago. Or, even better, I've already used JSONL files without knowing: **JSONL is a common format for logs**, where every entry is added to the file in a continuous stream.
 
 Also, JSONL has some characteristics:
 
 * every item is a valid JSON item
 * every line is separated by a `\n` character (or by `\r\n`, but `\r` is ignored)
-* it is encoding using UTF-8
+* it is encoded using UTF-8
 
 So, now, it's time to parse it!
 
@@ -172,7 +172,7 @@ First, I wanted to highlight that **JSON is not always the best choice for every
 Second, I wanted to remark that **we should not be too attached to a specific library**: I'd generally prefer using native stuff, so, for reading JSON files, my first choice is `System.Text.Json`. But not always it's the best choice. Yes, we could write some complex workaround (like the second answer on Stack Overflow), but... does it worth it? _Sometimes_ it's better to use another library, even if just for one specific task. So, you could use `System.Text.Json` for the whole project unless for the part where you need to read a JSONL file.
 
 
-Have you ever met some unusual format? How did you dealt with it?
+Have you ever met some unusual formats? How did you deal with it?
 
 Happy coding!
 

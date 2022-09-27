@@ -10,7 +10,7 @@ updated: 2021-11-09
 
 Say that you have an interface and that you want to specify its concrete class at runtime using the native Dependency Injection engine provided by .NET.
 
-For instance, imagine that you have a .NET API project and that the flag that tells the application which dependency use is set in the HTTP Request.
+For instance, imagine that you have a .NET API project and that the flag that tells the application which dependency to use is set in the HTTP Request.
 
 Can we do it? Of course, yes - otherwise I wouldn't be here writing this article 😅 Let's learn how!
 
@@ -114,7 +114,7 @@ var useFakeFileSystemAccess = context.HttpContext?.Request?.Query?.ContainsKey("
 
 Here I'm getting the HTTP Context and checking if the *fake-fs* key is defined. Yes, I know, I'm not checking its actual value: I'm just checking whether the key exists or not.
 
-`IHttpContextAccessor` is the key part of this snippet: this is a service that acts as a wrap around the `HttpContext` object. You can inject it everywhere in your code, but at one condition: you have to define it in the `ConfigureServices` method.
+`IHttpContextAccessor` is the key part of this snippet: this is a service that acts as a wrap around the `HttpContext` object. You can inject it everywhere in your code, but under one condition: you have to define it in the `ConfigureServices` method.
 
 How? Well, that's simple:
 
@@ -239,7 +239,7 @@ First of all, let's call the endpoint without anything in Query String:
 
 And, then, let's add the key:
 
-![By adding the flag, we are using the mock class, so that we don't create real files](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/068-di-depending-on-httprequest/real-file-system.gif)
+![By adding the flag, we are using the mock class, so that we don't create real files](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/068-di-depending-on-httprequest/mock-file-system.gif)
 
 As expected, depending on the query string, we can see two different results.
 

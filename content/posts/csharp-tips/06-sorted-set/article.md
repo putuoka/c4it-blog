@@ -3,7 +3,7 @@ title: "C# Tip: Use a SortedSet to avoid duplicates and sort items"
 path: '/csharptips/sorted-set'
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
-excerpt: "Using the right data structure is crucial to build robust and efficient applications. So, why using an List or an HashSet to sort items (and remove duplicates) when you have a SortedSet?"
+excerpt: "Using the right data structure is crucial to building robust and efficient applications. So, why use a List or a HashSet to sort items (and remove duplicates) when you have a SortedSet?"
 created: 2021-11-16
 updated: 2021-11-16
 ---
