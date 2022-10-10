@@ -206,6 +206,8 @@ Both query strings and HTTP headers are available in the `HttpContext` object in
 
 Now it's your turn to find an appropriate way to hide these endpoints. How would you do that? Drop a comment below 📩
 
+✒ *Edit 2022-10-10:* I thought it was quite obvious, but apparently it is not: **these endpoints expose critical information about your applications and your infrastructure, so you should not expose them unless it is strictly necessary**! If you have strong authentication in place, use it to secure those endpoints. If you don't, hide those endpoints the best you can, and show only necessary data, and not everything. **Strip out sensitive content**. And, as soon as you don't need that info anymore, remove those endpoints (comment them out or generate them only if a particular flag is set at compilation time). Another possible way is by **using feature flags**. In the end, take that example with a grain of salt: learn that you **can** expose them, but not also that you **shouldn't** expose them.
+
 ## Further readings
 
 We've used a quite new way to build and develop APIs with .NET, called "Minimal APIs". You can read more here:
