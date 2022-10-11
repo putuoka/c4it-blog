@@ -1,6 +1,6 @@
 ---
 title: "Advanced parsing using Int.TryParse in C#"
-path: '/blog/advanced-int-tryparse'
+path: "/blog/advanced-int-tryparse"
 tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "We all need to parse strings as integers. Most of the time, we use int.TryParse(string, out int). But there's a more advanced overload that we can use for complex parsing."
@@ -29,19 +29,19 @@ else
 }
 ```
 
-prints *102*.
+prints _102_.
 
 Does it work? Yes. Is this the best we can do? No!
 
 ## How to parse complex strings with int.TryParse
 
-What if you wanted to parse *100€*?  There is a less-known overload that does the job:
+What if you wanted to parse _100€_? There is a less-known overload that does the job:
 
 ```cs
 public static bool TryParse (
     string? s,
-    System.Globalization.NumberStyles style, 
-    IFormatProvider? provider, 
+    System.Globalization.NumberStyles style,
+    IFormatProvider? provider,
     out int result);
 ```
 
@@ -101,7 +101,7 @@ Notice the `NumberStyles style = NumberStyles.Integer;`, used as a baseline.
 
 ### Parse parenthesis as negative numbers
 
-In some cases, parenthesis around a number indicates that the number is negative. So *(100)* is another way of writing *-100*. 
+In some cases, parenthesis around a number indicates that the number is negative. So _(100)_ is another way of writing _-100_.
 
 In this case, you can use the `NumberStyles.AllowParentheses` flag.
 
@@ -129,7 +129,7 @@ void ParseNumberAsCurrency()
     var canParse = int.TryParse(
 "100€",
  style,
- new CultureInfo("it-it"), 
+ new CultureInfo("it-it"),
 out int result);
 
     Assert.True(canParse);
@@ -143,9 +143,9 @@ Both
 
 ```cs
 var canParse = int.TryParse(
-    "100€", 
-    style, 
-    new CultureInfo("en-gb"), 
+    "100€",
+    style,
+    new CultureInfo("en-gb"),
     out int result);
 ```
 
@@ -153,9 +153,9 @@ and
 
 ```cs
 var canParse = int.TryParse(
-    "100$", 
-    style, 
-    new CultureInfo("it-it"), 
+    "100$",
+    style,
+    new CultureInfo("it-it"),
     out int result);
 ```
 
@@ -169,7 +169,7 @@ new CultureInfo("it-it").NumberFormat.CurrencySymbol; // €
 
 ### Parse with thousands separator
 
-And what to do when the string contains the separator for thousands? *10.000* is a valid number, in the Italian notation.
+And what to do when the string contains the separator for thousands? _10.000_ is a valid number, in the Italian notation.
 
 Well, you can specify the `NumberStyles.AllowThousands` flag.
 
@@ -215,9 +215,9 @@ We can use this capability to parse, for example, a currency that contains the t
 [Fact]
 void ParseThousandsCurrency()
 {
-    NumberStyles style = 
-NumberStyles.Integer 
-| NumberStyles.AllowThousands 
+    NumberStyles style =
+NumberStyles.Integer
+| NumberStyles.AllowThousands
 | NumberStyles.AllowCurrencySymbol;
 
     var canParse = int.TryParse("10.000€", style, new CultureInfo("it-it"), out int result);
@@ -228,7 +228,6 @@ NumberStyles.Integer
 ```
 
 `NumberStyles.AllowThousands | NumberStyles.AllowCurrencySymbol` does the trick.
-
 
 ## Conclusion
 

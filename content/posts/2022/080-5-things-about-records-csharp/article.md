@@ -1,6 +1,6 @@
 ---
 title: "8 things about Records in C# you probably didn't know"
-path: '/blog/8-things-about-records-csharp'
+path: "/blog/8-things-about-records-csharp"
 tags: ["MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "C# recently introduced Records, a new way of defining types. In this article, we will see 8 things you probably didn't know about C# Records"
@@ -116,7 +116,7 @@ public void EquivalentStructsInstances_AreEqual()
 }
 ```
 
-Well, almost everything: you cannot use `Is.SameAs()` because, since structs are value types, two values will *always* be distinct values. You'll get notified about it by the compiler, with an error that says:
+Well, almost everything: you cannot use `Is.SameAs()` because, since structs are value types, two values will _always_ be distinct values. You'll get notified about it by the compiler, with an error that says:
 
 > The SameAs constraint always fails on value types as the actual and the expected value cannot be the same reference
 
@@ -228,7 +228,7 @@ public void Records_CanHaveSubtypes()
 
 ## 7- Records can be abstract
 
-...and yes, we can have Abstract Records! 
+...and yes, we can have Abstract Records!
 
 ```cs
 public abstract record Box(int Volume, string Material);

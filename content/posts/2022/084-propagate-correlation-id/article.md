@@ -1,7 +1,7 @@
 ---
 title: "How to propagate HTTP Headers (and  Correlation IDs) using HttpClients in C#"
-path: '/blog/propagate-httpheader-and-correlation-id'
-tags: ["CSharp", "DotNet","MainArticle"]
+path: "/blog/propagate-httpheader-and-correlation-id"
+tags: ["CSharp", "DotNet", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Propagating HTTP Headers can be useful, especially when dealing with Correlation IDs. It's time to customize our HttpClients!"
 created: 2022-08-02
@@ -75,7 +75,7 @@ internal class HeaderPropagationMessageHandlerBuilderFilter : IHttpMessageHandle
 }
 ```
 
-next, a simple class that holds the headers we want to propagate 
+next, a simple class that holds the headers we want to propagate
 
 ```cs
 public class HeaderPropagationOptions
@@ -122,7 +122,7 @@ public class HeaderPropagationMessageHandler : DelegatingHandler
 
 Ok, and how can we use all of this?
 
-It's quite easy: if you want to propagate the *my-correlation-id* header for all the HttpClients created in your application, you just have to add this line to your Startup method.
+It's quite easy: if you want to propagate the _my-correlation-id_ header for all the HttpClients created in your application, you just have to add this line to your Startup method.
 
 ```cs
 builder.Services.AddHeaderPropagation(options => options.HeaderNames.Add("my-correlation-id"));
@@ -130,7 +130,7 @@ builder.Services.AddHeaderPropagation(options => options.HeaderNames.Add("my-cor
 
 Time to study this code!
 
-##  How to "enrich" HTTP requests using DelegatingHandler
+## How to "enrich" HTTP requests using DelegatingHandler
 
 Let's start with the `HeaderPropagationMessageHandler` class:
 
@@ -172,7 +172,6 @@ This class lies in the middle of the HTTP Request pipeline. It can extend the fu
 
 If you recall [from a previous article](https://www.code4it.dev/blog/testing-httpclientfactory-moq#mocking-httpmessagehandler), the `SendAsync` method is the real core of any HTTP call performed using .NET's `HttpClients`, and here we're enriching that method by propagating some HTTP headers.
 
-
 ```cs
  protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
 {
@@ -201,10 +200,9 @@ By using `_contextAccessor` we can access the current HTTP Context. From there, 
 
 Notice that we've used `TryAddWithoutValidation` instead of `Add`: in this way, we can use whichever HTTP header key we want without worrying about invalid names (such as the ones with a new line in it). Invalid header names will simply be ignored, as opposed to the Add method that will throw an exception.
 
-
 Finally, we continue with the HTTP call by executing `base.SendAsync`, passing the `HttpRequestMessage` object now enriched with additional headers.
 
-## Using HttpMessageHandlerBuilder to configure how HttpClients must be built 
+## Using HttpMessageHandlerBuilder to configure how HttpClients must be built
 
 The `Microsoft.Extensions.Http.IHttpMessageHandlerBuilderFilter` interface allows you to apply some custom configurations to the `HttpMessageHandlerBuilder` right before the `HttpMessageHandler` object is built.
 
@@ -240,21 +238,21 @@ By having a look at the definition of `HttpMessageHandlerBuilder` you can grasp 
 ```cs
 namespace Microsoft.Extensions.Http
 {
-  
+
     public abstract class HttpMessageHandlerBuilder
     {
         protected HttpMessageHandlerBuilder();
 
         public abstract IList<DelegatingHandler> AdditionalHandlers { get; }
-     
+
         public abstract string Name { get; set; }
-     
+
         public abstract HttpMessageHandler PrimaryHandler { get; set; }
-    
+
         public virtual IServiceProvider Services { get; }
 
         protected internal static HttpMessageHandler CreateHandlerPipeline(HttpMessageHandler primaryHandler, IEnumerable<DelegatingHandler> additionalHandlers);
-     
+
         public abstract HttpMessageHandler Build();
     }
 }
@@ -302,7 +300,7 @@ builder.Services.AddHeaderPropagation(options =>
 );
 ```
 
-Yes, `AddHeaderPropagation` is the method we've seen in the previous paragraph! 
+Yes, `AddHeaderPropagation` is the method we've seen in the previous paragraph!
 
 ## Seeing it in action
 
@@ -323,7 +321,7 @@ builder.Services.AddHeaderPropagation(options =>
 );
 ```
 
-There's also a simple Controller that acts as an entry point and that, using an HttpClient, sends data to another endpoint (the one defined in the previous snippet). 
+There's also a simple Controller that acts as an entry point and that, using an HttpClient, sends data to another endpoint (the one defined in the previous snippet).
 
 ```cs
 [HttpPost]
@@ -349,15 +347,15 @@ The application then starts normally, waiting for incoming requests.
 
 ### What happens at runtime
 
-Now, when we call the `PostAsync` method by passing an HTTP header such as  *my-correlation-id:123*, things get interesting.
+Now, when we call the `PostAsync` method by passing an HTTP header such as _my-correlation-id:123_, things get interesting.
 
-The first operation is 
+The first operation is
 
 ```cs
 var httpClient = _httpClientFactory.CreateClient("items");
 ```
 
-While creating the HttpClient, the engine is calling all the registered `IHttpMessageHandlerBuilderFilter` and calling their `Configure` method. So, you'll see the execution moving to `HeaderPropagationMessageHandlerBuilderFilter`'s `Configure`. 
+While creating the HttpClient, the engine is calling all the registered `IHttpMessageHandlerBuilderFilter` and calling their `Configure` method. So, you'll see the execution moving to `HeaderPropagationMessageHandlerBuilderFilter`'s `Configure`.
 
 ```cs
 public Action<HttpMessageHandlerBuilder> Configure(Action<HttpMessageHandlerBuilder> next)
@@ -371,7 +369,7 @@ public Action<HttpMessageHandlerBuilder> Configure(Action<HttpMessageHandlerBuil
 ```
 
 Of course, you're also executing the `HeaderPropagationMessageHandler` constructor.
- 
+
 The `HttpClient` is now ready: when we call `httpClient.PostAsJsonAsync("/", item)` we're also executing all the registered `DelegatingHandler` instances, such as our `HeaderPropagationMessageHandler`. In particular, we're executing the `SendAsync` method and adding the required HTTP Headers to the outgoing HTTP calls.
 
 We will then see the same HTTP Header on the destination endpoint.
@@ -420,7 +418,7 @@ For sure, you should check out (and star⭐) David Fowler's code:
 
 🔗 [Original code | GitHub](https://gist.github.com/davidfowl/c34633f1ddc519f030a1c0c5abe8e867)
 
-If you're not sure about what are extension methods (and you cannot respond to this question: *How does inheritance work with extension methods?*), then you can have a look at this article:
+If you're not sure about what are extension methods (and you cannot respond to this question: _How does inheritance work with extension methods?_), then you can have a look at this article:
 
 🔗 [How you can create extension methods in C# | Code4IT](https://www.code4it.dev/blog/csharp-extension-methods)
 
@@ -439,7 +437,6 @@ We've already seen how to inject and use `HttpContext` in our applications:
 Finally, the repository that you can fork to toy with it:
 
 🔗 [PropagateCorrelationIdOnHttpClients | GitHub](https://github.com/code4it-dev/PropagateCorrelationIdOnHttpClients)
-
 
 ## Conclusion
 

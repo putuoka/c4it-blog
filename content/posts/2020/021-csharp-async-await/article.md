@@ -1,7 +1,7 @@
 ---
 title: "First steps with asynchronous programming in C#"
 path: "/blog/asynchronous-programming-in-csharp"
-tags: ["CSharp", "dotNET", "Performance" , "MainArticle"]
+tags: ["CSharp", "dotNET", "Performance", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Asynchronous programming is often seen as something cumbersome, so many developers avoid it. What, why and how to use it? Here are the first steps you can take to approach async programming."
 created: 2020-03-31
@@ -10,7 +10,7 @@ updated: 2020-03-31
 
 Asynchronous programming is a HUGE topic. That's why I'm not gonna talk of everything (even because I'm still learning).
 
-I've always seen it as a difficult topic, and I thought it was kind of useless to know and implement it. But I was wrong: it's not difficult, and it brings lots of benefits to your systems. 
+I've always seen it as a difficult topic, and I thought it was kind of useless to know and implement it. But I was wrong: it's not difficult, and it brings lots of benefits to your systems.
 
 So, here's a short introduction. We'll have a look at what is asynchronous programming, why you should care about it and how to implement it in your codebase.
 
@@ -20,14 +20,14 @@ Let's start with the typical example: you have a mobile or desktop application, 
 
 Almost every article and every tutorial use this kind of example as an introduction. This is not a bad example, but it doesn't make sense if I try to apply it to my job. Being a backend developer, I am the one who creates the APIs. So, why should I care about how you are handling the UI?
 
-Then, thanks to [Filip Ekberg](https://twitter.com/fekberg "Filip Ekberg's Twitter profile") I finally realized that __synchronous APIs block the web server process__, slowing down its capability to process requests. That makes sense! With synchronous programming we are blocking the threads closer to the web server processes, so we are creating a bottleneck on the incoming requests.
+Then, thanks to [Filip Ekberg](https://twitter.com/fekberg "Filip Ekberg's Twitter profile") I finally realized that **synchronous APIs block the web server process**, slowing down its capability to process requests. That makes sense! With synchronous programming we are blocking the threads closer to the web server processes, so we are creating a bottleneck on the incoming requests.
 
 ## Async and Await keywords
 
-The basis for asynchronous programming lays in two keywords: _async_ and _await_. 
+The basis for asynchronous programming lays in two keywords: _async_ and _await_.
 
-__async__ marks a method as asynchronous: this is just a helper for the developers and the compiler, but it does nothing in practice.
-__await__ is the king of this topic: it handles everything and creates the manages the underlying structure that keeps track of the progress of the operations.
+**async** marks a method as asynchronous: this is just a helper for the developers and the compiler, but it does nothing in practice.
+**await** is the king of this topic: it handles everything and creates the manages the underlying structure that keeps track of the progress of the operations.
 
 Below you can see an example.
 
@@ -51,7 +51,7 @@ private static async Task<int> CalculatePageSize()
 }
 ```
 
-The line `var content = await httpClient.GetStringAsync(url)` is the key. Here we are downloading the content using `httpClient.GetStringAsync`, but instead of blocking the calling process, we are associating a "mark" on this line, and free up the calling process. Then, when the operation completes, we store the result into the `content` variable and continue with our code. 
+The line `var content = await httpClient.GetStringAsync(url)` is the key. Here we are downloading the content using `httpClient.GetStringAsync`, but instead of blocking the calling process, we are associating a "mark" on this line, and free up the calling process. Then, when the operation completes, we store the result into the `content` variable and continue with our code.
 
 ## Task and ValueTask
 
@@ -65,9 +65,9 @@ You can read more in the article [Understanding the Whys, Whats, and Whens of Va
 
 Have you noticed the return statement? The statement is `return content.Length`, so I'm returning an _int_ instead of _Task&lt;int&gt;_. This is done automatically for you!
 
-## Async Main 
+## Async Main
 
-For C# 7.1 there was a proposal for async Main for console applications. Now this is reality: in fact, your Main method can be the old good `static void Main(string[] args)` and `static int Main(string[] args)` and the new  `static async Task Main(string[] args)` and `static async Task<int> Main(string[] args)`.
+For C# 7.1 there was a proposal for async Main for console applications. Now this is reality: in fact, your Main method can be the old good `static void Main(string[] args)` and `static int Main(string[] args)` and the new `static async Task Main(string[] args)` and `static async Task<int> Main(string[] args)`.
 
 So, you can write something like
 
@@ -90,15 +90,15 @@ For clarity, I have split the statement `var value = await CalculatePageSize()` 
  static async Task Main(string[] args)
 {
     Console.WriteLine($"In {nameof(Main)}, before all");
-    
+
     Task<int> vTask = CalculatePageSize();
-    
+
     Console.WriteLine($"In {nameof(Main)}, after calling the method");
-    
+
     int value = await vTask;
-    
+
     Console.WriteLine($"In {nameof(Main)}, after awaiting the value");
-    
+
     Console.WriteLine(value);
 }
 ```
@@ -119,7 +119,7 @@ private static async Task<int> CalculatePageSize()
             Console.WriteLine($"In {nameof(CalculatePageSize)}, before awaiting the result");
 
             var content = await httpClient.GetStringAsync(url);
-           
+
             Console.WriteLine($"In {nameof(CalculatePageSize)}, after I got the result");
 
             return content.Length;
@@ -148,7 +148,8 @@ When CalculatePageSize starts downloading the page content, it returns the contr
 
 ## Call async methods from sync context
 
-What if you are running synchronous methods but you have to call an async method? You cannot use the _await_ method, because you will get this error: 
+What if you are running synchronous methods but you have to call an async method? You cannot use the _await_ method, because you will get this error:
+
 > The 'await' operator can only be used within an async method. Consider marking this method with the 'async' modifier and changing its return type to 'Task'.
 
 ![Error calling async method inside of a sync method](./async-method-in-sync-main.png "Error calling async method inside of a sync method")
@@ -192,7 +193,7 @@ static async Task Main(string[] args)
 
 ## Error handling
 
-Exception handling can be a tricky argument. 
+Exception handling can be a tricky argument.
 
 Usually, you can handle exceptions just like you do for synchronous programming.
 
@@ -224,22 +225,22 @@ static async Task Main(string[] args)
 }
 ```
 
-that will correctly print 
+that will correctly print
 
 ```
 Here's an exception of type System.DivideByZeroException
-Stack trace    
+Stack trace
     at ExceptionIntroduction.Program.MethodThatThrowsException() in <path>\Program.cs:line 27
     at ExceptionIntroduction.Program.Main(String[] args) in <path>\Program.cs:line 14
 ```
 
 So far, so good.
 
-Before, I told you that you shouldn't use `Result` when trying to get the result from an asynchronous method. This is because when an error occurs, you will not have directly the exception, but everything is wrapped into an `AggregateException`. Even worse, the stack trace is different. If I update the snippet above and get the result with `int value =  MethodThatThrowsException().Result`, I'll get
+Before, I told you that you shouldn't use `Result` when trying to get the result from an asynchronous method. This is because when an error occurs, you will not have directly the exception, but everything is wrapped into an `AggregateException`. Even worse, the stack trace is different. If I update the snippet above and get the result with `int value = MethodThatThrowsException().Result`, I'll get
 
 ```
 Here's an exception of type System.AggregateException
-Stack trace    
+Stack trace
     at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
     at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
     at System.Threading.Tasks.Task`1.get_Result()
@@ -266,7 +267,7 @@ But I'd like to recap a few things you should remember:
 6. You can call an asynchronous method from a synchronous context and vice versa.
 7. Error handling can be tricky if you don't follow the best practices.
 
-This is a list of some of the things that I learned about async programming. 
+This is a list of some of the things that I learned about async programming.
 
 If you are interested in more resources about asynchronous programming, I can suggest [Filip Ekberg's course on Pluralsight](https://app.pluralsight.com/library/courses/getting-started-with-asynchronous-programming-dotnet/table-of-contents) an [Jon Skeet's "C# in Depth"](https://csharpindepth.com/), which are some of the places I took for my first steps in this huge topic.
 

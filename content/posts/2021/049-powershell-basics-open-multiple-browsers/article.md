@@ -1,7 +1,7 @@
 ---
 title: "How to open the same URL on different environments with PowerShell"
 path: "/blog/powershell-basics-open-multiple-browsers"
-tags: ["PowerShell", "MISC" , "MainArticle"]
+tags: ["PowerShell", "MISC", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Revise PowerShell basics with a simple script that opens a browser for each specified URL. We're gonna cover how to declare variables, define arrays, concatenate strings and run CMD commands."
 created: 2021-01-26
@@ -21,7 +21,7 @@ I have a website deployed on 3 environments: dev, UAT, and production, and I wan
 So, here's the script that opens 3 instances of my default browser, each with the URL of one of the environments:
 
 ```powershell
-$baseUrls = 
+$baseUrls =
 "https://am-imagegenerator-dev.azurewebsites.net",
 "https://am-imagegenerator-uat.azurewebsites.net",
 "https://am-imagegenerator-prd.azurewebsites.net";
@@ -46,14 +46,14 @@ The first thing to notice is the way to declare variables:
 $path = "/Image?w=600";
 ```
 
-There's not so much to say, except that __variables have no type declaration__ and that __each variable name must start with the "$" symbol__.
+There's not so much to say, except that **variables have no type declaration** and that **each variable name must start with the "$" symbol**.
 
 ## Arrays in PowerShell
 
 Talking about arrays, we can see that there is no `[]` syntax:
 
 ```powershell
-$baseUrls = 
+$baseUrls =
     "https://am-imagegenerator-dev.azurewebsites.net",
     "https://am-imagegenerator-uat.azurewebsites.net",
     "https://am-imagegenerator-prd.azurewebsites.net";
@@ -70,7 +70,7 @@ Even here, it's really simple:
 ```powershell
 foreach($baseUrl in $baseUrls)
 {
-    
+
 }
 ```
 

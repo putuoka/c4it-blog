@@ -1,7 +1,7 @@
 ---
 title: "5 more things you should know about enums in C#"
 path: "/blog/5-more-things-about-enums-csharp"
-tags: ["CSharp" , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "We've already seen some of the things you should know about enums in C#. Here we'll dive into Flagged enumerations, serialization and so on."
 created: 2020-05-19
@@ -173,11 +173,11 @@ enum Beverage
 var beverage = Beverage.Water| Beverage.RedWine;
 ```
 
-Everything works, even without the `HasFlag` method. The difference comes if we get the string value of that variable: now __it returns 9__, because it's getting directly the numeric value.
+Everything works, even without the `HasFlag` method. The difference comes if we get the string value of that variable: now **it returns 9**, because it's getting directly the numeric value.
 
-If we put the Flags attribute, everything changes: the string value will be __Water, RedWine__, so the comma-separated list of their values.
+If we put the Flags attribute, everything changes: the string value will be **Water, RedWine**, so the comma-separated list of their values.
 
-This makes sense __only if you use multiple values__: as we've already seen, if you print a single value you'll get the string value of it.
+This makes sense **only if you use multiple values**: as we've already seen, if you print a single value you'll get the string value of it.
 
 If you remember when I talked about [how to format an enum](./5-things-enums-csharp#2-many-ways-to-get-the-value "How to get enum values"), you can use `ToString("g")` and `ToString("f")` to get the enum name. I specified that there is a small difference but I haven't explained what was it about.
 
@@ -209,11 +209,11 @@ Here we've seen more things to know about enums. Probably you won't use all of t
 
 To recap, we've seen that
 
-* you can change the underlying type to _short_, _uint_ and similar;
-* you can also define negative values;
-* inside the enum definition, you can create values that represent the union of other two (or more);
-* by default, .NET APIs return enum values as numbers; to fix it, you must add a configuration in your Startup class;
-* you can also omit the Flags attribute; the downside is that when you print the value of a variable that is the union of 2 enums, the returned string is the sum of the enums stored inside that variable, not the string representation.
+- you can change the underlying type to _short_, _uint_ and similar;
+- you can also define negative values;
+- inside the enum definition, you can create values that represent the union of other two (or more);
+- by default, .NET APIs return enum values as numbers; to fix it, you must add a configuration in your Startup class;
+- you can also omit the Flags attribute; the downside is that when you print the value of a variable that is the union of 2 enums, the returned string is the sum of the enums stored inside that variable, not the string representation.
 
 Do you know something to add?
 

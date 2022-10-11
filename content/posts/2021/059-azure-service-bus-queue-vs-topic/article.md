@@ -1,16 +1,16 @@
 ---
 title: "Azure Service Bus: Queues vs Topics"
-path: '/blog/azure-service-bus-queue-vs-topic'
-tags: ["Azure", "dotNET", "CSharp" , "MainArticle"]
+path: "/blog/azure-service-bus-queue-vs-topic"
+tags: ["Azure", "dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Queues or Topics? How are they similar and how they are different? We'll see how to use those capabilities in Azure Service Bus with .NET and C#"
+excerpt: "Queues or Topics? How are they similar and how they are different? We'll see how to use those capabilities in Azure Service Bus with .NET and C#"
 created: 2021-06-15
 updated: 2021-06-15
 ---
 
-In the previous article, we've seen that with Azure Service Bus, the message broker provided by Microsoft, you can send messages in a queue in a way that the first application that receives it, also removes that message from the queue. 
+In the previous article, we've seen that with Azure Service Bus, the message broker provided by Microsoft, you can send messages in a queue in a way that the first application that receives it, also removes that message from the queue.
 
-In this article, we're gonna see another capability of Azure Service Bus: _Topics_. __With topics, many different applications can read the same message from the Bus__; the message will be removed from the Bus only when every application has finished processing that message.
+In this article, we're gonna see another capability of Azure Service Bus: _Topics_. **With topics, many different applications can read the same message from the Bus**; the message will be removed from the Bus only when every application has finished processing that message.
 
 This is the second article in this series about Azure Service Bus:
 
@@ -24,9 +24,9 @@ So, now, let's dive into Topics.
 
 Azure Service Bus comes with 3 pricing tiers:
 
-* _Basic_: its price depends on how many messages you send. You only have Queues.
-* _Standard_: similar to the Basic tier, but allows you to have both Queues and Topics.
-* _Premium_: zone-redundant, with both Queues and Topics; of course, quite expensive.
+- _Basic_: its price depends on how many messages you send. You only have Queues.
+- _Standard_: similar to the Basic tier, but allows you to have both Queues and Topics.
+- _Premium_: zone-redundant, with both Queues and Topics; of course, quite expensive.
 
 To use Topics, we need to upgrade our subscription tier to _Standard_ or _Premium_.
 
@@ -38,13 +38,13 @@ Here, select the _Standard_ tier and save.
 
 ## Queue vs Topic
 
-__Queues and Topics are similar__: when an application sends a message _somewhere_, a receiver on the other side reads it and performs some operations on the received message.
+**Queues and Topics are similar**: when an application sends a message _somewhere_, a receiver on the other side reads it and performs some operations on the received message.
 
 But there is a key difference between Queues and Topics. With Queues, the first receiver that _completes_ the reading of the message also removes it from the Queue so that the message cannot be processed by other readers.
 
 ![How items are processed in a Queue](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/059-azure-service-bus-topic-vs-queue/queue-execution.gif)
 
-With Topics, the message is removed only __after every receiver has processed the message__. Every Topic has one or more Subscribers, a _connection_ between the Topic itself and the applications. All the applications _subscribe_ to a specific _Subscription_, and receive messages only from it.
+With Topics, the message is removed only **after every receiver has processed the message**. Every Topic has one or more Subscribers, a _connection_ between the Topic itself and the applications. All the applications _subscribe_ to a specific _Subscription_, and receive messages only from it.
 
 When the message is read from all the Subscribers, the message is removed from the Topic too.
 
@@ -54,11 +54,11 @@ When the message is read from all the Subscribers, the message is removed from t
 
 As stated [on the official documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#topics-and-subscriptions "Topics and subscription explanation on Microsoft docs"):
 
-> A __topic subscription__ resembles a virtual queue that receives copies of the messages that are sent to the topic. Consumers receive messages from a subscription identically to the way they receive messages from a queue.
+> A **topic subscription** resembles a virtual queue that receives copies of the messages that are sent to the topic. Consumers receive messages from a subscription identically to the way they receive messages from a queue.
 
 This means that our applications do not access directly the Topic, as we would do if we were talking about Queues. Here we access the Subscriptions to get a copy of the message on the Topic. Once the same message has been removed from all the Subscriptions, the message is also removed from the Topic.
 
-This is important to remember: when using Topics, __the Topic itself is not enough, you also need Subscriptions__.
+This is important to remember: when using Topics, **the Topic itself is not enough, you also need Subscriptions**.
 
 ## Create Topics and Subscriptions on Azure
 
@@ -74,7 +74,7 @@ Then, navigate to the newly created Topic page and, on the _Entities_ panel on t
 
 Click on the _add_ button, fill the fields and... voilá! You are ready to go!
 
-Of course, you can see all the resources directly on the browser. But, as I've explained in the previous article, I prefer another tool, __ServiceBusExplorer__, that you can [download from Chocolatey](https://community.chocolatey.org/packages/ServiceBusExplorer).
+Of course, you can see all the resources directly on the browser. But, as I've explained in the previous article, I prefer another tool, **ServiceBusExplorer**, that you can [download from Chocolatey](https://community.chocolatey.org/packages/ServiceBusExplorer).
 
 Open the tool, insert the connection string, and you'll see something like this:
 
@@ -88,9 +88,9 @@ Our applications will send messages into the _pizzaorderstopic_ Topic and read t
 
 ## How to use Azure Service Bus Topics in .NET
 
-For this article, we're gonna rework the code we've seen in the previous article. 
+For this article, we're gonna rework the code we've seen in the previous article.
 
-Now we are gonna handle the pizza orders not only for the pizza chef but also for keeping track of the invoices. 
+Now we are gonna handle the pizza orders not only for the pizza chef but also for keeping track of the invoices.
 
 ### How to send a message in a Topic with CSharp
 
@@ -108,7 +108,7 @@ await sender.SendMessageAsync(serializedContents);
 
 Of course, we must use the Topic Name instead of the Queue name.
 
-You can easily say that sending a message on a Topic is transparent to the client just by looking at the `CreateSender` signature: 
+You can easily say that sending a message on a Topic is transparent to the client just by looking at the `CreateSender` signature:
 
 ```cs
 public virtual ServiceBusSender CreateSender(string queueOrTopicName);
@@ -118,7 +118,7 @@ Now, if we run the application and order a new pizza, we will see that a new mes
 
 ![Subscriptions with the same message ready to be read](./subscriptions-with-messages.jpg)
 
-### How to receive a message from a Topic  with CSharp
+### How to receive a message from a Topic with CSharp
 
 Now that the same message is available for both _PizzaChefSubscription_ and _PizzaInvoicesSubscription_, we need to write the code to connect to the subscriptions.
 
@@ -151,7 +151,6 @@ await args.CompleteMessageAsync(args.Message);
 ```
 
 and the _PizzaOrderInvoices_ performs the following operations:
-
 
 ```cs
 string body = args.Message.Body.ToString();

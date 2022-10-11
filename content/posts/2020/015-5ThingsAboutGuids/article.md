@@ -1,19 +1,18 @@
 ---
 title: "5 things you didn't know about Guid in C#"
 path: "/blog/5-things-about-guid-in-csharp"
-tags: ['CSharp' , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "I'm pretty sure that you've already used Guids in C#, but have you ever stopped to think what they are under the hood?an 3 seconds to load. Here you'll learn few trick to improve your site performance."
 created: 2020-01-21
 updated: 2020-01-21
 ---
 
-
 I'm pretty sure that you've already used Guids in C#, but have you ever stopped to think what they are under the hood?
 
 ## #1: Guids have a fixed size
 
-A GUID is a 128-bit integer (16 bytes) value. That means that there are __more than 300, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000 different values__. A big number, isn't it?
+A GUID is a 128-bit integer (16 bytes) value. That means that there are **more than 300, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000, 000 different values**. A big number, isn't it?
 
 It is virtually impossible to have duplicates, so it is safe to use.
 
@@ -110,15 +109,15 @@ var guid = new Guid(bytes); // 00000000-0000-0000-0000-000000000000
 
 Now that you know that a Guid is made of 16 bytes, you can think "are the hyphens part of those bytes?".
 
-Well, no: those are part of the default string representation of a Guid. 
+Well, no: those are part of the default string representation of a Guid.
 
 When using the `ToString()` method you can specify the format that you want. There are different types:
 
-* __D__: 32 digits, but with the hyphens. This is the default
-* __N__: 32 digits, without any other symbols
-* __B__: here we have the hyphens, and the string is enclosed in braces
-* __P__: similar to __B__, but with parentheses instead of braces
-* __X__: here we have the hexadecimal representation of the guid.
+- **D**: 32 digits, but with the hyphens. This is the default
+- **N**: 32 digits, without any other symbols
+- **B**: here we have the hyphens, and the string is enclosed in braces
+- **P**: similar to **B**, but with parentheses instead of braces
+- **X**: here we have the hexadecimal representation of the guid.
 
 If we try to print the same Guid with the different formats, we can have something like
 
@@ -132,7 +131,6 @@ Console.WriteLine("X \t"+tmpGuid.ToString("X"));
 ```
 
 that will print
-
 
 ```cs
 D   e10deb88-171b-4c34-81f7-05fc17d16316
@@ -168,7 +166,7 @@ won't.
 
 As I said, a Guid takes 16 bytes. So it's easy to suppose that `sizeof(Guid)` will return 16.
 
-Well... no! It doesn't even compile, because _'Guid' does not have a predefined size; therefore you can use `sizeof`only in an unsafe context.
+Well... no! It doesn't even compile, because \_'Guid' does not have a predefined size; therefore you can use `sizeof`only in an unsafe context.
 
 That's because the size of a Guid is constant, but the memory allocated by the CLR isn't necessary constant (because for some architecture it can add a padding at the end, at the beginning or within the allocated memory).
 

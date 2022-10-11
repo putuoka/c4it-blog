@@ -1,14 +1,14 @@
 ---
 title: "Testing internal members with InternalsVisibleTo"
 path: "/blog/testing-internals-with-internalsvisibleto"
-tags: ["CSharp", "dotNET" , "MainArticle"]
+tags: ["CSharp", "dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Internal members can be accessed only within the same assembly. And for different assemblies? Here's for you the InternalsVisibleTo attribute!"
 created: 2020-06-02
 updated: 2020-06-02
 ---
 
-Do you remember the [__internal__ access modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal "Internal keyword reference")? It allows you to __access classes, methods and properties only within files in the same assembly__.
+Do you remember the [**internal** access modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/internal "Internal keyword reference")? It allows you to **access classes, methods and properties only within files in the same assembly**.
 
 But sometimes you need to have info about the internal state of that class but within a different assembly. An example is tests: they live in a different project, so a different assembly, but sometimes they need to access the internal properties of a class.
 
@@ -20,12 +20,12 @@ namespace FluentSumService
     public class FluentSumCalculator
     {
         internal List<int> numbers;
-        
+
         public FluentSumCalculator()
         {
             numbers = new List<int>();
         }
- 
+
         public FluentSumCalculator AddNumber(int number)
         {
             numbers.Add(number);
@@ -117,7 +117,7 @@ If you have a look at the [documentation for this attribute](https://docs.micros
 public sealed class InternalsVisibleToAttribute : Attribute
 ```
 
-This attribute targets only assemblies, so you can apply it only to the whole assembly and not to a single class; this implies that __every internal member__ defined within that assembly can be refenced by its friend assembly.
+This attribute targets only assemblies, so you can apply it only to the whole assembly and not to a single class; this implies that **every internal member** defined within that assembly can be refenced by its friend assembly.
 
 Notice also the `AllowMultiple` flag: this allows you to share internal properties to more than one assembly. You can do it in 2 ways:
 

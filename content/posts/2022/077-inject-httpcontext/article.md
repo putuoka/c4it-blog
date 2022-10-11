@@ -1,14 +1,14 @@
 ---
 title: "How to access the HttpContext in .NET API"
-path: '/blog/inject-httpcontext'
-tags: ["dotNET", "CSharp","MainArticle"]
+path: "/blog/inject-httpcontext"
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "If your application is exposed on the Web, I guess that you get some values from the HTTP Requests, don't you?"
 created: 2022-04-12
 updated: 2022-04-12
 ---
 
-If you are building an application that is exposed on the Web, you will probably need to read some data from the current HTTP Request or set some values on the HTTP Response. 
+If you are building an application that is exposed on the Web, you will probably need to read some data from the current HTTP Request or set some values on the HTTP Response.
 
 In a .NET API, all the info related to both HTTP Request and HTTP Response is stored in a global object called `HttpContext`. How can you access it?
 
@@ -32,7 +32,7 @@ That's why the .NET team has decided to abstract the retrieval of that class: we
 
 ## Add IHttpContextAccessor
 
-Now, I have this .NET project that exposes an endpoint, */WeatherForecast*, that returns the current weather for a particular city, whose name is stored in the HTTP Header "data-location". 
+Now, I have this .NET project that exposes an endpoint, _/WeatherForecast_, that returns the current weather for a particular city, whose name is stored in the HTTP Header "data-location".
 
 The real calculation (well, real... everything's fake, here 😅) is done by the WeatherService. In particular, by the `GetCurrentWeather` method.
 
@@ -82,7 +82,7 @@ Easy, right? We're almost done.
 
 ## Configure Startup class
 
-If you run the application in this way, you will not be able to access the current HTTP request. 
+If you run the application in this way, you will not be able to access the current HTTP request.
 
 That's because we haven't specified that we want to add `IHttpContextAccessor` as a service in our application.
 
@@ -108,7 +108,7 @@ Is it enough?
 
 If we use it this way, every class that needs to access the HTTP Context will have tests quite difficult to set up, because you will need to mock several objects.
 
-In fact, for mocking  `HttpContext.Request.Headers`, we need to create mocks for `HttpContext`, for `Request`, and for `Headers`.
+In fact, for mocking `HttpContext.Request.Headers`, we need to create mocks for `HttpContext`, for `Request`, and for `Headers`.
 
 This makes our tests harder to write and understand.
 
@@ -150,7 +150,7 @@ public class HttpContextWrapper : IHttpContextWrapper
 
 In this way, you will be able to write better tests both for the `HttpContextWrapper` class, by focusing on the building of the HttpRequest, and for the `WeatherService` class, so that you can write tests without worrying about setting up complex structures just for retrieving a value.
 
-But **pay attention to the dependency lifescope**! HTTP Requests info live within - guess what? - their HTTP Request. So, when defining the dependencies in the `Startup` class, remember to inject the `IHttpContextWrapper` as *Transient* or, even better, as *Scoped*. If you don't remember the difference, I got you covered [here](https://www.code4it.dev/blog/dependency-injection-lifetimes "Dependency Injection lifetimes in .NET | Code4IT")!
+But **pay attention to the dependency lifescope**! HTTP Requests info live within - guess what? - their HTTP Request. So, when defining the dependencies in the `Startup` class, remember to inject the `IHttpContextWrapper` as _Transient_ or, even better, as _Scoped_. If you don't remember the difference, I got you covered [here](https://www.code4it.dev/blog/dependency-injection-lifetimes "Dependency Injection lifetimes in .NET | Code4IT")!
 
 ## Wrapping up
 

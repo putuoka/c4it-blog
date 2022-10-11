@@ -1,7 +1,7 @@
 ---
 title: "Dependency Injection lifetimes in .NET - my epiphany"
 path: "/blog/dependency-injection-lifetimes"
-tags: ["CSharp", "dotNET" , "MainArticle"]
+tags: ["CSharp", "dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Singleton, Scoped and Transient: these are the possible lifetimes for DI with .NET Core. How do they change the way objects are constructed?"
 created: 2020-05-26
@@ -14,7 +14,7 @@ Just as a recap, DI allows you to define an association between an interface and
 
 For .NET Core applications, you can register all the dependencies in the _Startup_ class, within the _ConfigureServices_ method.
 
-You can register a dependency by specifying its __lifetime__, which is an indication about the way dependencies are created. __The three available lifetimes are Singleton, Transient and Scoped__.
+You can register a dependency by specifying its **lifetime**, which is an indication about the way dependencies are created. **The three available lifetimes are Singleton, Transient and Scoped**.
 
 _PSS! Do you know that you can use Dependency Injection even in Azure Functions? [Check it out here!](./azure-functions-startup-class "How to add a Startup class to Azure Functions")_
 
@@ -24,7 +24,7 @@ _To explain well how lifetimes work I have to do a long explanation on I built t
 
 I've created a simple Web API application in .NET Core 3. To explain how the lifetime impacts the injected instances, I've created an `IGuidGenerator` interface which contains only one method: `GetGuid()`;
 
-This interface is implemented only by the GuidGenerator class, which creates a Guid __inside the constructor__ and, every time someone calls the GetGuid method, it returns always the same. So the returned Guid is strictly related to the related GuidGenerator instance.
+This interface is implemented only by the GuidGenerator class, which creates a Guid **inside the constructor** and, every time someone calls the GetGuid method, it returns always the same. So the returned Guid is strictly related to the related GuidGenerator instance.
 
 ```cs
 public interface IGuidGenerator
@@ -153,18 +153,18 @@ This is the simplest one: it creates a unique instance of the service, that will
 services.AddSingleton<IGuidGenerator, GuidGenerator>();
 ```
 
-If we start the application and we call multiple times the Get endpoint, we'll notice that __every time we are getting the same Guid__.
+If we start the application and we call multiple times the Get endpoint, we'll notice that **every time we are getting the same Guid**.
 
 ![Singleton lifetime - the same Guid is used every time](./Singleton.png "Singleton lifetime")
 
-In the above screenshot notice that not only the Guid is always the same, but also the constructor is called only at the beginning: every time the application needs an IGuidGenerator instance, even when I call multiple times the Get method, it reuses always the same object. 
-This implies that __if you change the internal state of the injected class, all the classes will be affected!__ 
+In the above screenshot notice that not only the Guid is always the same, but also the constructor is called only at the beginning: every time the application needs an IGuidGenerator instance, even when I call multiple times the Get method, it reuses always the same object.
+This implies that **if you change the internal state of the injected class, all the classes will be affected!**
 
 Let's say that the IGuidGenerator also exposes a SetGuid method: if you call it on the ItalianGuidMessage class, which is called before the English version (see the Get method of the API controller), the EnglishGuidMessage class will return a different Guid than the original one. All until you restart the application. So pay attention to this!
 
 ## Scoped
 
-Services with a __scoped lifetime__ are created once per client request, so if you call an API multiple times __while the same instance of the application is running__, you'll see that Italian and English messages will always have the same Guid, but the value changes every time you call the endpoint.
+Services with a **scoped lifetime** are created once per client request, so if you call an API multiple times **while the same instance of the application is running**, you'll see that Italian and English messages will always have the same Guid, but the value changes every time you call the endpoint.
 
 ![Scoped lifetime - the same Guid within the same client call](./Scoped.png "Scoped lifetime")
 
@@ -202,7 +202,7 @@ public void ConfigureServices(IServiceCollection services)
     // other stuff
 
     services.AddTransient<IGuidGenerator, GuidGenerator>();
-    
+
     services.AddSingleton<IItalianGuidMessage, ItalianGuidMessage>();
     services.AddSingleton<IEnglishGuidMessage, EnglishGuidMessage>();
 }
@@ -218,10 +218,9 @@ The `IGuidGenerator` is indeed Transient, but it is injected into Singleton clas
 
 We've seen the available lifetimes for injected services. Here's a recap the differences:
 
-* __Singleton__: the same object through all the application lifetime
-* __Scoped__: a different object for every client call
-* __Transient__: a different object every time it is requested, even within the same client request
- 
+- **Singleton**: the same object through all the application lifetime
+- **Scoped**: a different object for every client call
+- **Transient**: a different object every time it is requested, even within the same client request
 
 If you want to try it, you can clone the project I used for this article on [this GitHub repository](https://github.com/code4it-dev/DependencyInjectionScopes "GitHub repository for this example").
 

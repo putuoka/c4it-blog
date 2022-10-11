@@ -1,14 +1,14 @@
 ---
 title: "How to ping from an Azure App service with TCPPING"
 path: "/blog/tcpping-azure-portal"
-tags: ['Azure' , "MainArticle"]
+tags: ["Azure", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Maybe you are used to ping services to check whether they respond or not. It works well using a local console, but within the Azure portal you must use another command: tcpping."
 created: 2019-12-13
 updated: 2019-12-13
 ---
 
-Probably you already know what __ping__ is: it is a command that you can run on your terminal to see if a host is up and running.
+Probably you already know what **ping** is: it is a command that you can run on your terminal to see if a host is up and running.
 
 It works by sending some packets to the host and waiting for a response, and it measures the round-trip time that the message takes to go to the host and come back to the client.
 
@@ -36,11 +36,11 @@ Approximate round trip times in milli-seconds:
     Minimum = 15ms, Maximum = 20ms, Average = 17ms
 ```
 
-__PSSS! Remember not to include the protocol!__
+**PSSS! Remember not to include the protocol!**
 
 ## ICMP
 
-More in detail, __ping sends an ICMP echo request__ to a specified interface and waits for a reply.
+More in detail, **ping sends an ICMP echo request** to a specified interface and waits for a reply.
 
 Just as a reminder, [ICMP (_Internet Control Message Protocol_)](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol "ICMP explanation on Wikipedia") is a network protocol that is at the same level as TCP and UDP on the networking stack, but it is typically not used for exchanging data between endpoints but only for sharing errors or information.
 
@@ -49,11 +49,12 @@ Just as a reminder, [ICMP (_Internet Control Message Protocol_)](https://en.wiki
 The problem comes when you want to ping a service hosted on Azure: in order to avoid DDoS attacks, the Azure team decided to block ICMP packets.
 
 As [stated by the Azure Networking Team](https://feedback.azure.com/forums/217313-networking/suggestions/3346609-icmp-support-for-azure-websites-roles-cloud-serv "Azure Networking Team answer"):
+
 > Unfortunately ICMP presents risks and problems for our underlying network infrastructure.
 
 So you cannot ping them.
 
-In fact, if you try it from your system, you will receive __Request time out__.
+In fact, if you try it from your system, you will receive **Request time out**.
 
 But at least you can try to reach it using a browser!
 
@@ -65,13 +66,13 @@ Of course, you can't open a browser _inside_ the Azure portal. So what?
 
 ## TCPPing - the solution for you
 
-First of all, you should try to ping the service within the Azure Portal, so that you are sure you're running the commands in the cloud environment. Azure Portal allows you to use multiple tools to interact and analyze what's going on on your App: just open your resource and head to __Development Tools__
+First of all, you should try to ping the service within the Azure Portal, so that you are sure you're running the commands in the cloud environment. Azure Portal allows you to use multiple tools to interact and analyze what's going on on your App: just open your resource and head to **Development Tools**
 
 You will find both a Console and an external tool called _Advanced Tools_: you can use both, but here I'm using the _Console_ tool:
 
 ![Azure portal available tools: Console](./azure_tools.png "Azure portal Console link")
 
-If you try to ping _myapi_ from Azure, you won't receive a __Request time out__, but a different error: 
+If you try to ping _myapi_ from Azure, you won't receive a **Request time out**, but a different error:
 
 ```bash
 Unable to contact IP driver. General failure
@@ -83,7 +84,7 @@ That's because the ping command has directly been disabled.
 
 So how can we solve it?
 
-Well, the solution is pretty easy! There is a command called __tcpping__ that allows you to do something similar, and that can be called by both the Console and the Kudu advanced tool, accessible in the Development Tools section.
+Well, the solution is pretty easy! There is a command called **tcpping** that allows you to do something similar, and that can be called by both the Console and the Kudu advanced tool, accessible in the Development Tools section.
 
 By running `tcpping myapi.azurewebsites.net`, you can get something similar:
 
@@ -111,9 +112,9 @@ That's the way to avoid ICMP packets! Just use TCP!
 
 There are also some flags that can be set:
 
-* `-n`: the number of pings to perform. If not specified, the value is 4
-* `-t`: loop infinitely
-* `-s`: run for the specified seconds
+- `-n`: the number of pings to perform. If not specified, the value is 4
+- `-t`: loop infinitely
+- `-s`: run for the specified seconds
 
 ## Conclusion
 

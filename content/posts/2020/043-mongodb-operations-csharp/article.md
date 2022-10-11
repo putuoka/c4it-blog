@@ -1,15 +1,15 @@
 ---
 title: "How to integrate MongoDB with C#"
 path: "/blog/mongodb-introduction-with-csharp"
-tags: ["CSharp", "MongoDB" , "MainArticle"]
+tags: ["CSharp", "MongoDB", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "MongoDB is a database based on JSON-like documents, but it can be queried using C#. We'll see how to perform CRUD operations and we'll create some advanced queries."
+excerpt: "MongoDB is a database based on JSON-like documents, but it can be queried using C#. We'll see how to perform CRUD operations and we'll create some advanced queries."
 created: 2020-11-03
 updated: 2020-11-03
 ---
 
-MongoDB is one of the most famous __document database engine__ currently available.
-A document database is a kind of DB that, instead of storing data in tables, stores them into __JSON-like documents__. You don't have a strict format as you would have with SQL databases, where everything is defined in terms of tables and columns; on the contrary, you have text documents that can be expanded as you want without changing all the other documents. You can also have nested information within the same document, for example, the address, info of a user.
+MongoDB is one of the most famous **document database engine** currently available.
+A document database is a kind of DB that, instead of storing data in tables, stores them into **JSON-like documents**. You don't have a strict format as you would have with SQL databases, where everything is defined in terms of tables and columns; on the contrary, you have text documents that can be expanded as you want without changing all the other documents. You can also have nested information within the same document, for example, the address, info of a user.
 
 Being based on JSON files, you can query the documents using JS-like syntax.
 
@@ -19,7 +19,7 @@ But if you are working with .NET, you might want to use [the official MongoDB dr
 
 If you want to try MongoDB on your local machine, you can download the _Community Edition_ [from the project website](https://docs.mongodb.com/manual/installation "MongoDB download link") and install it with a few clicks.
 
-If you're already used Docker (or if you want to move your first steps with this technology), you can head to my article [First steps with Docker: download and run MongoDB locally](./run-mongodb-on-docker  "First steps with Docker: download and run MongoDB locally"): in that article, I explained what is Docker, how to install it and how to use it to run MongoDB on your machine without installing the drivers.
+If you're already used Docker (or if you want to move your first steps with this technology), you can head to my article [First steps with Docker: download and run MongoDB locally](./run-mongodb-on-docker "First steps with Docker: download and run MongoDB locally"): in that article, I explained what is Docker, how to install it and how to use it to run MongoDB on your machine without installing the drivers.
 
 Alternatively, if you don't want to install Mongo on your machine, you can use the cloud version, [Mongo Atlas](https://www.mongodb.com/cloud/atlas "Mongo Atlas - MongoDB on cloud"), which offers a free tier (of course with limited resources).
 
@@ -27,17 +27,17 @@ Alternatively, if you don't want to install Mongo on your machine, you can use t
 
 As we've already seen, there are not tables. So how can you organize your data?
 
-The base structure is the __document__: here you'll store the JSON structure of your data, with all the nested fields. Documents can be queried by referencing the field names and by applying filters and sorting. On the contrary of real files, documents have no name.
+The base structure is the **document**: here you'll store the JSON structure of your data, with all the nested fields. Documents can be queried by referencing the field names and by applying filters and sorting. On the contrary of real files, documents have no name.
 
-Documents are grouped in __collections__: they are nothing but a coherent grouping of similar documents; you can think of them as they were folders.
+Documents are grouped in **collections**: they are nothing but a coherent grouping of similar documents; you can think of them as they were folders.
 
-All the collections are stored within a __database__ on which you can apply security rules, perform statistical analysis, and so on.
+All the collections are stored within a **database** on which you can apply security rules, perform statistical analysis, and so on.
 
-Finally, of course, all databases will be stored (and exposed) on a __host__: it's the endpoint reachable to perform queries. You can structure your hosts to replicate data to split the load between different nodes.
+Finally, of course, all databases will be stored (and exposed) on a **host**: it's the endpoint reachable to perform queries. You can structure your hosts to replicate data to split the load between different nodes.
 
 ![MongoDB structure](./mongo-structure.png "MongoDB stucture with Host, Databases, Collections, Documents")
 
- For this article, since I'm going to run MongoDB using Docker, you'll see that my host is on _localhost:27888_ (again, to see how I set up the port, have a look at my other article).
+For this article, since I'm going to run MongoDB using Docker, you'll see that my host is on _localhost:27888_ (again, to see how I set up the port, have a look at my other article).
 
 Of course, you can use different applications to navigate and interact with MongoDB databases. In this article, I'm going to use [MongoDB Compass Community](https://docs.mongodb.com/compass/master/install "MongoDB Compass installer"), a tool provided directly by MongoDB.
 
@@ -78,7 +78,7 @@ First of all, the `Id` field is of type `ObjectId`. This is the default object u
 
 Second, the id field name is `Id`: MongoDriver requires that, if not specified, the document entity Id must match with a property of type `ObjectId` and whose name is `Id`. If you choose another name or another type for that field you will get this exception:
 
-> FormatException: Element '_id' does not match any field or property of class BoardGameAPI.Models.Game.
+> FormatException: Element '\_id' does not match any field or property of class BoardGameAPI.Models.Game.
 
 If you want to use another name for your C# property, you can decorate that field with the `BsonId` attribute (we'll see it later).
 
@@ -127,7 +127,7 @@ Using the newly created Mongo Client, it's time to get a reference to the databa
 IMongoDatabase db = client.GetDatabase("boardgamesdb");
 ```
 
-What if the _boardgamesdb_ does not exist? Well, this method __creates it for you__ and stores the reference in the `db` variable.
+What if the _boardgamesdb_ does not exist? Well, this method **creates it for you** and stores the reference in the `db` variable.
 
 Just like with `MongoClient`, you can perform operations on the level below; in this case, you operate on collections with methods like `ListCollectionNames`, `GetCollection`, `CreateCollection`, and `DropCollection`.
 
@@ -168,7 +168,7 @@ Do you remember how we've defined the ID in the Game class?
 
 ```cs
  public ObjectId Id { get; set; }
- ```
+```
 
 So, in Mongo, that `ObjectId` field gets stored in a field called `_id` with this internal structure:
 
@@ -229,15 +229,15 @@ which will populate our item with this JSON:
 
 ```json
 {
-    "_id": "2020-10-12-06-07-07",
-    "title": "Dixit",
-    "AverageMinutesDuration": 30,
-    "MinNumberOfPlayers": 3,
-    "MaxNumberOfPlayers": 6
+  "_id": "2020-10-12-06-07-07",
+  "title": "Dixit",
+  "AverageMinutesDuration": 30,
+  "MinNumberOfPlayers": 3,
+  "MaxNumberOfPlayers": 6
 }
 ```
 
-__Remember to choose wisely how do you want to store your ID__, since if you decide to change your format while your application is already in place, you'll have trouble to handle both the ID format or to switch from one format to another.
+**Remember to choose wisely how do you want to store your ID**, since if you decide to change your format while your application is already in place, you'll have trouble to handle both the ID format or to switch from one format to another.
 
 For this article, I'll stay with our custom Id, since it's easier to manage. Of course, I have to drop the collection and add new coherent data.
 
@@ -262,7 +262,7 @@ public async Task<ActionResult<IEnumerable<Game>>> GetAll()
 
 The key point is the _filter_ parameter: it is a Filter in the format required by Mongo, which is strictly linked to the Game class, as you can see with `var filter = Builders<Game>.Filter`. So, in general, to filter for a specific class, you have to define a filter of the related type.
 
-To get all the items, you must define an _empty filter_. Yes, __not a null value__, but an empty filter.
+To get all the items, you must define an _empty filter_. Yes, **not a null value**, but an empty filter.
 
 What does `FindAsync` return? The returned type is `Task<IAsyncCursor<Game>>`, and that means that, once you've `await`-ed it, you can list all the Games by transforming it into a list or by fetching each element using the `Current` and the `MoveNext` (or the `MoveNextAsync`) methods.
 
@@ -390,7 +390,7 @@ UpdateDefinition<Game> updateFilterDefinition = updateFilter.Set(x => x.Name, ne
 
 Here we are creating a new object that will build our _Update_ operation, the `UpdateDefinitionBuilder<Game>`, and creating the rule to apply in order to update the record.
 
-It's important to see the __clear separation of concerns__: with one builder, you define _which_ items must be updated, while with the second one you define _how_ those items must be updated. 
+It's important to see the **clear separation of concerns**: with one builder, you define _which_ items must be updated, while with the second one you define _how_ those items must be updated.
 
 Finally, we can apply the changes:
 

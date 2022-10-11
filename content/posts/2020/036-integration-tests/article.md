@@ -1,13 +1,12 @@
 ---
 title: "How to run integration tests for .NET API"
 path: "/blog/integration-tests-for-dotnet-api"
-tags: ["Tests", "dotNET", "CSharp" , "MainArticle"]
+tags: ["Tests", "dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "Integration tests are useful to check if multiple components fit together well. How can you test your APIs? And how can you mock dependencies?"
+excerpt: "Integration tests are useful to check if multiple components fit together well. How can you test your APIs? And how can you mock dependencies?"
 created: 2020-08-11
 updated: 2020-08-11
 ---
-
 
 You already write Unit tests, right?
 
@@ -15,7 +14,7 @@ But sometimes you want to perform more deep tests, and test not only a small par
 
 In this article, I'm going to explain how to run integration tests on your APIs without relying on external tools like Postman: all the tests will be defined within the same solution next to your unit tests.
 
-Just as a reminder: __integration tests are used to check that multiple parts of your system work correctly together__; this includes networks, database access, file system and so on. The correctness of single components (meaning single classes and methods) is tested via unit tests.
+Just as a reminder: **integration tests are used to check that multiple parts of your system work correctly together**; this includes networks, database access, file system and so on. The correctness of single components (meaning single classes and methods) is tested via unit tests.
 
 Time to write some code!
 
@@ -69,8 +68,8 @@ Time for some tests!
 
 Create a new test project within the same solution; you can use your favorite testing framework: there's no difference in using MSTest, NUnit, XUnit, or something else.
 
-When you're done, you need to __install the
-Microsoft.AspNetCore.Mvc.Testing package__ via NuGet or via CLI.
+When you're done, you need to **install the
+Microsoft.AspNetCore.Mvc.Testing package** via NuGet or via CLI.
 
 The purpose of my tests is to instantiate an instance of my APIs in memory, call them, and check the result of the whole process.
 
@@ -82,7 +81,7 @@ var factory = new WebApplicationFactory<APIIntegrationTestsExample.Program>();
 var client = factory.CreateClient();
 ```
 
-The variable `factory` creates a [TestServer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver "TestServer class definition") whose starting point is defined in the `APIIntegrationTestsExample.Program` class: this is exactly the one used by the real project, and scaffolded by default by .NET when creating the new project. This assures that __we are using all the real dependencies and configurations__.
+The variable `factory` creates a [TestServer](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.testhost.testserver "TestServer class definition") whose starting point is defined in the `APIIntegrationTestsExample.Program` class: this is exactly the one used by the real project, and scaffolded by default by .NET when creating the new project. This assures that **we are using all the real dependencies and configurations**.
 
 Finally, I've created the HTTP client that can be used to interact with my API; you can do it in the simplest way you can imagine:
 
@@ -122,7 +121,7 @@ var client = factory.WithWebHostBuilder(builder =>
 }).CreateClient();
 ```
 
-In this way, you can customize the client by adding additional services, thanks to the `ConfigureTestServices` method defined in the _Microsoft.AspNetCore.TestHost_ namespace. __Notice that you must use ConfigureTestServices, not ConfigureServices!__
+In this way, you can customize the client by adding additional services, thanks to the `ConfigureTestServices` method defined in the _Microsoft.AspNetCore.TestHost_ namespace. **Notice that you must use ConfigureTestServices, not ConfigureServices!**
 
 This will override only the specified dependency with the specified one.
 

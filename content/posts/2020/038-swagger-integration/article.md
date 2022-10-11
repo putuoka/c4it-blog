@@ -1,13 +1,12 @@
 ---
 title: "Understanding Swagger integration in .NET Core"
 path: "/blog/swagger-integration"
-tags: ["dotNET", "CSharp" , "MainArticle"]
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "Swagger is a tool that exposes the documentation of your APIs and helps collaborating with other teams. We'll see how to integrate it with .NET Core 3, how to add XML comments and status codes."
+excerpt: "Swagger is a tool that exposes the documentation of your APIs and helps collaborating with other teams. We'll see how to integrate it with .NET Core 3, how to add XML comments and status codes."
 created: 2020-08-25
 updated: 2020-08-25
 ---
-
 
 When I write some APIs with .NET Core, one of the very first things I do is to add Swagger.
 This helps me test my code and helps other developers integrating the APIs I'm exposing.
@@ -24,7 +23,7 @@ I'm quite sure you've already seen a page like this:
 
 ![Typical Swagger UI](./swagger-generic-screen.png "Typical Swagger UI")
 
-That's a typical UI generated with Swagger that allows you to interact with the APIs and view the endpoint definitions defined using the __OpenAPI format__, a format ideated by the Swagger team which became the _de facto_ standard for API definition.
+That's a typical UI generated with Swagger that allows you to interact with the APIs and view the endpoint definitions defined using the **OpenAPI format**, a format ideated by the Swagger team which became the _de facto_ standard for API definition.
 
 ## How to integrate Swagger in .NET Core
 
@@ -77,11 +76,11 @@ To use Swagger you have to install it from NuGet. You can run `dotnet add packag
 
 Actually, that dependency installs three other packages that you can also see in the NuGet explorer screen on Visual Studio:
 
-* `Swashbuckle.AspNetCore.SwaggerGen` analyses the project endpoints and generates the OpenAPI documents
-* `Swashbuckle.AspNetCore.Swagger` exposes those documents
-* `Swashbuckle.AspNetCore.SwaggerUi` creates the UI you see when running the project
+- `Swashbuckle.AspNetCore.SwaggerGen` analyses the project endpoints and generates the OpenAPI documents
+- `Swashbuckle.AspNetCore.Swagger` exposes those documents
+- `Swashbuckle.AspNetCore.SwaggerUi` creates the UI you see when running the project
 
-__Remember to get the version 5.5.0!__
+**Remember to get the version 5.5.0!**
 
 ### Include Swagger in the project
 
@@ -96,7 +95,7 @@ services.AddSwaggerGen(c =>
 });
 ```
 
-This statement must be added __after__ any `services.AddControllers()` or `services.AddMvc()` calls.
+This statement must be added **after** any `services.AddControllers()` or `services.AddMvc()` calls.
 
 Let's dig a little deeper in the `OpenApiInfo` class: first of all, we must remember to include the `Microsoft.OpenApi.Models` namespace! Then we can notice that this object includes more fields that can be specified for your OpenAPI document, like a description, contact info and so on:
 
@@ -187,13 +186,13 @@ public Movie Get(int id)
 }
 ```
 
-Let's run the project and... __nothing happens!__ Why?
+Let's run the project and... **nothing happens!** Why?
 
 SwaggerGen can "see" only the executable code, not the comments. So we need to generate a different file and include it in the building of our OpenAPI file.
 
 In Visual Studio, open the _Properties_ view of your API project, head to the _Build_ tab, and select the _XML documentation file_ under the _Output_ section.
 
-By clicking on that checkbox, Visual Studio will populate the textbox with the absolute path for the generated file. __Remember to replace it with a relative path, or simply the file name__, because when you'll share the repository with other colleagues they will reference the path on your pc, not on theirs.
+By clicking on that checkbox, Visual Studio will populate the textbox with the absolute path for the generated file. **Remember to replace it with a relative path, or simply the file name**, because when you'll share the repository with other colleagues they will reference the path on your pc, not on theirs.
 
 ![Project-level flag that enables XML documentation](./project-xml-doc-file-path.png "Project-level flag that enables XML documentation")
 

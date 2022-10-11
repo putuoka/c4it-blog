@@ -12,12 +12,12 @@ Something strange happened today.
 
 I've developed a Class Library in .NET Framework and I tested it with the related test library.
 
-So I've integrated the library into another project. Everything was fine, I used that library without problems. 
+So I've integrated the library into another project. Everything was fine, I used that library without problems.
 But, all of a sudden:
 
 _Error CS0246: The type or namespace name 'XX' could not be found (are you missing a using directive or an assembly reference?)._
 
-__What?!?__ I've been using it for the whole week. I've tested it. I've added the reference, and the Intellisense works as well.
+**What?!?** I've been using it for the whole week. I've tested it. I've added the reference, and the Intellisense works as well.
 
 C'mon, the class is here!
 
@@ -31,7 +31,7 @@ Suddenly, a doubt: _what if I've created it in .NET Core instead of .NET Framewo
 
 And, obviously... no, it wasn't that.
 
-But I was close: the Class Library was in _.NET Framework 4.7.2_ but the application was in _.NET Framework 4.7.1_. __It was the patch version!__
+But I was close: the Class Library was in _.NET Framework 4.7.2_ but the application was in _.NET Framework 4.7.1_. **It was the patch version!**
 
 So, I just downgraded the class library version through Visual Studio, and everything went well again.
 

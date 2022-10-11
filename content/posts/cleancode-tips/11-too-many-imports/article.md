@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: Avoid using too many Imports in your classes"
-path: '/cleancodetips/too-many-imports'
+path: "/cleancodetips/too-many-imports"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Having too many 'using's, or imports, is a good indicator that your class does too many things. You should work to reduce the number of dependencies of a class."
@@ -49,7 +49,7 @@ using System.Linq;
 namespace MyProject.Modules.Video
 ```
 
-Sounds familiar? 
+Sounds familiar?
 
 If we exclude the imports necessary to use some C# functionalities
 
@@ -68,13 +68,11 @@ This means that if something changes in one of the classes that are part of thos
 
 Also, guess what comes with all those imports? **Constructor with too many parameters** (and, in fact, in this class, I have 11 dependencies injected in the constructor) and **code that is too long** and difficult to understand (and, in fact, this class has 500+ lines).
 
-
 A solution? Refactor your project in order to minimize scattering those dependencies.
 
 ## Wrapping up
 
 Having all those imports (in C# we use the keyword `using`) is a good indicator that your code does too many things. You should focus on minimizing those imports **without cheating** (like using global imports).
-
 
 Happy coding!
 

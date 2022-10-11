@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: Not all comments are bad"
-path: '/cleancodetips/good-comments'
+path: "/cleancodetips/good-comments"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Is it true that we should always avoid comments in our code? In my opinion, no: let's see when adding comments is not only good but necessary."
@@ -12,7 +12,7 @@ Many developers say that
 
 > All comments are bad! 💢
 
-False! *Most of the* comments are bad!
+False! _Most of the_ comments are bad!
 
 ## Examples of bad comments
 

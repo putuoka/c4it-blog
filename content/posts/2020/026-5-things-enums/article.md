@@ -1,7 +1,7 @@
 ---
 title: "5 things you should know about enums in C#"
 path: "/blog/5-things-enums-csharp"
-tags: ["CSharp" , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Enums are often used with C#. Boring, right? Maybe there is something you didn't know: casting, parsing and flagged enums."
 created: 2020-05-05
@@ -72,12 +72,12 @@ SetToMusical(genre);
 Console.WriteLine(genre);// Action
 ```
 
-Internally, __an enum is a numeric type__: it can be made of _byte_, _sbyte_, _short_, _ushort_, _int_, _uint_, _long_, or _ulong_ values.
-By default, an enum is a __static, Int32 value__, whose first element has value 0 and all the following elements have their value increased by 1 compared to the previous one.
+Internally, **an enum is a numeric type**: it can be made of _byte_, _sbyte_, _short_, _ushort_, _int_, _uint_, _long_, or _ulong_ values.
+By default, an enum is a **static, Int32 value**, whose first element has value 0 and all the following elements have their value increased by 1 compared to the previous one.
 
 ![Enums as Intermediate Language](./IL-int.png "Enums as Intermediate Language")
 
-We can customize this default behavior by __using a different starting value__ and then have all the other values will follow the numeric order.
+We can customize this default behavior by **using a different starting value** and then have all the other values will follow the numeric order.
 
 ```cs
 public enum MovieGenre
@@ -131,7 +131,7 @@ The GetName method is a bit cumbersome to write, so probably you'd prefer using 
 
 How can you get the value if it is set at runtime?
 
-Of course, you may use the __ToString__ method.
+Of course, you may use the **ToString** method.
 
 ```cs
 MovieGenre mg = MovieGenre.Musical;
@@ -146,11 +146,11 @@ Enum.Format(typeof(MovieGenre), mg, "g")
 
 Have you noticed the last parameter of the previous snippet? What does it mean?
 
-Well, as [you can format Guids](./5-things-about-guid-in-csharp#4-a-guid-has-multiple-formats "How to format Guids on C#" ), you can use flags to format an enum as well.
+Well, as [you can format Guids](./5-things-about-guid-in-csharp#4-a-guid-has-multiple-formats "How to format Guids on C#"), you can use flags to format an enum as well.
 
-* __G__ and  __F__ return the name of the enum. There is a small difference that occurs when an enum is used with the flag attribute (I'll talk about it later)
-* __D__ represents the value in decimal form
-* __X__ represents the value in hexadecimal form.
+- **G** and **F** return the name of the enum. There is a small difference that occurs when an enum is used with the flag attribute (I'll talk about it later)
+- **D** represents the value in decimal form
+- **X** represents the value in hexadecimal form.
 
 These flags can be used both on the `Enum.Format` and the `ToString` method.
 
@@ -172,7 +172,7 @@ If you need the numeric value of the enum, you can simply cast it.
 
 ## #3: Parsing and casting enums
 
-You can transform an enum to a string, and of course you can do the opposite! 
+You can transform an enum to a string, and of course you can do the opposite!
 
 ```cs
 MovieGenre e;
@@ -187,7 +187,7 @@ Enum.TryParse<MovieGenre>("Action", out MovieGenre e);
 
 neat and clean, isn't it?
 
-A thing that you must keep in mind is that, __if the string you pass to the method does not exist, TryParse will set to 0 the out variable__: this can cause bugs if you have defined a value associated with 0.
+A thing that you must keep in mind is that, **if the string you pass to the method does not exist, TryParse will set to 0 the out variable**: this can cause bugs if you have defined a value associated with 0.
 
 ```cs
 public enum Status
@@ -204,14 +204,14 @@ Enum.TryParse<Status>("Feiled", out Status st); // OK
 
 In the above example, "Feiled" is not a valid value, so the assigned value is 0 which is casted to OK.
 
-You can prevent this bug in 2 ways: by checking on the _returned value_ of TryParse, which returns true if the parsing was successful, false otherwise; or you can add an additional check before the parsing, using the __IsDefined__ method, with something like `Enum.IsDefined(typeof(Status), "Feiled")`.
+You can prevent this bug in 2 ways: by checking on the _returned value_ of TryParse, which returns true if the parsing was successful, false otherwise; or you can add an additional check before the parsing, using the **IsDefined** method, with something like `Enum.IsDefined(typeof(Status), "Feiled")`.
 
 ## #4: Flagged enums
 
 What if an enum fields must allow multiple values? After all, a movie can have more than one genre, right?
 
-You could implement it as a list (or an array) of flags, or... you can use the __Flags attribute__.
-This flag allows to easily apply OR operations on enums, making the code cleaner and more readable. The downside is that now enums values can't have custom values, but __must be a power of 2__, so 1, 2, 4, 8 and so on.
+You could implement it as a list (or an array) of flags, or... you can use the **Flags attribute**.
+This flag allows to easily apply OR operations on enums, making the code cleaner and more readable. The downside is that now enums values can't have custom values, but **must be a power of 2**, so 1, 2, 4, 8 and so on.
 
 ```cs
 [Flags]
@@ -267,8 +267,8 @@ Here's a method that tells if the input is valid:
 string printValidity(Status status){
     switch (status)
     {
-        case Status.Failed:  
-        case Status.OK:  
+        case Status.Failed:
+        case Status.OK:
         case Status.Waiting:
             return "Valid input";
         default:
@@ -285,15 +285,15 @@ What happens if you do this?
 var validity = printValidity((Status) 1234);
 ```
 
-Exactly, the value is _Invalid input_. So, __remember to validate inputs__!
+Exactly, the value is _Invalid input_. So, **remember to validate inputs**!
 
 ## Conclusion
 
 In this article, we've seen that
 
-* enums are just numbers in disguise;
-* you can format an enum as a string, a hexadecimal value or a numeric value;
-* you can use flags to define multiple values;
-* you should follow best practices: remember to define a default value and to validate inputs;
+- enums are just numbers in disguise;
+- you can format an enum as a string, a hexadecimal value or a numeric value;
+- you can use flags to define multiple values;
+- you should follow best practices: remember to define a default value and to validate inputs;
 
 Happy coding!

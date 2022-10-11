@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: Keep the parameters in a consistent order"
-path: '/cleancodetips/consistent-of-parameters'
+path: "/cleancodetips/consistent-of-parameters"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Following a coherent standard, even for parameters order, helps developers when writing and, even more, reading code. How to do that?"
@@ -26,7 +26,7 @@ Quite confusing, isn't it?
 
 ![Confusion intensifies](https://media.giphy.com/media/yZ2FSn86bf2co/giphy.gif "Confusion")
 
-For sure, the code is harder to understand, since the order parameters is not what the reader expects it to be.
+For sure, the code is harder to understand, since the order of the parameters is not what the reader expects it to be.
 
 But, even worse, this issue may lead to hard-to-find bugs, especially when parameters are of the same type.
 
@@ -47,15 +47,16 @@ We have two ways to prevent possible issues:
 
 To read more about this code smell, check out [this article](https://maximilianocontieri.com/code-smell-87-inconsistent-parameters-sorting "Inconsistent Parameters Sorting | Maximiliano Contieri") by Maxi Contieri!
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Conclusion
 
 To recap, always pay attention to the order of the parameters!
 
-* keep them always in the same order
-* use easy-to-understand order (remember the Principle of Least Surprise?)
-* use objects instead, if necessary.
+- keep them always in the same order
+- use easy-to-understand order (remember the Principle of Least Surprise?)
+- use objects instead, if necessary.
 
-👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1441462443364864006 "Original post on Twitter") or on the comment section below!
+👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1441462443364864006 "Original post on Twitter") or in the comment section below!
 
 🐧

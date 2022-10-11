@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: Avoid subtle duplication of code and logic"
-path: '/cleancodetips/avoid-subtle-duplication'
+path: "/cleancodetips/avoid-subtle-duplication"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Duplication is not only about lines of code, but also about data usage and meaning. You should avoid that kind of duplication."
@@ -13,14 +13,13 @@ Reducing it will help us minimize the impact of every change.
 
 Take this class as an example:
 
-
 ```cs
 class BookShelf
 {
-    private Book[] myBooks = new Book[] 
+    private Book[] myBooks = new Book[]
     {
-         new Book(1, "C# in depth"), 
-         new Book(2, "I promessi paperi") 
+         new Book(1, "C# in depth"),
+         new Book(2, "I promessi paperi")
     };
 
     public int Count() => myBooks.Length;
@@ -38,10 +37,10 @@ So, a better approach is to "centralize" the way to count the items in the colle
 ```cs
 class BookShelf
 {
-    private Book[] myBooks = new Book[] 
+    private Book[] myBooks = new Book[]
     {
-         new Book(1, "C# in depth"), 
-         new Book(2, "I promessi paperi") 
+         new Book(1, "C# in depth"),
+         new Book(2, "I promessi paperi")
     };
 
     public int Count() => myBooks.Length;
@@ -60,7 +59,7 @@ By duplicating the logic, you will need to write more tests that do the same thi
 
 Centralizing it will allow you to build safer code that is easier to test and update.
 
-A simple way to avoid "logical" duplication? Abstract classes! 
+A simple way to avoid "logical" duplication? Abstract classes!
 
 Well, there are many others... that I expect you to tell me in the comments section!
 

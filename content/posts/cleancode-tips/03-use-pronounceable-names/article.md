@@ -1,9 +1,9 @@
 ---
 title: "Clean code tip: Use pronounceable and searchable names"
-path: '/cleancodetips/use-pronounceable-names'
+path: "/cleancodetips/use-pronounceable-names"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.jpg"
-excerpt : "Two of the operations you often do with your code is to discuss it, or perform a search over it. So using good names will help in both situations."
+excerpt: "Two of the operations you often do with your code is to discuss it, or perform a search over it. So using good names will help in both situations."
 created: 2021-07-20
 updated: 2021-07-20
 ---
@@ -24,15 +24,15 @@ class DPContent
 ```
 
 Would you say aloud
+
 > Hey, Tom, have a look at the VidDurMs field!
-?
+> ?
 
 No, I don't think so. That's unnatural. Even worse for the other field, `Awbtu`. _Aw-b-too_ or _a-w-b-t-u_? Neither of them makes sense when speaking aloud. That's because this is a meaningless abbreviation.
 
 ![Blah blah blah](https://media.giphy.com/media/srb6bXZHbgDsc/source.gif)
 
-
-__Avoid using uncommon acronyms or unreadable abbreviations__: this helps readers understand better the meaning of your code, helps you communicate by voice with your colleagues or searching for a specific field using your IDE
+**Avoid using uncommon acronyms or unreadable abbreviations**: this helps readers understand better the meaning of your code, helps you communicate by voice with your colleagues or searching for a specific field using your IDE
 
 _Code is meant to be read by humans, computers do not care about the length of a field name._ Don't be afraid of using long names to help clarity.
 
@@ -41,7 +41,7 @@ Use full names, like in this example:
 ```cs
 class DisneyPlusContent
 {
-    int VideoID { get; set; } 
+    int VideoID { get; set; }
     long VideoDurationInMs { get; set; }
     bool AlreadyWatchedByThisUser { get; set; }
 }

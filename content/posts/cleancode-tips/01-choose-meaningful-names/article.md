@@ -1,9 +1,9 @@
 ---
 title: "Clean code tip: How to choose meaningful names?"
-path: '/cleancodetips/choose-meaningful-names'
+path: "/cleancodetips/choose-meaningful-names"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.jpg"
-excerpt : "Choosing meaningful names takes time! Time spent finding good names is time saved trying to figure out what you meant."
+excerpt: "Choosing meaningful names takes time! Time spent finding good names is time saved trying to figure out what you meant."
 created: 2021-05-25
 updated: 2021-05-25
 ---
@@ -35,12 +35,12 @@ public static string Get(string input)
 
 And then, when you have _almost_ everything clear, choose better names for
 
-* classes
-* methods
-* parameters
-* variables
-* namespaces
-* libraries
+- classes
+- methods
+- parameters
+- variables
+- namespaces
+- libraries
 
 ```cs
 public static string GetReversedString(string originalString)
@@ -65,15 +65,13 @@ A good moment to choose better names is while writing test: at that moment your 
 
 And don't forget about private variables and methods!
 
-So, what is "a good name"? 
+So, what is "a good name"?
 
 A good name should express:
 
-* its meaning (what a method does?)
-* its scope (for items in loops, even `var i = 0` is acceptable, if the scope is small)
-* what it represents (`originalString` is, of course, the original string)
-
-
+- its meaning (what a method does?)
+- its scope (for items in loops, even `var i = 0` is acceptable, if the scope is small)
+- what it represents (`originalString` is, of course, the original string)
 
 👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1334909329573433345) or on the comment section below!
 

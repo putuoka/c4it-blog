@@ -12,7 +12,7 @@ Azure Functions are event-driven applications that run serverless. Usually, they
 
 ![Azure Functions available triggers](./Azure-function-triggers.png "List of triggers available for Azure Functions")
 
-You can build Azure Functions with different languages, such as C#, Java, JavaScript and so on. One of the features that made the success of Azure Functions is the pricing: __you pay only for the time spent running your code__.
+You can build Azure Functions with different languages, such as C#, Java, JavaScript and so on. One of the features that made the success of Azure Functions is the pricing: **you pay only for the time spent running your code**.
 
 If you want to know more about Azure Functions, you can refer to the official [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview "Azure Functions overview").
 
@@ -42,7 +42,7 @@ public static class AzureFunctionV2
 
 ```
 
-The first thing to notice is that __this is a static class__. So you can't use a constructor, so... bye-bye, Dependency Injection!
+The first thing to notice is that **this is a static class**. So you can't use a constructor, so... bye-bye, Dependency Injection!
 
 How can you implement it?
 
@@ -175,8 +175,7 @@ We have seen how to define Dependency Injection in Azure Functions. We've done i
 
 These few steps allow us to do great things, like reading values from the config file and inject them with an `IOptions<T>` class. Also, now we can test the Azure Functions by mocking the dependencies.
 
-You can read a different point of view on this topic in [this article on Medium](https://medium.com/hitachisolutions-braintrust/azure-functions-v2-dependency-injection-using-net-core-fccd93b80c0
-).
+You can read a different point of view on this topic in [this article on Medium](https://medium.com/hitachisolutions-braintrust/azure-functions-v2-dependency-injection-using-net-core-fccd93b80c0).
 
 Also, if you want to learn even more, you can refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-dependency-injection). Pay attention that this is updated to Azure Functions v3 instead of v2.
 

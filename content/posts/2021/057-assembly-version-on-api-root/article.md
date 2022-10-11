@@ -1,9 +1,9 @@
 ---
 title: "How to expose .NET Assembly Version via API endpoint routing"
-path: '/blog/assembly-version-via-api-endpoint-routing'
-tags: ["dotNET","CSharp" , "MainArticle"]
+path: "/blog/assembly-version-via-api-endpoint-routing"
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Knowing the Assembly Version of the API you've deployed on an environment may be helpful for many reasons. We're gonna see why, how to retrieve it, and how to expose it with Endpoint Routing  (bye-bye Controllers and Actions!)"
+excerpt: "Knowing the Assembly Version of the API you've deployed on an environment may be helpful for many reasons. We're gonna see why, how to retrieve it, and how to expose it with Endpoint Routing  (bye-bye Controllers and Actions!)"
 created: 2021-05-18
 updated: 2021-05-18
 ---
@@ -24,7 +24,7 @@ string assemblyVersion = versionAttribute.InformationalVersion;
 
 Let's break it down!
 
-The first step is to __get the info about the running assembly__:
+The first step is to **get the info about the running assembly**:
 
 ```cs
 Assembly assembly = Assembly.GetEntryAssembly();
@@ -50,7 +50,7 @@ If you want to read more about Assembly versioning in .NET, just [head to the of
 
 Next, we need to expose that value using .NET Core API.
 
-Since we're exposing only that value, we might not want to create a new Controller with a single Action: in this case, __endpoint routing__ is the best choice!
+Since we're exposing only that value, we might not want to create a new Controller with a single Action: in this case, **endpoint routing** is the best choice!
 
 In the _Startup.cs_ file, under the `Configure` method, we can define how the HTTP request pipeline is configured.
 
@@ -79,7 +79,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-In this way, we will receive the message _Hi there_ every time we call the root of our API (because of the first parameter, `/`), and it happens __only when we use the GET HTTP Verb__, because of the `MapGet` method. 
+In this way, we will receive the message _Hi there_ every time we call the root of our API (because of the first parameter, `/`), and it happens **only when we use the GET HTTP Verb**, because of the `MapGet` method.
 
 ## Putting all together
 
@@ -98,14 +98,14 @@ endpoints.MapGet("/", async context =>
     Assembly assembly = Assembly.GetEntryAssembly();
     AssemblyInformationalVersionAttribute versionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
     string assemblyVersion = versionAttribute.InformationalVersion;
-    
+
     // create the dynamic object
     dynamic result = new ExpandoObject();
     result.version = assemblyVersion;
 
     // serialize the object
     string versionAsText = JsonSerializer.Serialize(result);
-    
+
     // return it as a string
     await context.Response.WriteAsync(versionAsText);
 });
@@ -154,7 +154,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-`WithAssemblyVersionOnRoot` is an __extension method__ I created to wrap that logic and make the `UseEndpoints` method cleaner. If you want to learn how to create extension methods with C#, and what are some gotchas, head to this [article](./csharp-extension-methods "How you can create extension methods in C#")!
+`WithAssemblyVersionOnRoot` is an **extension method** I created to wrap that logic and make the `UseEndpoints` method cleaner. If you want to learn how to create extension methods with C#, and what are some gotchas, head to this [article](./csharp-extension-methods "How you can create extension methods in C#")!
 
 To see the result, open Visual Studio, select the API project and click _alt + Enter_ to navigate to the Project properties. Here, under the _Package_ tag, define the version in the _Package version_ section.
 
@@ -162,7 +162,7 @@ To see the result, open Visual Studio, select the API project and click _alt + E
 
 In this screen, you can set the value of the package that will be built.
 
-To double-check that the version is correct, head to the _bin_ folder and locate the _exe_  related to your project: _right-click_ on it, go to _properties_ and to the _details_ tab. Here you can see the details of that exe:
+To double-check that the version is correct, head to the _bin_ folder and locate the _exe_ related to your project: _right-click_ on it, go to _properties_ and to the _details_ tab. Here you can see the details of that exe:
 
 ![Assembly version on exe properties](./exe-properties.png)
 
@@ -184,7 +184,7 @@ In this article, we've seen how to expose on a specific route the version of the
 
 This is useful to help you understand which version is currently running in an environment without accessing the CD pipelines to see which version has been deployed.
 
-Also, __you can use this information as a kind of health check__, since the data exposed are static and do not depend on any input or database status: the simplest match for getting info about the readiness of your application.
+Also, **you can use this information as a kind of health check**, since the data exposed are static and do not depend on any input or database status: the simplest match for getting info about the readiness of your application.
 
 What other info would you add to the exposed object? Let me know in the comment section 👇
 

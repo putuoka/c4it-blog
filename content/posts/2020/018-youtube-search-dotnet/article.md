@@ -1,7 +1,7 @@
 ---
 title: "How to search for YouTube videos in a channel with .NET Core 3"
 path: "/blog/csharp-extension-methods"
-tags: ['CSharp', 'dotNET', 'YouTube' , "MainArticle"]
+tags: ["CSharp", "dotNET", "YouTube", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "YouTube provides some APIs for getting info about a channel videos. But they also provide .NET libraries to achieve the same result with C#. Let's have a try!"
 created: 2020-03-02
@@ -47,7 +47,7 @@ public class YouTubeVideo
 {
     public string Id { get; set; }
     public string Title { get; set; }
-    public string Description { get; set; } 
+    public string Description { get; set; }
     public string Thumbnail { get; set; }
     public string Picture { get; set; }
 }
@@ -65,7 +65,7 @@ using (var youtubeService = new YouTubeService(new BaseClientService.Initializer
     ApiKey = '<your api key>'
 }))
 {
-    // todo 
+    // todo
 }
 ```
 
@@ -88,7 +88,7 @@ The `YouTubeService` class contains references to most of the capabilities provi
 
 _Confession time!_ I still haven't figured out what the _snippet_ value means, and if there are other values. Every example in the documentation use this value.
 
-The parameters meaning is straightforward. But just a consideration: since the service searches for each part of YouTube, __you can restrict the type of content that you want__. Here I set "video", but you can use a combination of "video", "channel" and "playlist", separated by a comma. 
+The parameters meaning is straightforward. But just a consideration: since the service searches for each part of YouTube, **you can restrict the type of content that you want**. Here I set "video", but you can use a combination of "video", "channel" and "playlist", separated by a comma.
 
 Now that we have set our search parameters, we can get the results:
 
@@ -121,7 +121,7 @@ foreach (var responseVideo in searchListResponse.Items)
 {
     videos.Add(new YouTubeVideo()
     {
-        Id = responseVideo.Id.VideoId, 
+        Id = responseVideo.Id.VideoId,
         Description = responseVideo.Snippet.Description,
         Title = responseVideo.Snippet.Title,
         Picture = GetMainImg(responseVideo.Snippet.Thumbnails),
@@ -130,7 +130,7 @@ foreach (var responseVideo in searchListResponse.Items)
 }
 ```
 
-_Notice_: most of the interesting properties of a video are stored in the inner fields, like _Id.VideoId_ or _Snippet.Description_. Also, notice that __each element has 4 thumbnails__, one for each resolution. Since some of them might be empty, you should select a fallback value.
+_Notice_: most of the interesting properties of a video are stored in the inner fields, like _Id.VideoId_ or _Snippet.Description_. Also, notice that **each element has 4 thumbnails**, one for each resolution. Since some of them might be empty, you should select a fallback value.
 
 ## Final result
 
@@ -140,7 +140,7 @@ Now you have all the info you need! You can have a look at a complete example on
 
 As you might have noticed, I didn't mention the pagination.
 
-YouTube uses a curious way to handle it: instead of allowing you to set the current page (or the typical skip and limit parameters), __it returns a token for the next page and a token for the previous page__.
+YouTube uses a curious way to handle it: instead of allowing you to set the current page (or the typical skip and limit parameters), **it returns a token for the next page and a token for the previous page**.
 
 In fact, the _searchListResponse_ contains two properties, `NextPageToken` and `PrevPageToken` that must be used for the pagination. So you must save the token somewhere and use it as a parameter of `searchListRequest`.
 
@@ -152,9 +152,9 @@ var nextPageToken = searchListResponse.NextPageToken;
 // when you are querying next page
 searchListRequest.PageToken = nextPageToken;
 
-``` 
+```
 
 ## Wrapping up
 
-Here I searched for content on YouTube using .NET Core 3. 
+Here I searched for content on YouTube using .NET Core 3.
 Just remember that the result data are about the search preview, so the description and the images are not the same that you would retrieve by analysing the detail of a single video. For example, the description field here is a shortened version of the real description of the video. You will see how to get those details in a separate article.

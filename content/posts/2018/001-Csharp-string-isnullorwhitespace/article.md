@@ -1,7 +1,7 @@
 ---
 title: "How to check if a string is really empty with C#"
 path: "/blog/csharp-check-if-string-is-empty"
-tags: ['CSharp', "MainArticle"] 
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Is a string empty? What if it contains only white spaces? You shouldn't reinvent the wheel, since .NET exposes methods exactly for these cases: String.IsNullOrEmpty and String.IsNullOrWhiteSpace."
 created: 2018-10-01
@@ -37,7 +37,7 @@ return myString==null || myString == String.Empty || myString.Length == 0;
 
 Ok, we should be fine. But, what if the string contains only whitespaces?
 
-I mean, the string `"     "`, passed to the `IsStringEmpty` method, will return true.
+I mean, the string `" "`, passed to the `IsStringEmpty` method, will return true.
 
 If that's not what we want, we should include this check on the method.  
 Of course, this implies a bit of complexity to check null values.
@@ -94,9 +94,9 @@ Fine. Too tricky, isn't it? And we just reinvented the wheel.
 
 C# provides two methods to achieve this result, [String.IsNullOrEmpty](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty "String.IsNullOrEmpty documentation") and  [String.IsNullOrWhiteSpace](https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace "String.IsNullOrWhitespace documentation"), with a subtle difference.
 
-`String.IsNullOrEmpty` checks only if __the string passed as parameter has at least one symbol__, so it doesn't recognize strings composed by empty characters.
+`String.IsNullOrEmpty` checks only if **the string passed as parameter has at least one symbol**, so it doesn't recognize strings composed by empty characters.
 
-`String.IsNullOrWhitespace` covers the scenario described in this post. It checks __both empty characters and for escape characters__.
+`String.IsNullOrWhitespace` covers the scenario described in this post. It checks **both empty characters and for escape characters**.
 
 ```cs
 string str1 = "hello";

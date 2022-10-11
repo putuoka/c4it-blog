@@ -1,9 +1,9 @@
 ---
 title: "Clean code tips - Error handling"
 path: "/blog/clean-code-error-handling"
-tags: ["Clean Code" , "MainArticle"]
+tags: ["Clean Code", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "The way you handle errors on your code can have a huge impact on the maintainability of your projects. Don't underestimate the power of clean error handling."
+excerpt: "The way you handle errors on your code can have a huge impact on the maintainability of your projects. Don't underestimate the power of clean error handling."
 created: 2020-12-15
 updated: 2020-12-15
 ---
@@ -20,7 +20,7 @@ This is the fourth part of this series about clean code, which is a recap of the
 
 ## Status codes or exceptions?
 
-In Uncle Bob's opinion, __we should always prefer exceptions over status codes when returning values__.
+In Uncle Bob's opinion, **we should always prefer exceptions over status codes when returning values**.
 
 Generally speaking, I agree. But let's discuss a little about the differences.
 
@@ -86,23 +86,23 @@ public string DownloadContent(string url)
 
 As you can see, the code is clearly easier to read: the "main" execution is defined within the `try` block.
 
-__What are the pros and cons of using exceptions over status codes__?
+**What are the pros and cons of using exceptions over status codes**?
 
-* __PRO__: the "happy path" is easier to read
-* __PRO__: every time you forget to manage all the other cases, you will see a meaningful exception instead of ending up with a messy execution without a clue of what went wrong
-* __PRO__: the execution and the error handling parts are strongly separated, so you can easily separate the two concerns
-* __CON__: you are defining the execution path using exceptions instead of status (which is bad...)
-* __CON__: every time you add a `try-catch` block, you are adding overhead on the code execution.
+- **PRO**: the "happy path" is easier to read
+- **PRO**: every time you forget to manage all the other cases, you will see a meaningful exception instead of ending up with a messy execution without a clue of what went wrong
+- **PRO**: the execution and the error handling parts are strongly separated, so you can easily separate the two concerns
+- **CON**: you are defining the execution path using exceptions instead of status (which is bad...)
+- **CON**: every time you add a `try-catch` block, you are adding overhead on the code execution.
 
 The reverse is obviously valid for status codes.
 
-So, what to do? Well, __exceptions should be used in _exceptional_ cases__, so if you are expecting a range of possible status that can be all managed in a reasonable way, go for enums. If you are expecting an "unexpected" path that you cannot manage directly, go for exceptions!
+So, what to do? Well, **exceptions should be used in _exceptional_ cases**, so if you are expecting a range of possible status that can be all managed in a reasonable way, go for enums. If you are expecting an "unexpected" path that you cannot manage directly, go for exceptions!
 
-__If you really need to use status code, use enums instead of strings or plain numbers.__
+**If you really need to use status code, use enums instead of strings or plain numbers.**
 
 ## TDD can help you handling errors
 
-Don't forget that error handling must be thoroughly tested. One of the best ways is to write your tests first: __this will help you figuring out what kind of exceptions, if any, your method should throw, and which ones it should manage__.
+Don't forget that error handling must be thoroughly tested. One of the best ways is to write your tests first: **this will help you figuring out what kind of exceptions, if any, your method should throw, and which ones it should manage**.
 
 Once you have written some tests for error handling, add a `try-catch` block and start thinking to the actual business logic: you now can be sure that you're covering errors with your tests.
 
@@ -151,11 +151,11 @@ void Main()
 }
 ```
 
-This seems reasonable, but what does it imply? First of all, __we are repeating the same error handling__ in multiple `catch` blocks. Here I have only 2 custom exceptions, but think of complex libraries that can throw tens of exceptions. Also, __what if the library adds a new Exception?__ In this case, you should update every client that calls the `DownloadValue` method.
+This seems reasonable, but what does it imply? First of all, **we are repeating the same error handling** in multiple `catch` blocks. Here I have only 2 custom exceptions, but think of complex libraries that can throw tens of exceptions. Also, **what if the library adds a new Exception?** In this case, you should update every client that calls the `DownloadValue` method.
 
 Also, the caller is not actually interested on the type of exception thrown by the external library; it cares only of the status of the operations, not the reason of a potential failure.
 
-So, in this case, the best thing to do is to __wrap this external class into a custom one__. In this way we can define our Exception types, enrich them with all the properties we need, and catch only them; all of this while being sure that even if the external library changes, our code won't be affected.
+So, in this case, the best thing to do is to **wrap this external class into a custom one**. In this way we can define our Exception types, enrich them with all the properties we need, and catch only them; all of this while being sure that even if the external library changes, our code won't be affected.
 
 So, here's an example of how we can wrap the `ExternalDependency` class:
 
@@ -202,7 +202,7 @@ We can deal with it in two ways: avoid returning null from a function and avoid 
 
 Unless you don't have specific reasons to return `null`, so when that value is acceptable in your domain, try not to return `null`.
 
-For _string values_, you can simply return empty strings, __if it is considered an acceptable value__.
+For _string values_, you can simply return empty strings, **if it is considered an acceptable value**.
 
 For _lists of values_, you should return an empty list.
 
@@ -263,9 +263,9 @@ public float CalculatePension(Person person, Contract contract, List<Benefit> be
 }
 ```
 
-... and now see what happens when you repeat those checks for every method you write. 
+... and now see what happens when you repeat those checks for every method you write.
 
-As we say, __prevention is better than the cure!__
+As we say, **prevention is better than the cure!**
 
 ## Progressive refinements
 
@@ -282,7 +282,7 @@ First step: read a stream from file system:
     {
         Stream stream = ReadFromFileSystem(filePath);
 
-        if (stream != null && stream.Length > 0) 
+        if (stream != null && stream.Length > 0)
             return (true, stream);
     }
 
@@ -364,7 +364,7 @@ void Main()
 }
 ```
 
-Quite hard to understand, right? __All those if-else do not add value to our code__. We don't manage errors in an alternate way, we just write on console that something has gone wrong. So, we can improve it by removing all those `else` blocks.
+Quite hard to understand, right? **All those if-else do not add value to our code**. We don't manage errors in an alternate way, we just write on console that something has gone wrong. So, we can improve it by removing all those `else` blocks.
 
 ```cs
 void Main()
@@ -418,7 +418,7 @@ We can notice 3 main things:
 2. if the stream is invalid, we throw a new `DataTransferException` exception with all the info we need;
 3. since we don't know if the native classes to interact with file system will change and throw different exceptions, we wrap every error into our custom `DataTransferException`.
 
-Here I decided to remove the boolean value because we don't have an alternate way to move on with the operations. If we had a fallback way to retrieve the stream (for example from another source) we could have kept our tuple and perform the necessary checks. 
+Here I decided to remove the boolean value because we don't have an alternate way to move on with the operations. If we had a fallback way to retrieve the stream (for example from another source) we could have kept our tuple and perform the necessary checks.
 
 The `ConvertStreamIntoString` does not so much, it just calls another method. If we have control over that `ConvertToString` we can handle it like we did with `ReadDataFromFile`. We can observe that we don't need to check if the input stream is valid because we have already done in the `ReadDataFromFile` method.
 
@@ -484,12 +484,12 @@ Much better, isn't it?
 
 We've seen that writing good error handling is not as easy as it seems. You must consider a lot of things, like
 
-* choosing if using only exceptions or rely also on status codes
-* define which exceptions a method should throw and which ones it should catch (you can use TDD to plan for them easily)
+- choosing if using only exceptions or rely also on status codes
+- define which exceptions a method should throw and which ones it should catch (you can use TDD to plan for them easily)
 
 Also, remember that
 
-* external libraries may change or may be cumbersome, so you'd better wrap external classes into custom ones
-* exceptions should be client-oriented, to help callers understand what's going on without unnecessary details
+- external libraries may change or may be cumbersome, so you'd better wrap external classes into custom ones
+- exceptions should be client-oriented, to help callers understand what's going on without unnecessary details
 
 Happy coding!

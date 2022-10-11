@@ -1,13 +1,12 @@
 ---
 title: "Clean code tips - comments and formatting"
 path: "/blog/clean-code-comments-and-formatting"
-tags: [ "Clean Code" , "MainArticle"]
+tags: ["Clean Code", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Are all comments bad? When they are necessary? Why formatting is so important? Writing clean code does not only refer to the executed code, but also to everything around."
 created: 2020-08-18
 updated: 2020-08-18
 ---
-
 
 This is the second part of my series of tips about clean code. We'll talk about comments, why many of them are useless or even dangerous, why some are necessary and how to improve your comments. We'll also have a look at why formatting is so important, and we can't afford to write messy code.
 
@@ -21,7 +20,7 @@ Here's the list (in progress)
 
 ## Comments are generally bad, but sometimes necessary
 
-Often you see comments that explain what a method or a class does. 
+Often you see comments that explain what a method or a class does.
 
 ```csharp
 /// <summary>
@@ -42,14 +41,13 @@ Luckily sometimes comments are helpful; rare cases, but they exist.
 
 ## Good comments
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ Not all comments are evil. Some good examples?<br>1. intentions (what does this regex mean?)<br>2. reasons (eg: why is that the default value?)<br>3. // TODO comments (only if temporary!!)<br>4. highlight the importance of some code<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284601759214833666?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote> 
-
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ Not all comments are evil. Some good examples?<br>1. intentions (what does this regex mean?)<br>2. reasons (eg: why is that the default value?)<br>3. // TODO comments (only if temporary!!)<br>4. highlight the importance of some code<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284601759214833666?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote>
 
 Yes, sometimes comments are useful. Or even necessary. Let's see when.
 
 ### Show intention and meaning
 
-Sometimes the external library you're using is not well documented, or you are writing an algorithm that needs some explanations. Put a comment to explain __what__ you are doing and __why__.
+Sometimes the external library you're using is not well documented, or you are writing an algorithm that needs some explanations. Put a comment to explain **what** you are doing and **why**.
 
 Another example is when you are using _regular expressions_: the meaning can be really hard to grasp, so using a comment to explain what you are doing is the best thing to do:
 
@@ -107,11 +105,11 @@ public string GetImagePath(string resourceId)
     // The source returns image paths with trailing whitespaces. We must remove them.
     return item.ImagePath.Trim();
 }
-``` 
+```
 
 ## Bad comments
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ When a comment is bad?<br>1. It doesn&#39;t say anything important not already written in code<br>2. It lies (maybe because the code has changed in the meanwhile)<br>3. It&#39;s used to indicate the end of a method (if you need them, refactor the method!)<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284603160221429760?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote> 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ When a comment is bad?<br>1. It doesn&#39;t say anything important not already written in code<br>2. It lies (maybe because the code has changed in the meanwhile)<br>3. It&#39;s used to indicate the end of a method (if you need them, refactor the method!)<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284603160221429760?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote>
 
 Most of the time comments should be avoided. They can lead confusion to the developer, not be updated to the latest version of the code or they just make the code harder to read. Let's see some of the bad uses of comments.
 
@@ -204,9 +202,9 @@ Better, isn't it?
 
 ## Both bad and good
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ What about Javadoc-like comments?<br><br>✅ they explain what a method does and why<br>❌they just list the params without adding useful info<br>❌ they&#39;re written also for private methods<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284604503979962369?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote> 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ What about Javadoc-like comments?<br><br>✅ they explain what a method does and why<br>❌they just list the params without adding useful info<br>❌ they&#39;re written also for private methods<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284604503979962369?ref_src=twsrc%5Etfw">July 18, 2020</a></blockquote>
 
-There are comments that are both good and bad, it depends on how you structure them. 
+There are comments that are both good and bad, it depends on how you structure them.
 
 Take for example documentation for APIs.
 
@@ -270,7 +268,7 @@ Here's a great quote from that book:
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗A good structure for files?<br>Small/medium files, with the most general info on top. The more you scroll down, the more you find the details.<br><br>This will help others understanding if the file they&#39;re looking for is that one without getting lost in the code.<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1284797140607393792?ref_src=twsrc%5Etfw">July 19, 2020</a></blockquote>
 
 Think of a class as if it was a news article. Would you prefer all the info mixed up or have a clear, structured content?
-So a good idea is to have __all the general info on the top of the files__, and order the functions in a way that the more you scroll down in the file, the more you get into the details of what's going on.
+So a good idea is to have **all the general info on the top of the files**, and order the functions in a way that the more you scroll down in the file, the more you get into the details of what's going on.
 
 This will help the readers understanding what the class does in a general way by just having a look at the top of the class. If they are interested they can just scroll down and read the details.
 
@@ -292,9 +290,9 @@ For me the second option is odd. But it's not wrong. Whichever you prefer, remem
 
 ## Conclusion
 
-We've seen some aspects that are considered secondary: coding and formatting. They are part of the codebase, and you should take care of them. 
+We've seen some aspects that are considered secondary: coding and formatting. They are part of the codebase, and you should take care of them.
 
-In general, when you're writing code and comments, stop for a second and think _"is this part readable? Is it meaningful? Can I improve it?"_. 
+In general, when you're writing code and comments, stop for a second and think _"is this part readable? Is it meaningful? Can I improve it?"_.
 
 Don't forget that you're doing it not only for others but even for your future self.
 

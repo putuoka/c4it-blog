@@ -1,9 +1,9 @@
 ---
 title: "Enum.HasFlag performance with BenchmarkDotNet"
 path: "/blog/hasflag-performance-benchmarkdotnet"
-tags: ["CSharp", "dotNET", "Performance" , "MainArticle"]
+tags: ["CSharp", "dotNET", "Performance", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "BenchmarkDotNet allows you to test the performance on .NET methods. So let's answer a question: is the Enum.HasFlag method really that slow?"
+excerpt: "BenchmarkDotNet allows you to test the performance on .NET methods. So let's answer a question: is the Enum.HasFlag method really that slow?"
 created: 2020-06-30
 updated: 2020-06-30
 ---
@@ -24,6 +24,7 @@ enum Beverage
 // and, somewhere else
 var beverage = Beverage.Water | Beverage.Tea;
 ```
+
 The key point is that all enum values are power of 2 (so 1, 2, 4, 8 and so on).
 
 To check if a variable includes a specific value, you can use the HasFlags method:
@@ -121,18 +122,18 @@ public void RunWithBitOperator()
 {
     tests.Select(x => (x & Beverage.Tea) == Beverage.Tea).ToList();
 }
-``` 
+```
 
-That's it: __switch the build configuration to Release__ and run the program!
+That's it: **switch the build configuration to Release** and run the program!
 
 ![Performance comparison for 50 elements](./benchmarking-base.png "With 50 elements the performances are almost the same")
 
 The result is provided in the console as a table:
 
-|             Method |     Mean |   Error |  StdDev |
-|------------------- |---------:|--------:|--------:|
-|     RunWithHasFlag | __287.1 ns__ | 3.31 ns | 3.10 ns |
-| RunWithBitOperator | __290.2 ns__ | 3.54 ns | 2.96 ns |
+| Method             |         Mean |   Error |  StdDev |
+| ------------------ | -----------: | ------: | ------: |
+| RunWithHasFlag     | **287.1 ns** | 3.31 ns | 3.10 ns |
+| RunWithBitOperator | **290.2 ns** | 3.54 ns | 2.96 ns |
 
 As you can see, the two ways took almost the same time: 2.87ns against 290ns.
 
@@ -151,14 +152,14 @@ and, in the Setup method, just replace the end value in the for loop.
 
 ![Performance comparison for 50, 100 and 200 elements](./benchmarking-parm-size.png "Even for 100 and 200 elements the performance difference can be ignored")
 
-|             Method | Size |     Mean |    Error |   StdDev |
-|------------------- |----- |---------:|---------:|---------:|
-|     RunWithHasFlag |   50 | __291.1 ns__ |  4.78 ns |  5.69 ns |
-| RunWithBitOperator |   50 | __288.4 ns__ |  3.15 ns |  2.94 ns |
-|     RunWithHasFlag |  100 | __501.7 ns__ |  5.18 ns |  4.84 ns |
-| RunWithBitOperator |  100 | __503.3 ns__ |  5.93 ns |  5.55 ns |
-|     RunWithHasFlag |  200 | __926.6 ns__ |  8.34 ns |  6.51 ns |
-| RunWithBitOperator |  200 | __938.6 ns__ | 17.05 ns | 20.94 ns |
+| Method             | Size |         Mean |    Error |   StdDev |
+| ------------------ | ---- | -----------: | -------: | -------: |
+| RunWithHasFlag     | 50   | **291.1 ns** |  4.78 ns |  5.69 ns |
+| RunWithBitOperator | 50   | **288.4 ns** |  3.15 ns |  2.94 ns |
+| RunWithHasFlag     | 100  | **501.7 ns** |  5.18 ns |  4.84 ns |
+| RunWithBitOperator | 100  | **503.3 ns** |  5.93 ns |  5.55 ns |
+| RunWithHasFlag     | 200  | **926.6 ns** |  8.34 ns |  6.51 ns |
+| RunWithBitOperator | 200  | **938.6 ns** | 17.05 ns | 20.94 ns |
 
 As you see, nothing changes if we change the array size.
 
@@ -171,13 +172,13 @@ That's simple: it's an old problem, which has been fixed in 2017. That's one of 
 So the best way to try it is to try with different runtimes.
 
 To set up the benchmarking on multiple runtimes we need to do few additional steps:
-first of all, you need to __install the C++ Desktop libraries__ using the Visual Studio installer.
+first of all, you need to **install the C++ Desktop libraries** using the Visual Studio installer.
 
 ![Installing C++ on Visual Studio 2019](./vsinstaller-cpp.png "Installing C++ on Visual Studio 2019")
 
 This provides the underlying libraries used by BenchmarkDotNet to run the different frameworks.
 
-Next step is to __edit the csproj file__ of your project, transform the `TargetFramework` to `TargetFrameworks` (just the plural) and specify the list of libraries you want to target, separated by semicolon.
+Next step is to **edit the csproj file** of your project, transform the `TargetFramework` to `TargetFrameworks` (just the plural) and specify the list of libraries you want to target, separated by semicolon.
 
 ```xml
 <PropertyGroup>
@@ -201,12 +202,12 @@ That's it! Now run the project and see how the performances dramatically changed
 
 This execution took about 7 minutes, because it run 12 benchmarks and, for each one, there was a warming up phase (which can be skipped, if you prefer).
 
-|             Method |           Job |       Runtime | Size |       Mean |    Error |   StdDev |
-|------------------- |-------------- |-------------- |----- |-----------:|---------:|---------:|
-|     RunWithHasFlag |    .NET 4.6.1 |    .NET 4.6.1 |  200 | __9,356.4 ns__ | 61.91 ns | 57.91 ns |
-| RunWithBitOperator |    .NET 4.6.1 |    .NET 4.6.1 |  200 | __3,807.3 ns__ | 24.36 ns | 22.78 ns |
-|     RunWithHasFlag | .NET Core 3.1 | .NET Core 3.1 |  200 |   __923.4 ns__ | 13.37 ns | 25.76 ns |
-| RunWithBitOperator | .NET Core 3.1 | .NET Core 3.1 |  200 |   __917.7 ns__ |  9.52 ns |  7.43 ns |
+| Method             | Job           | Runtime       | Size |           Mean |    Error |   StdDev |
+| ------------------ | ------------- | ------------- | ---- | -------------: | -------: | -------: |
+| RunWithHasFlag     | .NET 4.6.1    | .NET 4.6.1    | 200  | **9,356.4 ns** | 61.91 ns | 57.91 ns |
+| RunWithBitOperator | .NET 4.6.1    | .NET 4.6.1    | 200  | **3,807.3 ns** | 24.36 ns | 22.78 ns |
+| RunWithHasFlag     | .NET Core 3.1 | .NET Core 3.1 | 200  |   **923.4 ns** | 13.37 ns | 25.76 ns |
+| RunWithBitOperator | .NET Core 3.1 | .NET Core 3.1 | 200  |   **917.7 ns** |  9.52 ns |  7.43 ns |
 
 The above table is a part of the result that you see in the previous image.
 

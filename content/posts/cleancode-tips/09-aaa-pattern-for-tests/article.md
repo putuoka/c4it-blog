@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: AAA pattern for tests: why is it important?"
-path: '/cleancodetips/aaa-pattern-for-tests'
+path: "/cleancodetips/aaa-pattern-for-tests"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "The most important trait of Tests? They must be correct. The second one? They must be readable. The AAA pattern helps you write better tests."
@@ -12,11 +12,11 @@ Even though many developers underestimate this part, tests should be written eve
 
 This is true because, while production code is meant to be executed by the application, good tests allow you to document the behavior of the production code. So, the first consumers of the tests are the developers themselves.
 
-So, how can we write better tests? A simple trick is following the *«Arrange, Act, Assert»* pattern.
+So, how can we write better tests? A simple trick is following the _«Arrange, Act, Assert»_ pattern.
 
 ## A working (but bad) example
 
-As long as the tests pass, they are fine. 
+As long as the tests pass, they are fine.
 
 Take this example:
 
@@ -37,11 +37,11 @@ So, it's better to explicitly separate the sections of the test. In the end, it'
 
 A better way to organize tests is by following the AAA pattern: **Arrange, Act, Assert**.
 
-During the *Arrange* part, you define all the *preconditions* needed for your tests. You set up the input values, the mocked dependencies, and everything else needed to run the test.
+During the _Arrange_ part, you define all the _preconditions_ needed for your tests. You set up the input values, the mocked dependencies, and everything else needed to run the test.
 
-The *Act* part is where you eventually run the production code. The easiest example is to run a method in the *System Under Test*.
+The _Act_ part is where you eventually run the production code. The easiest example is to run a method in the _System Under Test_.
 
-Finally, the *Assert* part, where you check that everything worked as expected.
+Finally, the _Assert_ part, where you check that everything worked as expected.
 
 ```cs
 [Test]
@@ -52,7 +52,7 @@ public void TestDateRange_WithFutureDate()
     var otherDate = new DateTime(2021, 2, 8);
 
     // Act
-    var diff = (otherDate.Date - today.Date).Days; 
+    var diff = (otherDate.Date - today.Date).Days;
 
     // Assert
     Assert.AreEqual(5, diff);

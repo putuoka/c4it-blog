@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: use yield return to return one item at the time"
-path: '/csharptips/yield-return'
+path: "/csharptips/yield-return"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "Yield is a keyword that allows you to return an item at the time instead of creating a full list and returning it as a whole. "
@@ -16,7 +16,7 @@ So, what does `yield return` mean? How is it related to collections of items?
 
 ## Using Lists
 
-Say that you're returning a collection of items and that you need to iterate over them. 
+Say that you're returning a collection of items and that you need to iterate over them.
 
 A first approach could be creating a list with all the items, returning it to the caller, and iterating over the collection:
 
@@ -45,7 +45,7 @@ void Main()
 }
 ```
 
-This snippet creates the whole collection and then prints the values inside that list. On the console, you'll see this text: 
+This snippet creates the whole collection and then prints the values inside that list. On the console, you'll see this text:
 
 ```txt
 Added item 0
@@ -133,16 +133,15 @@ It's like an automatic iterator: every time you get a result, the iterator advan
 
 Just a note: `yield` works only for methods that return `IAsyncEnumerable<T>`, `IEnumerable<T>`, `IEnumerable`, `IEnumerator<T>`, or `IEnumerator`.
 
-You cannot use it with a method that returns, for instance, `List<T>`, because, as the error message says, 
+You cannot use it with a method that returns, for instance, `List<T>`, because, as the error message says,
 
 > The body of X cannot be an iterator block because `List<int>` is not an iterator interface type
 
 ![Cannot use yield return with lists](./yield-with-list.png)
 
-
 ## A real use case
 
-If you use **NUnit** as a test suite, you've probably already used this keyword. 
+If you use **NUnit** as a test suite, you've probably already used this keyword.
 
 In particular, when using the `TestCaseSource` attribute, you specify the name of the class that outputs the test cases.
 

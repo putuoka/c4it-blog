@@ -1,20 +1,20 @@
 ---
 title: "MSTest CollectionAssert class - an overview"
 path: "/blog/mstests-collectionassert-overview"
-tags: ['CSharp', 'Tests' , "MainArticle"]
+tags: ["CSharp", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "The CollectionAssert class if fine for basic tests on collections in C#. We will have a look at the methods exposed by this class."
 created: 2020-02-04
 updated: 2020-02-04
 ---
 
-This is the third part of our journey. In the [first part](./mstests-assert-overview "Unit testing with Assert") we listed the methods belonging to the __Assert__ class, while in the [second part](./mstests-stringassert-overview "Unit testing with StringAssert") we had a look at the __StringAssert__ class.
+This is the third part of our journey. In the [first part](./mstests-assert-overview "Unit testing with Assert") we listed the methods belonging to the **Assert** class, while in the [second part](./mstests-stringassert-overview "Unit testing with StringAssert") we had a look at the **StringAssert** class.
 
 Now we'll deep dive into the CollectionAssert class, that is a good fit for ensuring that a collection of elements follows desired specifications.
 
 ## Introduction to CollectionAssert
 
-[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.collectionassert "CollectionAssert class on Microsoft") tests various conditions associated with collections, like tests about the type of the elements. It is important to say that this class does not check if every element in the collection follows a certain rule (like "The ID must be greater than 0"), but it's more about __high level checks__.
+[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.collectionassert "CollectionAssert class on Microsoft") tests various conditions associated with collections, like tests about the type of the elements. It is important to say that this class does not check if every element in the collection follows a certain rule (like "The ID must be greater than 0"), but it's more about **high level checks**.
 
 For these examples I'll reuse two classes created for the first article of this series: _User_ and _AdminUser_: the second class extends the first one:
 
@@ -24,7 +24,7 @@ public class User
     public int Id { get; set; }
     public string Username { get; set; }
 }
- 
+
 public class AdminUser : User
 {
     public string Department { get; set; }
@@ -34,11 +34,11 @@ public class AdminUser : User
 
 ## CollectionAssert.AllItemsAreInstancesOfType
 
-With this method we can check if all the elements belonging to a collection are of the same type. 
+With this method we can check if all the elements belonging to a collection are of the same type.
 
 A simple example could be the one with a list of strings.
 
-``` csharp
+```csharp
 [TestMethod]
 public void AllItemsAreInstanceOfType_String()
 {
@@ -46,14 +46,14 @@ public void AllItemsAreInstanceOfType_String()
 
     CollectionAssert.AllItemsAreInstancesOfType(stringArray, typeof(string));
 }
-``` 
+```
 
-Of course all the elements in the `stringArray` array are all strings, so it's easy to guess that the test will pass. 
+Of course all the elements in the `stringArray` array are all strings, so it's easy to guess that the test will pass.
 
 What about object? In the next test I'll create a List of `User` elements, but with also a `AdminUser` object.
 You should remember that AdminUser is also a User, but the vice versa is not true.
 
-``` csharp
+```csharp
 [TestMethod]
 public void AllItemsAreInstanceOfType_AreAllUsers()
 {
@@ -70,7 +70,6 @@ public void AllItemsAreInstanceOfType_AreAllUsers()
 ```
 
 The first test will pass, but the second one will fail because the object with Username = "Freddie" is the only object of type `AdminUser`.
-
 
 ## CollectionAssert.AllItemsAreNotNull
 
@@ -173,7 +172,7 @@ Ok, it's not so exciting, but I wanted to show you what's under the hood and how
 
 So, let's get back to our problem: how can we make that test pass?
 
-We must override the `Equals` and the `GetHashCode` method. Even here I reuse the `UpdatedUser` class from the first article 
+We must override the `Equals` and the `GetHashCode` method. Even here I reuse the `UpdatedUser` class from the first article
 
 ```cs
 public class UpdatedUser
@@ -184,7 +183,7 @@ public class UpdatedUser
     {
         return Id == ((User)obj).Id;
     }
-    
+
     public override int GetHashCode()
     {
         return base.GetHashCode();
@@ -194,12 +193,12 @@ public class UpdatedUser
 
 Now the test will pass.
 
-
 ## CollectionAssert.AreEqual
 
-If you want to check if two collections are identical, you can use `AreEqual`. This checks if the same elements are __in the same position__ in both collections.
+If you want to check if two collections are identical, you can use `AreEqual`. This checks if the same elements are **in the same position** in both collections.
 
 For example this test will pass:
+
 ```cs
 [TestMethod]
 public void AreEqual_Int()
@@ -293,7 +292,7 @@ public void AreEqual_Structs()
 
 ## CollectionAssert.AreEquivalent
 
-While `AreEqual` checks if two collections are identical, there is a more shallow way to test two collections. `AreEquivalent` controls if the same elements are in the two collections, __regardless of their position__.
+While `AreEqual` checks if two collections are identical, there is a more shallow way to test two collections. `AreEquivalent` controls if the same elements are in the two collections, **regardless of their position**.
 
 ```cs
 [TestMethod]

@@ -1,20 +1,20 @@
 ---
 title: "How you can create extension methods in C#"
 path: "/blog/csharp-extension-methods"
-tags: ['CSharp', 'dotNET' , "MainArticle"]
+tags: ["CSharp", "dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Extension methods in C# are really useful, but there are few rules to follow..."
 created: 2020-02-18
 updated: 2020-02-18
 ---
 
-Probably you have already heard of __extension methods__: those are C# methods used to add new functionalities to an existing class. 
+Probably you have already heard of **extension methods**: those are C# methods used to add new functionalities to an existing class.
 
-This functionality is available since C# 3.0, so it's largely used and [well documented](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods). 
+This functionality is available since C# 3.0, so it's largely used and [well documented](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods).
 
 ## The basics of extension method
 
-Let's say that you have a __non-static class__ that you cannot modify, maybe because it comes from an external library.
+Let's say that you have a **non-static class** that you cannot modify, maybe because it comes from an external library.
 
 ```cs
 public class Person
@@ -31,9 +31,9 @@ For the Person class we have only the `GetFullName` method.
 So we can use the Person class this way:
 
 ```cs
-var person = new Person() { 
-    Name = "Davide", 
-    Surname = "Bellone", 
+var person = new Person() {
+    Name = "Davide",
+    Surname = "Bellone",
     BirthDate = new DateTime(1990, 1, 1)
     };
 
@@ -44,7 +44,7 @@ Nothing difficult, right?
 
 Now we want to get the full name with the birthdate. We have 2 ways to achieve this: using a subclass - terrible idea - or creating an extension method. Let's go with the second approach!
 
-First of all, we need a __static class__ that contains our method:
+First of all, we need a **static class** that contains our method:
 
 ```cs
 public static class MyExtensions
@@ -55,8 +55,8 @@ public static class MyExtensions
 
 Now we can create the new method. We must remember 2 things:
 
-* it must be a __static method__
-* __the first parameter__ must be of the same type we want to extend and must be __preceded by the `this` keyword__
+- it must be a **static method**
+- **the first parameter** must be of the same type we want to extend and must be **preceded by the `this` keyword**
 
 ```cs
 public static string GetFullNameWithBirthDate(this Person person)
@@ -123,9 +123,9 @@ public static string GetInitials(this Student student)
 
 public static string GetInitials(this Person person)
     => $"Person: {person.Surname.ToCharArray()[0]}.{person.Name.ToCharArray()[0]}.";
-``` 
+```
 
-So, now 
+So, now
 
 ```cs
 var student = new Student() {
@@ -146,11 +146,11 @@ will print out
 1971-06-28 - Musk Elon
 Musk Elon - ID: 123
 Student: M.E.
-``` 
+```
 
 ## A real life example: LINQ
 
-Since C# 3.5 we have a new query language: __LINQ__.
+Since C# 3.5 we have a new query language: **LINQ**.
 
 LINQ stands for _Language-Integrated Query_, and it is often used when you are working on collections and you need to do some operations on them, like get all the values that match a particular condition or take only the first element of the collection.
 
@@ -159,11 +159,11 @@ An example can be
 ```cs
 List<int> myList = new List<int>() { 2, 4, 82, 6, 223, 5, 7, 342, 234, 1};
 myList.First();
-``` 
+```
 
 By default, `List<T>` does not include a method that returns the first element of the collection. To use it, we need to include LINQ by putting `using System.Linq` among the imports.
 
-So yes, we can say that First is a method that extends the List class: __LINQ is a set of extension methods!__
+So yes, we can say that First is a method that extends the List class: **LINQ is a set of extension methods!**
 
 In fact, we can read [its source code](https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/First.cs) and notice this:
 
@@ -212,12 +212,12 @@ Have you ever used extension methods for creating a library?
 
 Anyway, here's a short recap of the main points:
 
-* all in a static class
-* each method must be static
-* the extended class must be non-static
-* the first parameter must be preceded by the _this_ keyword
-* you can use only public fields and methods
-* you can extend classes, but also subclasses and structs
-* the greatest example of library based on extension methods is LINQ
+- all in a static class
+- each method must be static
+- the extended class must be non-static
+- the first parameter must be preceded by the _this_ keyword
+- you can use only public fields and methods
+- you can extend classes, but also subclasses and structs
+- the greatest example of library based on extension methods is LINQ
 
 You can see the full example [here](https://gist.github.com/bellons91/6005ebf8c5c42e036cf98b2bfe40a903#file-extension-methods-example-cs).

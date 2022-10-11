@@ -1,7 +1,7 @@
 ---
 title: "How to improve Serilog logging in .NET 6 by using Scopes"
-path: '/blog/serilog-logging-scope'
-tags: ["dotNET", "CSharp","MainArticle"]
+path: "/blog/serilog-logging-scope"
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Logs are important. Properly structured logs can be the key to resolving some critical issues. With Serilog's Scopes, you can enrich your logs with info about the context where they happened."
 created: 2022-06-21
@@ -59,7 +59,7 @@ On this page, we will see all the logs we write.
 
 But wait! ⚠ We still have to add Seq as a sink for Serilog.
 
-**A sink is nothing but a destination for the logs**. When using .NET APIs we can define our sinks both on the *appsettings.json* file and on the *Program.cs* file. We will use the second approach.
+**A sink is nothing but a destination for the logs**. When using .NET APIs we can define our sinks both on the _appsettings.json_ file and on the _Program.cs_ file. We will use the second approach.
 
 First of all, you will need to install a NuGet package to add Seq as a sink: `dotnet add package Serilog.Sinks.Seq`.
 
@@ -190,7 +190,6 @@ public IActionResult Add(string userName, int itemId)
 
 Here's the key!
 
-
 ```cs
 using (_logger.BeginScope("Adding item {ItemId} for user {UserName}", itemId, userName))
 ```
@@ -210,9 +209,9 @@ So, now you can use these new properties to get some info about the context of w
 
 ## Why scopes instead of Correlation ID?
 
-You might be thinking 
+You might be thinking
 
->Why can't I just use correlation IDs?
+> Why can't I just use correlation IDs?
 
 Well, the answer is pretty simple: correlation IDs are meant to correlate different logs in a specific request, and, often, across services. You generally use Correlation IDs that represent a specific call to your API and act as a Request ID.
 
@@ -224,19 +223,17 @@ If I call 2 times the `AddItem` endpoint, I can filter both for UserName and for
 
 Let's see a real example: I have called the endpoint with different values
 
-* id=1, username="davide"
-* id=1, username="luigi"
-* id=2, username="luigi"
+- id=1, username="davide"
+- id=1, username="luigi"
+- id=2, username="luigi"
 
 Since the scope reference both properties, we can filter for UserName and discover that Luigi has added both Item1 and Item 2.
 
 ![Filtering logs by UserName](./seq-filter-by-username.png)
 
-At the same time, we can filter by ItemId and discover that the item with id = 2 has been added only once. 
+At the same time, we can filter by ItemId and discover that the item with id = 2 has been added only once.
 
 ![Filtering logs by ItemId](./seq-filter-by-itemid.png)
-
-
 
 Ok, then, in the end, **Scopes or Correlation IDs**? The answer is simple:
 
@@ -260,7 +257,7 @@ Then, you might want to deep dive into Serilog's BeginScope. Here's a neat artic
 
 🔗 [The semantics of ILogger.BeginScope | Nicholas Blumhardt](https://nblumhardt.com/2016/11/ilogger-beginscope/ "Deep dive on BeginScope")
 
-Finally, two must-read articles about logging best practices. 
+Finally, two must-read articles about logging best practices.
 
 The first one is by Thiago Nascimento Figueiredo:
 

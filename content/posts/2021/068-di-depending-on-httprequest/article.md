@@ -1,7 +1,7 @@
 ---
 title: "How to resolve dependencies in .NET APIs based on current HTTP Request"
-path: '/blog/resolving-dependencies-depending-on-httprequest'
-tags: ["dotNET", "CSharp" , "MainArticle"]
+path: "/blog/resolving-dependencies-depending-on-httprequest"
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Did you know that in .NET you can resolve specific dependencies using Factories? We'll use them to switch between concrete classes based on the current HTTP Request"
 created: 2021-11-09
@@ -34,13 +34,13 @@ As you may know, the dependencies are defined in the `ConfigureServices` method 
 
 Here we can define our dependencies. For this example, we have an interface, `IFileSystemAccess`, which is implemented by two classes: `FakeFileSystemAccess` and `RealFileSystemAccess`.
 
-So, to define those *mutable* dependencies, you can follow this snippet:
- 
+So, to define those _mutable_ dependencies, you can follow this snippet:
+
 ```cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddControllers();
-    
+
     services.AddHttpContextAccessor();
 
     services.AddTransient<FakeFileSystemAccess>();
@@ -99,7 +99,7 @@ public static IServiceCollection AddScoped<TService>(this IServiceCollection ser
 
 This Extension Method allows us to get the information about the services already injected in the current `IServiceCollection` instance and use them to define how to instantiate the actual dependency for the `TService` - in our case, `IFileSystemAccess`.
 
-**Why is this a Scoped dependency?** As you might remember from a previous article, in .NET we have 3 lifetimes for dependencies: *Singleton*, *Scoped*, and *Transient*. *Scoped* dependencies are the ones that get loaded once per HTTP request: therefore, those are the best choice for this specific example.
+**Why is this a Scoped dependency?** As you might remember from a previous article, in .NET we have 3 lifetimes for dependencies: _Singleton_, _Scoped_, and _Transient_. _Scoped_ dependencies are the ones that get loaded once per HTTP request: therefore, those are the best choice for this specific example.
 
 ## Reading from Query String
 
@@ -112,7 +112,7 @@ var context = provider.GetRequiredService<IHttpContextAccessor>();
 var useFakeFileSystemAccess = context.HttpContext?.Request?.Query?.ContainsKey("fake-fs") ?? false;
 ```
 
-Here I'm getting the HTTP Context and checking if the *fake-fs* key is defined. Yes, I know, I'm not checking its actual value: I'm just checking whether the key exists or not.
+Here I'm getting the HTTP Context and checking if the _fake-fs_ key is defined. Yes, I know, I'm not checking its actual value: I'm just checking whether the key exists or not.
 
 `IHttpContextAccessor` is the key part of this snippet: this is a service that acts as a wrap around the `HttpContext` object. You can inject it everywhere in your code, but under one condition: you have to define it in the `ConfigureServices` method.
 
@@ -143,18 +143,16 @@ services.AddTransient<FakeFileSystemAccess>();
 services.AddTransient<RealFileSystemAccess>();
 ```
 
-Those two lines of code serve two different purposes: 
+Those two lines of code serve two different purposes:
 
 1. they make those services available to the GetRequiredService method;
 2. they resolve all the dependencies injected in those services
-
 
 ## Running the example
 
 Now that we have everything in place, it's time to put it into practice.
 
 First of all, we need a Controller with the endpoint we will call:
-
 
 ```cs
 [ApiController]
@@ -247,7 +245,7 @@ Of course, you can use this strategy not only with values from the Query String,
 
 ## Further readings
 
-If you remember, we've defined the dependency to `IFileSystemAccess` as Scoped. Why? What are the other lifetimes native on .NET?  
+If you remember, we've defined the dependency to `IFileSystemAccess` as Scoped. Why? What are the other lifetimes native on .NET?
 
 🔗 [Dependency Injection lifetimes in .NET | Code4IT](https://www.code4it.dev/blog/dependency-injection-lifetimes)
 

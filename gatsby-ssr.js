@@ -1,21 +1,20 @@
-import React from "react";
+import React from "react"
 
 export const onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
-
   const pluginOptions = {
-    googleAdClientId: `ca-pub-6254488476173176`, 
-    head: true // Set to false if you prefer to have your adsense script loaded at the end of body instead of head.
-  };
+    googleAdClientId: `ca-pub-6254488476173176`,
+    head: true, // Set to false if you prefer to have your adsense script loaded at the end of body instead of head.
+  }
 
   if (process.env.NODE_ENV !== `production`) {
-    return null;
+    return null
   }
   if (pluginOptions.googleAdClientId === undefined) {
-    return null;
+    return null
   }
   const setComponents = pluginOptions.head
     ? setHeadComponents
-    : setPostBodyComponents;
+    : setPostBodyComponents
   return setComponents([
     <script
       async
@@ -30,8 +29,8 @@ export const onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
             google_ad_client: "${pluginOptions.googleAdClientId}",
             enable_page_level_ads: true
         });
-        `
+        `,
       }}
-    />
-  ]);
-};
+    />,
+  ])
+}

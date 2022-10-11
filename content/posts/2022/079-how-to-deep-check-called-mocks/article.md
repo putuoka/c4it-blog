@@ -1,6 +1,6 @@
 ---
 title: "3 ways to check the object passed to mocks with Moq in C#"
-path: '/blog/check-objects-called-mocks-in-moq'
+path: "/blog/check-objects-called-mocks-in-moq"
 tags: ["CSharp", "Testing", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "In unit tests, sometimes you need to perform deep checks on the object passed to the mocked service. We will learn 3 ways to do that with Moq and C#"
@@ -10,10 +10,9 @@ updated: 2022-05-17
 
 When writing unit tests, you can use Mocks to simulate the usage of class dependencies.
 
-Even though some developers are harshly against the usage of mocks, they can be useful, especially when the mocked operation does not return any value, but still, you want to check that you've called a specific method with the correct values. 
+Even though some developers are harshly against the usage of mocks, they can be useful, especially when the mocked operation does not return any value, but still, you want to check that you've called a specific method with the correct values.
 
 In this article, we will learn 3 ways to check the values passed to the mocks when using Moq in our C# Unit Tests.
-
 
 To better explain those 3 ways, I created this method:
 
@@ -106,7 +105,7 @@ Mock<IUserRepository:1> (_):
 
 ```
 
-Can you spot the error? And *what if you were checking 15 fields instead of 5*?
+Can you spot the error? And _what if you were checking 15 fields instead of 5_?
 
 ## Verify with external function
 

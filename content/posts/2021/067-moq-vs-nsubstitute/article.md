@@ -1,16 +1,16 @@
 ---
 title: "Moq vs NSubstitute: syntax cheat sheet"
-path: '/blog/moq-vs-nsubstitute-syntax'
-tags: ["Tests", "dotNET" , "MainArticle"]
+path: "/blog/moq-vs-nsubstitute-syntax"
+tags: ["Tests", "dotNET", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "Moq and NSubstitute are two of the most used library to mock dependencies on your Unit Tests. How do they differ? How can we move from one library to the other?"
+excerpt: "Moq and NSubstitute are two of the most used library to mock dependencies on your Unit Tests. How do they differ? How can we move from one library to the other?"
 created: 2021-10-26
 updated: 2021-10-26
 ---
 
 When writing Unit Tests, you usually want to mock dependencies. In this way, you can define the behavior of those dependencies, and have full control of the system under test.
 
-For .NET applications, two of the most used mocking libraries are **Moq** and **NSubstitute**. They allow you to create and customize the behavior of the services injected into your classes. Even though they have similar functionalities, their syntax is slightly different. 
+For .NET applications, two of the most used mocking libraries are **Moq** and **NSubstitute**. They allow you to create and customize the behavior of the services injected into your classes. Even though they have similar functionalities, their syntax is slightly different.
 
 In this article, we will learn how the two libraries implement the most used functionalities; in this way, you can easily move from one to another if needed.
 
@@ -178,12 +178,11 @@ nSubsMock.Received().Transform("hello");
 
 Similar as we've seen before, you can use `It.IsAny`, `It.Is`, `Arg.Any` and `Arg.Is` to verify some properties of the parameters passed as input.
 
-
 ## Verify the exact count of received calls
 
-Other times, you might want to verify that a method has been called *exactly N times*.
+Other times, you might want to verify that a method has been called _exactly N times_.
 
-**With Moq**, you can add a parameter to the `Verify` method: 
+**With Moq**, you can add a parameter to the `Verify` method:
 
 ```cs
 sut.TransformSingleItems(new string[] { "a", "b", "c" });
@@ -205,7 +204,7 @@ nSubsMock.Received(3).Transform(Arg.Any<string>());
 
 As you remember, the mocked dependencies have been instantiated within the constructor, so every test method uses the same instance. This may cause some troubles, especially when checking how many calls the dependencies have received (because the count of received calls accumulates for every test method run before). Therefore, we need to reset the count of the received calls.
 
-In NUnit, you can define a method that will run *before* any test method - but only if decorated with the `SetUp` attribute:
+In NUnit, you can define a method that will run _before_ any test method - but only if decorated with the `SetUp` attribute:
 
 ```cs
 [SetUp]
@@ -236,7 +235,6 @@ public void Setup()
     nSubsMock.ClearReceivedCalls();
 }
 ```
- 
 
 ## Further reading
 
@@ -245,7 +243,7 @@ As always, the best way to learn what a library can do is head to its documentat
 🔗 [Moq documentation | GitHub](https://github.com/Moq/moq4/wiki/Quickstart "Moq documentation | GitHub")
 
 🔗 [NSubstitute documentation | NSubstitute](https://nsubstitute.github.io "NSubstitute documentation | NSubstitute")
- 
+
 If you already use Moq but you are having some troubles testing and configuring `IHttpClientFactory` instances, I got you covered:
 
 🔗 [How to test HttpClientFactory with Moq | Code4IT](https://www.code4it.dev/blog/testing-httpclientfactory-moq "How to test HttpClientFactory with Moq | Code4IT")
@@ -253,7 +251,6 @@ If you already use Moq but you are having some troubles testing and configuring 
 Finally, if you want to see the complete code of this article, you can find it on GitHub; I've written the exact same tests with both libraries so that you can compare them more easily.
 
 🔗 [GitHub repository for the code used in this article | GitHub](https://github.com/code4it-dev/NSubstituteVsMoq "GitHub repository for the code used in this article | GitHub")
-
 
 ## Conclusion
 

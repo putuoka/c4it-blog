@@ -1,6 +1,6 @@
 ---
 title: "How to solve InvalidOperationException for constructors using HttpClientFactory in C#"
-path: '/blog/solve-constructor-exception-with-httpclientfactory'
+path: "/blog/solve-constructor-exception-with-httpclientfactory"
 tags: ["MainArticle", "CSharp", "DotNet"]
 featuredImage: "./cover.png"
 excerpt: "A suitable constructor for type 'X' could not be located. What a strange error message! Luckily it's easy to solve."
@@ -86,6 +86,7 @@ while in the host definition I was declaring an `HttpClient` for a specific clas
 ```cs
 builder.Services.AddHttpClient<IGenderizeService, GenderizeService>
 ```
+
 Apparently, even if we've specified how to create an instance for a specific class, we could not build it using an IHttpClientFactory.
 
 So, here are 2 ways to solve it.
@@ -167,7 +168,7 @@ We no longer need to call `_httpClientFactory.CreateClient` because the injected
 
 ## Further readings
 
-I've briefly talked about `HttpClientFactory` in one article of my *C# tips* series:
+I've briefly talked about `HttpClientFactory` in one article of my _C# tips_ series:
 
 🔗 [C# Tip: use IHttpClientFactory to generate HttpClient instance | Code4IT](https://www.code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient)
 
@@ -181,7 +182,7 @@ Finally, why do we need to use HttpClientFactories instead of HttpClients?
 
 ## Wrapping up
 
-Yes, it was **that** easy! 
+Yes, it was **that** easy!
 
 We received the error message
 

@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL CRUD operations with C# and Dapper"
-path: '/blog/postgres-crud-dapper'
-tags: ["CSharp", "Database","SQL","PostgreSQL","MainArticle"]
+path: "/blog/postgres-crud-dapper"
+tags: ["CSharp", "Database", "SQL", "PostgreSQL", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Mapping every SQL result to a data type can be a pain. To simplify our life, we can use an ORM like Dapper to automatically map the data."
 created: 2022-03-01
@@ -16,7 +16,7 @@ In this article, we will take a step further: we will perform the same operation
 
 For this article, I will reuse the project I used for the previous article.
 
-This project performs CRUD (Create, Read, Update, Delete) operations on a Postgres database with a single table: *Games*. All those operations (plus a bunch of other additional ones) are executed by a class that implements this interface:
+This project performs CRUD (Create, Read, Update, Delete) operations on a Postgres database with a single table: _Games_. All those operations (plus a bunch of other additional ones) are executed by a class that implements this interface:
 
 ```cs
 public interface IBoardGameRepository
@@ -59,7 +59,7 @@ Or add the NuGet package via Visual Studio:
 
 ![Dapper Nuget Package](./dapper-nuget.png)
 
-Dapper will take care of only a part of the operations; for instance, it cannot open a connection to your DB. That's why you need to install *Npgsql*, just as we did in a previous article. We can say the whole Dapper library is a set of Extension Methods built on top of the native data access implementation - in the case of PostgreSQL, on to op Npgsql.
+Dapper will take care of only a part of the operations; for instance, it cannot open a connection to your DB. That's why you need to install _Npgsql_, just as we did in a previous article. We can say the whole Dapper library is a set of Extension Methods built on top of the native data access implementation - in the case of PostgreSQL, on to op Npgsql.
 
 Now we have all the dependencies installed, so we can start writing our queries.
 
@@ -87,15 +87,15 @@ We are working on a table, Games, whose name is stored in a constant:
 private const string TABLE_NAME = "Games";
 ```
 
-The *Games* table consists of several fields:
+The _Games_ table consists of several fields:
 
-| Field name | Field type |
-|---|---|
-|id|INTEGER PK|
-|Name|VARCHAR NOT NULL|
-|MinPlayers|SMALLINT NOT NULL|
-|MaxPlayers|SMALLINT|
-|AverageDuration |SMALLINT|
+| Field name      | Field type        |
+| --------------- | ----------------- |
+| id              | INTEGER PK        |
+| Name            | VARCHAR NOT NULL  |
+| MinPlayers      | SMALLINT NOT NULL |
+| MaxPlayers      | SMALLINT          |
+| AverageDuration | SMALLINT          |
 
 And it is mapped to the `BoardGame` class:
 
@@ -134,7 +134,7 @@ public async Task Add(BoardGame game)
 }
 ```
 
-Since Dapper does not create any queries for us, we still need to define them explicitly. 
+Since Dapper does not create any queries for us, we still need to define them explicitly.
 
 The query contains various parameters, marked with the `@` symbol (`@id`, `@name`, `@minPl`, `@maxPl`, `@avgDur`). Those are placeholders, whose actual values are defined in the `queryArguments` anonymous object:
 
@@ -159,7 +159,7 @@ await connection.ExecuteAsync(commandText, queryArguments);
 
 Using dapper simplifies our code. In fact, when using the native Npgsql library without Dapper, we have to declare every parameter explicitly.
 
-As a comparison, have a look at how we implemented the same operation using Npgsql: 
+As a comparison, have a look at how we implemented the same operation using Npgsql:
 
 ```cs
 public async Task Add(BoardGame game)
@@ -213,13 +213,13 @@ public async Task<BoardGame> Get(int id)
 }
 ```
 
-As we did before, you define the query with a placeholder `@id`, which will have the value defined in the `queryArgs` anonymous object. 
+As we did before, you define the query with a placeholder `@id`, which will have the value defined in the `queryArgs` anonymous object.
 
 To store the result in a C# object, we map only the first object returned by the query, by using `QueryFirstAsync` instead of `QueryAsync`.
 
 #### Comparison with Npgsql
 
-The power of  Dapper is the ability to automatically map query results to C# object.
+The power of Dapper is the ability to automatically map query results to C# object.
 
 With the plain Npgsql library, we would have done:
 
@@ -233,7 +233,6 @@ await using (NpgsqlDataReader reader = await cmd.ExecuteReaderAsync())
 ```
 
 to perform the query and open a reader on the result set. Then we would have defined a custom mapper to convert the Reader to a BoardGame object.
-
 
 ```cs
 private static BoardGame ReadBoardGame(NpgsqlDataReader reader)

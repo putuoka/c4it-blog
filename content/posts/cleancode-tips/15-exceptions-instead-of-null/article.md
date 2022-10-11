@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: throw exceptions instead of returning null when there is no fallback"
-path: '/cleancodetips/exceptions-instead-of-null'
+path: "/cleancodetips/exceptions-instead-of-null"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "In case of unmanageable error, should you return null or throw exceptions?"
@@ -107,7 +107,6 @@ DbItem GetItemFromDB()
 Here, each method can complete in two statuses: it either completes successfully or it throws an exception **of a type that tells us about the operation that failed**.
 
 We can then consume the methods in this way:
-
 
 ```cs
 void Main()

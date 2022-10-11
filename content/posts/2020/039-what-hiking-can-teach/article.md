@@ -1,14 +1,14 @@
 ---
 title: "10 things hiking can teach you as a junior developer"
 path: "/blog/what-hiking-can-teach"
-tags: ["Career", "MISC", "Programming" , "MainArticle"]
+tags: ["Career", "MISC", "Programming", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:   "During this holiday I hiked for the first time. I found some lessons that hiking can teach junior devs"
+excerpt: "During this holiday I hiked for the first time. I found some lessons that hiking can teach junior devs"
 created: 2020-09-08
 updated: 2020-09-08
 ---
 
-I just finished my holidays. For the first time in my life  instead of relaxing and getting a tan on the beach, I spent my summer holidays in the mountains. For sure I won't show a perfect tan in the office this year, because - even though __it was almost the first time__ for me - I spent almost every day hiking. That was quite extreme for me 'cause, trust me, I'm a lazy guy! Just to give you an example, if I'm watching a movie, and I have to choose between staying on the couch or getting up to get some snacks, I'd rather stay hungry than leaving the couch!
+I just finished my holidays. For the first time in my life instead of relaxing and getting a tan on the beach, I spent my summer holidays in the mountains. For sure I won't show a perfect tan in the office this year, because - even though **it was almost the first time** for me - I spent almost every day hiking. That was quite extreme for me 'cause, trust me, I'm a lazy guy! Just to give you an example, if I'm watching a movie, and I have to choose between staying on the couch or getting up to get some snacks, I'd rather stay hungry than leaving the couch!
 
 Having said that, I noticed that hiking can teach some lessons to all developers, and more specifically to junior devs.
 
@@ -32,11 +32,11 @@ At the same time, don't use inadequate tools: programming on Notepad is free, bu
 
 Do you want to be a full-stack developer? Set up a list of the things you must learn, as
 
-* HTML
-* CSS
-* JavaScript (yep, __pure__ JavaScript)
-* Usability
-* Responsive design
+- HTML
+- CSS
+- JavaScript (yep, **pure** JavaScript)
+- Usability
+- Responsive design
 
 Set up your path. But be ready to change it on the fly: what if at some points you find out that you love JS but hate the frontend part? You can switch your learning path to NodeJS, and it's fine too!
 
@@ -84,11 +84,11 @@ You'll find this dilemma also in your professional life. Choose wisely.
 
 For example: a new tool has just been released, which promises to solve all your problems. Would you use it immediately or write an ad-hoc solution for you?
 
-## 9. Know your environment 
+## 9. Know your environment
 
-What's the environment you're approaching? Rocks or mud? Woods or desert? A multinational corporation or family-held business? 
+What's the environment you're approaching? Rocks or mud? Woods or desert? A multinational corporation or family-held business?
 
-How's the day? Sunny or rainy? And what about your office: is it a toxic environment or a place where you can enjoy your day? 
+How's the day? Sunny or rainy? And what about your office: is it a toxic environment or a place where you can enjoy your day?
 
 Can you see that tornado coming closer? Maybe the best choice is to head back as quickly as possible. Or to leave your company and find another one.
 
@@ -96,7 +96,7 @@ Can you see that tornado coming closer? Maybe the best choice is to head back as
 
 Hiking was a brand new experience for me. I was a bit worried about this kind of holiday: «not for me», I thought. In fact, every time I went to the mountain it was for only one day, with a barbecue, a hammock next to a river, and a relaxing sleep that could take all the afternoon.
 
-But not this time. I pushed myself beyond my limits. And I liked it. 
+But not this time. I pushed myself beyond my limits. And I liked it.
 
 I admit that I truly thought that embarking into this adventure was too much for me.
 
@@ -108,7 +108,7 @@ Learn some new skills, join a bootcamp, give your first talk (I did it too, and 
 
 ## Bonus - enjoy the view
 
-Even if you haven't reached the top, you can still enjoy the view. 
+Even if you haven't reached the top, you can still enjoy the view.
 
 Look behind you: you can see the steps that you took to get where you're now.
 

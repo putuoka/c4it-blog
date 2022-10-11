@@ -1,6 +1,6 @@
 ---
 title: "How to parse JSON Lines (JSONL) with C# "
-path: '/blog/parse-jsonlines'
+path: "/blog/parse-jsonlines"
 tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "JSONL is JSON's less famous sibling: it allows you to store JSON objects separating them with new line. We will learn how to parse a JSONL string with C#."
@@ -10,10 +10,9 @@ updated: 2021-11-23
 
 For sure, you already know JSON: it's one of the most commonly used formats to share data as text.
 
-Did you know that there are different *flavors* of JSON? One of them is **JSONL**: it represents a JSON document where the **items are in different lines** instead of being in an array of items.
+Did you know that there are different _flavors_ of JSON? One of them is **JSONL**: it represents a JSON document where the **items are in different lines** instead of being in an array of items.
 
 It's quite a rare format to find, so it can be tricky to understand how it works and how to parse it. In this article, we will learn how to parse a JSONL file with C#.
-
 
 ## Introducing JSONL
 
@@ -22,11 +21,7 @@ As explained in the [JSON Lines documentation](https://jsonlines.org/), a JSONL 
 So, instead of having
 
 ```json
-[
-    { "name" : "Davide" },
-    { "name" : "Emma" }
-]
-
+[{ "name": "Davide" }, { "name": "Emma" }]
 ```
 
 you have a list of items without an array grouping them.
@@ -40,9 +35,9 @@ I must admit that I'd never heard of that format until a few months ago. Or, eve
 
 Also, JSONL has some characteristics:
 
-* every item is a valid JSON item
-* every line is separated by a `\n` character (or by `\r\n`, but `\r` is ignored)
-* it is encoded using UTF-8
+- every item is a valid JSON item
+- every line is separated by a `\n` character (or by `\r\n`, but `\r` is ignored)
+- it is encoded using UTF-8
 
 So, now, it's time to parse it!
 
@@ -51,7 +46,7 @@ So, now, it's time to parse it!
 Say that you're creating a videogame, and you want to read all the items found by your character:
 
 ```cs
-class Item { 
+class Item {
     public int Id { get; set; }
     public string Name { get; set; }
     public string Category { get; set; }
@@ -100,7 +95,7 @@ var jsonReader = new JsonTextReader(new StringReader(content))
 
 The first thing to do is to create an instance of `JsonTextReader`, a class coming from the `Newtonsoft.Json` namespace. The constructor accepts a `TextReader` instance or any derived class. So we can use a `StringReader` instance that represents a stream from a specified string.
 
-The key part of this snippet (and, somehow,  of the whole article) is the `SupportMultipleContent` property: when set to `true` it allows the `JsonTextReader` to keep reading the content as multiline.
+The key part of this snippet (and, somehow, of the whole article) is the `SupportMultipleContent` property: when set to `true` it allows the `JsonTextReader` to keep reading the content as multiline.
 
 Its definition, in fact, says that:
 
@@ -137,7 +132,7 @@ Once we have the `Item` object, we can do whatever we want, like adding it to a 
 
 ## Further readings
 
-As we've learned, there are different *flavors* of JSON. You can read an overview of them on Wikipedia.
+As we've learned, there are different _flavors_ of JSON. You can read an overview of them on Wikipedia.
 
 🔗 [JSON Lines introduction | Wikipedia](https://en.wikipedia.org/wiki/JSON_streaming#Line-delimited_JSON)
 
@@ -165,12 +160,11 @@ You might be thinking:
 
 Well, if you were interested only in the main snippet, you would've been right!
 
-But this article exists for two main reasons. 
+But this article exists for two main reasons.
 
 First, I wanted to highlight that **JSON is not always the best choice for everything**: it always depends on what we need. For continuous streams of items, JSONL is a good (if not the best) choice. Don't choose the _most used_ format: choose what best fits your needs!
 
 Second, I wanted to remark that **we should not be too attached to a specific library**: I'd generally prefer using native stuff, so, for reading JSON files, my first choice is `System.Text.Json`. But not always it's the best choice. Yes, we could write some complex workaround (like the second answer on Stack Overflow), but... does it worth it? _Sometimes_ it's better to use another library, even if just for one specific task. So, you could use `System.Text.Json` for the whole project unless for the part where you need to read a JSONL file.
-
 
 Have you ever met some unusual formats? How did you deal with it?
 

@@ -1,7 +1,7 @@
 ---
 title: "Cool validation with FluentValidation"
 path: "/blog/fluentvalidation"
-tags: ["CSharp", "dotNET" , "MainArticle"]
+tags: ["CSharp", "dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Validating inputs is crucial for every application. If you want an easy and versatile way, you can try FluentValidation."
 created: 2020-06-16
@@ -17,13 +17,13 @@ public class User
 {
 	[Required]
 	public string FirstName { get; set; }
-	
+
 	[Required]
 	public string LastName { get; set; }
 }
 ```
 
-That's not a bad approach, but today I want to give you an alternative: __FluentValidation__. This library allows you to define complex rules for object validation in a fluent way, making it easy to build and understand validation rules. You can find the project source on [GitHub](https://github.com/FluentValidation/FluentValidation "FluentValidation on GitHub") and read the documentation [on their website](https://fluentvalidation.net/ "FluentValidation website").
+That's not a bad approach, but today I want to give you an alternative: **FluentValidation**. This library allows you to define complex rules for object validation in a fluent way, making it easy to build and understand validation rules. You can find the project source on [GitHub](https://github.com/FluentValidation/FluentValidation "FluentValidation on GitHub") and read the documentation [on their website](https://fluentvalidation.net/ "FluentValidation website").
 
 ## Setting up the project
 
@@ -62,7 +62,7 @@ There are lots of predefined validators, like _MinimumLength_, _MaximumLength_ a
 		RuleFor(x => x.FirstName).NotEmpty();
 		RuleFor(x => x.FirstName).MinimumLength(3);
         RuleFor(x => x.FirstName).MaximumLength(20);
-		
+
 		RuleFor(x => x.LastName).NotEmpty();
 	}
 }
@@ -70,7 +70,7 @@ There are lots of predefined validators, like _MinimumLength_, _MaximumLength_ a
 
 ## Validating the input
 
-Ok, we've defined the rules; it's time to try it with some real inputs! All you need to do is instantiate a new UserValidator object and __call the Validate method on it__. This method will return an object with info about the status of the validation and all the input that didn't pass the validation. So you can apply validation by doing something like this:
+Ok, we've defined the rules; it's time to try it with some real inputs! All you need to do is instantiate a new UserValidator object and **call the Validate method on it**. This method will return an object with info about the status of the validation and all the input that didn't pass the validation. So you can apply validation by doing something like this:
 
 ```cs
 [HttpPost]
@@ -78,7 +78,7 @@ public IActionResult Register(User newUser)
 {
 	var validator = new UserValidator();
 	var validationResult = validator.Validate(newUser);
-	
+
 	if (!validationResult.IsValid)
 	{
 		return BadRequest(validationResult.Errors.First().ErrorMessage);
@@ -92,8 +92,8 @@ If I run the program and I send an input with an invalid value for the first nam
 
 ```json
 {
-    "FirstName": "Supercalifragilisticexpialidocious",
-    "LastName": "Last name"
+  "FirstName": "Supercalifragilisticexpialidocious",
+  "LastName": "Last name"
 }
 ```
 
@@ -198,7 +198,7 @@ public IActionResult Register(User newUser)
 {
 	var validator = new UserValidator();
 	var validationResult = validator.Validate(newUser);
-	
+
 	if (!validationResult.IsValid)
 	{
 		return BadRequest(validationResult.Errors.First().ErrorMessage);
@@ -231,7 +231,7 @@ _Notice that the dependency lifetime is Transient. Wanna know more about Transie
 
 ### Add single validator in the request pipeline
 
-By adding `AddFluentValidation()` in the ConfigureServices method you can validate inputs __before calling the Register method__.
+By adding `AddFluentValidation()` in the ConfigureServices method you can validate inputs **before calling the Register method**.
 
 ```cs
 public void ConfigureServices(IServiceCollection services)
@@ -256,8 +256,8 @@ The downside is that, as far as I know, you can only get the whole object that c
 
 ```json
 {
-    "FirstName": "Supercalifragilisticexpialidocious",
-    "LastName": "Last name"
+  "FirstName": "Supercalifragilisticexpialidocious",
+  "LastName": "Last name"
 }
 ```
 
@@ -265,18 +265,14 @@ you'll get the error messages in this format:
 
 ```json
 {
-    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
-    "title": "One or more validation errors occurred.",
-    "status": 400,
-    "traceId": "|c4523c02-4899b7f3df86a629.",
-    "errors": {
-        "Password": [
-            "'Password' must not be empty."
-        ],
-        "FirstName": [
-            "Is your first name that long?? Really??"
-        ]
-    }
+  "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "traceId": "|c4523c02-4899b7f3df86a629.",
+  "errors": {
+    "Password": ["'Password' must not be empty."],
+    "FirstName": ["Is your first name that long?? Really??"]
+  }
 }
 ```
 

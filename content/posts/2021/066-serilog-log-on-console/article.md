@@ -1,9 +1,9 @@
 ---
 title: "How to add logs on Console with .NET Core and Serilog"
-path: '/blog/serilog-log-on-console'
-tags: ["dotNET" , "MainArticle"]
+path: "/blog/serilog-log-on-console"
+tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "Serilog is a famous logger for .NET projects. In this article, we will learn how to integrate it in a .NET API project and output the logs on a Console."
+excerpt: "Serilog is a famous logger for .NET projects. In this article, we will learn how to integrate it in a .NET API project and output the logs on a Console."
 created: 2021-10-12
 updated: 2021-10-12
 ---
@@ -22,7 +22,7 @@ I can guess what you're thinking:
 
 And... you'd be right!
 
-But still, printing logs on Console can be useful in many ways. 
+But still, printing logs on Console can be useful in many ways.
 
 First of all, by printing on Console you can check that the logging is actually working, and you haven't missed a configuration.
 
@@ -34,7 +34,7 @@ Now that we have good reasons to log on Console, well... let's do it!
 
 ## Adding Serilog on Program class
 
-For this article, we will add Serilog logs to a simple .NET API project. 
+For this article, we will add Serilog logs to a simple .NET API project.
 
 Create a new API project - you know, the one with the `WeatherForecast` controller.
 
@@ -143,7 +143,7 @@ catch (Exception ex)
 
 ## Update the AppSettings file
 
-But that's not enough. We aren't saying that our logs should be printed on Console. To do that, we must update the *appsettings.json* file and add some new configurations.
+But that's not enough. We aren't saying that our logs should be printed on Console. To do that, we must update the _appsettings.json_ file and add some new configurations.
 
 ```json
 "Serilog": {
@@ -176,7 +176,7 @@ But that's not enough. We aren't saying that our logs should be printed on Conso
 
 As usual, let's break it down.
 
-The first thing to notice is the **root of the JSON section**: `Serilog`. This value is the default when defining the configuration values for Serilog (remember the ` loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration)`? It binds the settings *automagically*!)
+The first thing to notice is the **root of the JSON section**: `Serilog`. This value is the default when defining the configuration values for Serilog (remember the ` loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration)`? It binds the settings _automagically_!)
 
 The `Using` section defines the types of Sinks that will be used. A **Sink** is just the destination of the logs. So, just **download the `Serilog.Sinks.Console` NuGet package** and add that value to the `Using` array to use the Console as a Sink.
 
@@ -190,9 +190,9 @@ We're finally ready to run our application.
 
 Just run it with the usual IIS profile and... nothing happens! Where is the Console??
 
-*With IIS you cannot see any Console*, since it simply does not exist - if the application runs as a web application, we don't need the Console.
+_With IIS you cannot see any Console_, since it simply does not exist - if the application runs as a web application, we don't need the Console.
 
-So, you have to change the running profile and select the name of your application (in my case, *SerilogLoggingOnConsole*).
+So, you have to change the running profile and select the name of your application (in my case, _SerilogLoggingOnConsole_).
 
 ![Use the correct running profile](./run-application.png)
 
@@ -202,7 +202,7 @@ Then you can run the application, navigate to an endpoint, and see the logs!
 
 But I don't like how logs are displayed, too many details!
 
-Let me add a *theme*: in the AppSettings file, I can add a `theme` configuration:
+Let me add a _theme_: in the AppSettings file, I can add a `theme` configuration:
 
 ```diff
 "Args": {
@@ -234,18 +234,17 @@ If you want to learn more about the different topics discussed in this article:
 
 🔗 [How to integrate Serilog and Seq | Code4IT](https://www.code4it.dev/blog/logging-with-serilog-and-seq "How to integrate Serilog and Seq | Code4IT")
 
-
 ## Wrapping up
 
 In this article, we've seen how to integrate Serilog in a .NET application to print the logs on the application Console.
 
 Time to recap the key points:
 
-* install the `Serilog`, `Serilog.AspNetCore`, and `Serilog.Extensions.Logging` NuGet packages to integrate the basic functionalities of Serilog
-* download the `Serilog.Sinks.Console` and `Serilog.Sinks.Async` NuGet packages to use the Console as a destination of your logs
-* update the `Program` class to specify that the application must use Serilog
-* use `ILogger<T>` instead of `Serilog.ILogger`
-* define the settings in the *appsettings.json* file instead of directly in the code
+- install the `Serilog`, `Serilog.AspNetCore`, and `Serilog.Extensions.Logging` NuGet packages to integrate the basic functionalities of Serilog
+- download the `Serilog.Sinks.Console` and `Serilog.Sinks.Async` NuGet packages to use the Console as a destination of your logs
+- update the `Program` class to specify that the application must use Serilog
+- use `ILogger<T>` instead of `Serilog.ILogger`
+- define the settings in the _appsettings.json_ file instead of directly in the code
 
 Finally, if you want to see the full example, [here's the GitHub repository](https://github.com/code4it-dev/SerilogLoggingOnConsole "Example repository on GitHub") used for this article
 

@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: DRY or not DRY?"
-path: '/cleancodetips/dry-or-not-dry'
+path: "/cleancodetips/dry-or-not-dry"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "DRY is a fundamental principle in software development. Should you apply it blindly?"
@@ -10,7 +10,7 @@ updated: 2022-10-25
 
 You've probably heard about the **DRY principle: Don't Repeat Yourself**.
 
-Does it really make sense? *Not always*.
+Does it really make sense? _Not always_.
 
 ## When to DRY
 
@@ -87,12 +87,12 @@ Now both `GetHomepage` and `GetAboutMePage` use the same logic defined in the `G
 
 ## When NOT to DRY
 
-This doesn't mean that you have to refactor everything without thinking of the meanings. 
+This doesn't mean that you have to refactor everything without thinking of the meanings.
 
 You should **not** follow the DRY principle when
 
-* the components are not referring to the same context
-* the components are expected to evolve in different ways
+- the components are not referring to the same context
+- the components are expected to evolve in different ways
 
 The two points are strictly related.
 A simple example is separating the ViewModels and the Database Models.
@@ -153,7 +153,7 @@ Well, in this case, `ViewModelUser` and DbUser are used in different contexts an
 
 What if, for some reason, you must update the `RegistrationDate` type from `DateTime` to `string`? That change will impact both the ViewModel and the DB.
 
-There are many other reasons this way of handling models can bring more troubles than benefits. *Can you find some? Drop a comment below 📧*
+There are many other reasons this way of handling models can bring more troubles than benefits. _Can you find some? Drop a comment below 📧_
 
 The solution is quite simple: **duplicate your code**.
 
@@ -171,7 +171,7 @@ As I anticipated, the way I used the HttpClient is not optimal. There's a better
 
 🔗 [C# Tip: use IHttpClientFactory to generate HttpClient instances | Code4IT](https://www.code4it.dev/csharptips/use-httpclientfactory-instead-of-httpclient)
 
-*This article first appeared on [Code4IT](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 

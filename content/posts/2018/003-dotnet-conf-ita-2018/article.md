@@ -1,14 +1,14 @@
 ---
 title: "A few things I learned at .NET Conference Italia 2018"
 path: "/blog/dotnet-conference-italia-2018"
-tags: ['dotNET', 'CSharp', 'MISC', "MainArticle"]
+tags: ["dotNET", "CSharp", "MISC", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Some of the things I learned at .NET Conf Italia: interfaces and abstract classes, Blazor, C# default interfaces and .NET Core on Samsung TV"
 created: 2018-10-29
 updated: 2018-10-29
 ---
 
-Friday, October 26th, 2018 I attended the .NET Conference in Milan, Italy. It was an event organized by [ASP Italia](http://www.aspitalia.com "ASP Italia website" ), with the sponsorship of Microsoft and [Icubed](https://icubed.it/ "Icubed website").
+Friday, October 26th, 2018 I attended the .NET Conference in Milan, Italy. It was an event organized by [ASP Italia](http://www.aspitalia.com "ASP Italia website"), with the sponsorship of Microsoft and [Icubed](https://icubed.it/ "Icubed website").
 
 The conference was about the news in the .NET world: .NET Core 2.x, Azure, C# 8 and Blazor and so on.
 
@@ -16,11 +16,11 @@ I'm not going to talk about everything we discussed - of course, I cannot write 
 
 ## Interfaces are abstract classes
 
-I always thought that interfaces and abstract classes were totally different things. Using the [Sharplab](https://sharplab.io "Sharplab website") online tool, that shows the IL result of a C# snippet, they highlighted that __internally an interface is also an abstract class__.
+I always thought that interfaces and abstract classes were totally different things. Using the [Sharplab](https://sharplab.io "Sharplab website") online tool, that shows the IL result of a C# snippet, they highlighted that **internally an interface is also an abstract class**.
 
 ![Interface as Abstract class](./interface-as-abstract-class.png "IL of interface definition")
 
-Actually, __this doesn't mean that you can declare abstract methods in interfaces__. But that brought the Microsoft team to a brand new functionality in C# 8: default method implementations for interfaces.
+Actually, **this doesn't mean that you can declare abstract methods in interfaces**. But that brought the Microsoft team to a brand new functionality in C# 8: default method implementations for interfaces.
 
 ## Interfaces will have default methods implementations
 
@@ -44,7 +44,7 @@ public class MyImplementation : IMyInterface
 }
 ```
 
-As you can see, in the interface it won't be mandatory to implement all the methods, but only the ones with no default behavior. The others can be obviously overridden. 
+As you can see, in the interface it won't be mandatory to implement all the methods, but only the ones with no default behavior. The others can be obviously overridden.
 
 ## Tiered Compilation for .NET Core 2.1
 
@@ -54,7 +54,7 @@ An optimized compilation brings to high performance, but has the side effect tha
 
 On the other side, the simple compilation allows your application to start very quickly, but in general the application is slower.
 
-__Tiered compilation__ takes the best of both worlds. It swaps the compilation method at runtime: the normal compilation can be used at start-up time, while in the background the optimized compilation is taking place. When it's ready, compilation methods are swapped.
+**Tiered compilation** takes the best of both worlds. It swaps the compilation method at runtime: the normal compilation can be used at start-up time, while in the background the optimized compilation is taking place. When it's ready, compilation methods are swapped.
 
 [Here](https://blogs.msdn.microsoft.com/dotnet/2018/08/02/tiered-compilation-preview-in-net-core-2-1/ "Tiered compilation on Microsoft docs") you can find an interesting article that explains this kind of compilation more in detail.
 
@@ -74,10 +74,10 @@ Who knows, only time will tell.
 
 ## .NET Core runs on Samsung TVs
 
-__Tizen .NET TV Framework__ is the framework that runs on Samsung TVs since 2017. Natively it supports _.NET Core_ and _Xamarin.Forms_, but interacts with the Tizen APIs to enable platform-specific features.
+**Tizen .NET TV Framework** is the framework that runs on Samsung TVs since 2017. Natively it supports _.NET Core_ and _Xamarin.Forms_, but interacts with the Tizen APIs to enable platform-specific features.
 
 In Visual Studio you can download tools for Tizen and write apps for Samsung TVs, and also download an emulator.
 
 ## Conclusion
 
-The conference was really stimulating. In this article, I gave just a quick overview of some of the things I learned, but I didn't mention the main topics of the speeches. If you are curious to know what the conference was about, [you can have a look at the agenda](http://www.aspitalia.com/eventi/72/.NET-Conference-Italia-2018-Milano.aspx "DotNet conf agenda" ) (of course, in Italian).
+The conference was really stimulating. In this article, I gave just a quick overview of some of the things I learned, but I didn't mention the main topics of the speeches. If you are curious to know what the conference was about, [you can have a look at the agenda](http://www.aspitalia.com/eventi/72/.NET-Conference-Italia-2018-Milano.aspx "DotNet conf agenda") (of course, in Italian).

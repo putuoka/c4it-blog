@@ -4,7 +4,6 @@ about: New blog article
 title: "[Article] - "
 labels: Article
 assignees: bellons91
-
 ---
 
 ## Argomenti

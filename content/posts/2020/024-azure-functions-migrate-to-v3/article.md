@@ -1,7 +1,7 @@
 ---
 title: "How to upgrade Azure Functions v2 to v3"
 path: "/blog/azure-functions-v2-to-v3"
-tags: ["dotNET",  "Azure","Azure Function", "Serverless" , "MainArticle"]
+tags: ["dotNET", "Azure", "Azure Function", "Serverless", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Do you have an Azure Function that you want to upgrade from v2 to v3? Don't panic, it's just a matter of few steps!
 created: 2020-04-21
@@ -17,7 +17,7 @@ In this article I'm gonna demonstrate how to upgrade an Azure Function v2 to the
 If you use Visual Studio 2019 you can easily create an Azure Function within an existing solution.
 ![Azure Function template in Visual Studio](./wizard-search-azfunction.png "Azure Function template in Visual Studio")
 
-In the wizard, you can select some capabilities to be scaffolded, like the __kind of trigger__, the associated __storage account__, and the Azure Function version. Using the dropdown list on the screen you can select which Azure Function version you prefer to use.
+In the wizard, you can select some capabilities to be scaffolded, like the **kind of trigger**, the associated **storage account**, and the Azure Function version. Using the dropdown list on the screen you can select which Azure Function version you prefer to use.
 
 ![Configurations for Azure Functions - triggers, storage and authentication](./wizard-configurations.png "Configurations for Azure Functions")
 
@@ -31,15 +31,15 @@ Before moving on: do you know that you can add a Startup class to your project s
 
 ## Update the Azure Function version
 
-First of all, you must __update the csproj file__: under _PropertyGroup > AzureFunctionsVersion_ you must set the value to _v3_. You should also update the .NET Core version to 3.0 by updating the _PropertyGroup > TargetFramework_ value.
+First of all, you must **update the csproj file**: under _PropertyGroup > AzureFunctionsVersion_ you must set the value to _v3_. You should also update the .NET Core version to 3.0 by updating the _PropertyGroup > TargetFramework_ value.
 
 ![csproj file after update](./csproj-update.png "csproj file example after the update")
 
-As you might have noticed, inside the solution folder there is a file called _host.json_, and that file contains a `"version": "2.0"`. This is __not__ the Azure function version, but the version of the schema of that file. The host file is [meant to include](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) configurations for the function. So, you must not touch this file.
+As you might have noticed, inside the solution folder there is a file called _host.json_, and that file contains a `"version": "2.0"`. This is **not** the Azure function version, but the version of the schema of that file. The host file is [meant to include](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) configurations for the function. So, you must not touch this file.
 
 ## Install the new SDK version
 
-Update the __Microsoft.NET.Sdk.Functions__ package to a version at least greater than 3.0.1. Remember that this version has dependencies against other libraries, so pay attention while resolving dependency conflicts.
+Update the **Microsoft.NET.Sdk.Functions** package to a version at least greater than 3.0.1. Remember that this version has dependencies against other libraries, so pay attention while resolving dependency conflicts.
 
 ![NuGet version for Azure Function](./sdk-version.png "The NuGet version for the Azure Function SDK")
 
@@ -66,7 +66,7 @@ Also, now the Configure method accepts an `IFunctionsHostBuilder` object instead
 
 So, if we want a comparison of the old and the new version of the Startup class, we have
 
-``` diff
+```diff
 - [assembly: WebJobsStartup(typeof(Startup))
 + [assembly: FunctionsStartup(typeof(Startup))]
 namespace MyNamespace
@@ -87,14 +87,13 @@ namespace MyNamespace
 
 If you are also updating the .NET version, remember that there are [some breaking changes](https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.0) that you must consider. For example:
 
-* Google+ authentication is now deprecated since the service shut down in 2019.
+- Google+ authentication is now deprecated since the service shut down in 2019.
 
-* Some classes changed their package and/or namespace; for example, _Microsoft.Extension.Caching.SqlServer_ moved from _System.Data.SqlClient_ to _Microsoft.Data.SqlClient_.
-  
-* Newtonsoft.Json is now replaced by default with System.Text.Json
+- Some classes changed their package and/or namespace; for example, _Microsoft.Extension.Caching.SqlServer_ moved from _System.Data.SqlClient_ to _Microsoft.Data.SqlClient_.
+- Newtonsoft.Json is now replaced by default with System.Text.Json
 
 ## Final thoughts
 
-Here we've seen how to upgrade from Azure Functions v2 to v3. Staying up to date to the latest (stable) versions of such tools is important since performance and security issues would be fixed. So, take the time to update your functions. 
+Here we've seen how to upgrade from Azure Functions v2 to v3. Staying up to date to the latest (stable) versions of such tools is important since performance and security issues would be fixed. So, take the time to update your functions.
 
 Since you've updated your versions, remember to [update also your runtime version on Azure](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#changing-version-of-apps-in-azure) and, if you are using them, your [Azure DevOps pipelines](https://about-azure.com/how-and-why-you-should-upgrade-your-net-azure-functions-to-3-0/).

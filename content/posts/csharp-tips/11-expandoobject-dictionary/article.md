@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: Convert ExpandoObjects to IDictionary"
-path: '/csharptips/expandoobject-to-dictionary'
+path: "/csharptips/expandoobject-to-dictionary"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "How to get all the keys of an ExpandoObject? Convert it to Dictionary!"
@@ -8,7 +8,7 @@ created: 2022-05-10
 updated: 2022-05-10
 ---
 
-In C#, `ExpandoObjects` are dynamically-populated objects without a predefined *shape*.
+In C#, `ExpandoObjects` are dynamically-populated objects without a predefined _shape_.
 
 ```cs
 dynamic myObj = new ExpandoObject();
@@ -49,11 +49,11 @@ myObj.City ="Turin";
 //dict.Keys: [Name, Age]
 ```
 
-Notice that we use the `ExpandoObject` to create a *new* `IDictionary`. This means that after the Dictionary creation if we add a new field to the `ExpandoObject`, that new field will not be present in the Dictionary.
+Notice that we use the `ExpandoObject` to create a _new_ `IDictionary`. This means that after the Dictionary creation if we add a new field to the `ExpandoObject`, that new field will not be present in the Dictionary.
 
 ## Cast to IDictionary
 
-If you want to use an IDictionary to get the `ExpandoObject` keys, and you need to stay in sync with  the `ExpandoObject` status, you just have to **cast that object to an IDictionary**
+If you want to use an IDictionary to get the `ExpandoObject` keys, and you need to stay in sync with the `ExpandoObject` status, you just have to **cast that object to an IDictionary**
 
 ```cs
 dynamic myObj = new ExpandoObject();
@@ -74,14 +74,14 @@ This works because **`ExpandoObject` implements `IDictionary`**, so you can simp
 Here's the class definition:
 
 ```cs
- public sealed class ExpandoObject : 
-	IDynamicMetaObjectProvider, 
-	IDictionary<string, object?>, 
-	ICollection<KeyValuePair<string, object?>>, 
-	IEnumerable<KeyValuePair<string, object?>>, 
-	IEnumerable, 
+ public sealed class ExpandoObject :
+	IDynamicMetaObjectProvider,
+	IDictionary<string, object?>,
+	ICollection<KeyValuePair<string, object?>>,
+	IEnumerable<KeyValuePair<string, object?>>,
+	IEnumerable,
 	INotifyPropertyChanged
- ```
+```
 
 ## Wrapping up
 

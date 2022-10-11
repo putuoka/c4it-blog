@@ -1,7 +1,7 @@
 ---
 title: "The 2 secret endpoints I create in my .NET APIs"
-path: '/blog/my-2-secret-endpoints'
-tags: ["Dotnet","MainArticle"]
+path: "/blog/my-2-secret-endpoints"
+tags: ["Dotnet", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "In this article, I will show you two simple tricks that help me understand the deployment status of my .NET APIs"
 created: 2022-10-04
@@ -16,7 +16,7 @@ In this article, we will see how to create those two endpoints, how to update th
 
 ## Project setup
 
-For this article, I will use a simple .NET 6 API project. **We will use Minimal APIs**, and we will use the *appsettings.json* file to load the application's configuration values.
+For this article, I will use a simple .NET 6 API project. **We will use Minimal APIs**, and we will use the _appsettings.json_ file to load the application's configuration values.
 
 Since we are using Minimal APIs, you will have the endpoints defined in the `Main` method within the `Program` class.
 
@@ -62,17 +62,17 @@ The `context` variable, which is of type `HttpContext`, exposes some properties.
 
 Then, we create an anonymous object with the information of our interest and finally return them as an indented JSON.
 
-It's time to run it! Open a terminal, navigate to the API project folder (in my case, *SecretEndpoint*), and run `dotnet run`. The application will compile and start; you can then navigate to `/env` and see the default result:
+It's time to run it! Open a terminal, navigate to the API project folder (in my case, _SecretEndpoint_), and run `dotnet run`. The application will compile and start; you can then navigate to `/env` and see the default result:
 
 ![The JSON result of the env endpoint](./hostenvironment-default-result.png)
 
 ### How to change the Environment value
 
-While the *applicationName* does not change - it is the name of the running assembly, so any other value will make stop your application from running - you can (and, maybe, want to) change the Environment value.
+While the _applicationName_ does not change - it is the name of the running assembly, so any other value will make stop your application from running - you can (and, maybe, want to) change the Environment value.
 
 When running the application using the command line, you can **use the `--environment` flag to specify the Environment value.**
 
-So, running 
+So, running
 
 ```cmd
 dotnet run --environment MySplendidCustomEnvironment
@@ -84,7 +84,7 @@ will produce this result:
 
 There's another way to set the environment: **update the launchSettings.json and run the application using Visual Studio**.
 
-To do that, open the *launchSettings.json* file and update the profile you are using by specifying the Environment name. In my case, the current profile section will be something like this:
+To do that, open the _launchSettings.json_ file and update the profile you are using by specifying the Environment name. In my case, the current profile section will be something like this:
 
 ```json
 "profiles": {
@@ -94,7 +94,7 @@ To do that, open the *launchSettings.json* file and update the profile you are u
     "launchBrowser": true,
     "launchUrl": "swagger",
     "applicationUrl": "https://localhost:7218;http://localhost:5218",
-    "environmentVariables": 
+    "environmentVariables":
         {
             "ASPNETCORE_ENVIRONMENT": "EnvByProfile"
         }
@@ -102,7 +102,7 @@ To do that, open the *launchSettings.json* file and update the profile you are u
 }
 ```
 
-As you can see, the `ASPNETCORE_ENVIRONMENT` variable is set to *EnvByProfile*.
+As you can see, the `ASPNETCORE_ENVIRONMENT` variable is set to _EnvByProfile_.
 
 If you run the application using Visual Studio using that profile you will see the following result:
 
@@ -110,13 +110,13 @@ If you run the application using Visual Studio using that profile you will see t
 
 ## How to list all the configurations in .NET APIs
 
-In my current company, we deploy applications using CI/CD pipelines. 
+In my current company, we deploy applications using CI/CD pipelines.
 
-This means that final variables definition comes from the sum of 3 sources: 
+This means that final variables definition comes from the sum of 3 sources:
 
-* the project's *appsettings* file
-* the release pipeline
-* the deployment environment
+- the project's _appsettings_ file
+- the release pipeline
+- the deployment environment
 
 You can easily understand how difficult it is to debug those applications without knowing the exact values for the configurations. That's why I came up with these endpoints.
 
@@ -138,7 +138,7 @@ app.MapGet("/conf", async context =>
 
 What's going on? We are retrieving the `IConfiguration` object, which contains all the configurations loaded at startup; then, we're listing all the configurations as key-value pairs, and finally, we're returning the list to the client.
 
-As an example, here's my current *appsettings.json* file:
+As an example, here's my current _appsettings.json_ file:
 
 ```json
 {
@@ -159,7 +159,6 @@ When I run the application and call the `/conf` endpoint, I will see the followi
 ![Configurations printed as key-value pairs](./config-default.png)
 
 Notice how the structure of the configuration values changes. The value
-
 
 ```json
 {
@@ -198,15 +197,14 @@ Ok then, we have our endpoints up and running, but they are visible to anyone wh
 There are, at least, 3 simple values to hide those endpoints:
 
 - **Use a non-guessable endpoint**: you can use an existing word, such as "housekeeper", use random letters, such as "lkfrmlvkpeo", or use a Guid, such as "E8E9F141-6458-416E-8412-BCC1B43CCB24";
-- **Specify a key on query string**: if that key is not found or it has an invalid value, return a *404-not found* result
+- **Specify a key on query string**: if that key is not found or it has an invalid value, return a _404-not found_ result
 - **Use an HTTP header**, and, again, return 404 if it is not valid.
-
 
 Both query strings and HTTP headers are available in the `HttpContext` object injected in the route definition.
 
 Now it's your turn to find an appropriate way to hide these endpoints. How would you do that? Drop a comment below 📩
 
-✒ *Edit 2022-10-10:* I thought it was quite obvious, but apparently it is not: **these endpoints expose critical information about your applications and your infrastructure, so you should not expose them unless it is strictly necessary**! If you have strong authentication in place, use it to secure those endpoints. If you don't, hide those endpoints the best you can, and show only necessary data, and not everything. **Strip out sensitive content**. And, as soon as you don't need that info anymore, remove those endpoints (comment them out or generate them only if a particular flag is set at compilation time). Another possible way is by **using feature flags**. In the end, take that example with a grain of salt: learn that you **can** expose them, but keep in mind that you **should not** expose them.
+✒ _Edit 2022-10-10:_ I thought it was quite obvious, but apparently it is not: **these endpoints expose critical information about your applications and your infrastructure, so you should not expose them unless it is strictly necessary**! If you have strong authentication in place, use it to secure those endpoints. If you don't, hide those endpoints the best you can, and show only necessary data, and not everything. **Strip out sensitive content**. And, as soon as you don't need that info anymore, remove those endpoints (comment them out or generate them only if a particular flag is set at compilation time). Another possible way is by **using feature flags**. In the end, take that example with a grain of salt: learn that you **can** expose them, but keep in mind that you **should not** expose them.
 
 ## Further readings
 
@@ -214,13 +212,11 @@ We've used a quite new way to build and develop APIs with .NET, called "Minimal 
 
 🔗 [Minimal APIs | Microsoft Learn](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0)
 
-
 If you are not using Minimal APIs, you still might want to create such endpoints. We've talked about accessing the HttpContext to get info about the HTTP headers and query string. When using Controllers, accessing the `HttpContext` requires some more steps. Here's an article that you may find interesting:
 
 🔗 [How to access the HttpContext in .NET API | Code4IT](https://www.code4it.dev/blog/inject-httpcontext)
 
-
-*This article first appeared on [Code4IT](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 

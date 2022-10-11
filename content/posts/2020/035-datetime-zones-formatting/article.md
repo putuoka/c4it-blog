@@ -1,13 +1,12 @@
 ---
 title: "5 things about DateTime time zones and formatting"
 path: "/blog/5-things-datetime-timezones-and-formatting"
-tags: ["CSharp" , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "You're using DateTime.Now, aren't you? Be careful, because it may bring some troubles to your application. Here I'll explain why and I'll talk about time zones and formatting in C# DateTime."
+excerpt: "You're using DateTime.Now, aren't you? Be careful, because it may bring some troubles to your application. Here I'll explain why and I'll talk about time zones and formatting in C# DateTime."
 created: 2020-07-28
 updated: 2020-07-28
 ---
-
 
 Working with dates, if not done carefully, can bring to bugs that can impact your systems. You must always take care of time zones and use the best formatting practices, or else you'll get some trouble.
 
@@ -15,7 +14,7 @@ Since I'll talk about time zones, keep in mind that, since I live in Italy, my l
 
 ## #1: Building a DateTime with the right time zone
 
-Do you use `DateTime.Now` to get the current date and time? If yes, remember that you are getting the __local time__: this may cause trouble when exchanging dates with different systems and time zones. Rather, you should use `DateTime.UtcNow`.
+Do you use `DateTime.Now` to get the current date and time? If yes, remember that you are getting the **local time**: this may cause trouble when exchanging dates with different systems and time zones. Rather, you should use `DateTime.UtcNow`.
 
 ```cs
 var d = DateTime.Now;
@@ -24,7 +23,7 @@ Console.WriteLine(d.ToUniversalTime()); // 02-Jun-20 17:55:16
 Console.WriteLine(d.ToLocalTime()); // 02-Jun-20 19:55:16
 ```
 
-Also, pay attention when you are defining a DateTime object using __the constructor: by default, it refers to an unspecified time zone.__
+Also, pay attention when you are defining a DateTime object using **the constructor: by default, it refers to an unspecified time zone.**
 
 ```cs
 var d = new DateTime(2020, 6, 2, 15, 55, 16);
@@ -37,7 +36,7 @@ Have you noticed that the three string results have different values for the tim
 
 That's why you should consider using a different constructor: `public DateTime (int year, int month, int day, int hour, int minute, int second, DateTimeKind kind)`.
 
-_DateTimeKind_ is an enum with 3 values: __Utc, Unspecified and Local__: Utc and Local have a clear meaning, I don't have to explain them.
+_DateTimeKind_ is an enum with 3 values: **Utc, Unspecified and Local**: Utc and Local have a clear meaning, I don't have to explain them.
 
 In these case you can add the `DateTimeKind` flag to the constructor and set it to _Utc_:
 
@@ -66,7 +65,7 @@ Console.WriteLine(d.ToUniversalTime()); // 02-Jun-20 13:55:16
 Console.WriteLine(d.ToLocalTime()); // 02-Jun-20 17:55:16
 ```
 
-So, in the previous example, I set the hour value to 15, which, when converted to UTC, is transformed to 13, and when converted to Local is transformed to 17. As you've already seen, Unspecified is the default value on the constructor. So, __you should consider adding the DateTimeKind.Utc__ flag on your code.
+So, in the previous example, I set the hour value to 15, which, when converted to UTC, is transformed to 13, and when converted to Local is transformed to 17. As you've already seen, Unspecified is the default value on the constructor. So, **you should consider adding the DateTimeKind.Utc** flag on your code.
 
 > Who cares about time zones, I'm only interested in the date part, I don't care about the time!
 
@@ -101,7 +100,7 @@ Console.WriteLine(d.ToLongDateString()); // Wednesday, June 2, 2020
 Console.WriteLine(d.ToLongTimeString()); // 15:55:16
 ```
 
-Those two methods internally call the formatter, using, respectively, _D_ and _T_ as format. It's a shortcut, you just don't have to remember the formatting flag. But it has a downside: __DateTime.ToLongDateString and DateTime.ToLongTimeString don't allow you to specify the culture__. So, if you want to get the date in Italian, you'd better use this:
+Those two methods internally call the formatter, using, respectively, _D_ and _T_ as format. It's a shortcut, you just don't have to remember the formatting flag. But it has a downside: **DateTime.ToLongDateString and DateTime.ToLongTimeString don't allow you to specify the culture**. So, if you want to get the date in Italian, you'd better use this:
 
 ```cs
 var d = new DateTime(2020, 6, 2, 15, 55, 16, DateTimeKind.Utc);
@@ -137,7 +136,7 @@ Probably you'll never use this functionality since most of the use cases are alr
 
 You could get the UTC time, the Local time, and then calculate the difference.
 
-Or you can use the __zz__ and __zzzz__ date formats:
+Or you can use the **zz** and **zzzz** date formats:
 
 ```cs
 var d = new DateTime(2021, 6, 2, 15, 55, 16);
@@ -151,9 +150,9 @@ Easy, right? This method ignores all the info related to the local culture and t
 ## #5: A good way to store DateTimes
 
 It's time to store date info somewhere and have it available across multiple systems.
-The first option is to store the absolute number of milliseconds. Calculate the difference between your date and `DateTime.MinValue` (which is  01-Jan-01 00:00:00) and store milliseconds.
+The first option is to store the absolute number of milliseconds. Calculate the difference between your date and `DateTime.MinValue` (which is 01-Jan-01 00:00:00) and store milliseconds.
 
-More simply, use the __o__ or the __O__ formatter to get all the information you need. This is called __round-trip formatter__ because it allows you to store and parse the result without loss of information.
+More simply, use the **o** or the **O** formatter to get all the information you need. This is called **round-trip formatter** because it allows you to store and parse the result without loss of information.
 
 ```cs
 var d = new DateTime(2020, 6, 2, 15, 55, 16, DateTimeKind.Utc);

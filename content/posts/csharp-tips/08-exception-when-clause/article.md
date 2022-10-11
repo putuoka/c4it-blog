@@ -1,13 +1,12 @@
 ---
 title: "C# Tip: Exception handling with WHEN clause"
-path: '/csharptips/exception-handling-when-clause'
+path: "/csharptips/exception-handling-when-clause"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "Instead of using if-else or switch blocks to handle exceptions, you can do it gracefully using the 'when' keyword."
 created: 2022-02-08
 updated: 2022-02-08
 ---
-
 
 From C# 6 on, you can use the `when` keyword to specify a condition before handling an exception.
 
@@ -35,16 +34,16 @@ try
 {
     throw new RandomException();
 }
-catch (RandomException re)  
+catch (RandomException re)
 {
     if(re.Value % 2 == 0)
         Console.WriteLine("Exception with even value");
-    else 
+    else
         Console.WriteLine("Exception with odd value");
-} 
+}
 ```
 
-But, well, you should keep your `catch` blocks as simple as possible. 
+But, well, you should keep your `catch` blocks as simple as possible.
 
 That's where the `when` keyword comes in handy.
 
@@ -75,7 +74,7 @@ Ok, that example with the random exception is a bit... useless?
 
 Let's see a real example: handling different HTTP status codes in case of failing HTTP calls.
 
-In the following snippet, I call an endpoint that returns a specified status code (506, in my case). 
+In the following snippet, I call an endpoint that returns a specified status code (506, in my case).
 
 ```cs
 try
@@ -99,7 +98,7 @@ If the response is not a success, the `response.EnsureSuccessStatusCode()` throw
 
 Quite interesting, uh? 😉
 
-To read more, you can head to [the official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/when), even though there's not so much. 
+To read more, you can head to [the official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/when), even though there's not so much.
 
 Happy coding!
 

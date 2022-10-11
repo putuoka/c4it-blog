@@ -1,7 +1,7 @@
 ---
 title: "3 ways to inject DateTime and test it"
 path: "/blog/inject-and-test-datetime-dependency"
-tags: ['CSharp', 'Tests', "MainArticle"]
+tags: ["CSharp", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "DateTime, Guid, and Random values are not under your direct control. You should abstract them to write better code and testing. We'll see 3 ways to inject and test them in .NET Core projects."
 created: 2021-01-12
@@ -110,7 +110,7 @@ In this way, we can use the `StubCalendar` class to write our tests
 [Test]
 public void TestAbstractCalendar()
 {
-    var calendar = new StubCalendar { 
+    var calendar = new StubCalendar {
         Today = new DateTime(2020,12,19)
     };
     var daysToChristmas = calendar.DaysToNextChristmas();
@@ -125,7 +125,7 @@ If we prefer a mocking library, we can use Moq and create a stub object in which
 [Test]
 public void TestAbstractCalendarWithMoq()
 {
-    var mockCalendar = new Mock<AbstractCalendar>() { 
+    var mockCalendar = new Mock<AbstractCalendar>() {
         CallBase = true // Reuse code from the abstract class
     };
     mockCalendar.Setup(c => c.GetTodayDate())
@@ -217,7 +217,7 @@ public class InjectedCalendar
     private readonly IDateTimeProvider _dateTimeProvider;
 
     public InjectedCalendar(IDateTimeProvider dateTimeProvider)
-    { 
+    {
         _dateTimeProvider = dateTimeProvider;
     }
 
@@ -247,7 +247,7 @@ public void InjectedCalendarTest() {
 
     var calendar = new InjectedCalendar(mockDateTimeProvider.Object);
     var daysToChristmas = calendar.DaysToNextChristmas();
-    
+
     Assert.AreEqual(5, daysToChristmas);
 }
 ```
@@ -256,7 +256,7 @@ This method allows you to use a single implementation used across your project a
 
 ## When to use each approach
 
-The usage of _abstract methods_ is great when the code to be injected is something __strictly related to the boundaries of the hierarchy__ of the abstract class.
+The usage of _abstract methods_ is great when the code to be injected is something **strictly related to the boundaries of the hierarchy** of the abstract class.
 
 Say that you have some DTO classes stored on a database, and you need a custom Id that relies on some complex and custom calculation (let's say, it concatenates the current timestamp and a random GUID). A good idea is to mark the method that generates the Id as `abstract` to make it accessible only by the concrete classes.
 

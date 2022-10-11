@@ -1,7 +1,7 @@
 ---
 title: "Measuring maintainability metrics with NDepend"
-path: '/blog/measure-maintainability-with-ndepend'
-tags: ["dotNET","MainArticle"]
+path: "/blog/measure-maintainability-with-ndepend"
+tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Keeping an eye on maintainability is mandatory for every project which should live long. With NDepend, you can measure maintainability for .NET projects."
 created: 2022-02-15
@@ -14,25 +14,25 @@ Structuring the code to help maintainability is crucial if your project is expec
 
 In this article, we will learn how to measure the maintainability of a .NET project using NDepend, a tool that can be installed as an extension in Visual Studio.
 
-So, let's begin with the *how*, and then we'll move to the *what*.
+So, let's begin with the _how_, and then we'll move to the _what_.
 
 ## Introducing NDepend
 
 NDepend is a tool that performs static analysis on any .NET project.
 
-It is incredibly powerful and can calculate several metrics that you can use to improve the quality of your code, like Lines of Code, Cyclomatic Complexity, and Coupling. 
+It is incredibly powerful and can calculate several metrics that you can use to improve the quality of your code, like Lines of Code, Cyclomatic Complexity, and Coupling.
 
 You can use NDepend in two ways: installing it on your local Visual Studio instance, or using it in your CI/CD pipelines, to generate reports during the build process.
 
 In this article, I've installed it as a Visual Studio extension. Once it is ready, you'll have to create a new NDepend project and link it to your current solution.
 
-To do that, click on the ⚪ icon on the bottom-right corner of Visual Studio, and create a new NDepend project. It will create a *ndproj* project and attach it to your solution.
+To do that, click on the ⚪ icon on the bottom-right corner of Visual Studio, and create a new NDepend project. It will create a _ndproj_ project and attach it to your solution.
 
 When creating a new NDepend project, you can choose which of your .NET projects must be taken into consideration. You'll usually skip analyzing test projects.
 
 ![Create NDepend project by selecting .NET projects to be analyzed](./create-ndepend-project.png)
 
-Then, to run the analysis of your solution, you need to click again on that ⚪ icon and click *Run analysis and generate report*. 
+Then, to run the analysis of your solution, you need to click again on that ⚪ icon and click _Run analysis and generate report_.
 
 Now you'll have two ways to access the results. On an HTML report, like this one:
 
@@ -50,10 +50,10 @@ Maintainability is a quality of a software system (a single application or a gro
 
 Easy-to-maintain code has many advantages:
 
-* it allows quicker and less expensive maintenance operations
-* the system is easier to reverse-engineer
-* the code is oriented to the other devs as well as to the customers
-* it keeps the system easy to update if the original developers leave the company
+- it allows quicker and less expensive maintenance operations
+- the system is easier to reverse-engineer
+- the code is oriented to the other devs as well as to the customers
+- it keeps the system easy to update if the original developers leave the company
 
 There are some metrics that we can use to have an idea of how much it is easy to maintain our software.
 
@@ -61,19 +61,19 @@ And to calculate those metrics, we will need some external tools. Guess what? Li
 
 ## Lines of code (LOC)
 
-Typically, systems with more lines of code (abbreviated as *LOC*) are more complex and, therefore, harder to maintain. 
+Typically, systems with more lines of code (abbreviated as _LOC_) are more complex and, therefore, harder to maintain.
 
 Of course, it’s the order of magnitude of that number that tells us about the complexity; 90000 and 88000 are similar numbers, you won’t see any difference.
 
 Two types of LOC can be calculated: physical LOC and logical LOC.
 
-**Physical LOC** refers to the total count of lines of your code. It's the easiest one to calculate since you can just count the lines of code as they appear. 
+**Physical LOC** refers to the total count of lines of your code. It's the easiest one to calculate since you can just count the lines of code as they appear.
 
 **Logical LOC** is about only the effectively executable lines of code. Spacing, comments, and imports are excluded from this count.
 
 ### Calculating LOC with NDepend
 
-If you want to see the LOC value for your code, you can open the NDepend HTML report, head to *Metrics > Types Metrics* (in the left menu), and see that value.
+If you want to see the LOC value for your code, you can open the NDepend HTML report, head to _Metrics > Types Metrics_ (in the left menu), and see that value.
 
 This value is calculated based on the IL and the actual C# code, so it may happen that it's not the exact number of lines you can see on your IDE. By the way, it's a good estimation to understand which classes and methods need some attention.
 
@@ -93,7 +93,7 @@ The total LOC value won't change. What will change is how the code is distribute
 
 ## Cyclomatic complexity (CC)
 
-*Cyclomatic complexity* is the measure of the number of linear paths through a module.
+_Cyclomatic complexity_ is the measure of the number of linear paths through a module.
 
 This formula works for simple programs and methods:
 
@@ -101,7 +101,7 @@ This formula works for simple programs and methods:
 CC = E-N+2
 ```
 
-where *E* is the number of Edges of the graph, while *N* is the number of Nodes.
+where _E_ is the number of Edges of the graph, while _N_ is the number of Nodes.
 
 Wait! Graph?? 😱
 
@@ -138,12 +138,11 @@ Again, you will not calculate CC manually: we can use NDepend instead.
 
 ### Calculating Cyclomatic Complexity with NDepend
 
-As described before, the first step to do is to run NDepend and generate the HTML report. Then, open the left menu and click on *Metrics > Type Metrics*
+As described before, the first step to do is to run NDepend and generate the HTML report. Then, open the left menu and click on _Metrics > Type Metrics_
 
 Here you can see the values for Cyclomatic Complexity for every class (but you cannot drill down to every method).
 
 ![Cyclomatic complexity](./cyclomatic-complexity-for-classes.png)
-
 
 ### Why is CC important?
 
@@ -171,19 +170,17 @@ public class AssociatedTeacher : Teacher { }
 
 It can be represented as a tree, to better understand the relationship between classes:
 
-![User class hierarchy as a tree](https://mermaid.ink/img/pako:eNpdjzEOwjAMRa8SeW4vELEgwQkKWxYrdmmkJkGJM6C2dyfQdAAP1tf_z5a9gI3EoMHOmPPF4SOhN0HVumdO6rT2vbox2onTvz1IIQ6y243Zk3PO0ToUpp_Rb9_lUdCB5-TRUb1h-WQGZGLPBnSVxCOWWQyYsFW0PKkuvZKTmECPOGfuAIvE4RUsaEmFD6i90qjtDfF0Sjs "c") 
+![User class hierarchy as a tree](https://mermaid.ink/img/pako:eNpdjzEOwjAMRa8SeW4vELEgwQkKWxYrdmmkJkGJM6C2dyfQdAAP1tf_z5a9gI3EoMHOmPPF4SOhN0HVumdO6rT2vbox2onTvz1IIQ6y243Zk3PO0ToUpp_Rb9_lUdCB5-TRUb1h-WQGZGLPBnSVxCOWWQyYsFW0PKkuvZKTmECPOGfuAIvE4RUsaEmFD6i90qjtDfF0Sjs "c")
 
 Since the maximum depth of the tree is 3, the DIT value is 3.
-
 
 ### How to calculate DIT with NDepend
 
 As usual, run the code analysis with NDepend to generate the HTML report.
 
-Then, you can head to *Metrics > Type Metrics*  and navigate to the *Code Members and Inheritance* section to see the value of DIT of each class.
+Then, you can head to _Metrics > Type Metrics_ and navigate to the _Code Members and Inheritance_ section to see the value of DIT of each class.
 
 ![DIT calculated with NDepend](./depth-of-inheritance-tree.png)
-
 
 ### Why is DIT important?
 
@@ -197,7 +194,7 @@ Also, having such a deep hierarchy may cause your system to be hard to maintain 
 
 For sure, **NDepend is an amazing tool for static analysis**. All those metrics can be really useful - if you know how to use them. Luckily, not only do they give you the values of those metrics, but they also explain them.
 
-In this article, I showed the *most boring* stuff you can see with NDepend. But you can do lots of incredible things. 
+In this article, I showed the _most boring_ stuff you can see with NDepend. But you can do lots of incredible things.
 
 My favorites ones are:
 
@@ -229,7 +226,7 @@ Where can I find the Component Dependencies Diagram? Nowhere - it is accessible 
 
 So, the tool is incredibly useful, but it's difficult to use (at first, obviously).
 
-If the NDepend team starts focusing on the usability and the UI, I'm sure it can quickly become a must-have tool for every team working on .NET. Of course, if they create a free (or cheaper) tier for their product with reduced capabilities: now it's quite expensive. Well, actually it is quite cheap for companies, but for solo devs it is not affordable. 
+If the NDepend team starts focusing on the usability and the UI, I'm sure it can quickly become a must-have tool for every team working on .NET. Of course, if they create a free (or cheaper) tier for their product with reduced capabilities: now it's quite expensive. Well, actually it is quite cheap for companies, but for solo devs it is not affordable.
 
 ## Additional resources
 
@@ -257,7 +254,7 @@ To do that, we've used NDepend - I know, it's WAY too powerful to be used only f
 
 So, NDepend is incredibly useful for managing complex projects - it's quite expensive, but in the long run, it may help you save money.
 
-Have you already used it? 
+Have you already used it?
 
 Do you keep track of maintainability metrics?
 

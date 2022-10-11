@@ -1,18 +1,18 @@
 ---
 title: "How to add a caching layer in .NET 5 with Decorator pattern and Scrutor"
-path: '/blog/caching-decorator-with-scrutor'
-tags: ["dotNET" , "MainArticle"]
+path: "/blog/caching-decorator-with-scrutor"
+tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "You should not add the caching logic in the same component used for retrieving data from external sources: you'd better use the Decorator Pattern. We'll see how to use it, what benefits it brings to your application, and how to use Scrutor to add it to your .NET projects."
+excerpt: "You should not add the caching logic in the same component used for retrieving data from external sources: you'd better use the Decorator Pattern. We'll see how to use it, what benefits it brings to your application, and how to use Scrutor to add it to your .NET projects."
 created: 2021-08-10
 updated: 2021-08-10
 ---
 
 When fetching external resources - like performing a GET on some remote APIs - you often need to cache the result. Even a simple caching mechanism can boost the performance of your application: the fewer actual calls to the external system, the faster the response time of the overall application.
 
-We should not add the caching layer directly to the classes that get the data we want to cache, because it will make our code less extensible and testable. On the contrary, we might want to __decorate__ those classes with a specific caching layer.
+We should not add the caching layer directly to the classes that get the data we want to cache, because it will make our code less extensible and testable. On the contrary, we might want to **decorate** those classes with a specific caching layer.
 
-In this article, we will see how we can use the __Decorator Pattern__ to add a cache layer to our repositories (external APIs, database access, or whatever else) by using __Scrutor__, a NuGet package that allows you to _decorate_ services.
+In this article, we will see how we can use the **Decorator Pattern** to add a cache layer to our repositories (external APIs, database access, or whatever else) by using **Scrutor**, a NuGet package that allows you to _decorate_ services.
 
 ## Context: an RSS reader
 
@@ -95,7 +95,7 @@ public class RssInfoController : ControllerBase
 
         if (item != null)
             return Ok(item);
-        else 
+        else
             return NotFound();
     }
 }
@@ -109,28 +109,25 @@ The application is quite easy, right?
 
 Let's translate it into a simple diagram:
 
-![Base Class diagram](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSVJzc0ZlZWRSZWFkZXJ7XG4gICAgPDxpbnRlcmZhY2U-PiBcbiAgICBHZXRJdGVtKClcbiAgICB9XG5cbiAgICBjbGFzcyBSc3NGZWVkUmVhZGVye1xuICAgIEdldEl0ZW0oKVxuICAgIH1cblxuICAgIGNsYXNzIFJzc0luZm9Db250cm9sbGVye1xuICAgIEdldEJ5U2x1ZygpXG4gICAgfVxuXG4gICAgSVJzc0ZlZWRSZWFkZXIgPHwtLSBSc3NGZWVkUmVhZGVyIDogaW1wbGVtZW50c1xuICAgIFJzc0luZm9Db250cm9sbGVyIC0tPiBJUnNzRmVlZFJlYWRlciIsIm1lcm1haWQiOnsiY3VydmUiOiJzdGVwIiwibGluZSI6InN0ZXAiLCJjbGFzc0RpYWdyYW0iOnsiY3VydmUiOiJzdGVwIiwibGluZSI6InN0ZXAifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0) 
-
+![Base Class diagram](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSVJzc0ZlZWRSZWFkZXJ7XG4gICAgPDxpbnRlcmZhY2U-PiBcbiAgICBHZXRJdGVtKClcbiAgICB9XG5cbiAgICBjbGFzcyBSc3NGZWVkUmVhZGVye1xuICAgIEdldEl0ZW0oKVxuICAgIH1cblxuICAgIGNsYXNzIFJzc0luZm9Db250cm9sbGVye1xuICAgIEdldEJ5U2x1ZygpXG4gICAgfVxuXG4gICAgSVJzc0ZlZWRSZWFkZXIgPHwtLSBSc3NGZWVkUmVhZGVyIDogaW1wbGVtZW50c1xuICAgIFJzc0luZm9Db250cm9sbGVyIC0tPiBJUnNzRmVlZFJlYWRlciIsIm1lcm1haWQiOnsiY3VydmUiOiJzdGVwIiwibGluZSI6InN0ZXAiLCJjbGFzc0RpYWdyYW0iOnsiY3VydmUiOiJzdGVwIiwibGluZSI6InN0ZXAifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
 
 The sequence diagram is simple as well- it's almost obvious!
 
-![Base sequence diagram](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgUnNzSW5mb0NvbnRyb2xsZXItPj4rUnNzRmVlZFJlYWRlcjogR2V0SXRlbSgpXG4gICAgUnNzRmVlZFJlYWRlci0tPj4tUnNzSW5mb0NvbnRyb2xsZXI6IFJzc0l0ZW0iLCJtZXJtYWlkIjp7ImN1cnZlIjoic3RlcCIsImxpbmUiOiJzdGVwIiwiY2xhc3NEaWFncmFtIjp7ImN1cnZlIjoic3RlcCIsImxpbmUiOiJzdGVwIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9) 
-
+![Base sequence diagram](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgUnNzSW5mb0NvbnRyb2xsZXItPj4rUnNzRmVlZFJlYWRlcjogR2V0SXRlbSgpXG4gICAgUnNzRmVlZFJlYWRlci0tPj4tUnNzSW5mb0NvbnRyb2xsZXI6IFJzc0l0ZW0iLCJtZXJtYWlkIjp7ImN1cnZlIjoic3RlcCIsImxpbmUiOiJzdGVwIiwiY2xhc3NEaWFncmFtIjp7ImN1cnZlIjoic3RlcCIsImxpbmUiOiJzdGVwIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
 
 Now it's time to see what is the Decorator pattern, and how we can apply it to our situation.
 
 ## Introducing the Decorator pattern
 
-__The Decorator pattern is a design pattern that allows you to add behavior to a class at runtime, without modifying that class__. Since the caller works with interfaces and ignores the type of the concrete class, it's easy to "trick" it into believing it is using the simple class: all we have to do is to add a new class that implements the expected interface, make it call the original class, and add new functionalities to that.
+**The Decorator pattern is a design pattern that allows you to add behavior to a class at runtime, without modifying that class**. Since the caller works with interfaces and ignores the type of the concrete class, it's easy to "trick" it into believing it is using the simple class: all we have to do is to add a new class that implements the expected interface, make it call the original class, and add new functionalities to that.
 
 Quite confusing, uh?
 
 To make it easier to understand, I'll show you a simplified version of the pattern:
 
-![Simplified Decorator pattern Class diagram](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSVNlcnZpY2V7XG4gICAgPDxpbnRlcmZhY2U-PiBcbiAgICBkb1NvbWV0aGluZygpXG4gICAgfVxuXG4gICAgY2xhc3MgQmFzZVNlcnZpY2V7XG4gICAgICAgIGRvU29tZXRoaW5nKClcbiAgICB9XG5cbiAgICBjbGFzcyBEZWNvcmF0ZWRTZXJ2aWNleyAgXG4gICAgICAgICtJU2VydmljZSBpbm5lclNlcnZpY2UgXG4gICAgICAgIGRvU29tZXRoaW5nKClcbiAgICB9XG5cbiAgICBjbGFzcyBDbGllbnR7XG4gICAgICAgIGRvKClcbiAgICB9XG5cbiAgICBJU2VydmljZSA8fC0tIEJhc2VTZXJ2aWNlIDogaW1wbGVtZW50c1xuICAgIElTZXJ2aWNlIDx8LS0gRGVjb3JhdGVkU2VydmljZSA6IGltcGxlbWVudHNcbkRlY29yYXRlZFNlcnZpY2UgKi0tIElTZXJ2aWNlXG5cbiAgICBDbGllbnQgLS0-IElTZXJ2aWNlIiwibWVybWFpZCI6eyJjdXJ2ZSI6InN0ZXAiLCJsaW5lIjoic3RlcCIsImNsYXNzRGlhZ3JhbSI6eyJjdXJ2ZSI6InN0ZXAiLCJsaW5lIjoic3RlcCJ9fSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ) 
+![Simplified Decorator pattern Class diagram](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSVNlcnZpY2V7XG4gICAgPDxpbnRlcmZhY2U-PiBcbiAgICBkb1NvbWV0aGluZygpXG4gICAgfVxuXG4gICAgY2xhc3MgQmFzZVNlcnZpY2V7XG4gICAgICAgIGRvU29tZXRoaW5nKClcbiAgICB9XG5cbiAgICBjbGFzcyBEZWNvcmF0ZWRTZXJ2aWNleyAgXG4gICAgICAgICtJU2VydmljZSBpbm5lclNlcnZpY2UgXG4gICAgICAgIGRvU29tZXRoaW5nKClcbiAgICB9XG5cbiAgICBjbGFzcyBDbGllbnR7XG4gICAgICAgIGRvKClcbiAgICB9XG5cbiAgICBJU2VydmljZSA8fC0tIEJhc2VTZXJ2aWNlIDogaW1wbGVtZW50c1xuICAgIElTZXJ2aWNlIDx8LS0gRGVjb3JhdGVkU2VydmljZSA6IGltcGxlbWVudHNcbkRlY29yYXRlZFNlcnZpY2UgKi0tIElTZXJ2aWNlXG5cbiAgICBDbGllbnQgLS0-IElTZXJ2aWNlIiwibWVybWFpZCI6eyJjdXJ2ZSI6InN0ZXAiLCJsaW5lIjoic3RlcCIsImNsYXNzRGlhZ3JhbSI6eyJjdXJ2ZSI6InN0ZXAiLCJsaW5lIjoic3RlcCJ9fSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
 
-
-In short, the Client needs to use an `IService`. Instead of passing a `BaseService` to it (as usual, via Dependency Injection), we pass the Client an instance of `DecoratedService` (which implements IService as well). `DecoratedService` contains a reference to another `IService` (this time, the actual type is BaseService), and calls it to perform the `doSomething` operation. But `DecoratedService` not only calls `IService.doSomething()`, but enriches its behavior with new capabilities (like caching, logging, and so on). 
+In short, the Client needs to use an `IService`. Instead of passing a `BaseService` to it (as usual, via Dependency Injection), we pass the Client an instance of `DecoratedService` (which implements IService as well). `DecoratedService` contains a reference to another `IService` (this time, the actual type is BaseService), and calls it to perform the `doSomething` operation. But `DecoratedService` not only calls `IService.doSomething()`, but enriches its behavior with new capabilities (like caching, logging, and so on).
 
 In this way, our services are focused on a single aspect (Single Responsibility Principle) and can be extended with new functionalities (Open-close Principle).
 
@@ -140,13 +137,13 @@ Ah, I forgot to mention that the original pattern defines another object between
 
 ## Implementing the Decorator with Scrutor
 
-Have you noticed that we almost have all our pieces already in place? 
+Have you noticed that we almost have all our pieces already in place?
 
 If we compare the Decorator pattern objects with our application's classes can notice that:
 
-* `Client` corresponds to our `RssInfoController` controller: it's the one that calls our services
-* `IService` corresponds to `IRssFeedReader`: it's the interface consumed by the Client
-* `BaseService` corresponds to `RssFeedReader`: it's the class that implements the operations from its interface, and that we want to decorate.
+- `Client` corresponds to our `RssInfoController` controller: it's the one that calls our services
+- `IService` corresponds to `IRssFeedReader`: it's the interface consumed by the Client
+- `BaseService` corresponds to `RssFeedReader`: it's the class that implements the operations from its interface, and that we want to decorate.
 
 So, we need a class that decorates `RssFeedReader`. Let's call it `CachedFeedReader`: it checks if the searched item has already been processed, and, if not, calls the decorated class to perform the base operation.
 
@@ -182,17 +179,16 @@ public class CachedFeedReader : IRssFeedReader
 
 There are a few points you have to notice in the previous snippet:
 
-* this class implements the `IRssFeedReader` interface;
-* we are passing an instance of `IRssFeedReader` in the constructor, _which is the class that we are decorating_;
-* we are performing other operations both before and after calling the _base_ operation (so, calling `_rssFeedReader.GetItem(slug)`);
-* we are setting the value of the `Source` property to _Cache_ if the object is already in cache - its value is _RSS feed_ the first time we retrieve this item;
+- this class implements the `IRssFeedReader` interface;
+- we are passing an instance of `IRssFeedReader` in the constructor, _which is the class that we are decorating_;
+- we are performing other operations both before and after calling the _base_ operation (so, calling `_rssFeedReader.GetItem(slug)`);
+- we are setting the value of the `Source` property to _Cache_ if the object is already in cache - its value is _RSS feed_ the first time we retrieve this item;
 
 Now we have all the parts in place.
 
-To decorate the `RssFeedReader` with this new class, you have to [install a NuGet package called __Scrutor__](https://www.nuget.org/packages/Scrutor "Official page for Scrutor NuGet page").
+To decorate the `RssFeedReader` with this new class, you have to [install a NuGet package called **Scrutor**](https://www.nuget.org/packages/Scrutor "Official page for Scrutor NuGet page").
 
 Open your project and install it via UI or using the command line by running `dotnet add package Scrutor`.
-
 
 Now head to the `ConfigureServices` method and use the `Decorate` extension method to decorate a specific interface with a new service:
 
@@ -219,11 +215,11 @@ And, of course, the sequence diagram changed a bit too.
 
 Using the Decorator pattern brings many benefits.
 
-__Every component is focused on only one thing__: we are separating responsibilities across different components so that every single component does only one thing and does it well. `RssFeedReader` fetches RSS data, `CachedFeedReader` defines caching mechanisms.
+**Every component is focused on only one thing**: we are separating responsibilities across different components so that every single component does only one thing and does it well. `RssFeedReader` fetches RSS data, `CachedFeedReader` defines caching mechanisms.
 
-__Every component is easily testable__: we can test our caching strategy by mocking the `IRssFeedReader` dependency, without the worrying of the concrete classes called by the `RssFeedReader` class. On the contrary, if we put cache and RSS fetching functionalities in the `RssFeedReader` class, we would have many troubles testing our caching strategies, since we cannot mock the `XmlReader.Create` and `SyndicationFeed.Load` methods. 
+**Every component is easily testable**: we can test our caching strategy by mocking the `IRssFeedReader` dependency, without the worrying of the concrete classes called by the `RssFeedReader` class. On the contrary, if we put cache and RSS fetching functionalities in the `RssFeedReader` class, we would have many troubles testing our caching strategies, since we cannot mock the `XmlReader.Create` and `SyndicationFeed.Load` methods.
 
-__We can easily add new decorators__: say that we want to log the duration of every call. Instead of putting the logging in the `RssFeedReader` class or in the `CachedFeedReader` class, we can simply create a new class that implements `IRssFeedReader` and add it to the list of decorators.
+**We can easily add new decorators**: say that we want to log the duration of every call. Instead of putting the logging in the `RssFeedReader` class or in the `CachedFeedReader` class, we can simply create a new class that implements `IRssFeedReader` and add it to the list of decorators.
 
 An example of Decorator outside the programming world? The following video from YouTube, where you can see that each cup (component) has only one responsibility, and can be easily decorated with many other cups.
 

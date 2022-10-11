@@ -1,14 +1,14 @@
 ---
 title: "Getting resource location with CreatedAtAction and CreatedAtRoute action results"
-path: '/blog/createdAtRoute-createdAtAction'
-tags: ["dotNET" , "MainArticle"]
+path: "/blog/createdAtRoute-createdAtAction"
+tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "It's not a good practice to return the ID of a newly created item in the HTTP Response Body. What to do? You can return it in the HTTP Response Headers, with CreatedAtAction and CreatedAtRoute."
+excerpt: "It's not a good practice to return the ID of a newly created item in the HTTP Response Body. What to do? You can return it in the HTTP Response Headers, with CreatedAtAction and CreatedAtRoute."
 created: 2021-04-20
 updated: 2021-04-20
 ---
 
-Even though many devs (including me!) often forget about it, REST is not a synonym of HTTP API: it is an architectural style based on the central idea of __resource__.
+Even though many devs (including me!) often forget about it, REST is not a synonym of HTTP API: it is an architectural style based on the central idea of **resource**.
 
 So, when you are seeing an HTTP request like `GET http://api.example.com/games/123` you may correctly think that you are getting the details of the _game_ with ID _123_. You are asking for the _resource with ID 123_.
 
@@ -50,15 +50,15 @@ This endpoint is pretty straightforward: if the game with the specified ID exist
 
 Notice the `[Route("{id}")]` attribute: it means that the ASP.NET engine when parsing the incoming HTTP requests, searches for an Action with the required HTTP method and a route that matches the required path. Then, when it finds the Action, it maps the route parameters (`{id}`) to the parameters of the C# method (`Guid id`).
 
-__Hey! in this section I inserted not-so-correct info: I mean, it is generally right, but not precise. Can you spot it? Drop a comment😉__
+**Hey! in this section I inserted not-so-correct info: I mean, it is generally right, but not precise. Can you spot it? Drop a comment😉**
 
 ## What to do when POST-ing a resource?
 
 Of course, you also need to create new resources: that's where the HTTP POST verb comes in handy.
 
-Suppose a simple data flow: you create a new object, you insert it in the database, and it is the database itself that assigns to the object an ID. 
+Suppose a simple data flow: you create a new object, you insert it in the database, and it is the database itself that assigns to the object an ID.
 
-Then, you need to use the newly created object. How to proceed? 
+Then, you need to use the newly created object. How to proceed?
 
 You could return the ID in the HTTP Response Body. But we are using a POST verb, so you should not return data - POST is meant to insert data, not return values.
 
@@ -104,7 +104,6 @@ What are the second and third parameters?
 We can see a `new { id = newGameId }` that indicates the route parameters defined in the GET endpoint (remember the `[Route("{id}")]` attribute? ) and assigns to each parameter a value.
 
 The last parameter is the newly created item - or any object you want to return in that field.
-
 
 ## Using CreatedAtRoute
 
@@ -174,7 +173,7 @@ Let's update the GetDetail method: now the resource ID is included in the route,
 [Route("details/{id}")]
 public IActionResult GetDetail([FromRoute] Guid id, [FromQuery] string title)
 {
-    var game = Games.FirstOrDefault(_ => 
+    var game = Games.FirstOrDefault(_ =>
         _.Id.Equals(id) && _.Title.Equals(title, StringComparison.OrdinalIgnoreCase)
     );
 

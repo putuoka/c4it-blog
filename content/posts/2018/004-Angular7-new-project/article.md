@@ -1,16 +1,16 @@
 ---
 title: "How to create a new Angular 7 project"
 path: "/blog/angular7-create-new-project"
-tags: ['Angular', "MainArticle"]
+tags: ["Angular", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Are you ready to create a brand new Angular project? The CLI can help you with common settings.
 created: 2018-12-01
 updated: 2018-12-01
 ---
 
-Before reading this article, be sure you know what __Node.js__, __NPM__ and __Angular__ are. If you are not sure, [here's a short reminder](/blog/angular-vs-npm-vs-node-js "A recap of Node.js, NPM and Angular").
+Before reading this article, be sure you know what **Node.js**, **NPM** and **Angular** are. If you are not sure, [here's a short reminder](/blog/angular-vs-npm-vs-node-js "A recap of Node.js, NPM and Angular").
 
-In this article, I'm gonna use the __Angular CLI (Command line interface)__ to create a simple Angular project. I have the version 6.2.0 of @angular/cli installed on my system. I know, Angular CLI v7 has recently been released, but these options are still valid.
+In this article, I'm gonna use the **Angular CLI (Command line interface)** to create a simple Angular project. I have the version 6.2.0 of @angular/cli installed on my system. I know, Angular CLI v7 has recently been released, but these options are still valid.
 
 ## ng new
 
@@ -19,21 +19,20 @@ The ng new command allows you to create a new Angular project. You have to navig
 Run `ng new --help`. You'll see something like this:
 
 ![ng new --help](./ng-new.png "ng new --help command")
- 
+
 This is the list of available options. In this article I'll show you the most important ones, for me, to have a go with a project.
 
 ### --dry-run
 
 One of the least used options (but one of the most useful) is `--dry-run`, that gives you a preview of the file generated with the command without really creating the files.
- 
- ![ng new --dry-run](./ng-new-dry-run.png "ng new --dry-run command")
- 
+
+![ng new --dry-run](./ng-new-dry-run.png "ng new --dry-run command")
 
 As you can see in the above picture, the _--dry-run_ (or the alias -d) shows you the file that would be created if you run the command without the --dry-run option. The yellow note confirms that the files weren't actually created, but that was a simulation.
 
 This is also confirmed by the fact that looking up for the my-first-project dir, this doesn't exist.
 
-### --skip-install 
+### --skip-install
 
 If you want to create a project without losing time with the installation of the node modules, `--skip-install` is your choice.
 
@@ -46,19 +45,18 @@ With the _style_ option, you can define the style of your style files for your p
 `ng new my-project --syle=style-extension`
 
 Common sense makes you think that the available values would be CSS, SCSS and LESS, but the fact is that you can specify whatever you want, even not existing style format.
- 
+
 In the example below I set the value to _foo_.
 
- ![ng new --style=foo](./ng-new-style-foo.png "ng new --style") 
- 
+![ng new --style=foo](./ng-new-style-foo.png "ng new --style")
+
 ### --routing
 
 Routing is one of the keys to the success of Angular, and of course of Angular-based sites.
 
 With the `--routing` option you can tell the CLI to create the Routing Module and to add it to the AppModule.
 
- ![ng new --routing](./ng-new-routing.png "ng new --routing")
-
+![ng new --routing](./ng-new-routing.png "ng new --routing")
 
 ## --prefix
 

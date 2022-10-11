@@ -1,7 +1,7 @@
 ---
 title: "How to run PostgreSQL locally with Docker"
-path: '/blog/run-postgresql-with-docker'
-tags: ["PostgreSQL", "Docker",  "Database", "MainArticle"]
+path: "/blog/run-postgresql-with-docker"
+tags: ["PostgreSQL", "Docker", "Database", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "PostgreSQL is a famous relational database. In this article, we will learn how to run it locally using Docker."
 created: 2022-01-18
@@ -18,7 +18,7 @@ In this article, we will learn how to run PostgreSQL on a Docker container for l
 
 As you may know, Docker allows you to download images of almost everything you want in order to run them locally (or wherever you want) without installing too much stuff.
 
-The best way to check the available versions is to head to DockerHub and search for *postgres*.
+The best way to check the available versions is to head to DockerHub and search for _postgres_.
 
 ![Postgres image on DockerHub](./docker-image-on-dockerhub.png)
 
@@ -34,7 +34,6 @@ to download the latest image of PostgreSQL.
 
 ![Docker pull result](./docker_pull.png)
 
-
 ## Run the Docker Container
 
 Now that we have the image in our local environment, we can spin up a container and specify some parameters.
@@ -42,13 +41,13 @@ Now that we have the image in our local environment, we can spin up a container 
 Below, you can see the full command.
 
 ```
-docker run 
-    --name myPostgresDb 
-    -p 5455:5432 
-    -e POSTGRES_USER=postgresUser 
-    -e POSTGRES_PASSWORD=postgresPW 
-    -e POSTGRES_DB=postgresDB 
-    -d 
+docker run
+    --name myPostgresDb
+    -p 5455:5432
+    -e POSTGRES_USER=postgresUser
+    -e POSTGRES_PASSWORD=postgresPW
+    -e POSTGRES_DB=postgresDB
+    -d
     postgres
 ```
 
@@ -58,7 +57,7 @@ Time to explain each and every part! 🔎
 
 `--name myPostgresDb` is the name we assign to the container that we are creating.
 
-`-p 5455:5432` is the port mapping. Postgres natively exposes the port 5432, and we have to map that port (that lives *within* Docker) to a local port. In this case, the local 5455 port maps to Docker's 5432 port.
+`-p 5455:5432` is the port mapping. Postgres natively exposes the port 5432, and we have to map that port (that lives _within_ Docker) to a local port. In this case, the local 5455 port maps to Docker's 5432 port.
 
 `-e POSTGRES_USER=postgresUser`, `-e POSTGRES_PASSWORD=postgresPW`, and `-e POSTGRES_DB=postgresDB` set some environment variables. Of course, we're defining the username and password of the admin user, as well as the name of the database.
 
@@ -84,7 +83,7 @@ You can work with the DB using the console, or, if you prefer, using a UI.
 
 I prefer the second approach (yes, I know, it's not cool as using the terminal, but it works), so I downloaded **pgAdmin**.
 
-There, you can connect to the server by using the environment variable you've defined when running `docker run`. Remember that the hostname is simply *localhost*.
+There, you can connect to the server by using the environment variable you've defined when running `docker run`. Remember that the hostname is simply _localhost_.
 
 ![Connect to Postgres by using pgAdmin](./db-connection.png)
 

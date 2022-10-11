@@ -1,7 +1,7 @@
 ---
 title: "Angular vs NPM vs Node.js: spot the difference!"
 path: "/blog/angular-vs-npm-vs-nodejs"
-tags: ['Angular', 'Node.js', 'NPM', "MainArticle"]
+tags: ["Angular", "Node.js", "NPM", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "There's a lot of confusion around the terms Angular, NPM, and NodeJS. What are they? And how do they interact with each other?"
 created: 2018-10-25
@@ -16,9 +16,9 @@ Let's make it clear!
 
 ## Node.js
 
-Node.js is a __server environment__ based on JavaScript. You can download it from the [official site](https://nodejs.org/ "Node.js website") and run it on Windows, Linux, Mac, etc.
+Node.js is a **server environment** based on JavaScript. You can download it from the [official site](https://nodejs.org/ "Node.js website") and run it on Windows, Linux, Mac, etc.
 
-__Node.js uses asynchronous programming__: while a typical server handles one request per time (thus creating overhead while waiting for the request completion), Node.js accepts all the requests and handles them one by one in a manner that does not block other requests. This is obviously very efficient.
+**Node.js uses asynchronous programming**: while a typical server handles one request per time (thus creating overhead while waiting for the request completion), Node.js accepts all the requests and handles them one by one in a manner that does not block other requests. This is obviously very efficient.
 
 ## NPM
 

@@ -1,9 +1,9 @@
 ---
 title: "Code opinion: performance or clean code?"
-path: '/blog/clean-code-vs-performance'
-tags: ["Clean Code", "Performance" , "MainArticle"]
+path: "/blog/clean-code-vs-performance"
+tags: ["Clean Code", "Performance", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "In any application, writing code that is clean and performant is crucial. But we often can't have both. What to choose?"
+excerpt: "In any application, writing code that is clean and performant is crucial. But we often can't have both. What to choose?"
 created: 2021-07-27
 updated: 2021-07-27
 ---
@@ -13,11 +13,11 @@ A few weeks ago I had [a nice discussion on Twitter](https://twitter.com/vjnvisa
 The idea that triggered that discussion comes from [a Tweet by Daniel Moka](https://twitter.com/dmokafa/status/1404801014537064463)
 
 > Wrap long conditions!
-> 
-> A condition statement with multiple booleans makes your code harder to read. 
-> 
+>
+> A condition statement with multiple booleans makes your code harder to read.
+>
 > The longer a piece of code is, the more difficult it is to understand.
-> 
+>
 > It's better to extract the condition into a well-named function that reveals the intent.
 
 with an example that showed how much easier is to understand an _if_ statement when the condition evaluation is moved to a different, well-named function, rather than keeping the same condition directly in the _if_ statement.
@@ -47,7 +47,7 @@ He's actually right! Clearly, the way we write our code affects our application'
 
 So, what should be a developer's focus? Performance or Clean code?
 
-__In my opinion, clean code.__ But let's see the different points of view.
+**In my opinion, clean code.** But let's see the different points of view.
 
 ## In favor of performance
 
@@ -55,9 +55,9 @@ Obviously, an application of whichever type must be performant. Would you use pr
 
 So, we should optimize performance to the limit because:
 
-* every nanosecond is important
-* memory is a finite resource
-* final users are the most important users of our application
+- every nanosecond is important
+- memory is a finite resource
+- final users are the most important users of our application
 
 This means that every useless stack allocation, variable, loop iteration, should be avoided. We should bring our applications to the limits.
 
@@ -71,30 +71,29 @@ Visakh's points are true. But yet I don't agree with him. Let's see why.
 
 ## In favor of clean code
 
-First of all, let's break a myth: __end user is not the final user of our code: the dev team is.__ A user can totally ignore how the dev team implemented their application. C#, JavaScript, Python? TDD, BDD, AOD? They will never know (unless the source code is online). So, __end users are not affected by _our code_: they are affected by _the result of the compilation of our code_.__
+First of all, let's break a myth: **end user is not the final user of our code: the dev team is.** A user can totally ignore how the dev team implemented their application. C#, JavaScript, Python? TDD, BDD, AOD? They will never know (unless the source code is online). So, **end users are not affected by _our code_: they are affected by _the result of the compilation of our code_.**
 
 This means that we should not write good code for them, but for ourselves.
 
-But, to retain users in the long run, we should focus on another aspect: __maintainability__.
+But, to retain users in the long run, we should focus on another aspect: **maintainability**.
 
-Given [this IEEE definition](https://ieeexplore.ieee.org/document/5221065) of maintainability, 
+Given [this IEEE definition](https://ieeexplore.ieee.org/document/5221065) of maintainability,
 
-> a program is maintainable if it meets the following two conditions: 
-> 
+> a program is maintainable if it meets the following two conditions:
+>
 > • There is a high probability of determining the cause of a problem in a timely manner the first time it occurs,
-> 
-> • There is a high probability of being able to modify the program without causing an error in some other part of the program. 
+>
+> • There is a high probability of being able to modify the program without causing an error in some other part of the program.
 
 so, simplifying the definition, we should be able to:
 
-* easily identify and fix bugs
-* easily add new features
+- easily identify and fix bugs
+- easily add new features
 
 In particular, splitting the code into different methods helps you identify bugs because:
 
-* the code is easier to read, as if it was a novel;
-* in C#, we can easily identify which method threw an Exception, by looking at the stack trace details.
-
+- the code is easier to read, as if it was a novel;
+- in C#, we can easily identify which method threw an Exception, by looking at the stack trace details.
 
 To demonstrate the first point, let's read again the two snippets at the beginning of this article.
 
@@ -217,20 +216,20 @@ private static bool IsOnDb(int number) => number % 3 == 0;
 private static int[] GetFilteredNumbers(int[] array) => array.Where(n => n % 12 != 0).ToArray();
 ```
 
-Almost everything is a function. 
+Almost everything is a function.
 
 And here's the result of that benchmark:
 
-|           Method |        array |        Mean |       Error |      StdDev |      Median |
-|----------------- |------------- |------------:|------------:|------------:|------------:|
-|  WithSingleLevel | Int32[10000] | 46,384.6 ns |   773.95 ns | 1,997.82 ns | 45,605.9 ns |
+| Method           | array        |        Mean |       Error |      StdDev |      Median |
+| ---------------- | ------------ | ----------: | ----------: | ----------: | ----------: |
+| WithSingleLevel  | Int32[10000] | 46,384.6 ns |   773.95 ns | 1,997.82 ns | 45,605.9 ns |
 | WithNestedLevels | Int32[10000] | 58,912.2 ns | 1,152.96 ns | 1,539.16 ns | 58,536.7 ns |
-|  WithSingleLevel |  Int32[1000] |  5,184.9 ns |   100.54 ns |    89.12 ns |  5,160.7 ns |
-| WithNestedLevels |  Int32[1000] |  6,557.1 ns |   128.84 ns |   153.37 ns |  6,529.2 ns |
-|  WithSingleLevel |   Int32[100] |    781.0 ns |    18.54 ns |    51.99 ns |    764.3 ns |
-| WithNestedLevels |   Int32[100] |    910.5 ns |    17.03 ns |    31.98 ns |    901.5 ns |
-|  WithSingleLevel |    Int32[10] |    186.7 ns |     3.71 ns |     9.43 ns |    182.9 ns |
-| WithNestedLevels |    Int32[10] |    193.5 ns |     2.48 ns |     2.07 ns |    193.7 ns |
+| WithSingleLevel  | Int32[1000]  |  5,184.9 ns |   100.54 ns |    89.12 ns |  5,160.7 ns |
+| WithNestedLevels | Int32[1000]  |  6,557.1 ns |   128.84 ns |   153.37 ns |  6,529.2 ns |
+| WithSingleLevel  | Int32[100]   |    781.0 ns |    18.54 ns |    51.99 ns |    764.3 ns |
+| WithNestedLevels | Int32[100]   |    910.5 ns |    17.03 ns |    31.98 ns |    901.5 ns |
+| WithSingleLevel  | Int32[10]    |    186.7 ns |     3.71 ns |     9.43 ns |    182.9 ns |
+| WithNestedLevels | Int32[10]    |    193.5 ns |     2.48 ns |     2.07 ns |    193.7 ns |
 
 As you see, by increasing the size of the input array, the difference between using nested levels and staying on a single level increases too.
 

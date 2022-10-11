@@ -1,7 +1,7 @@
 ---
 title: "How to perform CRUD operations with Entity Framework Core and PostgreSQL"
-path: '/blog/postgres-crud-entityframework'
-tags: ["CSharp", "Database","SQL","PostgreSQL","MainArticle"]
+path: "/blog/postgres-crud-entityframework"
+tags: ["CSharp", "Database", "SQL", "PostgreSQL", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "With Entity Framework you can perform operations on relational databases without writing a single line of SQL. We will use EF to integrate PostgreSQL in our application"
 created: 2022-03-29
@@ -28,7 +28,7 @@ But the only way to learn it is by getting your hands dirty. Let's go!
 
 For this article, we will reuse the same .NET Core repository and the same database table we've used when we performed CRUD operations [with Dapper](https://www.code4it.dev/blog/postgres-crud-dapper "Dapper and Postgres") (a lightweight OR-M) and [with NpgSql](https://www.code4it.dev/blog/postgres-crud-operations-npgsql "Dapper and NpgSql"), which is the library that performs bare-metal operations.
 
-The first thing to do is, as usual, **install the related NuGet package**. Here we will need `Npgsql.EntityFrameworkCore.PostgreSQL`. Since I've used .NET 5, I have downloaded version *5.0.10*.
+The first thing to do is, as usual, **install the related NuGet package**. Here we will need `Npgsql.EntityFrameworkCore.PostgreSQL`. Since I've used .NET 5, I have downloaded version _5.0.10_.
 
 ![Npgsql.EntityFrameworkCore.PostgreSQL NuGet package](./efcore-nuget.png)
 
@@ -36,7 +36,7 @@ Then, we need to **define and configure the DB Context**.
 
 ### Define and configure DbContext
 
-The idea behind Entity Framework is to create *DB Context* objects that map database tables to C# data sets. **DB Contexts are the entry point to the tables**, and the EF way to work with databases.
+The idea behind Entity Framework is to create _DB Context_ objects that map database tables to C# data sets. **DB Contexts are the entry point to the tables**, and the EF way to work with databases.
 
 So, the first thing to do is to define a class that inherits from `DbContext`:
 
@@ -53,7 +53,7 @@ Within this class we define one or more `DbSets`, that represent the collections
 public DbSet<BoardGame> Games { get; set; }
 ```
 
-Then we can configure this specific *DbContext* by overriding the `OnConfiguring` method and specifying some options; for example, you can specify the connection string:
+Then we can configure this specific _DbContext_ by overriding the `OnConfiguring` method and specifying some options; for example, you can specify the connection string:
 
 ```cs
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -72,7 +72,7 @@ private const string CONNECTION_STRING = "Host=localhost:5455;" +
     "Username=postgresUser;" +
     "Password=postgresPW;" +
     "Database=postgresDB";
-``` 
+```
 
 **Entity Framework core requires the port to be specified in a different field**:
 
@@ -96,7 +96,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-Here we're saying that the rows in the *games* table will be mapped to `BoardGame` objects. *We will come back to it later*.
+Here we're saying that the rows in the _games_ table will be mapped to `BoardGame` objects. _We will come back to it later_.
 
 For now, we're done; here's the full `BoardGamesContext` class:
 
@@ -133,9 +133,9 @@ In the `ConfigureServices` method, add the following instruction:
 services.AddDbContext<BoardGamesContext>();
 ```
 
-With this instruction, you make the `BoardGamesContext` context available across the whole application. 
+With this instruction, you make the `BoardGamesContext` context available across the whole application.
 
-You can further configure that context using an additional parameter of type `Action<DbContextOptionsBuilder>`. In this example, you can skip it, since we've already configured the `BoardGamesContext` using the `OnConfiguring` method. They are equivalent. 
+You can further configure that context using an additional parameter of type `Action<DbContextOptionsBuilder>`. In this example, you can skip it, since we've already configured the `BoardGamesContext` using the `OnConfiguring` method. They are equivalent.
 
 If you don't like
 
@@ -155,7 +155,7 @@ services.AddDbContext<BoardGamesContext>(
 );
 ```
 
-The choice is yours! 
+The choice is yours!
 
 ### Define and customize the DB Model
 
@@ -183,15 +183,15 @@ Notice that **we've explicitly declared that `Id` is the primary key** in the ta
 
 But it's not enough! This way the code won't work! 😣
 
-Have a look at the table on Postgres: 
+Have a look at the table on Postgres:
 
 ![Games table on Posgres](./lowercase_names.png)
 
 Have you noticed it? **Postgres uses lowercase names**, but we are using CamelCase. **C# names must be 100% identical to those in the database**!
 
-Now we have two ways: 
+Now we have two ways:
 
-➡  Rename all the C# properties to their lowercase equivalent
+➡ Rename all the C# properties to their lowercase equivalent
 
 ```cs
 public class BoardGame
@@ -239,7 +239,7 @@ Is it enough? Have a look again at the table definition:
 
 Noticed the table name? It's "games", not "BoardGame"!
 
-We need to tell EF which is the table that contains `BoardGame` objects. 
+We need to tell EF which is the table that contains `BoardGame` objects.
 
 Again, we have two ways:
 
@@ -265,7 +265,7 @@ Again, the choice is yours.
 
 ## CRUD operations with Entity Framework
 
-Now that the setup is complete, we can perform our CRUD operations. Entity Framework simplifies *a lot* the way to perform such types of operations, so we can move fast in this part.
+Now that the setup is complete, we can perform our CRUD operations. Entity Framework simplifies _a lot_ the way to perform such types of operations, so we can move fast in this part.
 
 There are two main points to remember:
 
@@ -356,11 +356,11 @@ Entity Framework is impressive, and you can integrate it with tons of database v
 
 🔗 [Database Providers | Microsoft docs](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli "EF supported database providers")
 
-If you want to start working with PostgreSQL, a good way is to download it as a *Docker* image:
+If you want to start working with PostgreSQL, a good way is to download it as a _Docker_ image:
 
 🔗 [How to run PostgreSQL locally with Docker | Code4IT](https://www.code4it.dev/blog/run-postgresql-with-docker "Postgres in a Docker image")
 
-Then, if you don't like Entity Framework, you can perform CRUD operations using the native library, *NpgSql*:
+Then, if you don't like Entity Framework, you can perform CRUD operations using the native library, _NpgSql_:
 
 🔗 [CRUD operations on PostgreSQL using C# and Npgsql | Code4IT](https://www.code4it.dev/blog/postgres-crud-operations-npgsql "How to query Postgres with C#")
 
@@ -374,11 +374,11 @@ Finally, you can have a look at the full repository here:
 
 ## Wrapping up
 
-This article concludes the series that explores 3 ways to perform CRUD operations on a Postgres database with C#. 
+This article concludes the series that explores 3 ways to perform CRUD operations on a Postgres database with C#.
 
 In the first article, we've seen how to perform bare-metal queries using NpgSql. In the second article, we've used Dapper, which helps mapping queries results to C# DTOs. Finally, we've used Entity Framework to avoid writing SQL queries and have everything in place.
 
-Which one is your favorite way to query relational databases? 
+Which one is your favorite way to query relational databases?
 
 What are the pros and cons of each approach?
 

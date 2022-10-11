@@ -1,7 +1,7 @@
 ---
 title: "CRUD operations on PostgreSQL using C# and Npgsql"
-path: '/blog/postgres-crud-operations-npgsql'
-tags: ["CSharp", "Database","SQL","PostgreSQL","MainArticle"]
+path: "/blog/postgres-crud-operations-npgsql"
+tags: ["CSharp", "Database", "SQL", "PostgreSQL", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Once we have a Postgres instance running, we can perform operations on it. We will use Npgsql to query a Postgres instance with C#"
 created: 2022-02-01
@@ -22,7 +22,7 @@ We will operate on a single table that stores info for my board game collection.
 
 Before starting writing, we need to install **Npgsql**, a NuGet package that acts as a dataprovider for PostgreSQL.
 
-![NpgSql Nuget Package](./npgsql.png )
+![NpgSql Nuget Package](./npgsql.png)
 
 ## Open the connection
 
@@ -44,7 +44,7 @@ We simply create a `NpgsqlConnection` object, and we keep a reference to it. We 
 
 The only parameter we can pass as an input to the `NpgsqlConnection` constructor is the connection string.
 
-You must compose it by specifying the host address, the port, the database name we are connecting to, and the credentials of the user that is querying the db. 
+You must compose it by specifying the host address, the port, the database name we are connecting to, and the credentials of the user that is querying the db.
 
 ```cs
 private const string CONNECTION_STRING = "Host=localhost:5455;" +
@@ -65,15 +65,15 @@ We are working on a table, Games, whose name is stored in a constant:
 private const string TABLE_NAME = "Games";
 ```
 
-The *Games* table consists of several fields:
+The _Games_ table consists of several fields:
 
-| Field name | Field type |
-|---|---|
-|id|INTEGER PK|
-|Name|VARCHAR NOT NULL|
-|MinPlayers|SMALLINT NOT NULL|
-|MaxPlayers|SMALLINT|
-|AverageDuration |SMALLINT|
+| Field name      | Field type        |
+| --------------- | ----------------- |
+| id              | INTEGER PK        |
+| Name            | VARCHAR NOT NULL  |
+| MinPlayers      | SMALLINT NOT NULL |
+| MaxPlayers      | SMALLINT          |
+| AverageDuration | SMALLINT          |
 
 This table is mapped to the `BoardGame` class:
 
@@ -88,7 +88,7 @@ public class BoardGame
 }
 ```
 
-To double-check the results, you can use a UI tool to access the Database. For instance, if you use *pgAdmin*, you can find the list of databases running on a host.
+To double-check the results, you can use a UI tool to access the Database. For instance, if you use _pgAdmin_, you can find the list of databases running on a host.
 
 ![Database listing on pgAdmin](./db-list.png)
 
@@ -117,7 +117,7 @@ public async Task Add(BoardGame game)
 }
 ```
 
-The `commandText` string contains the full command to be issued. In this case, it's a simple `INSERT` statement. 
+The `commandText` string contains the full command to be issued. In this case, it's a simple `INSERT` statement.
 
 We use the `commandText` string to create a `NpgsqlCommand`object by specifying the query and the connection where we will perform that query. Note that the command must be disposed after its use: wrap it in a `using` block.
 
@@ -221,7 +221,6 @@ public async Task Delete(int id)
 
 Always the same story, so I have nothing to add.
 
-
 ## ExecuteNonQueryAsync vs ExecuteReaderAsync
 
 As you've seen, some operations use `ExecuteNonQueryAsync`, while some others use `ExecuteReaderAsync`. Why?
@@ -232,7 +231,7 @@ On the contrary, `ExecuteReader` and `ExecuteReaderAsync` are used to perform qu
 
 ## Bonus 1: Create the table if not already existing
 
-Of course, you can also create tables programmatically. 
+Of course, you can also create tables programmatically.
 
 ```cs
 public async Task CreateTableIfNotExists()
@@ -275,7 +274,7 @@ public async Task<string> GetVersion()
 }
 ```
 
-This method returns lots of info that directly depend on the database instance. In my case, I see *PostgreSQL 14.1 (Debian 14.1-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit*.
+This method returns lots of info that directly depend on the database instance. In my case, I see _PostgreSQL 14.1 (Debian 14.1-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit_.
 
 The other way is to use `PostgreSqlVersion`.
 
@@ -308,7 +307,7 @@ In particular, an important part to consider is the mapping between C# and SQL d
 
 🔗 [PostgreSQL to C# type mapping | Npsgql](https://www.npgsql.org/doc/types/basic.html "Mapping between PostgreSQL and C# data types")
 
-When talking about parameters to be passed to the query, I mentioned the *SQL Injection* vulnerability. Here you can read more about it.
+When talking about parameters to be passed to the query, I mentioned the _SQL Injection_ vulnerability. Here you can read more about it.
 
 🔗 [SQL Injection | Imperva](https://www.imperva.com/learn/application-security/sql-injection-sqli/ "A description of SQL Injection")
 

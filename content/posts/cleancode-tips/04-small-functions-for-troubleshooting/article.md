@@ -1,16 +1,16 @@
 ---
 title: "Clean code tip: small functions bring smarter exceptions"
-path: '/cleancodetips/smaller-functions-smarter-exceptions'
+path: "/cleancodetips/smaller-functions-smarter-exceptions"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.jpg"
-excerpt : "Smaller functions help us write better code, but have also a nice side effect: they help us to understand where an exception was thrown. Let's see how!"
+excerpt: "Smaller functions help us write better code, but have also a nice side effect: they help us to understand where an exception was thrown. Let's see how!"
 created: 2021-08-17
 updated: 2021-08-17
 ---
 
 Small functions not only improve your code readability but also help to debug faster your applications in case of unhandled exceptions.
 
-Take as an example the program listed below: what would happen if a `NullReferenceException` is thrown? Would you be able to easily understand which statement caused that exception? 
+Take as an example the program listed below: what would happen if a `NullReferenceException` is thrown? Would you be able to easily understand which statement caused that exception?
 
 ```cs
 static void Main()
@@ -65,9 +65,7 @@ Object reference not set to an instance of an object.
 
 Yes, it says that the error occurred in the `PrintAllPlayersInTeam`. But where, exactly? Not a clue!
 
-
 By putting all together inside a single function, `PrintAllPlayersInTeam`, we are losing the context of our exceptions.
-
 
 So, a good idea is to split the method into smaller, well-scoped methods:
 
@@ -129,7 +127,7 @@ static void Main()
 	}
 ```
 
-Of course, __this is not a perfect code, but it give you the idea!__.
+Of course, **this is not a perfect code, but it give you the idea!**.
 
 As you can see, I've split the `PrintAllPlayersInTeam` method into smaller ones.
 
@@ -152,8 +150,7 @@ return currentTeam;
 
 It's easy to understand that the most probable culprits are `teamFeed` and `teamFeed.Content`!
 
-__Of course, you must not exaggerate!__ Don't create a method for every single operation you do: in that way, you'll just clutter the code without adding any value.
-
+**Of course, you must not exaggerate!** Don't create a method for every single operation you do: in that way, you'll just clutter the code without adding any value.
 
 ## Downsides
 

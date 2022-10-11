@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: Use a SortedSet to avoid duplicates and sort items"
-path: '/csharptips/sorted-set'
+path: "/csharptips/sorted-set"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "Using the right data structure is crucial to building robust and efficient applications. So, why use a List or a HashSet to sort items (and remove duplicates) when you have a SortedSet?"
@@ -8,8 +8,7 @@ created: 2021-11-16
 updated: 2021-11-16
 ---
 
-
-As you probably know, you can create collections of items without duplicates by using a `HashSet<T>` object. 
+As you probably know, you can create collections of items without duplicates by using a `HashSet<T>` object.
 
 It is quite useful to remove duplicates from a list of items of the same type.
 
@@ -77,14 +76,14 @@ var resultSortedSet = string.Join(',', sortedSet);
 Console.WriteLine(resultSortedSet);
 ```
 
-Both results print *Bari,Naples,Rome,Turin*. But the second approach does not require you to sort a whole list: it is more efficient, both talking about time and memory.
+Both results print _Bari,Naples,Rome,Turin_. But the second approach does not require you to sort a whole list: it is more efficient, both talking about time and memory.
 
 ## Use custom sorting rules
 
 What if we wanted to use a `SortedSet` with a custom object, like `User`?
 
 ```cs
-public class User { 
+public class User {
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
@@ -154,13 +153,15 @@ Naggaga Maria
 
 Notice that the second Davide Bellone has disappeared since it was a duplicate.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Choosing the right data type is crucial for building robust and performant applications.
 
 In this article, we've used a `SortedSet` to insert items in a collection and expect them to be sorted and without duplicates.
 
-I've never used it in a project. So, how did I know that? I just explored the libraries I was using! 
+I've never used it in a project. So, how did I know that? I just explored the libraries I was using!
 
 From time to time, spend some minutes reading the documentation, have a glimpse of the most common libraries, and so on: you'll find lots of stuff that you've never thought existed!
 

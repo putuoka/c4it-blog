@@ -1,7 +1,7 @@
 ---
 title: "How to mock dependencies with Manifest resources"
 path: "/blog/mock-dependency-with-manifest-resources"
-tags: ["CSharp", "dotNET", "Tests" , "MainArticle"]
+tags: ["CSharp", "dotNET", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Sometimes on your tests you need to access test files, for example for mocking external data. With manifest resources you can easily reference files for your tests."
 created: 2020-07-14
@@ -20,7 +20,7 @@ In this article I'll simplify the API endpoint, replacing the real one with the 
 
 ## Setting up the services
 
-Say that you have a service that, given a name, tells you the gender generally associated with it. 
+Say that you have a service that, given a name, tells you the gender generally associated with it.
 
 _Psst! If you are going to start an argument about how to consider genders and so on, just don't. This is just a demo, not a sociological paper_ 😊
 
@@ -112,7 +112,7 @@ Now, say that instead of the GenderInfo object you need to mock a really complex
 
 ## Creating manifest resources
 
-__Manifest resources__ are files strictly related to its assembly: when you build the library, those files will be copied into the build result.
+**Manifest resources** are files strictly related to its assembly: when you build the library, those files will be copied into the build result.
 
 As per Microsoft docs,
 
@@ -143,7 +143,7 @@ Now, when you build your project, the embedded files will be automatically added
 
 ## Using manifest resources
 
-When you want to get the list of embedded resources associated with the running assembly, you can rely on the _System.Reflection namespace_ and run `Assembly.GetExecutingAssembly().GetManifestResourceNames()`: this method returns an array of strings with the list of available files. 
+When you want to get the list of embedded resources associated with the running assembly, you can rely on the _System.Reflection namespace_ and run `Assembly.GetExecutingAssembly().GetManifestResourceNames()`: this method returns an array of strings with the list of available files.
 
 To read and parse the JSON file, you need to call the `GetManifestResourceStream` method and deserialize the returned stream into a GenderInfo object.
 
@@ -162,7 +162,7 @@ public async Task<GenderInfo> GetFakeGenderInfo()
 }
 ```
 
-Have a look at the file name: __the file path is delimited by dots__, not slashes.
+Have a look at the file name: **the file path is delimited by dots**, not slashes.
 
 Now that you have that object, you can update the test:
 

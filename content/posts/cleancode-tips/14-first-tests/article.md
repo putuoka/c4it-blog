@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: F.I.R.S.T. acronym for better unit tests"
-path: '/cleancodetips/f-i-r-s-t-unit-tests'
+path: "/cleancodetips/f-i-r-s-t-unit-tests"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Good unit tests have some properties in common: they are Fast, Independent, Repeatable, Self-validating, and Thorough. In a word: FIRST!"
@@ -19,7 +19,7 @@ You should not create tests that require a long time for setup and start-up: ide
 If your unit tests are taking too much time for running, there must be something wrong with it; there are many possibilities:
 
 1. You're trying to access remote sources (such as real APIs, Databases, and so on): you should mock those dependencies to make tests faster and to avoid accessing real resources. If you need real data, consider creating integration/e2e tests instead.
-2. Your *system under test* is too complex to build: too many dependencies? [DIT value](https://www.code4it.dev/blog/measure-maintainability-with-ndepend#depth-of-inheritance-tree-dit) too high?
+2. Your _system under test_ is too complex to build: too many dependencies? [DIT value](https://www.code4it.dev/blog/measure-maintainability-with-ndepend#depth-of-inheritance-tree-dit) too high?
 3. The method under test does too many things. You should consider splitting it into separate, independent methods, and let the caller orchestrate the method invocations as necessary.
 
 ## Independent (or Isolated)
@@ -68,7 +68,7 @@ void TestDate_DoNotDoIt()
 
     DateTime d = DateTime.UtcNow;
     string dateAsString = d.ToString("yyyy-MM-dd");
-    
+
     Assert.Equal("2022-07-19", dateAsString);
 }
 ```
@@ -119,7 +119,7 @@ public class ItemsService
     {
         _itemsRepo = itemsRepo;
     }
-    
+
     public IEnumerable<Item> GetItemsByCategory(string category, int maxItems)
     {
 
@@ -136,12 +136,12 @@ Which tests should you write for `GetItemsByCategory`?
 
 I can think of these:
 
-* what if `category` is null or empty?
-* what if `maxItems` is less than 0?
-* what if `allItems` is null?
-* what if one of the items inside `allItems` is null? 
-* what if `_itemsRepo.GetItems()` throws an exception?
-* what if `_itemsRepo` is null? 
+- what if `category` is null or empty?
+- what if `maxItems` is less than 0?
+- what if `allItems` is null?
+- what if one of the items inside `allItems` is null?
+- what if `_itemsRepo.GetItems()` throws an exception?
+- what if `_itemsRepo` is null?
 
 As you can see, even for a trivial method like this you should write a lot of tests, to ensure that you haven't missed anything.
 

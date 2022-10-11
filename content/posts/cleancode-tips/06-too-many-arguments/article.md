@@ -1,9 +1,9 @@
 ---
 title: "Clean Code Tip: Don't use too many method arguments"
-path: '/cleancodetips/too-many-method-arguments'
+path: "/cleancodetips/too-many-method-arguments"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
-excerpt : "When a function has too many parameters, it's clear that something is wrong. But... why? What are the consequences of having too many parameters?"
+excerpt: "When a function has too many parameters, it's clear that something is wrong. But... why? What are the consequences of having too many parameters?"
 created: 2021-11-02
 updated: 2021-11-02
 ---
@@ -14,9 +14,9 @@ Why? How can we do it? What are the main issues with having too many params? Hav
 
 ```cs
 void SendPackage(
-    string name, 
-    string lastname, 
-    string city, 
+    string name,
+    string lastname,
+    string city,
     string country,
     string packageId
     ) { }
@@ -24,20 +24,20 @@ void SendPackage(
 
 If you need to use another field about the address or the person, you will need to add a new parameter and update all the existing methods to match the new function signature.
 
-What if we added a *State* argument? Is this part of the address (*state = "Italy"*) or something related to the package (*state = Damaged*)?
+What if we added a _State_ argument? Is this part of the address (_state = "Italy"_) or something related to the package (_state = Damaged_)?
 
 Storing this field in the correct object helps understanding its meaning.
 
 ```cs
 void SendPackage(Person person, string packageId) { }
 
-class Person { 
+class Person {
     public string Name { get; set; }
     public string LastName { get; set; }
     public Address Address {get; set;}
 }
 
-class Address { 
+class Address {
     public string City { get; set; }
     public string Country { get; set; }
 }
@@ -51,9 +51,9 @@ Say that two devs, Alice and Bob, are working on some functionalities that impac
 
 To recap, why do we need to reduce the number of parameters?
 
-* to give context and meaning to those parameters
-* to avoid errors for positional parameters
-* to avoid merge conflicts
+- to give context and meaning to those parameters
+- to avoid errors for positional parameters
+- to avoid merge conflicts
 
 👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1347591898525941765 "Original post on Twitter") or on the comment section below!
 

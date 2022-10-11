@@ -1,16 +1,16 @@
 ---
 title: "Clean code tips - Tests"
-path: '/blog/clean-code-tests'
-tags: ["Clean Code" , "MainArticle"]
+path: "/blog/clean-code-tests"
+tags: ["Clean Code", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Tests are as important as production code. Well, they are even more important! So writing them well brings lots of benefits to your projects."
+excerpt: "Tests are as important as production code. Well, they are even more important! So writing them well brings lots of benefits to your projects."
 created: 2021-03-23
 updated: 2021-03-23
 ---
 
 Clean code principles apply not only to production code but even to tests. Indeed, a test should be even more clean, easy-to-understand, and meaningful than production code.
 
-In fact, __tests not only prevent bugs: they even document your application!__ New team members should look at tests to understand how a class, a function, or a module works.
+In fact, **tests not only prevent bugs: they even document your application!** New team members should look at tests to understand how a class, a function, or a module works.
 
 So, every test must have a clear meaning, must have its own _raison d'être_, and must be written well enough to let the readers understand it without too much fuss.
 
@@ -26,13 +26,13 @@ If you are interested in more tips about Clean Code, here are the other articles
 
 ## Why you should keep tests clean
 
-As I said before, tests are also meant to document your code: given a specific input or state, they help you understand what the result will be in a __deterministic__ way.
+As I said before, tests are also meant to document your code: given a specific input or state, they help you understand what the result will be in a **deterministic** way.
 
 But, since tests are dependent on the production code, you should adapt them when the production code changes: this means that tests must be clean and flexible enough to let you update them without big issues.
 
 If your test suite is a mess, even the slightest update in your code will force you to spend a lot of time updating your tests: that's why you should organize your tests with the same care as your production code.
 
-Good tests have also a nice side effect: __they make your code more flexible__. Why? Well, if you have a good test coverage, and all your tests are meaningful, you will be more confident in applying changes and adding new functionalities. Otherwise, when you change your code, you will not be sure not only that the new code works as expected, but that you have not introduced any regression.
+Good tests have also a nice side effect: **they make your code more flexible**. Why? Well, if you have a good test coverage, and all your tests are meaningful, you will be more confident in applying changes and adding new functionalities. Otherwise, when you change your code, you will not be sure not only that the new code works as expected, but that you have not introduced any regression.
 
 So, having a clean, thorough test suite is crucial for the life of your application.
 
@@ -93,9 +93,9 @@ This is kind of a mess, isn't it? Let's improve it.
 
 What does `CreateTableTest` do? How does it help the reader understand what's going on?
 
-We need to explicitly say what the tests want to achieve. There are many ways to do it; one of the most used is the __Given-When-Then__ pattern: every method name should express those concepts, possibly in a consistent way.
+We need to explicitly say what the tests want to achieve. There are many ways to do it; one of the most used is the **Given-When-Then** pattern: every method name should express those concepts, possibly in a consistent way.
 
-I like to use always the same format when naming tests: *{Something}\_Should\_{DoSomething}\_When\_{Condition}*. This format explicitly shows what and why the test exists.
+I like to use always the same format when naming tests: _{Something}\_Should\_{DoSomething}\_When\_{Condition}_. This format explicitly shows what and why the test exists.
 
 So, let's change the name:
 
@@ -298,7 +298,7 @@ public void CreateTableInfo_Should_CreateTableWithHeadersAndRows_When_TableIsWel
 
 In this way, you have all the info in a centralized place.
 
-__But, sometimes, this is not the best way__. Or, at least, in my opinion.
+**But, sometimes, this is not the best way**. Or, at least, in my opinion.
 
 In the previous example, the most important part is the elaboration of a specific input. So, to help readers, I usually prefer to keep inputs and outputs listed directly in the test method.
 
@@ -346,7 +346,7 @@ public class User
 }
 
 public class Address
-{ 
+{
     public string Country { get; set; }
     public string City { get; set; }
 }
@@ -434,9 +434,9 @@ By looking at the previous examples, you can notice that the `AddressInfo` prope
 
 Another way of seeing this tip is thinking of the properties of an object (I mean, the _mathematical_ properties). If you're creating your custom sorting, think of which properties can be applied to your method. For instance:
 
-* an empty list, when sorted, is still an empty list
-* an item with 1 item, when sorted, still has one item
-* applying the sorting to an already sorted list does not change the order
+- an empty list, when sorted, is still an empty list
+- an item with 1 item, when sorted, still has one item
+- applying the sorting to an already sorted list does not change the order
 
 and so on.
 
@@ -446,12 +446,12 @@ In a similar way, think of a method that gives you the number of days between to
 
 You have to test - at least - what happens if the other date:
 
-* is exactly today
-* it is in the future
-* it is in the past
-* it is next year
-* it is February, the 29th of a valid year (to check an odd case)
-* it is February, the 30th (to check an invalid date)
+- is exactly today
+- it is in the future
+- it is in the past
+- it is next year
+- it is February, the 29th of a valid year (to check an odd case)
+- it is February, the 30th (to check an invalid date)
 
 Each of these tests is against a single value, so you might be tempted to put everything in a single test method. But here you are running tests against different concepts, so place every one of them in a separate test method.
 
@@ -461,11 +461,11 @@ Of course, in this example, you must not rely on the native way to get the curre
 
 You'll often read the word _FIRST_ when talking about the properties of good tests. What does _FIRST_ mean?
 
-It is simply an acronym. A test must be __Fast, Independent, Repeatable, Self-validating, and Timed__.
+It is simply an acronym. A test must be **Fast, Independent, Repeatable, Self-validating, and Timed**.
 
 ### Fast
 
-Tests should be __fast__. How much? Enough to don't discourage the developers to run them. __This property applies only to Unit Tests__: in fact, while each test should run in less than 1 second, you may have some Integration and E2E tests that take more than 10 seconds - it depends on what you're testing.
+Tests should be **fast**. How much? Enough to don't discourage the developers to run them. **This property applies only to Unit Tests**: in fact, while each test should run in less than 1 second, you may have some Integration and E2E tests that take more than 10 seconds - it depends on what you're testing.
 
 Now, imagine if you have to update one class (or one method), and you have to re-run all your tests. If the whole tests suite takes just a few seconds, you can run them whenever you want - some devs run all the tests every time they hit Save; if every single test takes 1 second to run, and you have 200 tests, just a simple update to one class makes you lose at least 200 seconds: more than 3 minutes. _Yes, I know that you can run them in parallel, but that's not the point!_
 
@@ -553,7 +553,7 @@ You must be able to see the result of a test without performing more actions by 
 
 So, don't write your test results on an external file or source, and don't put breakpoints on your tests to see if they've passed.
 
-Just put __meaningful assertions__ and let your framework (and IDE) tell you the result.
+Just put **meaningful assertions** and let your framework (and IDE) tell you the result.
 
 ### Timely
 
@@ -565,15 +565,15 @@ So, this particular property applies only to devs who use TDD.
 
 In this article, we've seen that even if many developers consider tests redundant and not worthy of attention, they are first-class citizens of our applications.
 
-Paying enough attention to tests brings us a lot of advantages: 
+Paying enough attention to tests brings us a lot of advantages:
 
-* tests document our code, thus helping onboarding new developers
-* they help us deploy with confidence a new version of our product, without worrying about regressions
-* they prove that our code has no bugs (well, actually _you'll always have a few bugs, it's just that you haven't discovered them yet_ )
-* code becomes more flexible and can be extended without too many worries
+- tests document our code, thus helping onboarding new developers
+- they help us deploy with confidence a new version of our product, without worrying about regressions
+- they prove that our code has no bugs (well, actually _you'll always have a few bugs, it's just that you haven't discovered them yet_ )
+- code becomes more flexible and can be extended without too many worries
 
 So, write meaningful tests, and always well written.
 
-__Quality over quantity__, always!
+**Quality over quantity**, always!
 
 Happy coding!

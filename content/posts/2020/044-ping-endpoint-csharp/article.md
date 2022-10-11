@@ -1,7 +1,7 @@
 ---
 title: "How to Ping an endpoint with C#"
 path: "/blog/ping-endpoint-csharp"
-tags: ["CSharp" , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "How to effectively ping an endpoint in C#? Don't use the HttpClient, when .NET provides a Ping class to perform all these operations."
 created: 2020-11-17
@@ -49,7 +49,7 @@ private static async Task<bool> PingWithHttpClient()
 
 Notice that I don't request the whole content, but I perform a _HEAD_ operation to get only the response headers. To know more about this HTTP method, [check out the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD "HEAD documentation on MDN").
 
-So, what can we say about this snippet of code? __Does it work? _Yes_. Is it the best choice? _No_.__ Why?
+So, what can we say about this snippet of code? **Does it work? _Yes_. Is it the best choice? _No_.** Why?
 
 There are at least 2 cases that will show you why you shouldn't use it.
 
@@ -79,7 +79,7 @@ Yes, that's as simple as it appears! But let's have a look at each line.
 var hostUrl = "www.code4it.dev";
 ```
 
-Here I'm defining which host must be checked. As you already do with the command line, you have to __exclude both the protocol (_http_ and _https_) and every following path and query string__.
+Here I'm defining which host must be checked. As you already do with the command line, you have to **exclude both the protocol (_http_ and _https_) and every following path and query string**.
 
 ```cs
 Ping ping = new Ping();
@@ -106,7 +106,7 @@ public IPStatus Status { get; }
 
 With the `Address` field, you can perform lots of operations, like mapping that IP address to an _IPv4_ or _IPv6_ address and get some advanced properties, like the `AddressFamily`. Or, simply, you might want to print the IP value, and you can do it with a simple `ToString`.
 
-Of course, you can also get the _RTT (round-trip time)_  expressed in milliseconds.
+Of course, you can also get the _RTT (round-trip time)_ expressed in milliseconds.
 
 The last thing to check is the actual status.
 
@@ -131,7 +131,7 @@ public enum IPStatus
 }
 ```
 
-## The synchronous way 
+## The synchronous way
 
 We've seen how to ping an endpoint asynchronously. What if we need the synchronous way?
 

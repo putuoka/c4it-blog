@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: use IHttpClientFactory to generate HttpClient instances"
-path: '/csharptips/use-httpclientfactory-instead-of-httpclient'
+path: "/csharptips/use-httpclientfactory-instead-of-httpclient"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "Initializing HttpClient instances can expose you to Socket Exhaustion problems. You should use IHttpClientFactory instead"
@@ -74,10 +74,9 @@ public void ConfigureServices(IServiceCollection services)
 
 You can find that extension method under the `Microsoft.Extensions.DependencyInjection` namespace.
 
-
 ## Wrapping up
 
-In this article, we've seen why you should not instantiate HttpClients manually, but instead, you should use `IHttpClientFactory`. 
+In this article, we've seen why you should not instantiate HttpClients manually, but instead, you should use `IHttpClientFactory`.
 
 Happy coding!
 

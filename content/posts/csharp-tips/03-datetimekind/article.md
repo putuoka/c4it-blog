@@ -1,9 +1,9 @@
 ---
 title: "C# tip: create correct DateTimes with DateTimeKind"
-path: '/csharptips/datetimekind'
+path: "/csharptips/datetimekind"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.jpg"
-excerpt : "Creating simple DateTimes creates issues when handling timezones. You can solve some issues by using DateTimeKind"
+excerpt: "Creating simple DateTimes creates issues when handling timezones. You can solve some issues by using DateTimeKind"
 created: 2021-08-07
 updated: 2021-08-07
 ---
@@ -35,7 +35,7 @@ On the contrary, `ToLocalTime` considers `plainDate` as UTC, so it adds one hour
 
 So what to do?
 
-__Always specify the `DateTimeKind` parameter__ when creating `DateTime`s__. This helps the application understanding which kind of date is it managing.
+**Always specify the `DateTimeKind` parameter** when creating `DateTime`s\_\_. This helps the application understanding which kind of date is it managing.
 
 ```cs
 var specificDate = new DateTime(2020, 1, 1, 0, 30, 0, DateTimeKind.Utc);
@@ -61,7 +61,6 @@ public enum DateTimeKind
 So, my suggestion is to always specify the `DateTimeKind` parameter when creating a new DateTime.
 
 If you want to know more about Time and Timezones, I'd suggest watching [this YouTube video by Computerphile](https://www.youtube.com/watch?v=-5wpm-gesOY "The Problem with Time & Timezones - Computerphile").
-
 
 👉 Let's discuss it [on Twitter](https://twitter.com/BelloneDavide/status/1338540757943119874 "Original tweet on Twitter") or on the comment section below.
 

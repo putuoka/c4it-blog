@@ -1,9 +1,9 @@
 ---
 title: "Handling Azure Service Bus errors with .NET"
-path: '/blog/azure-service-bus-errors'
-tags: ["Azure", "dotNET", "CSharp" , "MainArticle"]
+path: "/blog/azure-service-bus-errors"
+tags: ["Azure", "dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Senders and Receivers handle errors on Azure Service Bus differently. We'll see how to catch them, what they mean and how to fix them. We'll also introduce Dead Letters."
+excerpt: "Senders and Receivers handle errors on Azure Service Bus differently. We'll see how to catch them, what they mean and how to fix them. We'll also introduce Dead Letters."
 created: 2021-06-29
 updated: 2021-06-29
 ---
@@ -34,7 +34,7 @@ To send a message in the Queue, remember that we have 3 main steps:
 
 1. create a new `ServiceBusClient` instance using the connection string
 2. create a new `ServiceBusSender` specifying the name of the queue or topic (in our case, the Topic)
-3. send the message by calling the `SendMessageAsync` method 
+3. send the message by calling the `SendMessageAsync` method
 
 ```cs
 await using (ServiceBusClient client = new ServiceBusClient(ConnectionString))
@@ -43,7 +43,7 @@ await using (ServiceBusClient client = new ServiceBusClient(ConnectionString))
 
     foreach (var order in validOrders)
     {
-       
+
         /// Create Bus Message
         ServiceBusMessage serializedContents = CreateServiceBusMessage(order);
 
@@ -53,7 +53,7 @@ await using (ServiceBusClient client = new ServiceBusClient(ConnectionString))
 }
 ```
 
-To receive messages from a Topic, we need the following steps: 
+To receive messages from a Topic, we need the following steps:
 
 1. create a new `ServiceBusClient` instance as we did before
 2. create a new `ServiceBusProcessor` instance by specifying the name of the Topic and of the Subscription
@@ -70,13 +70,13 @@ await _ordersProcessor.StartProcessingAsync();
 
 Of course, I recommend reading the previous articles to get a full understanding of the examples.
 
-Now it's time to introduce some errors and see what happens. 
+Now it's time to introduce some errors and see what happens.
 
 ### No such host is known
 
 When the connection string is invalid because the host name is wrong, you get an `Azure.Messaging.ServiceBus.ServiceBusException` exception with this message: _No such host is known. ErrorCode: HostNotFound_.
 
-__What is the host? It's the first part of the connection string__. For example, in a connection string like 
+**What is the host? It's the first part of the connection string**. For example, in a connection string like
 
 ```txt
 Endpoint=sb://myHost.servicebus.windows.net/;SharedAccessKeyName=myPolicy;SharedAccessKey=myKey
@@ -94,7 +94,7 @@ You can perform all the operations you want without receiving any error until yo
 
 ### Put token failed: The messaging entity X could not be found
 
-Another message you may receive is __Put token failed. status-code: 404, status-description: The messaging entity 'X' could not be found__. 
+Another message you may receive is **Put token failed. status-code: 404, status-description: The messaging entity 'X' could not be found**.
 
 The reason is pretty straightforward: the resource you are trying to use does not exist: by _resource_ I mean Queue, Topic, and Subscription.
 
@@ -102,7 +102,7 @@ Again, that exception is thrown only when interacting directly with Azure Servic
 
 ### Put token failed: the token has an invalid signature
 
-If the connection string is not valid because of invalid _SharedAccessKeyName_ or _SharedAccessKey_, you will get an exception of type `System.UnauthorizedAccessException` with the following message: __Put token failed. status-code: 401, status-description: InvalidSignature: The token has an invalid signature.__
+If the connection string is not valid because of invalid _SharedAccessKeyName_ or _SharedAccessKey_, you will get an exception of type `System.UnauthorizedAccessException` with the following message: **Put token failed. status-code: 401, status-description: InvalidSignature: The token has an invalid signature.**
 
 The best way to fix it is to head to the Azure portal and copy again the credentials, as I explained in the introductory article.
 
@@ -124,7 +124,7 @@ _ordersProcessor.ProcessMessageAsync += PizzaInvoiceMessageHandler;
 await _ordersProcessor.StartProcessingAsync();
 ```
 
-you will get an exception with the message: __Cannot begin processing without ProcessErrorAsync handler set__.
+you will get an exception with the message: **Cannot begin processing without ProcessErrorAsync handler set**.
 
 ![An exception is thrown when the ProcessErrorAsync handler is not defined](./ProcessErrorAsync-handler-not-set.png)
 
@@ -148,11 +148,11 @@ As an example, let's update again the host part of the connection string. When r
 
 This means that in this method you have to define your error handling, add logs, and whatever may help your application managing errors.
 
-__The same handler can be used to manage errors that occur while performing operations on a message__: if an exception is thrown when processing an incoming message, you have two choices: handle it in the `ProcessMessageAsync` handler, in a try-catch block, or leave the error handling on the `ProcessErrorAsync` handler.
+**The same handler can be used to manage errors that occur while performing operations on a message**: if an exception is thrown when processing an incoming message, you have two choices: handle it in the `ProcessMessageAsync` handler, in a try-catch block, or leave the error handling on the `ProcessErrorAsync` handler.
 
 ![ProcessErrorEventArgs details](./message-error-handling.png)
 
-In the above picture, I've simulated an error while processing an incoming message by throwing a new `DivideByZeroException`. As a result, the `PizzaItemErrorHandler` method is called, and the `arg` argument contains info about the thrown exception.  
+In the above picture, I've simulated an error while processing an incoming message by throwing a new `DivideByZeroException`. As a result, the `PizzaItemErrorHandler` method is called, and the `arg` argument contains info about the thrown exception.
 
 I personally prefer separating the two error handling situations: in the `ProcessMessageAsync` method I handle errors that occur in the business logic, when operating on an already received message; in the `ProcessErrorAsync` method I handle error coming from the _infrastructure_, like errors in the connection string, invalid credentials and so on.
 
@@ -160,7 +160,7 @@ I personally prefer separating the two error handling situations: in the `Proces
 
 When talking about queues, you'll often come across the term _dead letter_. What does it mean?
 
-__Dead letters are unprocessed messages__: messages _die_ when a message cannot be processed for a certain period of time. You can ignore that message because it has become obsolete or, anyway, it cannot be processed - maybe because it is malformed.
+**Dead letters are unprocessed messages**: messages _die_ when a message cannot be processed for a certain period of time. You can ignore that message because it has become obsolete or, anyway, it cannot be processed - maybe because it is malformed.
 
 Messages like these are moved to a specific queue called _Dead Letter Queue (DLQ)_: messages are moved here to avoid making the _normal_ queue full of messages that will never be processed.
 
@@ -172,7 +172,7 @@ in the above picture, you can see how the DLQ can be navigated using Service Bus
 
 ## Wrapping up
 
-In this article, we've seen some of the errors you can meet when working with Azure Service Bus and .NET. 
+In this article, we've seen some of the errors you can meet when working with Azure Service Bus and .NET.
 
 We've seen the most common Exceptions, how to manage them both on the Sender and the Receiver side: on the Receiver you must handle them in the `ProcessErrorAsync` handler.
 

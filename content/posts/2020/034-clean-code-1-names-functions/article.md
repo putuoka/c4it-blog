@@ -1,9 +1,9 @@
 ---
 title: "Clean code tips - names and functions"
 path: "/blog/clean-code-names-and-functions"
-tags: ["Clean Code" , "MainArticle"]
+tags: ["Clean Code", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions"
+excerpt: "I don't have to tell you why you need to write clean code. Here you'll see some tips about how to name things and how to structure functions"
 created: 2020-07-21
 updated: 2020-07-21
 ---
@@ -143,7 +143,7 @@ string storeNumbersInString(List<int> numbers)
 }
 ```
 
-Still not perfect, but it's better than the original function. 
+Still not perfect, but it's better than the original function.
 Have a look at the _reverseNumbers_ function. It will cause trouble, and we'll see why soon.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗ Keep functions small! The indent level should be 1 or 2, so avoid nesting too much code.<br>Split big functions into multiple, meaningful functions, and make the code more readable!<br><br>Of course, use meaningful names!<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://twitter.com/hashtag/CodeNewbie?src=hash&amp;ref_src=twsrc%5Etfw">#CodeNewbie</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1278401074714619904?ref_src=twsrc%5Etfw">July 1, 2020</a></blockquote>
@@ -303,11 +303,11 @@ _PSST: wanna know some cool things about Enums? [Here's something for you!](./5-
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">❗You know, functions must do 1 thing and do it well.<br><br>This also means avoid side effects: if you do that &quot;one thing&quot; and also change the state of the system, you are doing more things. <br><br>But, if it&#39;s inevitable, at least say it in the fn name!<a href="https://twitter.com/hashtag/cleancode?src=hash&amp;ref_src=twsrc%5Etfw">#cleancode</a> <a href="https://twitter.com/hashtag/codenewbie?src=hash&amp;ref_src=twsrc%5Etfw">#codenewbie</a> <a href="https://t.co/PfygNCpZGr">https://t.co/PfygNCpZGr</a></p>&mdash; Davide Bellone 🐧 - 𝗰𝗼𝗱𝗲𝟰𝗶𝘁.𝗱𝗲𝘃 📃📃 (@BelloneDavide) <a href="https://twitter.com/BelloneDavide/status/1282316483431993349?ref_src=twsrc%5Etfw">July 12, 2020</a></blockquote>
 
-You often hear (correctly) that 
+You often hear (correctly) that
 
 > A function must do one thing and to it well
 
-This means that you also need to take care of side effects: __avoid changing the state of the system or of the input parameters__.
+This means that you also need to take care of side effects: **avoid changing the state of the system or of the input parameters**.
 
 Do you remember the _reverseNumbers_ function from the example above?
 
@@ -318,6 +318,7 @@ List<int> reverseNumbers(List<int> numbers)
 	 return numbers;
 }
 ```
+
 It does a terrible, terrible thing: it reverses the input parameter!
 
 ```cs
@@ -338,10 +339,10 @@ Keep the number of function arguments as small as possible. Ideally you should h
 
 What are the best cases for using one argument?
 
-* Check a property on that input (eg: `isOdd(int number)`)
-* Transform the input variable (eg: `ToString(int number)`)
+- Check a property on that input (eg: `isOdd(int number)`)
+- Transform the input variable (eg: `ToString(int number)`)
 
-Sometimes you just cannot use a single parameter, for example for coordinates. But you can group this information in an object and work on it. __It's not cheating if there's a logic behind this grouping!__
+Sometimes you just cannot use a single parameter, for example for coordinates. But you can group this information in an object and work on it. **It's not cheating if there's a logic behind this grouping!**
 
 ## 7: Prefer exceptions over error codes
 
@@ -396,7 +397,7 @@ Result GetHalf(int number)
 
 This is a recap of chapters 2 and 3 of Clean Code. We've seen how to write readable code, with small functions that are easy to test and, even better, easy to understand.
 
-As you've seen, __I haven't shown perfect code__, but I focused on small improvements: reaching clean code is a long path, and you must approach it one step at a time.
+As you've seen, **I haven't shown perfect code**, but I focused on small improvements: reaching clean code is a long path, and you must approach it one step at a time.
 
 As soon as I read the other chapters I'll post some new tips.
 

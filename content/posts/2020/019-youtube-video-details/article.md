@@ -1,18 +1,17 @@
 ---
 title: "How to get video details from YouTube with .NET Core 3"
 path: "/blog/get-youtube-video-details-dotnet"
-tags: ['CSharp', 'dotNET', 'YouTube' , "MainArticle"]
+tags: ["CSharp", "dotNET", "YouTube", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "We have already seen how to search for videos in a YouTube channel. Now it's time to get details for a single video."
 created: 2020-03-17
 updated: 2020-03-17
 ---
 
-
 I have already talked about how to retrieve a list of YouTube videos by its channel ID.
 
 Now it's time to check the details of a single video.
-Let's say that you like a song, you listen to it at least 2 times a day and you want to download its description because it contains the lyrics. 
+Let's say that you like a song, you listen to it at least 2 times a day and you want to download its description because it contains the lyrics.
 
 And let's say that this song is _Tooth Fairy_ by Nanowar of Steel.
 
@@ -58,7 +57,7 @@ using (var youtubeService = new YouTubeService(new BaseClientService.Initializer
     ApiKey = '<your api key>'
 }))
 {
-    // your code here 
+    // your code here
 }
 ```
 
@@ -114,7 +113,7 @@ public async Task<YouTubeVideoDetails> GetVideoDetails()
         var searchRequest = youtubeService.Videos.List("snippet");
         searchRequest.Id = "CzvQxQYKO88";
         var searchResponse = await searchRequest.ExecuteAsync();
- 
+
         var youTubeVideo = searchResponse.Items.FirstOrDefault();
         if(youTubeVideo!=null)
         {

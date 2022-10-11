@@ -1,16 +1,16 @@
 ---
 title: "How to customize fields generation in Visual Studio 2019"
-path: '/blog/auto-creating-fields-vs'
-tags: ["Visual Studio", "dotNET" , "MainArticle"]
+path: "/blog/auto-creating-fields-vs"
+tags: ["Visual Studio", "dotNET", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "Every time you ask Visual Studio to generate properties for you, it creates them with a simple,default format. But we can customize them by updating some options on our IDE. Let's learn how!"
+excerpt: "Every time you ask Visual Studio to generate properties for you, it creates them with a simple,default format. But we can customize them by updating some options on our IDE. Let's learn how!"
 created: 2021-09-14
 updated: 2021-09-14
 ---
 
-We, as developers, **hate** repetitive tasks, isn't it? In fact, we often auto-generate code by using our IDE's capabilities. Yet, sometimes the auto-generated code does not follow our team rules or our personal taste, so we have to rename stuff every single time. 
+We, as developers, **hate** repetitive tasks, isn't it? In fact, we often auto-generate code by using our IDE's capabilities. Yet, sometimes the auto-generated code does not follow our team rules or our personal taste, so we have to rename stuff every single time.
 
-For instance, say that your golden rule is to have your `readonly` properties named with a **_** prefix: `private readonly IService _myService` instead of `private readonly IService myService`. Renaming the properties every time is... boring!
+For instance, say that your golden rule is to have your `readonly` properties named with a **\_** prefix: `private readonly IService _myService` instead of `private readonly IService myService`. Renaming the properties every time is... boring!
 
 In this article, you will learn how to customize Visual Studio 2019 to get the most out of the auto-generated code. In particular, we will customize the names of the `readonly` properties generated when we add a dependency in a class constructor.
 
@@ -23,11 +23,11 @@ Now, let's have two simple actors: a class, `MyService`, and an interface, `IMyD
 ```cs
 public MyService(IMyDependency myDependency)
 {
-    
+
 }
 ```
 
-To store somewhere the reference to `IMyDependency`, you usually click on the lightbulb that appears on the left navigation or hit *CTRL+.* This command will prompt you with some actions, like creating and initializing a new field:
+To store somewhere the reference to `IMyDependency`, you usually click on the lightbulb that appears on the left navigation or hit _CTRL+._ This command will prompt you with some actions, like creating and initializing a new field:
 
 ![Default field generation without underscore](./without-underscore.png)
 
@@ -46,28 +46,28 @@ Now, let's say that we want our properties to have an underscore as a prefix: so
 
 ## Setting up the right configurations
 
-To configure how automatic properties are generated, head to Visual Studio, and, in the top menu, navigate to *Tools* and then *Options*.
+To configure how automatic properties are generated, head to Visual Studio, and, in the top menu, navigate to _Tools_ and then _Options_.
 
 Then, browse to Text Editor > C# > Code Style > Naming
 
 ![Navigation path in the Options window](./options-path.png)
 
-Here we have all the symbols that we can customize. 
+Here we have all the symbols that we can customize.
 
-The first thing to do is to **create a custom naming style**. On the right side of the options panel, click on the *"Manage naming styles"* button, and then on the *"+"* button. You will see a form that you can fill with your custom styles; the _Sample Identifier_ field shows you the result of the generated fields. 
+The first thing to do is to **create a custom naming style**. On the right side of the options panel, click on the _"Manage naming styles"_ button, and then on the _"+"_ button. You will see a form that you can fill with your custom styles; the _Sample Identifier_ field shows you the result of the generated fields.
 
 In the following picture you can see the result you can obtain if you fill all the fields: our properties will have a `_` prefix, an `Svc` suffix, the words will be separated by a `-` symbol, and the name will be uppercase. As a result, the property name will be `_EXAMPLE-IDENTIFIERSvc`
 
 ![Naming Style window with all the filed filled](./custom-style-example.png)
 
-Since we're only interested in adding a `_` prefix and making the text in camelCase, well... just add those settings! And don't forget to specify a style name, like *_fieldName*.
+Since we're only interested in adding a `_` prefix and making the text in camelCase, well... just add those settings! And don't forget to specify a style name, like _\_fieldName_.
 
-Close the form, and add a new Specification on the list: define that the new style must be applied to every *Private or Internal Field*, assign to it the newly created style (in my case, *_fieldName*). And... we're done!
+Close the form, and add a new Specification on the list: define that the new style must be applied to every _Private or Internal Field_, assign to it the newly created style (in my case, _\_fieldName_). And... we're done!
 
 ![Specification orders](./final-specification.png)
 
 ## Final result
- 
+
 Now that we have everything in place, we can try adding a dependency to our `MyService` class:
 
 ![Adding field on constructor](https://res.cloudinary.com/bellons/image/upload/t_dev-to/Code4IT/Articles/2021/064-auto-creating-fields-visualstudio/add-readonly-field-in-constructor.gif)

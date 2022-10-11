@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: Use Debug-Assert to break the debugging flow if a condition fails"
-path: '/csharptips/debug-assert'
+path: "/csharptips/debug-assert"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "It would be great if we could break the debugging flow if a condition is (not) met. Can we? Of course!"
@@ -25,7 +25,7 @@ public async Task<string> Get()
             int x = 0;
             // just to put here the debugger
             // or place a Console.WriteLine,
-            // which in most of the cases 
+            // which in most of the cases
             // is not available
 
         }
@@ -63,7 +63,6 @@ public async Task<string> Get()
 
 ⚠ Note: `Debug`, not `Debugger`!
 
-
 With `Debug.Assert` can define a custom condition to be evaluated. If the check fails, the debugger automatically stops there to allow you to check the locals.
 
 ![Simple Debug.Assert](./debug-assert.png)
@@ -79,14 +78,13 @@ foreach (var c in Couples)
 }
 ```
 
-To see the error message, you have to navigate to Debug > Windows > Output 
+To see the error message, you have to navigate to Debug > Windows > Output
 
 ![How to open the Output Window on Visual Studio](./output-window.png)
 
 where you can see the message you've defined before.
 
 ![Debug.Assert message as seen in the Output Window](./debug-assert-with-message.png)
-
 
 **Note: the messages are sent to the System.Diagnostics.Trace.Listeners collection**. If you have another listener, you can use it to intercept those messages.
 

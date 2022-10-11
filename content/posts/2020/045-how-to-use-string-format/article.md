@@ -1,9 +1,9 @@
 ---
 title: "How to use String.Format - and why you should care about it"
 path: "/blog/how-to-use-string-format"
-tags: ["CSharp" , "MainArticle"]
+tags: ["CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "Is string.Format obsolete? Not at all, it still has cards to play! Let's see how we can customize format and create custom formatters."
+excerpt: "Is string.Format obsolete? Not at all, it still has cards to play! Let's see how we can customize format and create custom formatters."
 created: 2020-12-01
 updated: 2020-12-01
 ---
@@ -41,18 +41,18 @@ The most simple ways are using _concatenation_, _formatting_, or _string interpo
 
 ## Differences between concatenation, formatting, and interpolation
 
-__Concatenation__ is the simplest way: you concatenate strings with the `+` operator.
+**Concatenation** is the simplest way: you concatenate strings with the `+` operator.
 
 ```cs
 var messageWithConcatenation= "I caught a " + pkm.Name + " on " + pkm.CaptureDate.ToString("yyyy-MM-dd");
 ```
 
-There are 2 main downsides: 
+There are 2 main downsides:
 
 1. it's hard to read and maintains, with all those open and closed quotes
-2. it's highly inefficient, since __strings are immutable__ and, every time you concatenate a string, it creates a whole new string.
+2. it's highly inefficient, since **strings are immutable** and, every time you concatenate a string, it creates a whole new string.
 
-__Interpolation__ is the ability to _wrap_ a variable inside a string and, eventually, call methods on it while creating the string itself.
+**Interpolation** is the ability to _wrap_ a variable inside a string and, eventually, call methods on it while creating the string itself.
 
 ```cs
 var messageWithInterpolation = $"I caught a {pkm.Name} on {pkm.CaptureDate.ToString("yyyy-MM-dd")}";
@@ -64,7 +64,7 @@ The downside of this approach is that here you don't have a visual understanding
 
 _PS: notice the `$` at the beginning of the string and the `{` and `}` used to interpolate the values._
 
-__Formatting__ is the way to define a string using positional placeholders.
+**Formatting** is the way to define a string using positional placeholders.
 
 ```cs
 var messageWithFormatting = String.Format("I caught a {0} on {1}", pkm.Name, pkm.CaptureDate.ToString("yyyy-MM-dd"));
@@ -89,7 +89,7 @@ var m2 = String.Format("I caught a {1} on {0}", pkm.CaptureDate, pkm.Name);
 
 Of course, if you swap the positioning in the string, you must also swap the order of the parameters.
 
-Since we are only specifying the position, __we can use the same value multiple times__ inside the same string, just by repeating the placeholder:
+Since we are only specifying the position, **we can use the same value multiple times** inside the same string, just by repeating the placeholder:
 
 ```cs
 String.Format("I caught a {0} (YES, {0}!) on {1}", pkm.Name, pkm.CaptureDate);
@@ -113,7 +113,7 @@ String.Format("I caught a {0} on {1}", pkm.Name);
 
 with the message
 
-> Index (zero based) must be greater than or equal to zero and less than the size of the argument list_.
+> Index (zero based) must be greater than or equal to zero and less than the size of the argument list\_.
 
 ## How to format numbers
 
@@ -121,16 +121,16 @@ You can print numbers with lots of different formats, you know. Probably you've 
 
 You can use all the [standard numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings "Standard numeric format strings documentation") as formatting parameters.
 
-For example, you can __write a decimal as a currency__ value by using `C` or `c`:
+For example, you can **write a decimal as a currency** value by using `C` or `c`:
 
 ```cs
 String.Format("{0:C}", 12.7885m);
 // £12.79
 ```
 
-In this way, you can use the symbols __belonging to the current culture__ (in this case, we can see the `£`) and __round the value__ to the second decimal.
+In this way, you can use the symbols **belonging to the current culture** (in this case, we can see the `£`) and **round the value** to the second decimal.
 
-If you want to change the current culture, you must setup it in a global way or, at least, __change the culture for the current thread__:
+If you want to change the current culture, you must setup it in a global way or, at least, **change the culture for the current thread**:
 
 ```cs
 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("it-IT");
@@ -156,7 +156,7 @@ String.Format("{0}", new System.DateTime(2020,5,8,1,6,0))
 ```
 
 This is useful, but not very customizable.
-Luckily we can use our usual formatting strings to print the date as we want. 
+Luckily we can use our usual formatting strings to print the date as we want.
 
 For example, if you want to print only the date, you can use `:d` in the formatting section:
 
@@ -227,7 +227,7 @@ public object GetFormat(Type formatType)
 }
 ```
 
-And then we can define the core of our formatter in the `Format` method. It accepts 3 parameters: `format` is the string that we pass after the `:` symbol, like in `:d3`; `arg` is a generic `object` that references the object to be formatted and `formatProvider` is... well, __I don't know!__ Drop me a comment if you know how to use it and why!
+And then we can define the core of our formatter in the `Format` method. It accepts 3 parameters: `format` is the string that we pass after the `:` symbol, like in `:d3`; `arg` is a generic `object` that references the object to be formatted and `formatProvider` is... well, **I don't know!** Drop me a comment if you know how to use it and why!
 
 Moving on, and skipping the initial checks, we can write the core of the formatting like this:
 
@@ -254,7 +254,7 @@ String.Format(new PokemonFormatter(), "{0:name}", pkm) //Grchmp
 
 If you are interested in the whole code, have find it at the end of the article.
 
-By the way, why should we care about formatters? Because we must always take into account the __separation of concerns__. Why would the `CapturedPokemon` class expose a method for each formatting value? It should be in the scope of the class definition itself, so it's better to write it somewhere else and use it only when it's needed.
+By the way, why should we care about formatters? Because we must always take into account the **separation of concerns**. Why would the `CapturedPokemon` class expose a method for each formatting value? It should be in the scope of the class definition itself, so it's better to write it somewhere else and use it only when it's needed.
 
 ## Conclusion
 

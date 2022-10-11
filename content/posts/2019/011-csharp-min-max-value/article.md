@@ -12,9 +12,9 @@ Recently I've learned a _funny_ (ehm...) thing.
 
 ## The guilty
 
-__It isn't true that the inverse of a negative number is a positive number__. Or, equally, that _(x < 0) => (-x > 0)_.
+**It isn't true that the inverse of a negative number is a positive number**. Or, equally, that _(x < 0) => (-x > 0)_.
 
-You could say «Hey, -(-5) == 5». Yes, that's true. 
+You could say «Hey, -(-5) == 5». Yes, that's true.
 We can test it this way:
 
 ```cs
@@ -27,7 +27,7 @@ public void TestInverse()
 }
 ```
 
-But what if we consider __edge cases__? 
+But what if we consider **edge cases**?
 
 ```cs
 [Test]
@@ -43,12 +43,12 @@ It will fail. Miserably.
 
 ## The reason
 
-The reason is simple: __the sign occupies space__.
+The reason is simple: **the sign occupies space**.
 In fact, the range of int is _-2,147,483,648_ to _2,147,483,647_. The inverse of _-2,147,483,648_ would cause overflow and returns the same value.
 
 ## The lesson
 
-Why am I pointing at this? 
+Why am I pointing at this?
 
 Imagine you are implementing a `CompareTo(x, y)` method, you know, the usual one that returns _0_ if the values are considered equal, _-1_ if x < y and _1_ if x > y.
 

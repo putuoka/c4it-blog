@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: SelectMany in LINQ"
-path: '/csharptips/linq-selectmany'
+path: "/csharptips/linq-selectmany"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "SelectMany is one of the LINQ methods I've used the least. I couldn't get it! Turns out it was actually incredibly simple."
@@ -22,7 +22,7 @@ For this example, I've created a simple record type that represents an office. E
 record Office(string Place, string[] PhoneNumbers);
 ```
 
-Now, our company has a list of offices. 
+Now, our company has a list of offices.
 
 ```cs
 List<Office> myCompanyOffices = new List<Office>{

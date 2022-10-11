@@ -1,9 +1,9 @@
 ---
 title: "Simplify debugging with DebuggerDisplay attribute dotNET"
-path: '/blog/debuggerdisplay-attribute'
-tags: ["CSharp", "dotNET", "Visual Studio" , "MainArticle"]
+path: "/blog/debuggerdisplay-attribute"
+tags: ["CSharp", "dotNET", "Visual Studio", "MainArticle"]
 featuredImage: "./cover.png"
-excerpt : "Debugging our .NET applications can be cumbersome. With the DebuggerDisplay attribute we can simplify it by displaying custom messages."
+excerpt: "Debugging our .NET applications can be cumbersome. With the DebuggerDisplay attribute we can simplify it by displaying custom messages."
 created: 2021-07-13
 updated: 2021-07-13
 ---
@@ -42,7 +42,7 @@ As you can see, to view the content of the items you have to open them one by on
 
 Notice what is the default text displayed by Visual Studio: does it ring you a bell?
 
-__By default, the debugger shows you the `ToString()` of every object.__ So an idea is to override that method to view the desired fields.
+**By default, the debugger shows you the `ToString()` of every object.** So an idea is to override that method to view the desired fields.
 
 ```cs
 public override string ToString()
@@ -77,12 +77,11 @@ This will result in a similar result to what we've already seen before.
 
 ![Debugging using LINQ](./inspect-linq.png)
 
-
 But there's still a better way: `DebuggerDisplay`.
 
 ## Introducing DebuggerDisplay
 
-`DebuggerDisplay` is a .NET attribute that you can apply to classes, structs, and many more, to create a custom view of an object while debugging. 
+`DebuggerDisplay` is a .NET attribute that you can apply to classes, structs, and many more, to create a custom view of an object while debugging.
 
 The first thing to do to get started with it is to include the `System.Diagnostics` namespace. Then you'll be able to use that attribute.
 
@@ -145,7 +144,7 @@ shows this result:
 
 ![DebuggerDisplay with quotes](./inspect-debuggerdisplay-withoutNQ.png)
 
-__You can get rid of quotes by adding `nq` to the string__: add that modifier to every string you want to escape, and it will remove the quotes (in fact, _nq_ stands for _no-quotes_).
+**You can get rid of quotes by adding `nq` to the string**: add that modifier to every string you want to escape, and it will remove the quotes (in fact, _nq_ stands for _no-quotes_).
 
 ```cs
 [DebuggerDisplay("Title: {Title,nq} ( {ParentalGuide,nq} )")]
@@ -227,9 +226,9 @@ Ok, `DebuggerDisplay` is neat and whatever. But why can't we use LINQ, or overri
 
 That's because of the side effect of those two approaches.
 
-__By overriding the ToString method you are changing its behavior all over the application__. This means that, if somewhere you print on console that object (like in `Console.WriteLine(movie)`), the result will be the one defined in the `ToString` method.
+**By overriding the ToString method you are changing its behavior all over the application**. This means that, if somewhere you print on console that object (like in `Console.WriteLine(movie)`), the result will be the one defined in the `ToString` method.
 
-__By using the LINQ approach you are performing "useless" operations__: every time you run the application, even without the debugger attached, you will perform the transformation on every object in the collection.This is fine if your collection has 3 elements, but it can cause performance issues on huge collections.
+**By using the LINQ approach you are performing "useless" operations**: every time you run the application, even without the debugger attached, you will perform the transformation on every object in the collection.This is fine if your collection has 3 elements, but it can cause performance issues on huge collections.
 
 That's why you should use the `DebuggerDisplay` attribute: it has no side effects on your application, both talking about results and performance - it will only be used when debugging.
 

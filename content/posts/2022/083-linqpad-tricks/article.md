@@ -1,7 +1,7 @@
 ---
 title: "5 tricks every C# dev should know about LINQPad"
-path: '/blog/5-linqpad-tricks'
-tags: ["dotNET", "CSharp","MainArticle"]
+path: "/blog/5-linqpad-tricks"
+tags: ["dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "LINQPad is one of the tools I use daily. But still, I haven't used it at its full power. And you?"
 created: 2022-07-19
@@ -90,7 +90,6 @@ My dear friend, it's easy! Because we can create more Containers to log differen
 
 Take this example: we want to loop over a list of items and use one Container to display the item itself, and another Container to list what happens when we perform some operations on each item. Yeeees, I know, it's hard to understand in this way: let me show you an example!
 
-
 ```cs
 DumpContainer dc1 = new DumpContainer();
 DumpContainer dc2 = new DumpContainer();
@@ -152,7 +151,6 @@ There's a nice overload that allows you to specify a sort of title to the text b
 
 ![Input boxes can have a title](./input_name.png)
 
-
 ## Paste as escaped string
 
 This is one of my favorite functionalities: many times I have to escape text that contains quotes, copied from somewhere else to assign it to a `string` variable; I used to lose time escaping those values manually (well, using other tools that still are slower than this one).
@@ -161,10 +159,10 @@ Take this JSON:
 
 ```json
 {
-    "name": "davide",
-    "gender": "male",
-    "probability": 0.99,
-    "count": 82957
+  "name": "davide",
+  "gender": "male",
+  "probability": 0.99,
+  "count": 82957
 }
 ```
 
@@ -184,15 +182,15 @@ Not bad, isn't it? 😎
 
 Another nice functionality that you can use to toy with classes or methods you don't know is the xUnit test support.
 
-By clicking on the *Query > Add XUnit Test Support*, you can add xUnit to your query and write (and run, obviously) unit tests.
+By clicking on the _Query > Add XUnit Test Support_, you can add xUnit to your query and write (and run, obviously) unit tests.
 
-All those tests are placed in a region named *Tests*:
+All those tests are placed in a region named _Tests_:
 
 ```cs
 #region private::Tests
 ```
 
-and can be run both by pressing *Alt+Shift+T* or by calling `RunTests()` in the `Main` method.
+and can be run both by pressing _Alt+Shift+T_ or by calling `RunTests()` in the `Main` method.
 
 After running the tests you will see a report with the list of the tests that passed and the details of the tests that failed:
 

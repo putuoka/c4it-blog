@@ -1,9 +1,9 @@
 ---
 title: "14 to 2 seconds: how I improved the performance of an endpoint by 82% - part 2"
-path: '/blog/improving-application-performance-part2'
-tags: ["Performance","dotNET", "CSharp" , "MainArticle"]
+path: "/blog/improving-application-performance-part2"
+tags: ["Performance", "dotNET", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Language details may impact application performance. In this article we'll see some of the C# tips that brought me to improve my application. Singleton creation, StringBuilder and more!"
+excerpt: "Language details may impact application performance. In this article we'll see some of the C# tips that brought me to improve my application. Singleton creation, StringBuilder and more!"
 created: 2021-03-09
 updated: 2021-03-09
 ---
@@ -26,9 +26,9 @@ It makes sense, right? But have a closer look at the timing in this picture:
 
 The blue line is the whole HTTP call, and the black line is the API Action.
 
-__There are almost 2 seconds of _nothing_!__ Why?
+**There are almost 2 seconds of _nothing_!** Why?
 
-Well, as explained in the article ["Reducing initial request latency by pre-building services in a startup task in ASP.NET Core"](https://andrewlock.net/reducing-latency-by-pre-building-singletons-in-asp-net-core/ "Andre Lock's article about Startup tasks") by Andrew Lock, __singletons are created during the first request__, not at the real start-up of the application. And, given that all the dependencies in this application are singletons, the first 2 seconds are being used to create those instances.
+Well, as explained in the article ["Reducing initial request latency by pre-building services in a startup task in ASP.NET Core"](https://andrewlock.net/reducing-latency-by-pre-building-singletons-in-asp-net-core/ "Andre Lock's article about Startup tasks") by Andrew Lock, **singletons are created during the first request**, not at the real start-up of the application. And, given that all the dependencies in this application are singletons, the first 2 seconds are being used to create those instances.
 
 While Andrew explains how to create a Startup task to warm up the dependencies, I opted for a _quick-and-dirty_ option: create a Warmup endpoint and call it before any call in Postman.
 
@@ -45,21 +45,21 @@ public ActionResult<string> WarmUp()
 }
 ```
 
-__It is important to expose that endpoint under a controller that uses DI__: as we've seen before, dependencies are created during the first request they're needed; so, if you create an empty controller with only the `WarmUp` method, you won't build any dependency and you'll never see improvements. My suggestion is to place the `WarmUp` method under a controller that requires one of the root services: in this way, you'll create the services and all their dependencies.
+**It is important to expose that endpoint under a controller that uses DI**: as we've seen before, dependencies are created during the first request they're needed; so, if you create an empty controller with only the `WarmUp` method, you won't build any dependency and you'll never see improvements. My suggestion is to place the `WarmUp` method under a controller that requires one of the root services: in this way, you'll create the services and all their dependencies.
 
 To call the WarmUp endpoint before every request, I've created this simple script:
 
 ```js
 pm.sendRequest("https://localhost:44326/api/warmup", function (err, response) {
- console.log("ok");
-});
+  console.log("ok")
+})
 ```
 
 So, if you paste it in Postman, into the _Pre-requests Script_ tab, it executes this call before the main HTTP call and warms up your application.
 
 ![Pre-request script on Postman](./pre-request.jpg "Pre-request script in Postman")
 
-__This tip will not speed up your application but gives your a more precise value for the timings.__
+**This tip will not speed up your application but gives your a more precise value for the timings.**
 
 ## Improve language-specific details
 
@@ -75,13 +75,13 @@ You could use `byte`: its range is `[0,255]`, so it's perfectly fine to use it.
 
 To have an idea of what data type to choose, here's a short recap with the Min value, the Max value, and the number of bytes occupied by that data type:
 
-| Data type | Min value | Max Value | # of bytes |
-|------|--------|---------|--------|
-|byte |0|255|1|
-|short|-32768|32767|2|
-|ushort|0|65535|2|
-|int|-2147483648|2147483647|4|
-|uint|0|4294967295|4|
+| Data type | Min value   | Max Value  | # of bytes |
+| --------- | ----------- | ---------- | ---------- |
+| byte      | 0           | 255        | 1          |
+| short     | -32768      | 32767      | 2          |
+| ushort    | 0           | 65535      | 2          |
+| int       | -2147483648 | 2147483647 | 4          |
+| uint      | 0           | 4294967295 | 4          |
 
 So, just by choosing the right data type, you'll improve memory usage and then the overall performance.
 
@@ -89,7 +89,7 @@ It will not bring incredible results, but it's a good idea to think well of what
 
 ### StringBuilder instead of string concatenation
 
-__Strings are immutable__, in C#. This means that every time you concatenate 2 strings, you are actually creating a third one that will contain the result.
+**Strings are immutable**, in C#. This means that every time you concatenate 2 strings, you are actually creating a third one that will contain the result.
 
 So, have a look at this snippet of code:
 
@@ -129,7 +129,7 @@ Console.WriteLine(result.ToString());
 
 Using `StringBuilder` instead of string concatenation I got the exact same result as the example above but in _58 milliseconds_.
 
-So, just by using the `StringBuilder`, you can speed up that part by 98%. 
+So, just by using the `StringBuilder`, you can speed up that part by 98%.
 
 ### Don't `return await` if it's the only operation in that method
 
@@ -328,7 +328,7 @@ internal static class <Program>$
 
 Every method marked as `async` "creates" a class that implements the `IAsyncStateMachine` interface and implements the `MoveNext` method.
 
-So, to improve performance, we have to get rid of lots of this stuff: we can do it by simply removing `await` calls __when there is only one awaited method__ and __you do nothing after calling that method__.
+So, to improve performance, we have to get rid of lots of this stuff: we can do it by simply removing `await` calls **when there is only one awaited method** and **you do nothing after calling that method**.
 
 So, we can transform the previous snippet:
 
@@ -494,7 +494,7 @@ Well, _no_.
 
 As you already know, the main bottlenecks are because of external dependencies (aka API calls). So, nothing that an update of the whole framework could impact.
 
-But, just to try it, I moved my application from .NET Core 3.1 to .NET 5: __the porting was incredibly easy__. But, as I was expecting, I did not get any significant improvement.
+But, just to try it, I moved my application from .NET Core 3.1 to .NET 5: **the porting was incredibly easy**. But, as I was expecting, I did not get any significant improvement.
 
 So, since the application was a dependency of a wider system, I rolled it back to .NET 3.1.
 
@@ -514,7 +514,7 @@ We've seen how I managed to improve the performance of an API endpoint passing f
 
 In this article you've seen some .NET-related tips to improve the performance of your applications: nothing fancy, but those little steps _might_ help you reach the desired result.
 
-Of course, there is more: if you are want to know how __compression algorithms__ and __hosting models__ affect your applications, [check out this article](./few-tips-for-performance-optimization "More tips for performance optimization")!
+Of course, there is more: if you are want to know how **compression algorithms** and **hosting models** affect your applications, [check out this article](./few-tips-for-performance-optimization "More tips for performance optimization")!
 
 If you have more tips, feel free to share them in the comments session!
 

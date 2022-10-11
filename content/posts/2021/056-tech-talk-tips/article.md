@@ -1,9 +1,9 @@
 ---
 title: "13 tips for delivering better tech talks"
-path: '/blog/tech-talk-13-tips'
-tags: ["Talks", "Career" , "MainArticle"]
+path: "/blog/tech-talk-13-tips"
+tags: ["Talks", "Career", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Doing a tech talk is easy. Doing a *good* talk is harder. We're going to see some tips to improve the delivery of your conferences."
+excerpt: "Doing a tech talk is easy. Doing a *good* talk is harder. We're going to see some tips to improve the delivery of your conferences."
 created: 2021-05-04
 updated: 2021-05-04
 ---
@@ -16,9 +16,9 @@ On one hand, teaching stuff requires technical preparations: you need to know wh
 
 On the other hand, tech talks require good communication skills: your job is to deliver a message to your audience, and you can do it only if your intent is clear and you avoid talking of useless (or misleading) stuff.
 
-But, in the end, only having good content is not enough: you need to shape the talk in a way that stimulates the attention of the public and does not bore them. 
+But, in the end, only having good content is not enough: you need to shape the talk in a way that stimulates the attention of the public and does not bore them.
 
-__note: I still have a lot of room for improvement, so I still have to work on myself to improve my talks!__
+**note: I still have a lot of room for improvement, so I still have to work on myself to improve my talks!**
 
 ## 1- Tell what are the topics covered by your talk
 
@@ -30,10 +30,9 @@ You should always express what is the topic of your talk.
 
 Where, and when?
 
-1. __In the title__: the title should express what you're going to say. «Azure DevOps: an intro to build and release pipelines» is better than «Let's work with Azure DevOps!». Yes, it's less fancy, but you are making the scope clear (build and release pipelines), the tool (Azure DevOps), and the difficulty of your talk (it's an intro, not a talk that targets experts)
-2. __In the description of your talk__: when submitting CFP, when sharing it on social media, and everywhere else you can add some text to describe your talk, you should add some more details. For instance, «In this session, we're gonna see how to build and release .NET Core projects with Azure DevOps pipelines, how to use PR builds, how to manage variable substitution with Variable Groups...». This will help the reader decide whether or not attending to your session.
-3. __At the beginning of your talk__: this is for people who forgot to read the session description. Repeat the points you're gonna cover at the beginning of your talk, like right after the title and the slide about who are you. In this way, attendees can leave if they find out that the topic is not what they were expecting from the title. They don't lose time on anything not interesting for them, and you don't lose your focus watching at their bored faces.
-
+1. **In the title**: the title should express what you're going to say. «Azure DevOps: an intro to build and release pipelines» is better than «Let's work with Azure DevOps!». Yes, it's less fancy, but you are making the scope clear (build and release pipelines), the tool (Azure DevOps), and the difficulty of your talk (it's an intro, not a talk that targets experts)
+2. **In the description of your talk**: when submitting CFP, when sharing it on social media, and everywhere else you can add some text to describe your talk, you should add some more details. For instance, «In this session, we're gonna see how to build and release .NET Core projects with Azure DevOps pipelines, how to use PR builds, how to manage variable substitution with Variable Groups...». This will help the reader decide whether or not attending to your session.
+3. **At the beginning of your talk**: this is for people who forgot to read the session description. Repeat the points you're gonna cover at the beginning of your talk, like right after the title and the slide about who are you. In this way, attendees can leave if they find out that the topic is not what they were expecting from the title. They don't lose time on anything not interesting for them, and you don't lose your focus watching at their bored faces.
 
 ## 2- Divide the talks into smaller blocks
 
@@ -42,7 +41,6 @@ Think of your own experience: are you able to keep the focus on a 1-hour long ta
 Well, that's normal. Generally, people have a short attention span. This means that you cannot talk for 60 minutes about the same topic: your audience will get bored soon.
 
 So, you should split your talk into several smaller blocks. A good idea is to separate the sub-topics into 5 or 10 minutes slots, to help people understanding the precise topic of a block and, in case, pay less attention to that specific block (maybe because that's a topic they already know, so not focusing 100% is fine).
-
 
 ## 3- Wake up the audience with simple questions
 
@@ -54,16 +52,15 @@ This kind of questions will wake up the audience and let them focus on what you'
 
 Needless to say, avoid asking those questions too many times, and don't repeat always the same question.
 
-
 ## 4- Choose the right slide layout
 
 Many monitors and screens are now in 16:9. So remember to adapt the slide layout to that format.
 
 In the image below, we can see how the slide layout impacts the overall look: slides with a 4:3 layout are too small for current devices, and they just look... ugly!
- 
+
 ![The right format impacts how the slides are viewed on different devices](slide-size-comparison.jpg "16:9 images occupy the screen size better than 4:3 slides")
 
-Slides in 16:9 feel more natural for many screen layouts. 
+Slides in 16:9 feel more natural for many screen layouts.
 
 It's a simple trick to remember, but it may have a great impact on your delivery.
 
@@ -73,7 +70,7 @@ Moving too much your body drives the attention away from the content of your tal
 
 ![Stop fidgeting!](https://media3.giphy.com/media/iOzhVVQMIRMUo/giphy.gif "Peter Griffin in an Italian shop")
 
-Remember that every movement of your body should have a meaning. Use your movements to drive attention to a specific topic, or to imitate and explain some details. 
+Remember that every movement of your body should have a meaning. Use your movements to drive attention to a specific topic, or to imitate and explain some details.
 For instance, use your hands to simulate how some modules communicate with each other.
 
 ## 6- Install a tool for performing live zoom
@@ -116,11 +113,11 @@ So your "main" folder will not be visible on your desktop, but you can still ope
 
 You have created the presentation. You know why you built it, and what are the important stuff. Does your audience know what is important to remember?
 
-If you are talking for one hour, you are giving the public __a lot__ of information. Some are trivia, some are niche details, some are the key point of a topic.
+If you are talking for one hour, you are giving the public **a lot** of information. Some are trivia, some are niche details, some are the key point of a topic.
 
 So, make it clear what is important to remember and what is just a "good-to-know".
 
-For instance, when talking about clean code, stress why it is important to follow a certain rule if it can be a game-changer. «Use consistent names when classes have similar meaning» and «Choose whether using tabs or spaces, and use them for all your files» are both valid tips, but the first one has a different _weight_ compared to the latter one. 
+For instance, when talking about clean code, stress why it is important to follow a certain rule if it can be a game-changer. «Use consistent names when classes have similar meaning» and «Choose whether using tabs or spaces, and use them for all your files» are both valid tips, but the first one has a different _weight_ compared to the latter one.
 
 Again, spend more time on the important stuff, and tell explicitly the audience that that part is important (and why).
 
@@ -166,7 +163,7 @@ Two bullet points like "Keep track of your progress" and "Fix weakness" are bett
 
 A simple yet powerful statement that can wake up your audience.
 
-When you've lost your focus, you get triggered by some words, like _end_. You unconsciously remember that you are at that conference for some reason, and you have to focus to get the most from the last minutes of the conference. 
+When you've lost your focus, you get triggered by some words, like _end_. You unconsciously remember that you are at that conference for some reason, and you have to focus to get the most from the last minutes of the conference.
 
 So, try triggering the subconscious of your audience with some words like _ending_.
 
@@ -174,7 +171,7 @@ So, try triggering the subconscious of your audience with some words like _endin
 
 Finally, you're at the end of your talk.
 
-What should the audience remember from it? 
+What should the audience remember from it?
 
 Spend some time to recap what you've seen, what are the key points of your conference, and what you'd like the others to remember.
 

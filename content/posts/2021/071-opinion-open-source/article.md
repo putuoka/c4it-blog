@@ -1,6 +1,6 @@
 ---
 title: "Code opinion: should we trust Open Source after Log4J's issues?"
-path: '/blog/opinion-open-source'
+path: "/blog/opinion-open-source"
 tags: ["MISC", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "With Log4J's vulnerability, we've all been reminded that systems are vulnerable, and OSS are not immune too. What should we do now?"
@@ -20,7 +20,7 @@ Log4J is a popular Java library for logging. So popular that it has been inglobe
 
 For some reason I haven't understood, the logger evaluates the log messages instead of just treating them as strings. So, a kind of SQL injection (but for logs) could be executed: by sending a specific string format to services that use Log4J, that string is evaluated and executed on the server; as a result, external scripts could be run on the server, allowing attackers to access your server. Of course, it's not a detailed and 100% accurate description: there are plenty of resources on the Internet if you want to deep dive into this topic.
 
-Some pieces of evidence show that the earliest exploitation of this vulnerability happened on Dec 1, 2021, as stated by Matthew Prince, CEO of Cloudflare, [in this Tweet](https://twitter.com/eastdakota/status/1469800951351427073 "Matthew Prince's tweet about Log4J's vunerability" ). But the vulnerability became public 9 days later.
+Some pieces of evidence show that the earliest exploitation of this vulnerability happened on Dec 1, 2021, as stated by Matthew Prince, CEO of Cloudflare, [in this Tweet](https://twitter.com/eastdakota/status/1469800951351427073 "Matthew Prince's tweet about Log4J's vunerability"). But the vulnerability became public 9 days later.
 
 ## Benefits of OSS projects
 
@@ -35,10 +35,9 @@ it saves you time: you don't have to reinvent the wheel - everything is already 
 
 ## Issues with OSS projects
 
-Given that the source code is publicly accessible, attackers can study it to find security flaws, and - of course - take advantage of those vulnerabilities before the community notices them. 
+Given that the source code is publicly accessible, attackers can study it to find security flaws, and - of course - take advantage of those vulnerabilities before the community notices them.
 
 Most of the time, OSS projects are created by single devs to solve their specific problems. Then, they share those repositories to help their peers and allow other devs to work on the library. All the coding is done for free and in their spare time. As you can expect, the quality is deeply impacted by this.
-
 
 ## What to do with OSS projects?
 
@@ -56,7 +55,7 @@ I don't have an answer. But for sure we can perform some operations when working
 
 We should **review which external packages we're using**, and keep track of their version. Every N months, we should write a recap (even an Excel file is enough) to update the list of packages we're using. In this way, if a vulnerability is discovered for a package, and a patch is released, we can immediately apply that patch to our applications.
 
-Finding installed dependencies for .NET projects is quite simple: you can open the *csproj* file and see the list of NuGet packages you're using.
+Finding installed dependencies for .NET projects is quite simple: you can open the _csproj_ file and see the list of NuGet packages you're using.
 
 ![NuGet packages listed in the csproj file](./csproj-dotnet-projects.png "csproj file shows the list of installed NuGet packages")
 
@@ -104,7 +103,7 @@ This was not the usual article/tutorial, it was more an opinion on the current s
 
 It's not the first vulnerability, and for sure it won't be the only one.
 
-What do you think? Should we move away from OSS? 
+What do you think? Should we move away from OSS?
 
 How would you improve the OSS world?
 

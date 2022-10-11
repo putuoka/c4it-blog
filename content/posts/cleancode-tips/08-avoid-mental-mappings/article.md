@@ -1,6 +1,6 @@
 ---
 title: "Clean Code Tip: Avoid mental mappings"
-path: '/cleancodetips/avoid-mental-mappings'
+path: "/cleancodetips/avoid-mental-mappings"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "Mental mappings are a good way to write shorter code that you, and only you, can understand. Prefer clarity over brevity!"
@@ -22,7 +22,7 @@ Take this **bad** example:
 public void RenderWOSpace()
 ```
 
-What is a *WOSpace*? Without context, readers won't understand its meaning. Ok, some people use *WO* as an abbreviation of *without*.
+What is a _WOSpace_? Without context, readers won't understand its meaning. Ok, some people use _WO_ as an abbreviation of _without_.
 
 So, a better name is, of course:
 
@@ -34,7 +34,7 @@ public void RenderWithoutSpace()
 
 Some abbreviations are quite obvious and are totally fine to be used.
 
-For instance, standard abbreviations, like *km* for *kilometer*.
+For instance, standard abbreviations, like _km_ for _kilometer_.
 
 ```cs
 public int DistanceInKm()
@@ -53,7 +53,7 @@ int[] collection = new int[] { 2, 3, 5, 8 };
 collection.Where(c => c < 5);
 ```
 
-**It all depends on the scope**: the narrower the scope, the *meaningless* (don't get me wrong!) can be the variable. 
+**It all depends on the scope**: the narrower the scope, the _meaningless_ (don't get me wrong!) can be the variable.
 
 ## An edge case
 
@@ -63,7 +63,7 @@ So, a `_dbConnection` obviously refers to the database. But a `defaultDb`, is th
 
 ## Conclusion
 
-As usual, clarity is the key for good code: a name, may it be for classes, modules, or variables, should be explicit and obvious to everyone. 
+As usual, clarity is the key for good code: a name, may it be for classes, modules, or variables, should be explicit and obvious to everyone.
 
 So, always [use meaningful names](https://www.code4it.dev/cleancodetips/choose-meaningful-names "Clean code tips: use meaningful names - Code4IT")!
 

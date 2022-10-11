@@ -1,15 +1,14 @@
 ---
 title: "Azure Service Bus and C# - an introduction"
-path: '/blog/azure-service-bus-introduction'
-tags: ["Azure", "dotNET", "CSharp" , "MainArticle"]
+path: "/blog/azure-service-bus-introduction"
+tags: ["Azure", "dotNET", "CSharp", "MainArticle"]
 featuredImage: "cover.jpg"
-excerpt : "Azure Service bus is a message broker generally used for sharing messages between applications. In this article, we're gonna see an introduction to Azure Service Bus, and how to work with it with .NET and C#"
+excerpt: "Azure Service bus is a message broker generally used for sharing messages between applications. In this article, we're gonna see an introduction to Azure Service Bus, and how to work with it with .NET and C#"
 created: 2021-06-01
 updated: 2021-06-01
 ---
 
-
-__Azure Service Bus is a _message broker_ that allows you to implement queues and pub-subs topics__. It is incredibly common to use queues to manage the communication between microservices: it is a simple way to send messages between applications without bind them tightly.
+**Azure Service Bus is a _message broker_ that allows you to implement queues and pub-subs topics**. It is incredibly common to use queues to manage the communication between microservices: it is a simple way to send messages between applications without bind them tightly.
 
 In this introduction, we're going to learn the basics of Azure Service Bus: what it is, how to create a Bus and a Queue, how to send and receive messages on the Bus with C#, and more.
 
@@ -23,24 +22,24 @@ But, for now, let's start from the basics.
 
 ## What is Azure Service Bus?
 
-Azure Service Bus is a complex structure that allows you to send content through a __queue__. 
+Azure Service Bus is a complex structure that allows you to send content through a **queue**.
 
-As you may already know, a queue is... well, a queue! __First in, first out__!
+As you may already know, a queue is... well, a queue! **First in, first out**!
 
 This means that the messages will be delivered in the same order as they were sent.
 
 ![Queue of penguins](https://media.giphy.com/media/5YuhLwDgrgtRVwI7OY/giphy.gif)
 
 _Why using a queue is becoming more and more common, for scalable applications?_
-Let's consider this use case: you are developing a __microservices-based application__. With the common approach, communication occurs via HTTP: this means that 
+Let's consider this use case: you are developing a **microservices-based application**. With the common approach, communication occurs via HTTP: this means that
 
-* if the receiver is unreachable, the HTTP message is lost (unless you add some kind of retry policy)
-* if you have to scale out, you will need to add a traffic manager/load balancer to manage which instance must process the HTTP Request
+- if the receiver is unreachable, the HTTP message is lost (unless you add some kind of retry policy)
+- if you have to scale out, you will need to add a traffic manager/load balancer to manage which instance must process the HTTP Request
 
 On the contrary, by using a queue,
 
-* if the receiver is down, the message stays in the queue until the receiver becomes available again
-* if you have to scale out, nothing changes, because the first instance that receives the message removes it from the queue, so you will not have multiple receivers that process the same message.
+- if the receiver is down, the message stays in the queue until the receiver becomes available again
+- if you have to scale out, nothing changes, because the first instance that receives the message removes it from the queue, so you will not have multiple receivers that process the same message.
 
 ## How to create an Azure Service Bus instance
 
@@ -54,17 +53,17 @@ Lastly, you will have to choose which will be the pricing tier to apply.
 
 ![Service Bus creation wizard on Azure UI](./create-azure-service-bus.png)
 
-__There are 3 pricing tiers available__:
+**There are 3 pricing tiers available**:
 
-* _Basic_: its price depends on how many messages you send. At the moment of writing, with Basic tier you pay 0.05$ for every million messages sent.
-* _Standard_: Similar to the Basic tier, but allows you to have both Queues and Topics. You'll see the difference between Queue and Topics in the next article
-* _Premium_: zone-redundant, with both Queues and Topics; of course, quite expensive
+- _Basic_: its price depends on how many messages you send. At the moment of writing, with Basic tier you pay 0.05$ for every million messages sent.
+- _Standard_: Similar to the Basic tier, but allows you to have both Queues and Topics. You'll see the difference between Queue and Topics in the next article
+- _Premium_: zone-redundant, with both Queues and Topics; of course, quite expensive
 
 So now, you can create the resource and see it directly on the browser.
 
 ## Policies and Connection Strings
 
-The first thing to do to connect to the Azure Service Bus is to __create a Policy__ that allows you to perform specific operations on the Bus.
+The first thing to do to connect to the Azure Service Bus is to **create a Policy** that allows you to perform specific operations on the Bus.
 
 By default, under the _Shared access policies_ tab you'll see a policy called _RootManageSharedAccessKey_: this is the default Policy that allows you to send and receive messages on the Bus.
 
@@ -78,25 +77,25 @@ A connection string for the Service Bus looks like this:
 Endpoint=sb://c4it-testbus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=my-secret-key
 ```
 
-Let's break it down: 
+Let's break it down:
 
-The first part represents the __Host__ name: this is the value you've set in the creation wizard, and the one you can see on the Overview tab:
+The first part represents the **Host** name: this is the value you've set in the creation wizard, and the one you can see on the Overview tab:
 
 ![Service Bus instance Host name](./host-name-overview-tab.jpg)
 
-Then, you'll see the __SharedAccessKeyName__ field, which contains the name of the policy to use (in this case, _RootManageSharedAccessKey_).
+Then, you'll see the **SharedAccessKeyName** field, which contains the name of the policy to use (in this case, _RootManageSharedAccessKey_).
 
-Then, we have the __secret Key__. If you select the Primary Connection String you will use the Primary Key; same if you use the Secondary Connection String.
+Then, we have the **secret Key**. If you select the Primary Connection String you will use the Primary Key; same if you use the Secondary Connection String.
 
 Keep that connection string handy, we're gonna use it in a moment!
 
 ## Adding a queue
 
-Now that we have created the general infrastructure, we need to create a Queue. This is the core of the bus - __all the messages pass through a queue__.
+Now that we have created the general infrastructure, we need to create a Queue. This is the core of the bus - **all the messages pass through a queue**.
 
 To create one, on the Azure site head to _Entities > Queues_ and create a new queue.
 
-You will be prompted to add different values, but for now, we are only interested in defining its name. 
+You will be prompted to add different values, but for now, we are only interested in defining its name.
 
 Write the name of the queue and click _Create_.
 
@@ -104,7 +103,7 @@ Write the name of the queue and click _Create_.
 
 Once you've created your queue (for this example, I've named it _PizzaOrders_), you'll be able to see it in the Queues list and see its details.
 
-You can even define one or more policies for that specific queue just as we did before: you'll be able to generate a connection string similar to the one we've already analyzed, with the only difference that, here, you will see a new field in the connection string, __EntityPath__, whose value is the name of the related queue.
+You can even define one or more policies for that specific queue just as we did before: you'll be able to generate a connection string similar to the one we've already analyzed, with the only difference that, here, you will see a new field in the connection string, **EntityPath**, whose value is the name of the related queue.
 
 So, a full connection string will have this form:
 
@@ -120,13 +119,13 @@ You have two options: use the Service Bus Explorer tool directly on Azure:
 
 Or use an external tool.
 
-I honestly prefer to use __ServiceBusExplorer__, a project that you can [download from Chocolatey](https://community.chocolatey.org/packages/ServiceBusExplorer): this open source tool allows you to see what is happening inside Azure Service Bus: just insert your connection string and... voilá! You're ready to go!
+I honestly prefer to use **ServiceBusExplorer**, a project that you can [download from Chocolatey](https://community.chocolatey.org/packages/ServiceBusExplorer): this open source tool allows you to see what is happening inside Azure Service Bus: just insert your connection string and... voilá! You're ready to go!
 
 ![ServiceBusExplorer project on Windows](./servicebusexplorer.jpg)
 
 With this tool, you can see the status of all the queues, as well as send, read, and delete messages.
 
-__If you want to save a connection, you have to open that tool as Administrator__, otherwise, you won't have enough rights to save it.
+**If you want to save a connection, you have to open that tool as Administrator**, otherwise, you won't have enough rights to save it.
 
 ## How to send and receive messages with .NET 5
 
@@ -137,7 +136,7 @@ With another application, we're gonna receive the order of every single pizza by
 
 For both applications, you'll need to install the _Azure.Messaging.ServiceBus_ NuGet package.
 
-### How to send messages on Azure Service Bus 
+### How to send messages on Azure Service Bus
 
 The API application that receives pizza orders from the clients is very simple: just a controller with a single action.
 
@@ -192,7 +191,7 @@ private async Task ProcessOrder(IEnumerable<PizzaOrder> orders)
 
 Let's break it down.
 
-__We need to create a client to connect to the Service Bus__ by using the specified Connection string:
+**We need to create a client to connect to the Service Bus** by using the specified Connection string:
 
 ```cs
 await using (ServiceBusClient client = new ServiceBusClient(ConnectionString))
@@ -202,7 +201,7 @@ await using (ServiceBusClient client = new ServiceBusClient(ConnectionString))
 
 This client must be disposed after its use.
 
-Then, __we need to create a `ServiceBusSender` object__ whose sole role is to send messages to a specific queue:
+Then, **we need to create a `ServiceBusSender` object** whose sole role is to send messages to a specific queue:
 
 ```cs
 ServiceBusSender sender = client.CreateSender(QueueName);
@@ -227,11 +226,11 @@ And that's it! Now the message is available on the PizzaOrders queue and can be 
 
 ![Pizza Order message as shown on ServiceBusExplorer](./message-on-the-bus.png)
 
-Here I serialized the PizzaOrder into a JSON string. This is not mandatory: __you can send messages in whichever format you want: JSON, XML, plain text, BinaryData__... It's up to you!
+Here I serialized the PizzaOrder into a JSON string. This is not mandatory: **you can send messages in whichever format you want: JSON, XML, plain text, BinaryData**... It's up to you!
 
-Also, you can add lots of properties to each message. To read the full list, head to the [ServiceBusMessage Class documentation](https://docs.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusmessage?view=azure-dotnet). 
+Also, you can add lots of properties to each message. To read the full list, head to the [ServiceBusMessage Class documentation](https://docs.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusmessage?view=azure-dotnet).
 
-### How to receive messages on Azure Service Bus 
+### How to receive messages on Azure Service Bus
 
 Once we have the messages on the Bus, we need to read them.
 
@@ -246,7 +245,7 @@ ServiceBusClient serviceBusClient = new ServiceBusClient(ConnectionString);
 This time, instead of using a `ServiceBusSender`, we need to create a `ServiceBusProcessor` object which, of course, will process all the messages coming from the Queue. Since receiving a message on the queue is an asynchronous operation, we need to register an Event Handler both for when we receive the message and when we receive an error:
 
 ```cs
-ServiceBusProcessor   _ordersProcessor = serviceBusClient.CreateProcessor(QueueName); 
+ServiceBusProcessor   _ordersProcessor = serviceBusClient.CreateProcessor(QueueName);
 _ordersProcessor.ProcessMessageAsync += PizzaItemMessageHandler;
 _ordersProcessor.ProcessErrorAsync += PizzaItemErrorHandler;
 ```
@@ -256,17 +255,16 @@ For now, let's add an empty implementation of both handlers.
 ```cs
 private Task PizzaItemErrorHandler(ProcessErrorEventArgs arg)
 {
-    
+
 }
 
 private async Task PizzaItemMessageHandler(ProcessMessageEventArgs args)
 {
-  
+
 }
 ```
 
-_Note:_ in this article I'll implement only the `PizzaItemMessageHandler` method. __The `PizzaItemErrorHandler`, however, must be at least declared, even if empty__: you will get an exception if you forget about it. Anyways, we'll implement it in the last article of this series, the one about error handling.
-
+_Note:_ in this article I'll implement only the `PizzaItemMessageHandler` method. **The `PizzaItemErrorHandler`, however, must be at least declared, even if empty**: you will get an exception if you forget about it. Anyways, we'll implement it in the last article of this series, the one about error handling.
 
 To read the content received in the `PizzaItemMessageHandler` method, you must simply access the `Message.Body` property of the `args` parameter:
 

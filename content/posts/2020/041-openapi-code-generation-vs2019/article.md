@@ -1,9 +1,9 @@
 ---
 title: "How to generate code from OpenAPI definition with Visual Studio 2019"
 path: "/blog/openapi-code-generation-vs2019"
-tags: ["CSharp", "OpenAPI", "Visual Studio" , "MainArticle"]
+tags: ["CSharp", "OpenAPI", "Visual Studio", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt:  "Wouldn't it be nice if Visual Studio could autogenerate clients for external API? It is actually possible, if they expose an OpenAPI file. Let's see how!"
+excerpt: "Wouldn't it be nice if Visual Studio could autogenerate clients for external API? It is actually possible, if they expose an OpenAPI file. Let's see how!"
 created: 2020-10-06
 updated: 2020-10-06
 ---
@@ -14,10 +14,10 @@ We've already seen [how to document your APIs with Swagger](./swagger-integratio
 
 As you see, for every endpoint (in this case I've shown only one) this file describes
 
-* the name of the method
-* the parameters (if present) with name, type, and description
-* the return value, with type and reference to the schema of the returned object
-* the available status codes.
+- the name of the method
+- the parameters (if present) with name, type, and description
+- the return value, with type and reference to the schema of the returned object
+- the available status codes.
 
 We've also seen that you can use the OpenAPI file to [navigate the APIs via the CLI with HttpRepl](./httprepl "Use HttpRepl to navigate APIs") as if they were folders within a file system. It's interesting for discovering the possible operations, but not really that useful for real integration with a project.
 
@@ -53,9 +53,9 @@ Finally, you can add a new API reference by specifying the location of the OpenA
 
 Now move on with the wizard: you'll see Visual Studio installing some NuGet packages for you:
 
-* NSwag.ApiDescription.Client
-* Microsoft.Extensions.ApiDescription.Client
-* Newtonsoft.Json
+- NSwag.ApiDescription.Client
+- Microsoft.Extensions.ApiDescription.Client
+- Newtonsoft.Json
 
 and finally... no, still no code for you! Well, _apparently_.
 
@@ -79,34 +79,34 @@ Let's analyze the scaffolded code.
 namespace movies
 {
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.5.0 (NJsonSchema v10.0.22.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class swaggerClient 
+    public partial class swaggerClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
-    
+
         public swaggerClient(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
-            BaseUrl = baseUrl; 
-            _httpClient = httpClient; 
-            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(() => 
+            BaseUrl = baseUrl;
+            _httpClient = httpClient;
+            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(() =>
             {
                 var settings = new Newtonsoft.Json.JsonSerializerSettings();
                 UpdateJsonSerializerSettings(settings);
                 return settings;
             });
         }
-        
+
         // Other
     }
 }
-```  
+```
 
 Do you remember that in the wizard I set up the namespace value? Here you can see where it is used (of course, for the namespace!).
 
 Have a look at the constructor: it requires a _baseUrl_, which in our case will be localhost, and a `HttpClient` to perform the operations. Also, you can see a Lazy initialization of a `JsonSerializerSettings` object: this lazy loading dramatically boosts the performance.
 
-Notice that the class name does not relate in any way to the Marvel endpoint: this is because a single OpenAPI document can be used to document endpoints from different "worlds", like the Marvel movies, some sort of authentication and any other things you can do with APIs; so the class name must be more generic as possible, to cover all the possibilities. 
+Notice that the class name does not relate in any way to the Marvel endpoint: this is because a single OpenAPI document can be used to document endpoints from different "worlds", like the Marvel movies, some sort of authentication and any other things you can do with APIs; so the class name must be more generic as possible, to cover all the possibilities.
 
 Now you can understand why I often complain about the fact that there should be the possibility to define an OpenAPI file for each API controller, not only for the entire project.😒
 
@@ -116,7 +116,7 @@ Using the OpenAPI file, the tool can generate for you the ViewModel classes. In 
 
 ```cs
 [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.22.0 (Newtonsoft.Json v11.0.0.0)")]
-public partial class Movie 
+public partial class Movie
 {
     [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
     public int Id { get; set; }
@@ -135,7 +135,7 @@ public partial class Movie
 }
 ```
 
-Of course, __it does not include class methods__ (because you can't export the implementation). Also, the `Stars` list has been transformed from a `string[]` to an `ICollection<string>`.
+Of course, **it does not include class methods** (because you can't export the implementation). Also, the `Stars` list has been transformed from a `string[]` to an `ICollection<string>`.
 
 ### Get All
 
@@ -143,7 +143,7 @@ The `GetAll` method is the one that returns the list of all the Marvel Movies.
 
 As you can see, there are two overloads: one with a `CancellationToken`, one without it.
 
-_Just skim_ the code below: the interesting thing is that __it creates and manages for you the `HttpRequest`__ with the correct HTTP verb and the necessary headers; it also checks for the returned status codes and parses the result to the correct data type.
+_Just skim_ the code below: the interesting thing is that **it creates and manages for you the `HttpRequest`** with the correct HTTP verb and the necessary headers; it also checks for the returned status codes and parses the result to the correct data type.
 
 ```cs
 /// <summary>Get all the Marvel movies</summary>
@@ -189,7 +189,7 @@ public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<
                 ProcessResponse(client_, response_);
 
                 var status_ = ((int)response_.StatusCode).ToString();
-                if (status_ == "200") 
+                if (status_ == "200")
                 {
                     var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<Movie>>(response_, headers_).ConfigureAwait(false);
                     return objectResponse_.Object;
@@ -197,10 +197,10 @@ public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<
                 else
                 if (status_ != "200" && status_ != "204")
                 {
-                    var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                    var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                     throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                 }
-    
+
                 return default(System.Collections.Generic.ICollection<Movie>);
             }
             finally
@@ -220,10 +220,10 @@ public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<
 
 Of course, I'm not going to focus on all the methods generated by Visual Studio. But it's really important to notice the signatures: you'll find
 
-* `Task<ICollection<Movie>> MarvelMoviesAllAsync()` to get all the movies
-* `Task MarvelMoviesAsync(Movie body)` to perform a POST
-* `Task<Movie> MarvelMovies2Async(int id)` to GET a single item
-* `Task MarvelMovies3Async(int id)` to DELETE a movie
+- `Task<ICollection<Movie>> MarvelMoviesAllAsync()` to get all the movies
+- `Task MarvelMoviesAsync(Movie body)` to perform a POST
+- `Task<Movie> MarvelMovies2Async(int id)` to GET a single item
+- `Task MarvelMovies3Async(int id)` to DELETE a movie
 
 The names are quite meaningless, aren't they?
 
@@ -233,10 +233,10 @@ That's because the names of the endpoints we have defined on our Marvel API are 
 
 So maybe the tool could create better names given the HttpVerb and the parameters. I would've expected names like
 
-* `Task<ICollection<Movie>> GetAllMarvelMoviesAsync()` - knowing that it's a __GET__ and returns a list of items
-* `Task PostMarvelMoviesAsync(Movie body)` - since it's a __POST__
-* `Task<Movie> GetMarvelMoviesByIdAsync(int id)` - since it's a __GET with a parameter named id__
-* `Task DeleteMarvelMovieAsync(int id)` - knowing that's a __DELETE__ operation
+- `Task<ICollection<Movie>> GetAllMarvelMoviesAsync()` - knowing that it's a **GET** and returns a list of items
+- `Task PostMarvelMoviesAsync(Movie body)` - since it's a **POST**
+- `Task<Movie> GetMarvelMoviesByIdAsync(int id)` - since it's a **GET with a parameter named id**
+- `Task DeleteMarvelMovieAsync(int id)` - knowing that's a **DELETE** operation
 
 Even better, I'd added an additional step in the wizard to allow the developers to choose the names and map them to every exposed method. Who knows, maybe in the future they'll add it!
 

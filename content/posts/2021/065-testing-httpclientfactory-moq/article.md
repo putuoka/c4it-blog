@@ -1,14 +1,14 @@
 ---
 title: "How to test HttpClientFactory with Moq"
-path: '/blog/testing-httpclientfactory-moq'
-tags: ["CSharp", "Testing" , "MainArticle"]
+path: "/blog/testing-httpclientfactory-moq"
+tags: ["CSharp", "Testing", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Mocking IHttpClientFactory is hard, but luckily we can use some advanced features of Moq to write better tests."
+excerpt: "Mocking IHttpClientFactory is hard, but luckily we can use some advanced features of Moq to write better tests."
 created: 2021-09-28
 updated: 2021-09-28
 ---
 
-When working on any .NET application, one of the most common things you'll see is using dependency injection to inject an `IHttpClientFactory` instance into the constructor of a service. And, of course, you *should* test that service. To write good unit tests, it is a good practice to mock the dependencies to have full control over their behavior. A well-known library to mock dependencies is **Moq**; integrating it is pretty simple: if you have to mock a dependency of type `IMyService`, you can create mocks of it by using `Mock<IMyService>`.
+When working on any .NET application, one of the most common things you'll see is using dependency injection to inject an `IHttpClientFactory` instance into the constructor of a service. And, of course, you _should_ test that service. To write good unit tests, it is a good practice to mock the dependencies to have full control over their behavior. A well-known library to mock dependencies is **Moq**; integrating it is pretty simple: if you have to mock a dependency of type `IMyService`, you can create mocks of it by using `Mock<IMyService>`.
 
 But here comes a problem: mocking `IHttpClientFactory` is not that simple: just using `Mock<IHttpClientFactory>` is not enough.
 
@@ -75,8 +75,8 @@ handlerMock
     .ReturnsAsync(result)
     .Verifiable();
 
-var httpClient = new HttpClient(handlerMock.Object) { 
-        BaseAddress = new Uri("https://www.code4it.dev/") 
+var httpClient = new HttpClient(handlerMock.Object) {
+        BaseAddress = new Uri("https://www.code4it.dev/")
     };
 
 var mockHttpClientFactory = new Mock<IHttpClientFactory>();
@@ -100,11 +100,11 @@ var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
 
 What does it mean?
 
-`HttpMessageHandler` is the fundamental part of every HTTP request in .NET: it performs a **SendAsync** call to the specified endpoint with all the info defined in a `HttpRequestMessage` object passed as a parameter. 
+`HttpMessageHandler` is the fundamental part of every HTTP request in .NET: it performs a **SendAsync** call to the specified endpoint with all the info defined in a `HttpRequestMessage` object passed as a parameter.
 
 Since we are interested in what happens to the `HttpMessageHandler`, we need to mock it and store the result in a variable.
 
-Have you noticed that `MockBehavior.Strict`? This is an *optional* parameter that makes the mock throw an exception when it doesn't have a corresponding setup. To try it, remove that argument to the constructor and comment out the `handlerMock.Setup()` part: when you'll run the tests, you'll receive an error of type `Moq.MockException`.
+Have you noticed that `MockBehavior.Strict`? This is an _optional_ parameter that makes the mock throw an exception when it doesn't have a corresponding setup. To try it, remove that argument to the constructor and comment out the `handlerMock.Setup()` part: when you'll run the tests, you'll receive an error of type `Moq.MockException`.
 
 Next step: defining the behavior of the mocked `HttpMessageHandler`
 
@@ -138,28 +138,26 @@ public abstract class HttpMessageHandler : IDisposable
 
     // Summary: Send an HTTP request as an asynchronous operation.
     protected internal abstract Task<HttpResponseMessage> SendAsync(
-        HttpRequestMessage request, 
+        HttpRequestMessage request,
         CancellationToken cancellationToken);
 }
 ```
 
 From this snippet, we can see that we have a method, `SendAsync`, which accepts an `HttpRequestMessage` object and a `CancellationToken`, and which is the one that deals with HTTP requests. **But this method is protected**. Therefore we need to use `Protected()` to access the protected methods of the `HttpMessageHandler` class, and we must set them up by using the method name and the parameters in the `Setup` method.
 
-
-![With Protected() you can access protected members](./mr-turner-protected.jpg "")
-
+![With Protected() you can access protected members](./mr-turner-protected.jpg)
 
 Two details to notice, then:
 
-* We specify the method to set up by using its name as a string: *"SendAsync"*
-* To say that we don't care about the actual values of the parameters, we use `ItExpr` instead of `It` because we are dealing with the setup of a *protected* member.
+- We specify the method to set up by using its name as a string: _"SendAsync"_
+- To say that we don't care about the actual values of the parameters, we use `ItExpr` instead of `It` because we are dealing with the setup of a _protected_ member.
 
 If SendAsync was a public method, we would have done something like this:
 
 ```cs
 handlerMock
     .Setup(_ => _.SendAsync(
-        It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>()) 
+        It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>())
     );
 ```
 
@@ -172,8 +170,8 @@ Then, we define that the call to `SendAsync` returns an object of type `HttpResp
 Now that we have defined the behavior of the `HttpMessageHandler` object, we can pass it to the `HttpClient` constructor to create a new instance of `HttpClient` that acts as we need.
 
 ```cs
-var httpClient = new HttpClient(handlerMock.Object) { 
-        BaseAddress = new Uri("https://www.code4it.dev/") 
+var httpClient = new HttpClient(handlerMock.Object) {
+        BaseAddress = new Uri("https://www.code4it.dev/")
     };
 ```
 
@@ -195,7 +193,7 @@ So, we create the Mock of `IHttpClientFactory` and define the instance of `HttpC
 
 ## How to verify the calls performed by IHttpClientFactory
 
-Now, suppose that in our test we've performed the operation under test. 
+Now, suppose that in our test we've performed the operation under test.
 
 ```cs
 // setup IHttpClientFactory
@@ -211,7 +209,7 @@ handlerMock.Protected()
  .Verify(
     "SendAsync",
     Times.Exactly(1), // we expected a single external request
-    ItExpr.Is<HttpRequestMessage>(req => 
+    ItExpr.Is<HttpRequestMessage>(req =>
         req.RequestUri.Query.Contains("my-name")// Query string contains my-name
     ),
     ItExpr.IsAny<CancellationToken>()
@@ -220,7 +218,7 @@ handlerMock.Protected()
 
 ### Accessing the protected instance
 
-As we've already seen, the object that performs the HTTP operation is the  `HttpMessageHandler`, which here we've mocked and stored in the `handlerMock` variable.
+As we've already seen, the object that performs the HTTP operation is the `HttpMessageHandler`, which here we've mocked and stored in the `handlerMock` variable.
 
 Then we need to verify what happened when calling the `SendAsync` method, which is a protected method; thus we use `Protected` to access that member.
 
@@ -229,7 +227,7 @@ Then we need to verify what happened when calling the `SendAsync` method, which 
 The core part of our assertion is this:
 
 ```cs
-ItExpr.Is<HttpRequestMessage>(req => 
+ItExpr.Is<HttpRequestMessage>(req =>
     req.RequestUri.Query.Contains("my-name")// Query string contains my-name
 ),
 ```
@@ -238,12 +236,11 @@ Again, we are accessing a `protected` member, so we need to use `ItExpr` instead
 
 The `Is<HttpRequestMessage>` method accepts a function `Func<HttpRequestMessage, bool>` that we can use to determine if a property of the `HttpRequestMessage` under test - in our case, we named that variable as `req` - matches the specified predicate. If so, the test passes.
 
-
 ## Refactoring the code
 
 Imagine having to repeat that code for every test method in your class - what a mess!
 
-So we can refactor it: first of all, we can move the `HttpMessageHandler`  mock to the `SetUp` method:
+So we can refactor it: first of all, we can move the `HttpMessageHandler` mock to the `SetUp` method:
 
 ```cs
 [SetUp]
@@ -264,8 +261,8 @@ public void Setup()
     .Verifiable()
     ;
 
-    var httpClient = new HttpClient(handlerMock.Object) { 
-        BaseAddress = new Uri("https://www.code4it.dev/") 
+    var httpClient = new HttpClient(handlerMock.Object) {
+        BaseAddress = new Uri("https://www.code4it.dev/")
         };
 
     var mockHttpClientFactory = new Mock<IHttpClientFactory>();
@@ -278,8 +275,7 @@ public void Setup()
 
 and keep a reference to `handlerMock` and `service` in some private members.
 
-Then, we can move the *assertion* part to a different method, maybe to an extension method:
-
+Then, we can move the _assertion_ part to a different method, maybe to an extension method:
 
 ```cs
 public static void Verify(this Mock<HttpMessageHandler> mock, Func<HttpRequestMessage, bool> match)
@@ -323,7 +319,6 @@ public async Task Method_Should_ReturnSomething_When_Condition()
 🔗 [Moq documentation | GitHub](https://github.com/moq/moq "Moq documentation on GitHub")
 
 🔗 [How you can create extension methods in C# | Code4IT](https://www.code4it.dev/blog/csharp-extension-methods "How to create extension methods with C#")
-
 
 ## Wrapping up
 

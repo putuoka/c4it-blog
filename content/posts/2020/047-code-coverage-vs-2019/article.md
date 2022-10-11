@@ -1,7 +1,7 @@
 ---
 title: "How to view code coverage with Coverlet and Visual Studio 2019"
 path: "/blog/code-coverage-vs-2019-coverlet"
-tags: ["Visual Studio", "Tests" , "MainArticle"]
+tags: ["Visual Studio", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Code coverage is an indicator of the quality of your code. With Coverlet and VS2019 you can have a human readable report to see where to improve your code.
 created: 2020-12-29
@@ -10,7 +10,7 @@ updated: 2020-12-29
 
 Having a high code coverage percentage boosts your confidence in your code: the more thoroughly your code is tested, the lesser are the possibilities to have bugs. Of course, You'll never have a bug-free project, that's utopian. But you can work toward reducing the possible bugs by testing each and every part of your code.
 
-The term _code coverage_ represents the percentage of code covered by tests: it is calculated basing on two values: __line coverage__, which is about the exact count of lines covered, and __branch coverage__ which is about the branches (if-else, switch, try-catch) that have been executed by our test suite.
+The term _code coverage_ represents the percentage of code covered by tests: it is calculated basing on two values: **line coverage**, which is about the exact count of lines covered, and **branch coverage** which is about the branches (if-else, switch, try-catch) that have been executed by our test suite.
 
 In this article, we're gonna see how to calculate code coverage on .NET projects and how to visualize a Code Coverage report on Visual Studio 2019.
 
@@ -67,13 +67,13 @@ public class MyArrayTests
 }
 ```
 
-The code and the tests are pretty straightforward; but have we really covered the `Replace` method with enough tests to be sure not to have missed something? 
+The code and the tests are pretty straightforward; but have we really covered the `Replace` method with enough tests to be sure not to have missed something?
 
 ## Coverlet - the NuGet Package for code coverage
 
-The first thing to do to add code coverage reports to our project is to install __Coverlet__, a NuGet package, whose documentation can be accessed [on GitHub](https://github.com/coverlet-coverage/coverlet "Coverlet project on GitHub").
+The first thing to do to add code coverage reports to our project is to install **Coverlet**, a NuGet package, whose documentation can be accessed [on GitHub](https://github.com/coverlet-coverage/coverlet "Coverlet project on GitHub").
 
-You must add _Coverlet.msbuild_ __to every test project__ in your solution. So, add it with the NuGet package manager or with the CLI, running the command `dotnet add package coverlet.msbuild`.
+You must add _Coverlet.msbuild_ **to every test project** in your solution. So, add it with the NuGet package manager or with the CLI, running the command `dotnet add package coverlet.msbuild`.
 
 This package relies on the _MSBuild_ tool to collect code coverage data and statistics, and save them into a specific file that can be opened with other tools or applications.
 
@@ -83,7 +83,7 @@ The next step is to install in Visual Studio an extension that, given the code c
 
 The tool we're gonna use is [ReportGenerator](https://github.com/danielpalme/ReportGenerator "ReportGenerator on GitHub"), that provides support for projects based on .NET Core.
 
-To install it, open the __PowerShell with admin privileges__ and run the following commands:
+To install it, open the **PowerShell with admin privileges** and run the following commands:
 
 ```bash
 dotnet tool install -g dotnet-reportgenerator-globaltool
@@ -101,7 +101,6 @@ Then, search _Run Coverlet Report_ and install it - you have to close all Visual
 
 ![Coverlet Report extension on VS2019](./install-setup-extension.png "Coverlet Report extension on VS2019")
 
-
 Since we are integrating Coverlet with MSBuild, you have to head to _Tools > Options_ and change the _Integration Type_ from _Collector_ to _MSBuild_.
 
 ![Coverlet Integration type](./coverlet-options.png "Coverlet Integration type")
@@ -110,7 +109,7 @@ Once everything is installed (remember to install Coverlet in all and only test 
 
 ## Our first run
 
-First of all, __run all of you tests for the first time__: this helps to initialize correctly all the references to the test projects. You must do this step only the first time.
+First of all, **run all of you tests for the first time**: this helps to initialize correctly all the references to the test projects. You must do this step only the first time.
 
 Now, under the _Tools_ menu, click on _Run Code Coverage_: this command runs the tests, generates a report files and uses it to generate a full report like this:
 
@@ -121,7 +120,6 @@ Here we go! We have our code coverage report!
 You can even drill down into details for each class to find out other the values for Branch Coverage, Line Coverage and Cyclomatic complexity.
 
 ![Code coverage details](./code-coverage-report-details.png "Code coverage details")
-
 
 For each class, you can see the details of the lines covered by tests. But if you are like me, you don't want to open each file to see what to do, but you'd like a way to see it directly in your IDE.
 

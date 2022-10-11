@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components"
 
 const AdStyle = createGlobalStyle`
   #carbonads {
@@ -60,6 +60,6 @@ const AdStyle = createGlobalStyle`
     line-height: 1;
     letter-spacing: 1px;
   }
-`;
+`
 
-export default AdStyle;
+export default AdStyle

@@ -1,7 +1,7 @@
 ---
 title: "MSTest StringAssert class - an overview"
 path: "/blog/mstests-stringassert-overview"
-tags: ['CSharp', 'Tests', "MainArticle"] 
+tags: ["CSharp", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "The StringAssert class is a hidden feature of the MSStest framework. Not so many methods, but they can help you with basic tests with strings."
 created: 2019-03-20
@@ -12,7 +12,7 @@ This is the second part of our journey through the Unit Test classes provided wi
 
 ## The StringAssert class
 
-[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.stringassert "StringAssert documentation") belongs to `Microsoft.VisualStudio.TestTools.UnitTesting` namespace. It's a small class with few methods: maybe that's the reason it is not preferred over the Assert class when testing a string.  
+[This class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting.stringassert "StringAssert documentation") belongs to `Microsoft.VisualStudio.TestTools.UnitTesting` namespace. It's a small class with few methods: maybe that's the reason it is not preferred over the Assert class when testing a string.
 
 ### StringAssert.Contains
 
@@ -80,7 +80,7 @@ public void TestRegex()
 
 ## Wrapping Up
 
-In my opinion, by now only the Matches method is useful. The others are missing important capabilities, like a parameter for specifying if the comparison is case sensitive and the possibility to specify the _CultureInfo_.  
+In my opinion, by now only the Matches method is useful. The others are missing important capabilities, like a parameter for specifying if the comparison is case sensitive and the possibility to specify the _CultureInfo_.
 
 Another functionality that is missing is the possibility to test the negative counterpart of those methods (except for Matches and DoesNotMatch). I mean, I cannot test if a string _does not_ start with a substring.
 

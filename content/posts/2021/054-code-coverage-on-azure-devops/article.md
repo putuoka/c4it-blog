@@ -1,16 +1,16 @@
 ---
 title: "Cobertura, YAML, and Code Coverage Protector: how to view Code Coverage report on Azure DevOps"
-path: '/blog/code-coverage-on-azure-devops-yaml-pipelines'
-tags: ["Azure DevOps", "Tests" , "MainArticle"]
+path: "/blog/code-coverage-on-azure-devops-yaml-pipelines"
+tags: ["Azure DevOps", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
-excerpt : "Code coverage is a good indicator of the health of your projects. We'll see how to show Cobertura reports associated to your builds on Azure DevOps and how to display the progress on Dashboard."
+excerpt: "Code coverage is a good indicator of the health of your projects. We'll see how to show Cobertura reports associated to your builds on Azure DevOps and how to display the progress on Dashboard."
 created: 2021-04-06
 updated: 2021-04-06
 ---
 
 Code coverage is a good indicator of the health of your project: the more your project is covered by tests, the lesser are the probabilities that you have easy-to-find bugs in it.
 
-__Even though 100% of code coverage is a good result, it is not enough: you have to check if your tests are meaningful and bring value to the project__; it really doesn't make any sense to cover each line of your production code with tests valid only for the happy path; you also have to cover the edge cases!
+**Even though 100% of code coverage is a good result, it is not enough: you have to check if your tests are meaningful and bring value to the project**; it really doesn't make any sense to cover each line of your production code with tests valid only for the happy path; you also have to cover the edge cases!
 
 But, even if it's not enough, having an idea of the code coverage on your project is a good practice: it helps you understanding where you should write more tests and, eventually, help you removing some bugs.
 
@@ -24,7 +24,7 @@ But first, let's start with the YAML pipelines!
 
 ## Coverlet - the NuGet package for code coverage
 
-As already explained [in my previous article](./code-coverage-vs-2019-coverlet#coverlet---the-nuget-package-for-code-coverage "How to install Coverlet on .NET Test projects"), the very first thing to do to add code coverage calculation is to install a NuGet package called _Coverlet_. This package __must__ be installed in every test project in your Solution.
+As already explained [in my previous article](./code-coverage-vs-2019-coverlet#coverlet---the-nuget-package-for-code-coverage "How to install Coverlet on .NET Test projects"), the very first thing to do to add code coverage calculation is to install a NuGet package called _Coverlet_. This package **must** be installed in every test project in your Solution.
 
 So, running a simple `dotnet add package coverlet.msbuild` on your test projects is enough!
 
@@ -42,18 +42,17 @@ The task will have this form:
 
 ```yaml
 - task: DotNetCoreCLI@2
-  displayName: 'Run tests'
+  displayName: "Run tests"
   inputs:
-    command: 'test'
-    projects: '**/*[Tt]est*/*.csproj'
+    command: "test"
+    projects: "**/*[Tt]est*/*.csproj"
     publishTestResults: true
-    arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+    arguments: "--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura"
 ```
 
 You can see the code coverage preview directly in the log panel of the executing build. The ASCII table tells you the code coverage percentage for each module, specifying the lines, branches, and methods covered by tests for every module.
 
 ![Logging dotnet test](./dotnet-test.jpg)
-
 
 Another interesting thing to notice is that this task generates two files: a _trx_ file, that contains the test results info (which tests passed, which ones failed, and other info), and a _coverage.cobertura.xml_, that is the file we will use in the next step to publish the coverage results.
 
@@ -67,46 +66,45 @@ Create a task of type _PublishCodeCoverageResults@1_, specify that the result fo
 
 ```yml
 - task: PublishCodeCoverageResults@1
-  displayName: 'Publish code coverage results'
+  displayName: "Publish code coverage results"
   inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '**/*coverage.cobertura.xml'
+    codeCoverageTool: "Cobertura"
+    summaryFileLocation: "**/*coverage.cobertura.xml"
 ```
 
 ### Final result
 
-Now that we know what are the tasks to add, we can write the most basic version of a build pipeline: 
+Now that we know what are the tasks to add, we can write the most basic version of a build pipeline:
 
 ```yaml
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: "windows-latest"
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  solution: "**/*.sln"
+  buildPlatform: "Any CPU"
+  buildConfiguration: "Release"
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: 'Build'
-  inputs:
-    command: 'build'
-- task: DotNetCoreCLI@2
-  displayName: 'Run tests'
-  inputs:
-    command: 'test'
-    projects: '**/*[Tt]est*/*.csproj'
-    publishTestResults: true
-    arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish code coverage results'
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '**/*coverage.cobertura.xml'
-
+  - task: DotNetCoreCLI@2
+    displayName: "Build"
+    inputs:
+      command: "build"
+  - task: DotNetCoreCLI@2
+    displayName: "Run tests"
+    inputs:
+      command: "test"
+      projects: "**/*[Tt]est*/*.csproj"
+      publishTestResults: true
+      arguments: "--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura"
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish code coverage results"
+    inputs:
+      codeCoverageTool: "Cobertura"
+      summaryFileLocation: "**/*coverage.cobertura.xml"
 ```
 
 So, here, we simply build the solution, run the tests and publish both test and code coverage results.
@@ -131,7 +129,7 @@ Now what? We should keep track of the code coverage percentage over time. But op
 
 A really useful plugin to manage this use case is _Code Coverage Protector_, developed by [Dave Smits](https://twitter.com/davesmits "Dave Smits on Twitter"): among other things, it allows you to display the status of code coverage directly on your Azure DevOps Dashboards.
 
-To install it, head to the [plugin page on the marketplace](https://marketplace.visualstudio.com/items?itemName=davesmits.codecoverageprotector "Code Coverage Protector plugin") and click _get it free_. 
+To install it, head to the [plugin page on the marketplace](https://marketplace.visualstudio.com/items?itemName=davesmits.codecoverageprotector "Code Coverage Protector plugin") and click _get it free_.
 
 !["Code Coverage Protector plugin"](./code-coverage-protector.jpg)
 

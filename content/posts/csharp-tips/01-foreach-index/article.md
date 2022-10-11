@@ -1,9 +1,9 @@
 ---
 title: "C# tip: how to get the index of an item in a foreach loop"
-path: '/csharptips/how-to-get-item-index-in-foreach'
+path: "/csharptips/how-to-get-item-index-in-foreach"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.jpg"
-excerpt : "Do you need the index of the current item in a foreach loop with C#? Here you'll see two approaches."
+excerpt: "Do you need the index of the current item in a foreach loop with C#? Here you'll see two approaches."
 created: 2021-06-08
 updated: 2021-06-09
 ---
@@ -44,9 +44,9 @@ foreach (var friend in myFriends.Select((name, index) => (name, index)))
 
 Why do I like this solution?
 
-* it's more compact than the first one
-* there is a tight bond between the current item in the loop and the index
-* I find it cleaner and easier to read
+- it's more compact than the first one
+- there is a tight bond between the current item in the loop and the index
+- I find it cleaner and easier to read
 
 Or... You can just replace it with a simple `for` loop!
 
@@ -55,10 +55,10 @@ Or... You can just replace it with a simple `for` loop!
 I've done a simple benchmark (see [here](https://twitter.com/BelloneDavide/status/1333516188262002688)), and it resulted that for lists with less than 1000 items, the first solution is faster, and for lists with 10000 items, using LINQ is way faster than using an external index.
 
 | Size (#items) | With simple index (ms) | With LINQ (ms) |
-|--|--|--|
-|100 |96|128|
-|1000|1225|1017|
-|10000|5523|786|
+| ------------- | ---------------------- | -------------- |
+| 100           | 96                     | 128            |
+| 1000          | 1225                   | 1017           |
+| 10000         | 5523                   | 786            |
 
 This happens with .NET 5.
 
@@ -70,34 +70,33 @@ But, when performing a more precise benchmark using [Benchmark.NET](https://benc
 
 With _.NET Core 3.1.14_ I get the following results:
 
-
-|   Method |        array |         Mean |       Error |
-|--------- |------------- |-------------:|------------:|
+| Method    | array        |         Mean |       Error |
+| --------- | ------------ | -----------: | ----------: |
 | WithIndex | Int32[10000] | 269,386.4 ns | 6,168.76 ns |
-| WithLinq | Int32[10000] | 396,421.3 ns | 7,778.64 ns |
-| WithIndex |  Int32[1000] |  25,438.3 ns |   504.03 ns |
-| WithLinq |  Int32[1000] |  39,981.3 ns | 1,578.48 ns |
-| WithIndex |   Int32[100] |   2,440.8 ns |    48.34 ns |
-| WithLinq |   Int32[100] |   3,687.7 ns |    73.60 ns |
-| WithIndex |    Int32[10] |     185.6 ns |     3.52 ns |
-| WithLinq |    Int32[10] |     369.5 ns |     9.51 ns |
+| WithLinq  | Int32[10000] | 396,421.3 ns | 7,778.64 ns |
+| WithIndex | Int32[1000]  |  25,438.3 ns |   504.03 ns |
+| WithLinq  | Int32[1000]  |  39,981.3 ns | 1,578.48 ns |
+| WithIndex | Int32[100]   |   2,440.8 ns |    48.34 ns |
+| WithLinq  | Int32[100]   |   3,687.7 ns |    73.60 ns |
+| WithIndex | Int32[10]    |     185.6 ns |     3.52 ns |
+| WithLinq  | Int32[10]    |     369.5 ns |     9.51 ns |
 
 While with _.NET 5_ I get these results:
 
-|   Method |        array |          Mean |        Error |
-|--------- |------------- |--------------:|-------------:|
+| Method    | array        |          Mean |        Error |
+| --------- | ------------ | ------------: | -----------: |
 | WithIndex | Int32[10000] | 134,431.02 ns | 2,181.244 ns |
-| WithLinq | Int32[10000] | 273,691.68 ns | 5,334.833 ns |
-| WithIndex |  Int32[1000] |  12,961.69 ns |   233.351 ns |
-| WithLinq |  Int32[1000] |  26,023.63 ns |   495.341 ns |
-| WithIndex |   Int32[100] |   1,088.25 ns |    21.485 ns |
-| WithLinq |   Int32[100] |   2,299.12 ns |    21.901 ns |
-| WithIndex |    Int32[10] |      48.01 ns |     0.748 ns |
-| WithLinq |    Int32[10] |     228.66 ns |     4.531 ns |
- 
-As you can see, actually __using LINQ is slower than using a simple index__. While in .NET Core 3 the results were quite similar, with .NET 5 there was a huge improvement both cases, but now using a simple index is two times faster than using LINQ.
+| WithLinq  | Int32[10000] | 273,691.68 ns | 5,334.833 ns |
+| WithIndex | Int32[1000]  |  12,961.69 ns |   233.351 ns |
+| WithLinq  | Int32[1000]  |  26,023.63 ns |   495.341 ns |
+| WithIndex | Int32[100]   |   1,088.25 ns |    21.485 ns |
+| WithLinq  | Int32[100]   |   2,299.12 ns |    21.901 ns |
+| WithIndex | Int32[10]    |      48.01 ns |     0.748 ns |
+| WithLinq  | Int32[10]    |     228.66 ns |     4.531 ns |
 
-__SORRY FOR THAT MISLEADING INFO!__ Thank you, [Ben](https://github.com/bbuerger), for pointing it out in the comments section! 🙏 
+As you can see, actually **using LINQ is slower than using a simple index**. While in .NET Core 3 the results were quite similar, with .NET 5 there was a huge improvement both cases, but now using a simple index is two times faster than using LINQ.
+
+**SORRY FOR THAT MISLEADING INFO!** Thank you, [Ben](https://github.com/bbuerger), for pointing it out in the comments section! 🙏
 
 Below you can see the code I used for this benchmark. I you want to get started with Benchmark.NET, look at the documentation or to my article [Enum.HasFlag performance with BenchmarkDotNet](../blog/hasflag-performance-benchmarkdotnet)
 

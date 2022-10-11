@@ -1,7 +1,7 @@
 ---
 title: "Logging with Serilog and Seq"
 path: "/blog/logging-with-serilog-and-seq"
-tags: ["dotNET" , "MainArticle"]
+tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Having a robust logging system is crucial for any application. There are many tools, and one of these is Serilog. Here you'll learn how to use it in a .NET application and how to integrate it with Seq."
 created: 2020-04-28
@@ -10,7 +10,7 @@ updated: 2020-04-28
 
 One of the most important things to consider when developing and application is logging: not only it is useful for tracking errors and check if the system works correctly, but also it helps you with additional info about the status of the application in a particular point of the code, making it easier to debug the application.
 
-__Serilog is an open source .NET library for logging__. One of the best features of Serilog, as you can see in [its homepage](https://serilog.net/ "Serilog website"), is that messages are in the form of a template and you can easily format a value using its default formatter instead of calling `ToString()` for each value.
+**Serilog is an open source .NET library for logging**. One of the best features of Serilog, as you can see in [its homepage](https://serilog.net/ "Serilog website"), is that messages are in the form of a template and you can easily format a value using its default formatter instead of calling `ToString()` for each value.
 
 ```cs
 var position = new { Latitude = 25, Longitude = 134 };
@@ -23,17 +23,17 @@ will capture a JSON like
 
 ```json
 {
-   "Position":{
-      "Latitude":25,
-      "Longitude":134
-   },
-   "Elapsed":34
+  "Position": {
+    "Latitude": 25,
+    "Longitude": 134
+  },
+  "Elapsed": 34
 }
 ```
 
 Of course, those logs must be collected somewhere. You can use even the console or a database if you want; otherwise, you can use an external platform.
 
-One of my favorite logging platforms is __Seq__: developed by Datalust, [Seq](https://datalust.co/seq "Seq website") collects logs and allows you to search and analyze the records. The interesting thing is that, under the hood, those __data are stored as JSON__: this means that you can perform queries against them and get the results easily.
+One of my favorite logging platforms is **Seq**: developed by Datalust, [Seq](https://datalust.co/seq "Seq website") collects logs and allows you to search and analyze the records. The interesting thing is that, under the hood, those **data are stored as JSON**: this means that you can perform queries against them and get the results easily.
 
 Good thing: for a single user, it is free. So, let's try it!
 
@@ -99,22 +99,22 @@ Just run your application, and you'll see the message in the Seq panel.
 
 As you can see, your message is displayed with some additional info, such as the date and time of the event and the level (of course, since we used `_logger.Information`, the level value is Information). The last thing to notice is the _Raw JSON_ button: by clicking on it, you can download the inner JSON representation of the log, which can help you understand what happened.
 
-Serilog supports various logs with different levels of criticalities; we've already seen _Information_, but we can also have  _Verbose_, _Debug_,  _Warning_,  _Error_ and _Fatal_. Each level has [a specific meaning](https://github.com/serilog/serilog/wiki/Configuration-Basics "Logging levels values by Serilog"):
+Serilog supports various logs with different levels of criticalities; we've already seen _Information_, but we can also have _Verbose_, _Debug_, _Warning_, _Error_ and _Fatal_. Each level has [a specific meaning](https://github.com/serilog/serilog/wiki/Configuration-Basics "Logging levels values by Serilog"):
 
-| Level | Usage |
-|-------|------|
-|Verbose |Verbose is the noisiest level, rarely (if ever) enabled for a production app.|
-|Debug |Debug is used for internal system events that are not necessarily observable from the outside, but useful when determining how something happened.|
-|Information |Information events describe things happening in the system that correspond to its responsibilities and functions. Generally these are the observable actions the system can perform.|
-|Warning |When service is degraded, endangered, or may be behaving outside of its expected parameters, Warning level events are used.|
-|Error |When functionality is unavailable or expectations broken, an Error event is used.|
-|Fatal |The most critical level, Fatal events demand immediate attention.|
+| Level       | Usage                                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Verbose     | Verbose is the noisiest level, rarely (if ever) enabled for a production app.                                                                                                        |
+| Debug       | Debug is used for internal system events that are not necessarily observable from the outside, but useful when determining how something happened.                                   |
+| Information | Information events describe things happening in the system that correspond to its responsibilities and functions. Generally these are the observable actions the system can perform. |
+| Warning     | When service is degraded, endangered, or may be behaving outside of its expected parameters, Warning level events are used.                                                          |
+| Error       | When functionality is unavailable or expectations broken, an Error event is used.                                                                                                    |
+| Fatal       | The most critical level, Fatal events demand immediate attention.                                                                                                                    |
 
 So, just as we did for `_logger.Information("Hello, SEQ");`, we can log a message with a different level, like `_logger.Error("An error occurred")` that will be rendered as displayed in the following image:
 
 ![Error logged](./seq-simple-error.png "Error logged")
 
-You might want to define a __minimum level of log__ to be stored: usually, levels like Debug and Verbose are fine for Develop and Staging environments, but for not for the Production environment. You can define the minimum level in the `Startup` class:
+You might want to define a **minimum level of log** to be stored: usually, levels like Debug and Verbose are fine for Develop and Staging environments, but for not for the Production environment. You can define the minimum level in the `Startup` class:
 
 ```cs
 Log.Logger = new LoggerConfiguration()
@@ -127,7 +127,7 @@ This way we define that we want to log only events with level Warning, Error or 
 
 ## Enriching logs
 
-Sometimes you want to add for each log a set of properties that are __shared across your application__, like the name of your project or the environment. `Serilog` allows you to do that using __Enrichers__. While you can create your own, you can use predefined enrichers: simply add `.Enrich.WithProperty(PropertyName, PropertyValue)` in your logger definition.
+Sometimes you want to add for each log a set of properties that are **shared across your application**, like the name of your project or the environment. `Serilog` allows you to do that using **Enrichers**. While you can create your own, you can use predefined enrichers: simply add `.Enrich.WithProperty(PropertyName, PropertyValue)` in your logger definition.
 
 ```cs
 Log.Logger = new LoggerConfiguration()
@@ -172,7 +172,7 @@ will result in
 
 As you can see, the Date has been pretty-printed in the preview, while in the detail of the item the date is full. Also, the `List<string>` can be expanded in the item details.
 
-Why is this functionality useful? As I touched upon before, these __logs can be filtered__. You can use a __SQL-like syntax__ to retrieve all the logs that match the filter you defined. So, if in the query textbox on the Seq panel you set `"AuthorName = "Davide"`, you'll get only the logs that have the field AuthorName specified and whose value is "Davide".
+Why is this functionality useful? As I touched upon before, these **logs can be filtered**. You can use a **SQL-like syntax** to retrieve all the logs that match the filter you defined. So, if in the query textbox on the Seq panel you set `"AuthorName = "Davide"`, you'll get only the logs that have the field AuthorName specified and whose value is "Davide".
 
 ![A query on logged properties](./log-query.png "Query on logged properties")
 
@@ -199,7 +199,7 @@ That works, but it's not the best idea. The result of this log is hard to read s
 
 ![A bad way to log exceptions](./wrong-exception-handling.png "Logging exception - bad way")
 
-Luckily, there is an overload of the Error method that accepts an __Exception as a first parameter__. So you can write
+Luckily, there is an overload of the Error method that accepts an **Exception as a first parameter**. So you can write
 
 ```cs
 try

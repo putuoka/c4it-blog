@@ -1,7 +1,7 @@
-import {createGlobalStyle} from "styled-components";
-import Theme from "./theme";
+import { createGlobalStyle } from "styled-components"
+import Theme from "./theme"
 // import styledNormalize from "styled-normalize";
-import * as prismStyle from "prismjs/themes/prism-okaidia.css";
+import * as prismStyle from "prismjs/themes/prism-okaidia.css"
 
 const GlobalStyle = createGlobalStyle`
   ${prismStyle}
@@ -137,6 +137,6 @@ iframe{
   max-width: 100%
 }
 
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

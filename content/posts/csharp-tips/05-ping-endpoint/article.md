@@ -1,9 +1,9 @@
 ---
 title: "C# Tip: use the Ping class instead of an HttpClient to ping an endpoint"
-path: '/csharptips/ping-endpoint'
+path: "/csharptips/ping-endpoint"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
-excerpt : "Sometimes you need to ping some endpoints. Don't rely on HttpClient, but use the native Ping class."
+excerpt: "Sometimes you need to ping some endpoints. Don't rely on HttpClient, but use the native Ping class."
 created: 2021-10-19
 updated: 2021-10-19
 ---
@@ -38,7 +38,7 @@ private async Task<bool> IsWebsiteUp_Get(string url)
 
 **There are some possible issues with this approach**: what if there is no resource available in the root? You will have to define a specific path. And what happens if the defined resource is under authentication? `IsWebsiteUp_Get` will always return `false`. Even when the site is correctly up.
 
-Also, it is possible that the endpoint does not accept *HttpGet* requests. So, we can use *HttpHead* instead:
+Also, it is possible that the endpoint does not accept _HttpGet_ requests. So, we can use _HttpHead_ instead:
 
 ```cs
 private async Task<bool> IsWebsiteUp_Head(string url)
@@ -62,7 +62,6 @@ By the way, we need to find another way.
 
 By using the `Ping` class, we can get rid of those checks and evaluate the status **of the Host**, not of a specific resource.
 
-
 ```cs
 private async Task<bool> IsWebsiteUp_Ping(string url)
 {
@@ -75,7 +74,6 @@ private async Task<bool> IsWebsiteUp_Ping(string url)
 ```
 
 The `Ping` class comes in the `System.Net.NetworkInformation` namespace, and allows you to perform the same operations of the `ping` command you usually send via command line.
-
 
 ## Conclusion
 
