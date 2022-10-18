@@ -1,7 +1,7 @@
 ---
 title: "3 (and more) ways to set configuration values in .NET"
 path: '/blog/how-to-set-configurations-values-dotnet'
-tags: ["CSharp", "DotNet", "MainArticle"]
+tags: ["CSharp", "dotnet", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Every application relies on some configurations. Many devs set them up using only the appsettings file. But there's more!"
 created: 2022-10-18

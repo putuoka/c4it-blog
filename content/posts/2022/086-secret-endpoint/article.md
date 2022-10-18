@@ -1,7 +1,7 @@
 ---
 title: "The 2 secret endpoints I create in my .NET APIs"
 path: "/blog/my-2-secret-endpoints"
-tags: ["Dotnet", "MainArticle"]
+tags: ["dotnet", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "In this article, I will show you two simple tricks that help me understand the deployment status of my .NET APIs"
 created: 2022-10-04

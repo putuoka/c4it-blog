@@ -1,7 +1,7 @@
 ---
 title: "Type or namespace not found: how to fix Error CS0246 in .NET Core"
 path: "/blog/dotnet-type-or-namespace-not-found"
-tags: ["dotNET", "MainArticle"]
+tags: ["dotnet", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Error CS0246 - Type or namespace could not be found. What does it mean? Why does it happen? How can you solve it?"
 created: 2019-08-26

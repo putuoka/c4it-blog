@@ -1,7 +1,7 @@
 ---
 title: "5 tricks every C# dev should know about LINQPad"
 path: "/blog/5-linqpad-tricks"
-tags: ["dotNET", "CSharp", "MainArticle"]
+tags: ["dotnet", "CSharp", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "LINQPad is one of the tools I use daily. But still, I haven't used it at its full power. And you?"
 created: 2022-07-19

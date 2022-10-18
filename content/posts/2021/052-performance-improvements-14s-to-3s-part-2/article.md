@@ -1,7 +1,7 @@
 ---
 title: "14 to 2 seconds: how I improved the performance of an endpoint by 82% - part 2"
 path: "/blog/improving-application-performance-part2"
-tags: ["Performance", "dotNET", "CSharp", "MainArticle"]
+tags: ["Performance", "dotnet", "CSharp", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Language details may impact application performance. In this article we'll see some of the C# tips that brought me to improve my application. Singleton creation, StringBuilder and more!"
 created: 2021-03-09

@@ -6,7 +6,7 @@
   color: #f0db4f
   icon: ./assets/images/javascript.png
   featured: false
-- name: dotNET
+- name: dotnet
   color: #00ffee
   icon: ./assets/images/dotNet.png
   featured: true

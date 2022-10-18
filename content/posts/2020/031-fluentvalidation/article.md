@@ -1,7 +1,7 @@
 ---
 title: "Cool validation with FluentValidation"
 path: "/blog/fluentvalidation"
-tags: ["CSharp", "dotNET", "MainArticle"]
+tags: ["CSharp", "dotnet", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Validating inputs is crucial for every application. If you want an easy and versatile way, you can try FluentValidation."
 created: 2020-06-16

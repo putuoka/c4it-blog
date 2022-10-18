@@ -1,7 +1,7 @@
 ---
 title: "A recap of my 30ArticlesForNovember"
 path: "/blog/30articlesfornovember-a-recap"
-tags: ["CSharp", "dotNET", "Programming", "MainArticle"]
+tags: ["CSharp", "dotnet", "Programming", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "On November I shared on Twitter an article each day. They were about C#, general programming and advanced topics. For celebrating the conclusion of this challenge, I wrote a poem about that."
 created: 2019-12-05

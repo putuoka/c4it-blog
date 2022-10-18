@@ -1,7 +1,7 @@
 ---
 title: "How to upgrade Azure Functions v2 to v3"
 path: "/blog/azure-functions-v2-to-v3"
-tags: ["dotNET", "Azure", "Azure Function", "Serverless", "MainArticle"]
+tags: ["dotnet", "Azure", "Azure Function", "Serverless", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Do you have an Azure Function that you want to upgrade from v2 to v3? Don't panic, it's just a matter of few steps!
 created: 2020-04-21

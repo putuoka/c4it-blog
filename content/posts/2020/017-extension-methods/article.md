@@ -1,7 +1,7 @@
 ---
 title: "How you can create extension methods in C#"
 path: "/blog/csharp-extension-methods"
-tags: ["CSharp", "dotNET", "MainArticle"]
+tags: ["CSharp", "dotnet", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "Extension methods in C# are really useful, but there are few rules to follow..."
 created: 2020-02-18

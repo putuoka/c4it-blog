@@ -1,7 +1,7 @@
 ---
 title: "A few tips for performance optimization"
 path: "/blog/few-tips-for-performance-optimization"
-tags: ["dotNET", "CSharp", "Performance", "MainArticle"]
+tags: ["dotnet", "CSharp", "Performance", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "More than 50% of mobile users abandon a website if it takes more than 3 seconds to load. Here you'll learn few trick to improve your site performance."
 created: 2020-01-06

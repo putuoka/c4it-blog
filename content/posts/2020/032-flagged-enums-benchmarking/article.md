@@ -1,7 +1,7 @@
 ---
 title: "Enum.HasFlag performance with BenchmarkDotNet"
 path: "/blog/hasflag-performance-benchmarkdotnet"
-tags: ["CSharp", "dotNET", "Performance", "MainArticle"]
+tags: ["CSharp", "dotnet", "Performance", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: "BenchmarkDotNet allows you to test the performance on .NET methods. So let's answer a question: is the Enum.HasFlag method really that slow?"
 created: 2020-06-30
