@@ -4,8 +4,8 @@ path: "/cleancodetips/dry-or-not-dry"
 tags: ["Clean Code", "Clean Code Tip"]
 featuredImage: "./cover.png"
 excerpt: "DRY is a fundamental principle in software development. Should you apply it blindly?"
-created: 2022-10-25
-updated: 2022-10-25
+created: 2022-10-11
+updated: 2022-10-11
 ---
 
 You've probably heard about the **DRY principle: Don't Repeat Yourself**.
