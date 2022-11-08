@@ -42,9 +42,9 @@ We simply create a `NpgsqlConnection` object, and we keep a reference to it. We 
 
 ### Connection string
 
-The only parameter we can pass as an input to the `NpgsqlConnection` constructor is the connection string.
+The only parameter we can pass as input to the `NpgsqlConnection` constructor is the connection string.
 
-You must compose it by specifying the host address, the port, the database name we are connecting to, and the credentials of the user that is querying the db.
+You must compose it by specifying the host address, the port, the database name we are connecting to, and the credentials of the user that is querying the DB.
 
 ```cs
 private const string CONNECTION_STRING = "Host=localhost:5455;" +
@@ -119,7 +119,7 @@ public async Task Add(BoardGame game)
 
 The `commandText` string contains the full command to be issued. In this case, it's a simple `INSERT` statement.
 
-We use the `commandText` string to create a `NpgsqlCommand`object by specifying the query and the connection where we will perform that query. Note that the command must be disposed after its use: wrap it in a `using` block.
+We use the `commandText` string to create a `NpgsqlCommand`object by specifying the query and the connection where we will perform that query. Note that the command must be Disposed after its use: wrap it in a `using` block.
 
 Then, we will add the parameters to the query. `AddWithValue` accepts two parameters: the first is the name of the key, with the same name defined in the query, but without the `@` symbol; in the query, we use `@minPl`, and as a parameter, we use `minPl`.
 
@@ -201,7 +201,7 @@ public async Task Update(int id, BoardGame game)
 }
 ```
 
-Of course, the query is different, but the general structure is the same: create the query, create the Command, add parameters, execute the query with `ExecuteNonQueryAsync`.
+Of course, the query is different, but the general structure is the same: create the query, create the Command, add parameters, and execute the query with `ExecuteNonQueryAsync`.
 
 ### Delete
 
@@ -251,9 +251,9 @@ public async Task CreateTableIfNotExists()
 }
 ```
 
-Again, nothing fancy: create the command text, create a `NpgsqlCommand` object, execute the command.
+Again, nothing fancy: create the command text, create a `NpgsqlCommand` object, and execute the command.
 
-## Bonus 2: Check database version
+## Bonus 2: Check the database version
 
 To check if the database is up and running, and your credentials are correct (those set in the connection string), you might want to retrieve the DB version.
 
@@ -314,6 +314,9 @@ When talking about parameters to be passed to the query, I mentioned the _SQL In
 Finally, here you can find the repository used for this article.
 
 🔗 [Repository used for this article | GitHub](https://github.com/code4it-dev/PostgresCrudOperations "GitHub repository used for this article")
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
 
 ## Wrapping up
 

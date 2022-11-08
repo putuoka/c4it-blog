@@ -16,7 +16,7 @@ But still, many C# developers only use just a few of its functionalities! In thi
 
 ## Advanced Dump()
 
-As many of you already know, to print stuff on the console you don't have to call `Console.WriteLine(somthing)`, but you can use `somthing.Dump()`;
+As many of you already know, to print stuff on the console you don't have to call `Console.WriteLine(something)`, but you can use `something.Dump()`;
 
 ```cs
 void Main()

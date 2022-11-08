@@ -50,15 +50,17 @@ module.exports = {
       name: `code4it`,
       description: `Ciao! I'm <strong>Davide Bellone</strong>, a .NET software developer!
       Let's keep in touch on 
-      <a href="https://twitter.com/BelloneDavide" rel="noopener" target="_blank">Twitter!</a>`,
+      <a href="https://twitter.com/BelloneDavide" rel="noopener" target="_blank">Twitter</a>
+       or on <a href="https://www.linkedin.com/in/bellonedavide/" rel="noopener" target="_blank">LinkedIn</a>
+      `,
       social: {
         facebook: ``,
         twitter: `https://twitter.com/BelloneDavide`,
         linkedin: `https://www.linkedin.com/in/bellonedavide/`,
         instagram: ``,
-        youtube: `https://www.youtube.com/channel/UCALEI7DFRHRRAjFyDUXf2Pg`,
+        youtube: ``,
         github: `https://github.com/code4it-dev`,
-        twitch: `https://www.twitch.tv/code4it`,
+        twitch: ``,
       },
     },
   },

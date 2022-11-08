@@ -105,6 +105,8 @@ Again, run the application and have a look at the Output folder:
 
 **Debug.Assert works only in DEBUG mode** - or, at least, when the DEBUG variable is defined. Otherwise, all those checks will simply get removed from the build result, so they will not impact your application when running in RELEASE mode.
 
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
 Happy coding!
 
 🐧

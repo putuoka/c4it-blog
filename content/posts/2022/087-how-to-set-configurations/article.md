@@ -1,6 +1,6 @@
 ---
 title: "3 (and more) ways to set configuration values in .NET"
-path: '/blog/how-to-set-configurations-values-dotnet'
+path: "/blog/how-to-set-configurations-values-dotnet"
 tags: ["CSharp", "dotnet", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Every application relies on some configurations. Many devs set them up using only the appsettings file. But there's more!"
@@ -10,9 +10,9 @@ updated: 2022-10-18
 
 Needless to say, almost every application needs to deal with some configurations. There are tons of use cases, and you already have some of them in mind, don't you?
 
-If you're working with .NET, you've probably already used the *appsettings.json* file. It's a good starting point, but it may be not enough in the case of complex applications (and complex deployments).
+If you're working with .NET, you've probably already used the _appsettings.json_ file. It's a good starting point, but it may be not enough in the case of complex applications (and complex deployments).
 
-In this article, we will learn some ways to set configurations in a .NET API application. We will use the *appsettings* file, of course, and some other ways such as the dotnet CLI. Let's go! 🚀
+In this article, we will learn some ways to set configurations in a .NET API application. We will use the _appsettings_ file, of course, and some other ways such as the dotnet CLI. Let's go! 🚀
 
 ## Project setup
 
@@ -68,20 +68,20 @@ namespace HowToSetConfigurations
 
 Nothing else! 🤩
 
-In short, I scaffold the `WebApplicationBuilder`, configure that I want to map the settings section with root named *RootConfig* to my class of type `MyRootConfig`, and then run the application.
+In short, I scaffold the `WebApplicationBuilder`, configure that I want to map the settings section with root named _RootConfig_ to my class of type `MyRootConfig`, and then run the application.
 
-I then expose a single endpoint, */config*, which returns the current configurations, wrapped within an `IOptionsSnapshot<MyRootConfig>` object.
+I then expose a single endpoint, _/config_, which returns the current configurations, wrapped within an `IOptionsSnapshot<MyRootConfig>` object.
 
 Where is the source of the application's configurations?
 
 As stated on the Microsoft docs website, [here 🔗](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0#set-up-a-host), the `WebApplicationBuilder`...
 
 > Loads app configuration in the following order from:
->   appsettings.json.
->   appsettings.{Environment}.json.
->   User secrets when the app runs in the Development environment using the entry assembly.
->   Environment variables.
->   Command-line arguments.
+> appsettings.json.
+> appsettings.{Environment}.json.
+> User secrets when the app runs in the Development environment using the entry assembly.
+> Environment variables.
+> Command-line arguments.
 
 So, yeah, we have several possible sources, and the order does matter.
 
@@ -89,7 +89,7 @@ Let's see a bunch of them.
 
 ## Define settings within the appsetting.json file
 
-The most common way is by using the *appsettings.json* file. Here, in a **structured and hierarchical way**, you can define all the logs used as a baseline for your application.
+The most common way is by using the _appsettings.json_ file. Here, in a **structured and hierarchical way**, you can define all the logs used as a baseline for your application.
 
 A typical example is this one:
 
@@ -112,22 +112,21 @@ A typical example is this one:
 }
 ```
 
-With this file, all the fields within the *RootConfig* element will be mapped to the `MyRootConfig` class at startup. That object can then be returned using the */config* endpoint.
+With this file, all the fields within the _RootConfig_ element will be mapped to the `MyRootConfig` class at startup. That object can then be returned using the _/config_ endpoint.
 
 Running the application (using Visual Studio or the dotnet CLI) you will be able to call that endpoint and see the expected result.
 
 ![Configuration results from plain Appsettings file](./from_appsettings.png)
 
-
 ## Use environment-specific appsettings.json
 
-Now, you probably know that you can use other *appsettings* files with a name such as *appsettings.Development.json*.
+Now, you probably know that you can use other _appsettings_ files with a name such as _appsettings.Development.json_.
 
 ![appsettings.Development file](./appsetting-development-file.png)
 
 With that file, you can override specific configurations using the same structure, but ignoring all the configs that don't need to be changed.
 
-Let's update the *Limit* field defined in the "base" appsettings. You don't need to recreate the whole structure just for one key; you can use this JSON instead:
+Let's update the _Limit_ field defined in the "base" appsettings. You don't need to recreate the whole structure just for one key; you can use this JSON instead:
 
 ```json
 {
@@ -147,11 +146,11 @@ Ok, but **what made .NET understand that I wanted to use that file??** It's a ma
 
 ### How to define profiles within the launchSettings.json file
 
-Within the Properties folder in your project, you can see a *launchSettings.json* file. As you might expect, that file describes how you can launch the application.
+Within the Properties folder in your project, you can see a _launchSettings.json_ file. As you might expect, that file describes how you can launch the application.
 
 ![launchSettings file location in the solution](./launchsettings-file.png)
 
-Here we have some Launch profiles, and each of them specifies an `ASPNETCORE_ENVIRONMENT` variable. By default, its value is set to *Development*. 
+Here we have some Launch profiles, and each of them specifies an `ASPNETCORE_ENVIRONMENT` variable. By default, its value is set to _Development_.
 
 ```json
 "profiles": {
@@ -168,9 +167,9 @@ Here we have some Launch profiles, and each of them specifies an `ASPNETCORE_ENV
 }
 ```
 
-Now, recall that the environment-specific *appsettings* file name is defined as *appsettings.{Environment}.json*. Therefore, by running your application with Visual Studio using the *HowToSetConfigurations* launch profile, you're gonna replace that *{Environment}* with *Development*, thus using the *appsettings.Development.json*.
+Now, recall that the environment-specific _appsettings_ file name is defined as _appsettings.{Environment}.json_. Therefore, by running your application with Visual Studio using the _HowToSetConfigurations_ launch profile, you're gonna replace that _{Environment}_ with _Development_, thus using the _appsettings.Development.json_.
 
-*Ça va sans dire* that you can use every value you prefer - such as Staging, MyCustomEnvironmentName, and so on.
+_Ça va sans dire_ that you can use every value you prefer - such as Staging, MyCustomEnvironmentName, and so on.
 
 ### How to define the current Environment with the CLI
 
@@ -192,7 +191,7 @@ and get the same result.
 
 As we've seen [in a previous article](https://www.code4it.dev/blog/my-2-secret-endpoints#how-to-list-all-the-configurations-in-net-apis), even if we are using configurations defined in a hierarchical structure, in the end, they are transformed into key-value pairs.
 
-The *Limit* key as defined here:
+The _Limit_ key as defined here:
 
 ```json
 {
@@ -239,7 +238,7 @@ From these configurations
   }
 ```
 
-I want to update the *MyName* field.
+I want to update the _MyName_ field.
 
 I can then update the current profile as such:
 
@@ -256,7 +255,7 @@ so that, when I run the application using that profile, I will get this result:
 
 Have you noticed the key `RootConfig:MyName`? 😉
 
-🔎 Notice that now we have both *MyName = Mr Bellone*, as defined in the lauchSettings file, and *Limit = 9*, since we're still using the *appsettings.Development.json* file (because of that *"ASPNETCORE_ENVIRONMENT": "Development"* ).
+🔎 Notice that now we have both _MyName = Mr Bellone_, as defined in the lauchSettings file, and _Limit = 9_, since we're still using the _appsettings.Development.json_ file (because of that _"ASPNETCORE_ENVIRONMENT": "Development"_ ).
 
 ### How to define the current profile with the CLI
 
@@ -276,10 +275,9 @@ It's just a matter of specifying the key-value pairs as such:
 dotnet run --RootConfig:Nested:Skip=55
 ```
 
-And - *TAH-DAH!* - you will see this result:
+And - _TAH-DAH!_ - you will see this result:
 
 ![JSON result with the key specified on the CLI](./from_cli.png)
-
 
 ❓ A question for you! Notice that, even though I specified only the Skip value, both Limit and MyName have the value defined before. Do you know why it happens? Drop a message below if you know the answer! 📩
 
@@ -291,12 +289,12 @@ If you want to know more about how dotNET APIs load and start, you should have a
 
 🔗 [ASP.NET Core Web Host | Microsoft Docs](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-6.0)
 
-Ok, now you know different approaches for setting configurations. 
+Ok, now you know different approaches for setting configurations.
 How do you know the exact values that are set in your application?
 
 🔗 [The 2 secret endpoints I create in my .NET APIs | Code4IT](https://www.code4it.dev/blog/my-2-secret-endpoints)
 
-*This article first appeared on [Code4IT](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 
@@ -309,4 +307,3 @@ Do you know any other ways to define configs?
 Happy coding!
 
 🐧
- 

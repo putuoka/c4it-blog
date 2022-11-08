@@ -26,7 +26,7 @@ But the only way to learn it is by getting your hands dirty. Let's go!
 
 ## How to set up EF Core
 
-For this article, we will reuse the same .NET Core repository and the same database table we've used when we performed CRUD operations [with Dapper](https://www.code4it.dev/blog/postgres-crud-dapper "Dapper and Postgres") (a lightweight OR-M) and [with NpgSql](https://www.code4it.dev/blog/postgres-crud-operations-npgsql "Dapper and NpgSql"), which is the library that performs bare-metal operations.
+For this article, we will reuse the same .NET Core repository and the same database table we used when we performed CRUD operations [with Dapper](https://www.code4it.dev/blog/postgres-crud-dapper "Dapper and Postgres") (a lightweight OR-M) and [with NpgSql](https://www.code4it.dev/blog/postgres-crud-operations-npgsql "Dapper and NpgSql"), which is the library that performs bare-metal operations.
 
 The first thing to do is, as usual, **install the related NuGet package**. Here we will need `Npgsql.EntityFrameworkCore.PostgreSQL`. Since I've used .NET 5, I have downloaded version _5.0.10_.
 
@@ -352,7 +352,7 @@ public async Task Delete(int id)
 
 ## Further readings
 
-Entity Framework is impressive, and you can integrate it with tons of database vendors. In the link below you can find the full list. But pay attention that not all the libraries are implemented by the EF team, some are third party libraries (like the one we used for Postgres):
+Entity Framework is impressive, and you can integrate it with tons of database vendors. In the link below you can find the full list. But pay attention that not all the libraries are implemented by the EF team, some are third-party libraries (like the one we used for Postgres):
 
 🔗 [Database Providers | Microsoft docs](https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli "EF supported database providers")
 
@@ -371,6 +371,9 @@ or, maybe, if you prefer Dapper:
 Finally, you can have a look at the full repository here:
 
 🔗 [Repository used for this article | GitHub](https://github.com/code4it-dev/PostgresCrudOperations "GitHub repository used for this article")
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
 
 ## Wrapping up
 

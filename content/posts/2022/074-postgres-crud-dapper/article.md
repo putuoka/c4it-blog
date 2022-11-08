@@ -320,6 +320,8 @@ How to get a Postgres instance running? You can use any cloud implementation, or
 
 🔗 [How to run PostgreSQL locally with Docker | Code4IT](https://www.code4it.dev/blog/run-postgresql-with-docker "Article on how to run Postgres with Docker")
 
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 In this article, we've seen how to use Dapper to simplify our data access. Dapper is useful for querying different types of RDBMS, not only PostgreSQL.
