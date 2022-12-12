@@ -29,11 +29,7 @@ module.exports = {
       {
         name: "C# Tips",
         path: "/tag/csharp-tip",
-      },
-      {
-        name: "Architecture notes",
-        path: "/tag/software-architecture",
-      },
+      } 
     ],
     footerMenu: [
       {
@@ -48,7 +44,7 @@ module.exports = {
     search: true,
     author: {
       name: `code4it`,
-      description: `Ciao! I'm <strong>Davide Bellone</strong>, a .NET software developer!
+      description: `Ciao! I'm <strong>Davide Bellone</strong>, a .NET software developer and <b>Microsoft MVP</b>
       Let's keep in touch on 
       <a href="https://twitter.com/BelloneDavide" rel="noopener" target="_blank">Twitter</a>
        or on <a href="https://www.linkedin.com/in/bellonedavide/" rel="noopener" target="_blank">LinkedIn</a>
