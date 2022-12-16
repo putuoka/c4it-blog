@@ -5,7 +5,7 @@ tags: ["Visual Studio", "Tests", "MainArticle"]
 featuredImage: "./cover.jpg"
 excerpt: Code coverage is an indicator of the quality of your code. With Coverlet and VS2019 you can have a human readable report to see where to improve your code.
 created: 2020-12-29
-updated: 2020-12-29
+updated: 2022-12-16
 ---
 
 Having a high code coverage percentage boosts your confidence in your code: the more thoroughly your code is tested, the lesser are the possibilities to have bugs. Of course, You'll never have a bug-free project, that's utopian. But you can work toward reducing the possible bugs by testing each and every part of your code.
@@ -13,6 +13,8 @@ Having a high code coverage percentage boosts your confidence in your code: the 
 The term _code coverage_ represents the percentage of code covered by tests: it is calculated basing on two values: **line coverage**, which is about the exact count of lines covered, and **branch coverage** which is about the branches (if-else, switch, try-catch) that have been executed by our test suite.
 
 In this article, we're gonna see how to calculate code coverage on .NET projects and how to visualize a Code Coverage report on Visual Studio 2019.
+
+**Note: there's an update published on 2022-12-16, so don't skip that part!**
 
 ## Setting up a simple project
 
@@ -128,6 +130,17 @@ Well, just click on _Toggle Code Coverage Highlighting_ under the _Tools_ menu: 
 ![Code coverage highlighting in source files](./code-coverage-highlighting.png "Code coverage details")
 
 This will help you speed up your development and find out possible bugs and flaws earlier.
+
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
+
+
+## Update 2022-12-16
+
+Coverlet.MsBuild has some known bugs. **You should use Coverlet.Collector instead of Coverlet.MsBuild**, as stated [here](https://github.com/coverlet-coverage/coverlet/issues/859).
+
+This means that you have to install another NuGet package, running `dotnet add package coverlet.collector`, and remove *coverlet.msbuild*.
+
+Then you must head back to  _Tools > Options_ and change the _Integration Type_ back from _MSBuild_ to _Collector_.
 
 ## Wrapping up
 
