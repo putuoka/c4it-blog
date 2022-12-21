@@ -31,3 +31,5 @@ If you want to have a list of all available commands, run `SQLLocalDB.exe -?`. T
 ![SQLLocalDB command options](./ssms_command_help.png "SQLLocalDb command options")
 
 It's important to remember that here the spaces are treated as delimiters, so if your DB includes spaces inside its name, you must surround the name with quotes.
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_

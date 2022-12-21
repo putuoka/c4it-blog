@@ -116,6 +116,8 @@ There are also some flags that can be set:
 - `-t`: loop infinitely
 - `-s`: run for the specified seconds
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusion
 
 Here we've seen how you can ping an Azure App Service inside the Azure Portal. This is a tiny tool that you must know if you want to check if your architecture is well configured. Do you know other ways?

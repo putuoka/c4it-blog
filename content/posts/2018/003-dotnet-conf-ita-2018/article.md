@@ -78,6 +78,8 @@ Who knows, only time will tell.
 
 In Visual Studio you can download tools for Tizen and write apps for Samsung TVs, and also download an emulator.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusion
 
 The conference was really stimulating. In this article, I gave just a quick overview of some of the things I learned, but I didn't mention the main topics of the speeches. If you are curious to know what the conference was about, [you can have a look at the agenda](http://www.aspitalia.com/eventi/72/.NET-Conference-Italia-2018-Milano.aspx "DotNet conf agenda") (of course, in Italian).

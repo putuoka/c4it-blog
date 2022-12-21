@@ -164,6 +164,8 @@ namespace AzureFunctionV2Example
 {
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 We have seen how to define Dependency Injection in Azure Functions. We've done it by following a few steps:

@@ -122,6 +122,8 @@ Console.WriteLine(String.IsNullOrWhiteSpace(str5)); //True
 
 You can see a live example [here](http://volatileread.com/utilitylibrary/snippetcompiler?id=120726 "Live example").
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 As you can see, out of the box .NET provides easy methods to handle your strings. You shouldn't reinvent the wheel when everything is already done.

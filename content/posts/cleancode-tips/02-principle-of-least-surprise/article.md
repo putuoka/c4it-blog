@@ -81,6 +81,8 @@ public class RepositoryFactory
 }
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 See the point? It looks like we are using the Factory design pattern, but the code is actually the one for a Singleton.
 
 Again, **being clear and obvious** is one of the keys to successful clean code.

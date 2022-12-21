@@ -438,6 +438,8 @@ Finally, the repository that you can fork to toy with it:
 
 🔗 [PropagateCorrelationIdOnHttpClients | GitHub](https://github.com/code4it-dev/PropagateCorrelationIdOnHttpClients)
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusion
 
 What a ride!

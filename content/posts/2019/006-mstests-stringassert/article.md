@@ -78,6 +78,8 @@ public void TestRegex()
 }
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping Up
 
 In my opinion, by now only the Matches method is useful. The others are missing important capabilities, like a parameter for specifying if the comparison is case sensitive and the possibility to specify the _CultureInfo_.

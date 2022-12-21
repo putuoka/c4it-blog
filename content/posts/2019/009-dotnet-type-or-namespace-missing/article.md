@@ -40,3 +40,5 @@ You can find the version in the Properties screen of the project (right-click on
 ![.NET version selection on Visual Studio 2019](./dotnet-version-selector.png "How to select .NET version on Visual Studio 2019")
 
 So, the lesson is: _know your enemy_ and check for the slight details.
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_

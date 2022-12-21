@@ -203,6 +203,8 @@ As always, there are some best practices you should follow. The following ones a
 
 For more, you can refer to [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netcore-3.1#guidelines-for-flagsattribute-and-enum "Microsoft best practices about Flags attribute").
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Here we've seen more things to know about enums. Probably you won't use all of these capabilities in real-world scenarios, but I think you should know that they exist.

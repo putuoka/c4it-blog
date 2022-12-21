@@ -151,8 +151,9 @@ var nextPageToken = searchListResponse.NextPageToken;
 
 // when you are querying next page
 searchListRequest.PageToken = nextPageToken;
-
 ```
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 

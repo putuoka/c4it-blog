@@ -196,6 +196,8 @@ After running the tests you will see a report with the list of the tests that pa
 
 ![xUnit test result](./xunit_test_result.png)
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 We've seen 5 amazing tricks to get the best out of LINQPad. In my opinion, every C# developer that uses this tool should know those tricks, they can really boost your productivity.

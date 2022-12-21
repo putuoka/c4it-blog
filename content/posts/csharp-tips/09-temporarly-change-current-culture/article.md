@@ -75,6 +75,8 @@ void TestChangeOfCurrency()
 }
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusion
 
 Using a class that implements `IDisposable` is a good way to create a temporary environment with different characteristics than the main environment.

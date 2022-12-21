@@ -63,6 +63,8 @@ Another advantage of this technique is the simplified management of SSL certific
 
 Of course, when the internal servers are on the same LAN there are more advantages.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Final words
 
 API Gateways are useful when you have to share APIs with external clients, but for a simple application, I think they add more difficulties than benefits. However, looking at the microservices world, a basic knowledge of this kind of technology is fundamental to creating a scalable architecture.

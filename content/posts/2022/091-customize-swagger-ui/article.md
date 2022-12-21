@@ -1,6 +1,6 @@
 ---
 title: "How to customize Swagger UI with custom CSS in .NET 7"
-path: '/blog/customize-swagger-ui-with-css'
+path: "/blog/customize-swagger-ui-with-css"
 tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "Exposing Swagger UI is a good way to help developers consume your APIs. But don't be boring: customize your UI with some fancy CSS"
@@ -8,7 +8,7 @@ created: 2022-12-16
 updated: 2022-12-16
 ---
 
-Brace yourself, Christmas is coming! 🎅 
+Brace yourself, Christmas is coming! 🎅
 
 If you want to add a more festive look to your Swagger UI, it's just a matter of creating a CSS file and injecting it.
 
@@ -20,7 +20,7 @@ In this article, we will learn how to inject a CSS file in the Swagger UI genera
 
 There are plenty of tutorials about how to add Swagger to your APIs. I wrote some too, where I explained how every configuration impacts what you see in the UI.
 
-That article was targeting older dotNET versions *without Minimal APIs*. Now everything's easier.
+That article was targeting older dotNET versions _without Minimal APIs_. Now everything's easier.
 
 When you create your API project, Visual Studio asks you if you want to **add OpenAPI support (aka Swagger)**. By adding it, you will have everything in place to get started with Swagger.
 
@@ -51,7 +51,7 @@ public static void Main(string[] args)
 }
 ```
 
-The key parts are  `builder.Services.AddEndpointsApiExplorer()`, `builder.Services.AddSwaggerGen()`, `app.UseSwagger()`, `app.UseSwaggerUI()` and `WithOpenApi()`. Do you know that those methods do? If so, drop a comment below! 📩
+The key parts are `builder.Services.AddEndpointsApiExplorer()`, `builder.Services.AddSwaggerGen()`, `app.UseSwagger()`, `app.UseSwaggerUI()` and `WithOpenApi()`. Do you know that those methods do? If so, drop a comment below! 📩
 
 Now, if we run our application, we will see a UI similar to the one below.
 
@@ -65,33 +65,34 @@ That's a basic UI. Quite boring, uh? Let's add some style
 
 Now you can add all the folders and static resources needed.
 
-I've created a single CSS file under */wwwroot/assets/css/xmas-style.css*. Of course, name it as you wish - as long as it is within the wwwroot folder, it's fine.
+I've created a single CSS file under _/wwwroot/assets/css/xmas-style.css_. Of course, name it as you wish - as long as it is within the wwwroot folder, it's fine.
 
 My CSS file is quite minimal:
 
 ```css
 body {
-    background-image: url("../images/snowflakes.webp");
+  background-image: url("../images/snowflakes.webp");
 }
 
 div.topbar {
-    background-color: #34A65F !important;
+  background-color: #34a65f !important;
 }
 
-h2, h3 {
-    color: #F5624D !important;
+h2,
+h3 {
+  color: #f5624d !important;
 }
 
 .opblock-summary-get > button > span.opblock-summary-method {
-    background-color: #235E6F !important;
+  background-color: #235e6f !important;
 }
 
 .opblock-summary-post > button > span.opblock-summary-method {
-    background-color: #0F8A5F !important;
+  background-color: #0f8a5f !important;
 }
 
 .opblock-summary-delete > button > span.opblock-summary-method {
-    background-color: #CC231E !important;
+  background-color: #cc231e !important;
 }
 ```
 
@@ -119,7 +120,7 @@ app.UseSwaggerUI(c =>
 
 Notice how that path begins: no `wwwroot`, no `~`, no `.`. It starts with `/assets`.
 
-One last step: we have to tell dotNET to consider static files when building and running the application. 
+One last step: we have to tell dotNET to consider static files when building and running the application.
 
 You just have to add `UseStaticFiles()`
 
@@ -143,7 +144,6 @@ Now we can run our APIs as admire our wonderful Xmas-style UI 🎅
 
 ![XMAS-style Swagger UI](./xmas_swagger.png)
 
-
 ## Further readings
 
 This article is part of 2022 .NET Advent, created by [Dustin Moris 🐤](https://twitter.com/dustinmoris):
@@ -154,7 +154,7 @@ CSS is not the only part you can customize, there's way more. Here's an article 
 
 🔗 [Understanding Swagger integration in .NET Core | Code4IT](https://www.code4it.dev/blog/swagger-integration)
 
-*This article first appeared on [Code4IT](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 
@@ -166,5 +166,3 @@ You should also consider using theming when **deploying APIs to different enviro
 
 Happy coding!
 🐧
-
- 

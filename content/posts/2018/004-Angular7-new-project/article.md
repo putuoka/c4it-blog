@@ -84,6 +84,8 @@ Notice that this option refers only to the component styles. The default style o
 
 Similar to the _inline-style_ option, _inline-template_ won't create the HTML file but will allow you to add HTML structure directly in the component.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 In this article, I gave a glimpse of what the CLI can do for you when creating a new project. There are more options available, but I think that the most useful are the ones listed above.

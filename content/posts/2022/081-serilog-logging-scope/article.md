@@ -239,6 +239,8 @@ Ok, then, in the end, **Scopes or Correlation IDs**? The answer is simple:
 
 ![Both is good](https://res.cloudinary.com/bellons/image/upload/v1655710660/Code4IT/Articles/2022/081-serilog-scopes/both-is-good.gif)
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Read more
 
 As always, the best place to find the info about a library is its documentation.

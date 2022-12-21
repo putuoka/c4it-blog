@@ -337,6 +337,8 @@ public void IsSubsetOf_Int()
 
 We had a review of the `CollectionAssert` class. I think it is very useful for checking if a collection is "well formed", checking for the type of the content and for the presence of an item. But it would be better have also a method for checking if a custom condition is respected by all the element of the collection, for example specifying a lambda expression to be evaluated for each element.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusion
 
 This is the end of this journey through pain and joy. As you can see, MSTest is fine for basic tests, but if you want something more complete I suggest to use other libraries.

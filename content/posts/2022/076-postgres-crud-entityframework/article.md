@@ -374,7 +374,6 @@ Finally, you can have a look at the full repository here:
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-
 ## Wrapping up
 
 This article concludes the series that explores 3 ways to perform CRUD operations on a Postgres database with C#.

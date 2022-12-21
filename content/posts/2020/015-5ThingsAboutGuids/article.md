@@ -186,6 +186,8 @@ or using the `Marshal.SizeOf` method from `System.Runtime.InteropServices`.
 Marshal.SizeOf()
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Not so boring, isn't it? For sure, this is a great functionality of C#, and I hope I've triggered your curiosity about the hidden aspects of this language.

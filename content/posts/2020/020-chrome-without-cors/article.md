@@ -39,3 +39,9 @@ As you can see, there is a warning stating that the flag `--disable-web-security
 Also, as you can see from the screenshot above, the bookmark bar is empty (because there is no associated user).
 
 If you don't want to work on terminal each time, you can put the script directly into a .bat file, and run it as if it was a simple program.
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
+Happy coding!
+
+🐧

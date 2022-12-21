@@ -41,9 +41,13 @@ Add-Content article.md "## Wrapping up"
 Add-Content article.md "" 
 Add-Content article.md "<Conclusion>"
 Add-Content article.md "" 
+Add-Content article.md "I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛 " 
+Add-Content article.md "" 
+
 Add-Content article.md "Happy coding!"
 Add-Content article.md "" 
 Add-Content article.md "🐧"
+Add-Content article.md "" 
 
 Add-Content article.md "## APPUNTI"
 Add-Content article.md "" 

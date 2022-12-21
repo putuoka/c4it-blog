@@ -116,6 +116,8 @@ Since the URLs don't match, I'm receiving the 401 error. The solution (in my cas
 
 In the .npmrc file at project level you can leave the space in the URL.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusions
 
 Here I explained how to connect to npm feeds from Azure DevOps and how to solve problems with authorization.

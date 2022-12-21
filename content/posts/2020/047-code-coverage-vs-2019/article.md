@@ -133,14 +133,13 @@ This will help you speed up your development and find out possible bugs and flaw
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-
 ## Update 2022-12-16
 
 Coverlet.MsBuild has some known bugs. **You should use Coverlet.Collector instead of Coverlet.MsBuild**, as stated [here](https://github.com/coverlet-coverage/coverlet/issues/859).
 
-This means that you have to install another NuGet package, running `dotnet add package coverlet.collector`, and remove *coverlet.msbuild*.
+This means that you have to install another NuGet package, running `dotnet add package coverlet.collector`, and remove _coverlet.msbuild_.
 
-Then you must head back to  _Tools > Options_ and change the _Integration Type_ back from _MSBuild_ to _Collector_.
+Then you must head back to _Tools > Options_ and change the _Integration Type_ back from _MSBuild_ to _Collector_.
 
 ## Wrapping up
 

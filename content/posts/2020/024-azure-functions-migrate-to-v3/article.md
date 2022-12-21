@@ -92,6 +92,8 @@ If you are also updating the .NET version, remember that there are [some breakin
 - Some classes changed their package and/or namespace; for example, _Microsoft.Extension.Caching.SqlServer_ moved from _System.Data.SqlClient_ to _Microsoft.Data.SqlClient_.
 - Newtonsoft.Json is now replaced by default with System.Text.Json
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Final thoughts
 
 Here we've seen how to upgrade from Azure Functions v2 to v3. Staying up to date to the latest (stable) versions of such tools is important since performance and security issues would be fixed. So, take the time to update your functions.

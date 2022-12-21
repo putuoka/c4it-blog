@@ -206,6 +206,8 @@ List<int> myList = new List<int>() { 2, 4, 82, 6, 223, 5, 7, 342, 234, 1};
 Console.WriteLine(myList.GetRandom());
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Have you ever used extension methods for creating a library?

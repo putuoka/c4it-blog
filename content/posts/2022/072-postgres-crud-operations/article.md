@@ -317,7 +317,6 @@ Finally, here you can find the repository used for this article.
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
-
 ## Wrapping up
 
 In this article, we've learned how to perform simple operations on a PostgreSQL database to retrieve and update the content of a table.

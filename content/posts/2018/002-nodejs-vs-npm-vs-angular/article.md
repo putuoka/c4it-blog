@@ -32,7 +32,10 @@ The way to install a package is with the command `npm install <package_name>`.
 
 Angular is a framework based on JavaScript that makes it easy to build applications for the web. Often you'll see Angular applications written in Typescript, a modern class-oriented language based on JavaScript. The result is the same: Typescript is compiled into JavaScript, so they are interchangeable. Well, at least the latest versions of JS, because types and decorators are required in order to, respectively, use _dependency injection_ and set metadata.
 
-Being based on JavaScript - guess what? - it fits perfectly with Node.js. And of course, NPM, which allows you to download JavaScript packages to include in the project.
+Being based on JavaScript - guess what? - it fits perfectly with Node.js. And of course, NPM, which allows you to download JavaScript
+packages to include in the project.
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 

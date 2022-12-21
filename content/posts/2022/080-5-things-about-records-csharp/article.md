@@ -275,6 +275,8 @@ public record ColoredPoint3D(int X, int Y, int Z, string RgbColor) : Point3D(X, 
 
 This can be useful when exposing your types to external systems.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Additional resources
 
 As usual, a few links you might want to read to learn more about Records in C#.

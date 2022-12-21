@@ -227,4 +227,5 @@ It's a simple trick that you can consider adding to your projects.
 Do you have some utility endpoints?
 
 Happy coding!
+
 🐧

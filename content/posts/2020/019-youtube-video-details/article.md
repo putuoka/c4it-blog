@@ -133,3 +133,5 @@ public async Task<YouTubeVideoDetails> GetVideoDetails()
 You can see a full example on this [GitHub repository](https://github.com/code4it-dev/youtube-video-details "GitHub repository for this article").
 
 Now we have the lyrics, and we are ready to learn about macroeconomics, power metal and inflation! Enjoy!
+
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_

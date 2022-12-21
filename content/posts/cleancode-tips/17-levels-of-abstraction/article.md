@@ -30,7 +30,7 @@ We are mixing multiple levels of operations. In the same method, we are
 - concatenating strings
 - printing using .NET Console class
 
-Some operations have a high level of abstraction (call an external service, I don't care how) while others are very low-level (calculate the price discount using the formula _ProductPrice*0.9_).
+Some operations have a high level of abstraction (call an external service, I don't care how) while others are very low-level (calculate the price discount using the formula _ProductPrice\*0.9_).
 
 Here the readers lose focus on the overall meaning of the method because they're distracted by the actual implementation.
 
@@ -76,7 +76,7 @@ You can read more about the latest point here:
 
 🔗 [Clean code tip: small functions bring smarter exceptions | Code4IT](https://www.code4it.dev/cleancodetips/smaller-functions-smarter-exceptions)
 
-*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Happy coding!
 

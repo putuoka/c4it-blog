@@ -1,6 +1,6 @@
 ---
 title: "C# Tip: use the @ prefix when a name is reserved"
-path: '/csharptips/use-at-symbol-prefix'
+path: "/csharptips/use-at-symbol-prefix"
 tags: ["CSharp", "CSharp Tip"]
 featuredImage: "./cover.png"
 excerpt: "C#, as every other language, has several reserved keywords. Did you know that you can use them if you use the `@` prefix?"
@@ -16,15 +16,15 @@ What to do, now?
 
 There are tons of reserved keywords in C#. Some of these are
 
-* int
-* interface
-* else
-* null
-* short
-* event
-* params
+- int
+- interface
+- else
+- null
+- short
+- event
+- params
 
-Some of these names may be a good fit for describing your domain objects or your variables. 
+Some of these names may be a good fit for describing your domain objects or your variables.
 
 Talking about variables, have a look at this example:
 
@@ -65,10 +65,9 @@ foreach(var myEvent in eventList)
 }
 ```
 
-But... does it make sense? Is it really *your* event?
+But... does it make sense? Is it really _your_ event?
 
 The third way is by **using the `@` prefix**:
-
 
 ```cs
 var eventList = GetFootballEvents();
@@ -89,7 +88,7 @@ If you are interested in a list of reserved keywords in C#, have a look at this 
 
 🔗 [C# Keywords (Reserved, Contextual) | Tutlane](https://www.tutlane.com/tutorial/csharp/csharp-keywords-reserved-contextual)
 
-*This article first appeared on [Code4IT](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
 
 ## Wrapping up
 

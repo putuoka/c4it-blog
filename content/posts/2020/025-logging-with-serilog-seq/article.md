@@ -217,6 +217,8 @@ and have a cleaner message with all the exception details in the log detail.
 
 ![The correct way to log exceptions](./correct-exception-handling.png "Logging exception - correct way")
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Having a good logging infrastructure is for sure a must-have for every project that must be monitored. The union of Seq as a collector and Serilog as a logging library is very powerful, especially for the combo Structured Data + Queries. With Seq you can also create diagrams to track the overall occurrence of logs of a specific level or with a specific property.

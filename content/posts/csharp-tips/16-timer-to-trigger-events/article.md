@@ -36,7 +36,7 @@ void Main()
     System.Timers.Timer timer = new System.Timers.Timer(2000);
     timer.Elapsed += AlertMe;
     timer.Elapsed += AlertMe2;
-    
+
     timer.Start();
 }
 
@@ -57,8 +57,7 @@ This class implements `IDisposable`: if you're using it as a dependency of anoth
 
 **Note:** use this only for synchronous tasks: there are other kinds of Timers that you can use for asynchronous operations, such as `PeriodicTimer`, which also can be stopped by canceling a `CancellationToken`.
 
-*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
-
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 Happy coding!
 

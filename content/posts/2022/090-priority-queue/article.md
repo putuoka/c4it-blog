@@ -1,6 +1,6 @@
 ---
 title: "PriorityQueues on .NET 7 and C# 11"
-path: '/blog/intro-priority-queue'
+path: "/blog/intro-priority-queue"
 tags: ["dotNET", "MainArticle"]
 featuredImage: "./cover.png"
 excerpt: "A PriorityQueue represents a collection of items that have a value and a priority. Now this data structure is built-in in dotNET!"
@@ -10,11 +10,11 @@ updated: 2022-12-12
 
 Starting from .NET 6 and C# 10, we finally have built-in support for PriorityQueues 🥳
 
-A PriorityQueue is a collection of items that have a value and a priority; as you can imagine, they act as a queue: the main operations are "add an item to the queue", called *Enqueue*, and "remove an item from the queue", named *Dequeue*. The main difference from a simple Queue is that on dequeue, the item with **lowest priority** is removed.
+A PriorityQueue is a collection of items that have a value and a priority; as you can imagine, they act as a queue: the main operations are "add an item to the queue", called _Enqueue_, and "remove an item from the queue", named _Dequeue_. The main difference from a simple Queue is that on dequeue, the item with **lowest priority** is removed.
 
 In this article, we're gonna use a `PriorityQueue` and wrap it into a custom class to solve one of its design issues (that I hope they'll be addressed in a future release of dotNET).
 
-## Welcoming Priority Queues in .NET 
+## Welcoming Priority Queues in .NET
 
 Defining a priority queue is straightforward: you just have to declare it specifying the type of items and the type of priority.
 
@@ -47,7 +47,7 @@ queue.Enqueue(child2, 2);
 
 Child first = queue.Peek();
 //first will be child1, because its priority is 1
-//queue.Count = 3, because we did not remove the item on top 
+//queue.Count = 3, because we did not remove the item on top
 ```
 
 or `Dequeue` if you want to retrieve it while removing it from the queue:
@@ -72,7 +72,7 @@ This is the essence of a Priority Queue: insert items, give them a priority, the
 
 ## Creating a Wrapper to automatically handle priority in Priority Queues
 
-There's a problem with this definition: you have to manually specify the priority of each item. 
+There's a problem with this definition: you have to manually specify the priority of each item.
 
 I don't like it that much: I'd like to automatically assign each item a priority. So we have to wrap it in another class.
 
@@ -224,12 +224,11 @@ As usual, the best way to learn about something is by reading its official docum
 
 🔗 [PriorityQueue documentation | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.priorityqueue-2)
 
-This article is part of the 2022 C# Advent (that's why I chose a Christmas-ish topic for this article), 
+This article is part of the 2022 C# Advent (that's why I chose a Christmas-ish topic for this article),
 
 🔗 [C# Advent Calendar 2022](https://csadvent.christmas/)
 
 _This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
-
 
 ## Conclusion
 

@@ -214,6 +214,8 @@ The `IGuidGenerator` is indeed Transient, but it is injected into Singleton clas
 
 ![Transient inside Singleton](./Transient-inside-singleton.png "Transient and Singleton")
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 We've seen the available lifetimes for injected services. Here's a recap the differences:

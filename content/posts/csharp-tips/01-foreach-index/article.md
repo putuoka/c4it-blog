@@ -139,6 +139,8 @@ public class ForeachIndexBenchmark
 
 ```
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Conclusions
 
 We've discovered that there are many ways to use indexes tightly bound with items. If you look at performance, go for the simplest ways (`for` loop or `foreach` with simple index). If you want a more concise code, go for LINQ.

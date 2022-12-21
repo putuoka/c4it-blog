@@ -253,6 +253,8 @@ The "real" exception is stored inside the `InnerException` field of the Aggregat
 
 That's why you should always prefer, if you cannot await the result, to use `.GetAwaiter().GetResult()` instead of `.Result`.
 
+_This article first appeared on [Code4IT](https://www.code4it.dev/)_
+
 ## Wrapping up
 
 Of course, I just scratched the surface of this topic. You should also learn about other things like `Task.WaitAll()`, `ConfigureAwait(false)` and so on.
