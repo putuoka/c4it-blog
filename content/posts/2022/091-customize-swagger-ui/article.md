@@ -148,7 +148,7 @@ Now we can run our APIs as admire our wonderful Xmas-style UI 🎅
 
 This article is part of 2022 .NET Advent, created by [Dustin Moris 🐤](https://twitter.com/dustinmoris):
 
-🔗 [C# Advent Calendar 2022](https://dotnet.christmas//)
+🔗 [dotNET Advent Calendar 2022](https://dotnet.christmas//)
 
 CSS is not the only part you can customize, there's way more. Here's an article I wrote about Swagger integration in .NET Core 3 APIs, but it's still relevant (I hope! 😁)
 
