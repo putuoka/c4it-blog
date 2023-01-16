@@ -126,7 +126,7 @@ var sortedNumbers = originalNumbers.OrderBy(n => n);
 
 ## Further readings
 
-C# collections do not natively expose such methods. They are ALL **Extension methods**.
+C# collections do not natively expose such methods. They are ALL **Extension methods** (well, except for `Sort`, which is a native of `List<T>` ).
 
 If you want to learn what are Extension Methods and how you can write your own methods, have a look at this article:
 
@@ -150,7 +150,7 @@ In this article, we learned the differences between couples of LINQ methods.
 
 Each of them has a purpose, and you should use the right one for each case.
 
-❓ A question for you: talking about performance, which is more efficient: `First` or `Single`? Drop a message below if you know the answer! 📩
+❓ A question for you: talking about performance, which is more efficient: `First` or `Single`? And what about `Count() == 0` vs `Any()`? Drop a message below if you know the answer! 📩
 
 I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛
 
