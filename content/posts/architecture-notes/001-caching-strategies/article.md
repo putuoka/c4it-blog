@@ -8,21 +8,21 @@ created: 2023-01-24
 updated: 2023-01-24
 ---
 
-As you surely know, *caching* is a technique that allows you to store data in a way that is incredibly efficient to access.
+As you surely know, _caching_ is a technique that allows you to store data in a way that is incredibly efficient to access.
 
 Faster reads bring faster applications - thus, almost every application that needs to provide high performance uses some type of cache.
 
-In this article, we will learn 4 caching strategies used at *application level*: **Cache-aside**, **Read-through**, **Write-through**, and **Write-behind**. We will also learn the Pros and Cons of each strategy.
+In this article, we will learn 4 caching strategies used at _application level_: **Cache-aside**, **Read-through**, **Write-through**, and **Write-behind**. We will also learn the Pros and Cons of each strategy.
 
 ## Caching exists on different levels
 
 In the previous sentence I specified that we will tackle caching at **application level**. Why did I specify it?
 
-Well, because we tend to think of caching as server-only functionality. *It's not*. 
+Well, because we tend to think of caching as server-only functionality. _It's not_.
 
 We can cache data on the client (eg: Browser), on the infrastructure (eg: CDN), and on the Application. Each one has some reasons to exist.
 
-You can **cache resources on the browser** to avoid excessive calls to a server. For instance, if you already have downloaded a JavaScript file, you don't need to download it every time to navigate to another page; if the content is not *stale* you can just reuse the one you've already downloaded.
+You can **cache resources on the browser** to avoid excessive calls to a server. For instance, if you already have downloaded a JavaScript file, you don't need to download it every time to navigate to another page; if the content is not _stale_ you can just reuse the one you've already downloaded.
 
 **CDN** is a way to store images and, more in general, static assets in an efficient way - browsers still have to call a server to download remote resources, but instead of calling the "main" application, they call the CDN to retrieve static assets - allowing our main application to handle requests that require dynamic data.
 
@@ -34,7 +34,7 @@ To handle data we have to pick the strategies for writing and reading. Let's see
 
 Cache-aside, **also known as Lazy caching**, is probably the most used strategy: read from the cache; if the item does not exist, retrieve it from the source and add it to the cache, so that the next time the application tries to retrieve the same item, it is already present in the cache.
 
-It is called Cache-aside because the cache layer does not interact with the database directly: it is kept *aside*.
+It is called Cache-aside because the cache layer does not interact with the database directly: it is kept _aside_.
 
 ![Cache-aside pattern](./cache-aside.png)
 
@@ -103,7 +103,7 @@ We've also introduced **coupling between the Cache and the DB**: if the model on
 
 Data is first written on the cache, and then to the source **synchronously**.
 
-The application asks the cache to save some data. The cache then stores that data in its internal storage and then writes on the DB using some configurations and modules (as we've seen for the Read-through pattern). 
+The application asks the cache to save some data. The cache then stores that data in its internal storage and then writes on the DB using some configurations and modules (as we've seen for the Read-through pattern).
 
 Then, when both the cache and the DB have updated the value, returns to the application to say that everything's ok.
 
@@ -163,7 +163,7 @@ Finally, we've already talked about Caching in .NET: in particular, we've learne
 
 🔗 [How to add a caching layer in .NET 5 with Decorator pattern and Scrutor](https://www.code4it.dev/blog/caching-decorator-with-scrutor)
 
-*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 ## Wrapping up
 
@@ -171,14 +171,10 @@ In this article, we've learned what are the 4 main caching strategies that you c
 
 Each one of these has some pros and some cons - you have to pick choose the best one for your application.
 
-Have you ever used Read-through, Write-Through, or Write-Behind? Leave a comment below! 📩 I'm curious to hear about your experience, how you configured the cache to interact with the DB, and what were the challenges with these approaches. 
+Have you ever used Read-through, Write-Through, or Write-Behind? Leave a comment below! 📩 I'm curious to hear about your experience, how you configured the cache to interact with the DB, and what were the challenges with these approaches.
 
-I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛 
+I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛
 
 Happy coding!
 
 🐧
-
-## APPUNTI
-
-[ ] Check frontmatter (nome tag, immagine, fix navigazione)
