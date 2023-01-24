@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant App as Application
+    participant C as Cache
+    participant DB
+    autonumber
+
+    App->>+C: Get user(123)
+    C-->>C: Miss!
+    C->>DB: Get User(123)
+     Note right of C: Using a module installed on Cache
+    DB-->>C: User_123
+    C->>C: Add User(User_123)
+    C -->> App: User_123
+    

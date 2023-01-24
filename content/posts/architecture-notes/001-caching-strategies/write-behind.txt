@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant App as Application
+    participant C as Cache
+    participant DB
+    autonumber
+
+    App->>+C: Insert User_123
+    C->>C: Insert User_123
+    C->>+DB: Insert User_123
+    C -->>- App: Ok
+
+    DB-->>-C: Ok

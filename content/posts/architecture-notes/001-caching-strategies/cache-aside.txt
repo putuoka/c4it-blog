@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant App as Application
+    participant C as Cache
+    participant DB
+    autonumber
+
+    App->>+C: Get user(123)
+    C-->>App: Miss!
+    App->>DB: Get User(123)
+    DB-->>App: User_123
+    App->>C: Add User(User_123)
