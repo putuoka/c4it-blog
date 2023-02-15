@@ -16,3 +16,5 @@ I love learning new things, and I think that the best way to learn is to share: 
 If you want to keep in touch, you can find me on [Twitter](https://twitter.com/BelloneDavide) and on [LinkedIn](https://www.linkedin.com/in/bellonedavide/) where I publish interesting (I hope😁) content about C# and .NET!
 
 Ah, and I'm also a [Microsoft MVP](https://mvp.microsoft.com/en-us/PublicProfile/5005077?fullName=Davide%20Bellone) 🏆!
+
+![MVP](./MVP_badge.png)
