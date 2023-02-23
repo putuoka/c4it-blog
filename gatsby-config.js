@@ -140,26 +140,25 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: ["AW-409570708"],
+        trackingIds: [
+          "AW-409570708",
+      "G-M4Y3LG306F"],
 
         // This object is used for configuration specific to this plugin
         pluginConfig: {
           // Puts tracking script in the head instead of the body
           head: false,
-          // Setting this parameter is also optional
-          respectDNT: true,
         },
       },
     },
-
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {
-          trackingId: 'G-719PBMFQ96', // leave empty if you want to disable the tracker
+          trackingId: 'G-M4Y3LG306F', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-analytics', // default
           anonymize: true, // default
-          allowAdFeatures: false // default
+          allowAdFeatures: true // default
         },
         googleTagManager: {
           trackingId: 'GTM-W6KBN79', // leave empty if you want to disable the tracker
@@ -170,9 +169,6 @@ module.exports = {
         environments: ['production', 'development']
       },
     },
-  
-
-
     {
       resolve: `gatsby-plugin-feed`,
       options: {

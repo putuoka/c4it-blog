@@ -25,15 +25,15 @@ Conventional Commits are a set of rules that help you write commit messages usin
 
 So, what does an average Conventional Commit look like?
 
-There's not just one way to specify such formats. 
+There's not just one way to specify such formats.
 
-For example, you can specify that you've added a new feature (*feat*) to your APIs and describe it shortly:
+For example, you can specify that you've added a new feature (_feat_) to your APIs and describe it shortly:
 
 ```plain
 feat(api): send an email to the customer
 ```
 
-Or you can explain that you've fixed a bug (using *fix*) and add a full description of the scope of the commit.
+Or you can explain that you've fixed a bug (using _fix_) and add a full description of the scope of the commit.
 
 ```plain
 fix: prevent racing condition
@@ -41,21 +41,20 @@ fix: prevent racing condition
 Introduce a request id and a reference to latest request. Dismiss
 incoming responses other than from latest request.
 ```
- 
 
 There are several types of commits that you can support, such as:
 
-- *feat*, used when you add a new feature to the application;
-- *fix*, when you fix a bug;
-- *docs*, used to add or improve documentation to the project;
-- *refactor*, used - well - after some refactoring;
-- *test*, when adding tests or fixing broken ones
+- _feat_, used when you add a new feature to the application;
+- _fix_, when you fix a bug;
+- _docs_, used to add or improve documentation to the project;
+- _refactor_, used - well - after some refactoring;
+- _test_, when adding tests or fixing broken ones
 
-All of this prevents developers write commit messages such as *"something"*, *"fixed bug"*, *"some stuff"*.
+All of this prevents developers write commit messages such as _"something"_, _"fixed bug"_, _"some stuff"_.
 
 ![Some Changes](./some-changes.jpg)
 
-So, now, it's time to include Conventional Commits in our .NET applications. 
+So, now, it's time to include Conventional Commits in our .NET applications.
 
 ## What is our goal?
 
@@ -63,9 +62,9 @@ For the sake of this article, I'm going to add Conventional Commits in a .NET 7 
 
 Well, actually, **the following approach can be used by every project**, not only those based on .NET: the reason I wrote this article is that many dotnet developers are not confident in using and configuring NPM packages, so my personal goal with this article is to give you the basics of such tools and configurations.
 
-For the sake of this article, I'm going to explain how to add Conventional Commits with a custom format. 
+For the sake of this article, I'm going to explain how to add Conventional Commits with a custom format.
 
-Say that you want to associate each commit to a Jira task. As you may know, Jira tasks have an ID composed of a project prefix and a numeric Id. So, for a project named FOO, you can have a task with Id *FOO-123*.
+Say that you want to associate each commit to a Jira task. As you may know, Jira tasks have an ID composed of a project prefix and a numeric Id. So, for a project named FOO, you can have a task with Id _FOO-123_.
 
 The goal of this article is, then, to force developers to create Commit messages such as
 
@@ -73,7 +72,7 @@ The goal of this article is, then, to force developers to create Commit messages
 feat/FOO-123: commit short description
 ```
 
-or, if you want to add a full description of the commit, 
+or, if you want to add a full description of the commit,
 
 ```plain
 feat/FOO-123: commit short description
@@ -94,7 +93,7 @@ First things first: head to the Command Line and run
 npm init
 ```
 
-After specifying some configurations (Package name? Licence? Author?), you will have a brand new *package.json* file.
+After specifying some configurations (Package name? Licence? Author?), you will have a brand new _package.json_ file.
 
 Now we can move on and add a GIT Hook.
 
@@ -102,7 +101,7 @@ Now we can move on and add a GIT Hook.
 
 **To use conventional commits we have to "intercept" our GIT actions**: we will need to run a specific tool right after having written a commit message; we have to validate it and, in case it does not follow the rules we've set, abort the operations.
 
-We will use [Husky 🔗](https://typicode.github.io/husky/): it's a facility package that allows us to *do stuff* with our commit messages and, in general, integrate work with Git Hooks.
+We will use [Husky 🔗](https://typicode.github.io/husky/): it's a facility package that allows us to _do stuff_ with our commit messages and, in general, integrate work with Git Hooks.
 
 Head to the terminal, and **install Husky** by running
 
@@ -110,8 +109,7 @@ Head to the terminal, and **install Husky** by running
 npm install husky --save-dev
 ```
 
-This command will add a dependency to Husky, as you can see from the new item listed in the *package.json* file:
-
+This command will add a dependency to Husky, as you can see from the new item listed in the _package.json_ file:
 
 ```json
 "devDependencies": {
@@ -125,7 +123,7 @@ Finally, to **enable Git Hooks**, we have to run
 npm pkg set scripts.prepare="husky install"
 ```
 
-and notice the new section in the *package.json*.
+and notice the new section in the _package.json_.
 
 ```json
 "scripts": {
@@ -149,7 +147,7 @@ On the same terminal as before, run
 npm install --save-dev @commitlint/config-conventional @commitlint/cli
 ```
 
-to install both *commitlint/config-conventional*, which add the generic functionalities, and *commitlint/cli*, which allows us to run the scripts via CLI.
+to install both _commitlint/config-conventional_, which add the generic functionalities, and _commitlint/cli_, which allows us to run the scripts via CLI.
 
 You will see both packages listed in your package.json file:
 
@@ -163,15 +161,15 @@ You will see both packages listed in your package.json file:
 
 Next step: scaffold the file that handles the configurations on how we want our Commit Messages to be structured.
 
-On the root, **create a brand new file, *commitlint.config.js*,** and paste this snippet:
+On the root, **create a brand new file, _commitlint.config.js_,** and paste this snippet:
 
 ```javascript
 module.exports = {
-    extends: ['@commitlint/config-conventional']
-};
+  extends: ["@commitlint/config-conventional"],
+}
 ```
 
-This snippet tells Commitlint to use the default conventions, such as *feat(api): send an email*.
+This snippet tells Commitlint to use the default conventions, such as _feat(api): send an email_.
 
 To test the default rules without issuing any real commit, we have to install the previous packages globally, so that they can be accessed outside the scope of the git hooks:
 
@@ -189,7 +187,7 @@ and see the error messages
 
 ![Testing commitlint with errors](./commitlint-echo-with-error.png)
 
-At this point, we still don't have CommitLint ready to validate our commit messages. In fact, if you try to commit your changes with an invalid message, you will see that the message passes the checks (because there are *no* checks!), and your changes get committed.
+At this point, we still don't have CommitLint ready to validate our commit messages. In fact, if you try to commit your changes with an invalid message, you will see that the message passes the checks (because there are _no_ checks!), and your changes get committed.
 
 We need to do some more steps.
 
@@ -199,7 +197,7 @@ First of all, we have to **create a folder named .husky** that will be used by H
 mkdir .husky
 ```
 
-Notice: you have to keep the dot at the beginning of the folder name: it's *.husky*, not *husky*.
+Notice: you have to keep the dot at the beginning of the folder name: it's _.husky_, not _husky_.
 
 Then we need to add a new file within that folder to **tell Husky that it needs to run CommitLint**.
 
@@ -236,32 +234,31 @@ Here we can have the full description of the task.
 And it can also be on multiple lines.
 ```
 
-This means that we have to configure the *commitlint.config.js* file to override default values.
+This means that we have to configure the _commitlint.config.js_ file to override default values.
 
 Let's have a look at a valid Commitlint file:
-
 
 ```js
 module.exports = {
   extends: ["./node_modules/@commitlint/config-conventional"],
   parserPreset: {
     parserOpts: {
-            headerPattern: /^(\w*)\/FOO-(\w*): (.*)$/,
-            headerCorrespondence: ["type", "scope", "subject"],
-        },
+      headerPattern: /^(\w*)\/FOO-(\w*): (.*)$/,
+      headerCorrespondence: ["type", "scope", "subject"],
     },
-    rules: {
-        "type-enum": [2, "always", ["feat", "fix", "hot", "chore"]],
-        "header-min-length": [2, "always", 10],
-        "header-max-length": [2, "always", 50],
-        "body-max-line-length": [2, "always", 72],
-        "subject-case": [
-        2,
-        "never",
-        ["sentence-case", "start-case", "pascal-case", "upper-case"],
-        ],
-    },
-};
+  },
+  rules: {
+    "type-enum": [2, "always", ["feat", "fix", "hot", "chore"]],
+    "header-min-length": [2, "always", 10],
+    "header-max-length": [2, "always", 50],
+    "body-max-line-length": [2, "always", 72],
+    "subject-case": [
+      2,
+      "never",
+      ["sentence-case", "start-case", "pascal-case", "upper-case"],
+    ],
+  },
+}
 ```
 
 Time to deep dive into those sections:
@@ -279,14 +276,14 @@ parserOpts: {
 
 It's a regular expression, where every matching part has its correspondence in the `headerCorrespondence` array:
 
-So, in the message *hello/FOO-123: my tiny message*, we will have type=hello, scope=123, subject=my tiny message.
+So, in the message _hello/FOO-123: my tiny message_, we will have type=hello, scope=123, subject=my tiny message.
 
 ### Rules: define specific rules for each message section
 
 The `rules` section defines the rules to be applied to each part of the message structure.
 
 ```js
-rules: 
+rules:
 {
     "type-enum": [2, "always", ["feat", "fix", "hot", "chore"]],
     "header-min-length": [2, "always", 10],
@@ -306,7 +303,7 @@ The first value is a number that expresses the severity of the rule:
 - 1: show a warning;
 - 2: it's an error.
 
-The second value defines if the rule must be applied (using *always*), or if it must be reversed (using *never*).
+The second value defines if the rule must be applied (using _always_), or if it must be reversed (using _never_).
 
 The third value provides generic arguments for the related rule. For example, `"header-max-length": [2, "always", 50],` tells that the header must always have a length with <= 50 characters.
 
@@ -355,11 +352,11 @@ and.. TA-DAH! Here's your message template!
 
 Finally, we have everything in place: git hooks, commit template, and template hints.
 
-If we run `git commit`, we will see an IDE open and the message we've defined before. Now, type *A message with wrong format*, save, close the editor, and you'll see that the commit is aborted.
+If we run `git commit`, we will see an IDE open and the message we've defined before. Now, type _A message with wrong format_, save, close the editor, and you'll see that the commit is aborted.
 
 ![Commit message with wrong format gets rejected](./git-commit-wrong-message.png)
 
-Now you run `git commit` again, you'll see again the IDE, and type *feat/FOO-123: a valid message*, and you'll see it working
+Now you run `git commit` again, you'll see again the IDE, and type _feat/FOO-123: a valid message_, and you'll see it working
 
 ## Further readings
 
@@ -371,7 +368,7 @@ As we saw before, there are a lot of configurations that you can set for your co
 
 [🔗 CommitLint rules](https://commitlint.js.org/#/reference-rules)
 
-*This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)*
+_This article first appeared on [Code4IT 🐧](https://www.code4it.dev/)_
 
 This new kind of commit message works well with Semantic Versioning, which can be useful to publish package versions with a meaningful version number, such as 2.0.1:
 [🔗 Semantic Versioning](https://semver.org)
@@ -391,14 +388,14 @@ So, to recap everything, we have to:
 2. Install Husky: `npm install husky --save-dev`;
 3. Enable Husky: `npm pkg set scripts.prepare="husky install"`;
 4. Install CommitLint: `npm install --save-dev @commitlint/config-conventional @commitlint/cli`;
-5. Create the commitlint.config.js file: `module.exports = {   extends: '@commitlint/config-conventional']};`;
+5. Create the commitlint.config.js file: `module.exports = { extends: '@commitlint/config-conventional']};`;
 6. Create the Husky folder: `mkdir .husky`;
-7. Link Husky and CommitLint: `npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'`;
+7. Link Husky and CommitLint: `npx husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'`;
 8. Activate the whole functionality: `npx husky install`;
 
 Then, you can customize the commitlint.config.js file and, if you want, create a better .gitmessage file.
 
-I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛 
+I hope you enjoyed this article! Let's keep in touch on [Twitter](https://twitter.com/BelloneDavide) or on [LinkedIn](https://www.linkedin.com/in/BelloneDavide/), if you want! 🤜🤛
 
 Happy coding!
 
